@@ -33,7 +33,6 @@ def cmd_for_train(train: Train):
     parser = argparse.ArgumentParser()
     parser.add_argument('tool',
                         choices=[tool_run_algorithm, tool_print_summary, tool_print_next_departure_id],
-                        required=True,
                         help="The subroutine that the train will perform once it is run")
     tool = parser.parse_args().tool
 
