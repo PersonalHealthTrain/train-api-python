@@ -22,6 +22,10 @@ class Train(ABC):
     def print_next_departure_id(self):
         pass
 
+    @abstractmethod
+    def check_requirements(self):
+        pass
+
 
 def cmd_for_train(train: Train):
 
@@ -29,10 +33,16 @@ def cmd_for_train(train: Train):
     tool_run_algorithm = "run_algorithm"
     tool_print_summary = "print_summary"
     tool_print_next_departure_id = "print_next_departure_id"
+    tool_check_requirements = "check_requirements"
 
     parser = argparse.ArgumentParser()
     parser.add_argument('tool',
-                        choices=[tool_run_algorithm, tool_print_summary, tool_print_next_departure_id],
+                        choices=[
+                            tool_run_algorithm,
+                            tool_print_summary,
+                            tool_print_next_departure_id,
+                            tool_check_requirements
+                        ],
                         help="The subroutine that the train will perform once it is run")
     tool = parser.parse_args().tool
 
@@ -42,3 +52,5 @@ def cmd_for_train(train: Train):
         train.print_next_departure_id()
     elif tool == tool_print_summary:
         train.print_summary()
+    elif tool == tool_check_requirements:
+        train.check_requirements()
