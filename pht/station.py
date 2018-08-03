@@ -11,9 +11,10 @@ class StationClient:
         fail_init_if(host is None, "Host is None")
         fail_init_if('/' in host, "Hostname contains invalid character '/'")
         fail_init_if(host.startswith("https"), "HTTPS Protocol not supported!")
+        http_prefix = "http://"
 
-        if not host.startswith("http"):
-            host = "http://" + host
+        if not host.startswith(http_prefix):
+            host = http_prefix + host
         self.host = host
 
     def _route(self, route):
@@ -24,3 +25,9 @@ class StationClient:
     def request_name(self):
         route = self._route("name")
         return requests.get(route).content.decode().strip()
+
+    def request_data(self, target_file):
+        route = self._route("data")
+        data = requests.get(route).content
+        with open(target_file, 'wb') as f:
+            f.write(data)
