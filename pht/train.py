@@ -26,11 +26,11 @@ class RunAlgorithmResult:
     Represents the result of a run algorithm operation, which currently only contains the
     departure id.
     """
-    def __init__(self, departure_id: str):
-        self.departure_id = departure_id
+    def __init__(self, departure_tag: str):
+        self.departure_tag = departure_tag
 
     def __repr__(self):
-        return json.dumps({'departure_id': self.departure_id})
+        return json.dumps({'departure_tag': self.departure_tag})
 
     def __str__(self):
         return self.__repr__()
@@ -73,7 +73,7 @@ class ImmediateTrain(Train):
         For the ImmediateTrain class, the departure id will be identical to the station id
         """
         self.execute(run_info)
-        return RunAlgorithmResult(departure_id=run_info.station_id)
+        return RunAlgorithmResult(departure_tag=run_info.station_id)
 
 
 def cmd_for_train(train: Train):
