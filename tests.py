@@ -9,7 +9,7 @@ import os
 # "PHT_DATA_STORAGE_NAME"
 PORT = 5000
 STATION_NAME = "station"
-station_container_name = "lukaszimmermann/pht-test-data-storage-service:latest"
+station_container_name = "personalhealthtrain/test-data-storage-service:latest"
 station_container = GenericContainer(station_container_name)\
     .with_exposed_ports(PORT)\
     .with_env('PHT_DATA_STORAGE_FILENAME', 'processed.cleveland.data')\
