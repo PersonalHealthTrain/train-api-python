@@ -8,7 +8,7 @@ class TrainMode(enum.Enum):
     """
     Represents potential train modes. Currently, only immediate is supported
     """
-    IMMEDIATE = 'immediate'
+    IMMEDIATE = 'IMMEDIATE'
 
 
 class RunInfo:
@@ -98,7 +98,7 @@ def cmd_for_train(train: Train):
     # Determine the run information from the command line arguments
     run_info = RunInfo(
         station_id=args.stationid,
-        train_mode=TrainMode[args.mode.lower()])
+        train_mode=TrainMode[args.mode.upper()])
 
     # Perform action depending on the selected tool and print the result
     tool = args.tool
