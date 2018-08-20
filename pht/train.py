@@ -49,7 +49,7 @@ class Train(ABC):
         pass
 
     @abstractmethod
-    def print_summary(self, run_info) -> str:
+    def print_summary(self, run_info):
         pass
 
     @abstractmethod
@@ -105,6 +105,7 @@ def cmd_for_train(train: Train):
     if tool == tool_run_algorithm:
         print(train.run_algorithm(run_info))
     elif tool == tool_print_summary:
-        print(train.print_summary(run_info))
+        train.print_summary(run_info)
     elif tool == tool_check_requirements:
         train.check_requirements(run_info)
+
