@@ -92,7 +92,7 @@ def cmd_for_train(train: Train):
                         ],
                         help="The subroutine that the train will perform once it is run")
     parser.add_argument('--stationid', type=int, required=True)
-    parser.add_argument('--mode', type=str, required=True)
+    parser.add_argument('--mode', type=str, default='immediate')
     args = parser.parse_args()
 
     # Determine the run information from the command line arguments
