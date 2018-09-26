@@ -1,7 +1,12 @@
 from abc import abstractmethod, ABC
 import argparse
 import enum
-import json
+from .response import RunAlgorithmResponse
+from .response import CheckRequirementsResponse
+from .response import ListRequirementsResponse
+from .response import Response
+from .exit_codes import RESPONSE_UNDEFINED
+import sys
 
 
 class TrainMode(enum.Enum):
@@ -21,59 +26,25 @@ class RunInfo:
         self.train_mode = train_mode
 
 
-class RunAlgorithmResult:
-    """
-    Represents the result of a run algorithm operation, which currently only contains the
-    departure id.
-    """
-    def __init__(self, departure_tag: str):
-        self.departure_tag = departure_tag
-
-    def __repr__(self):
-        return json.dumps({'departure_tag': self.departure_tag})
-
-    def __str__(self):
-        return self.__repr__()
-
-
 class Train(ABC):
     """
     Implements the API of a train
     """
-
-    def __init__(self):
+    @abstractmethod
+    def run_algorithm(self, run_info: RunInfo) -> RunAlgorithmResponse:
         pass
 
     @abstractmethod
-    def run_algorithm(self, run_info) -> RunAlgorithmResult:
+    def print_summary(self, run_info: RunInfo) -> str:
         pass
 
     @abstractmethod
-    def print_summary(self, run_info):
+    def check_requirements(self, run_info: RunInfo) -> CheckRequirementsResponse:
         pass
 
     @abstractmethod
-    def check_requirements(self, run_info):
+    def list_requirements(self, run_info: RunInfo) -> ListRequirementsResponse:
         pass
-
-
-class ImmediateTrain(Train):
-    """
-    Represents a train that is called for the train mode immediate
-    """
-    def __int__(self):
-        pass
-
-    @abstractmethod
-    def execute(self, run_info):
-        pass
-
-    def run_algorithm(self, run_info) -> RunAlgorithmResult:
-        """
-        For the ImmediateTrain class, the departure id will be identical to the station id
-        """
-        self.execute(run_info)
-        return RunAlgorithmResult(departure_tag=run_info.station_id)
 
 
 def cmd_for_train(train: Train):
@@ -82,13 +53,15 @@ def cmd_for_train(train: Train):
     tool_run_algorithm = "run_algorithm"
     tool_print_summary = "print_summary"
     tool_check_requirements = "check_requirements"
+    tool_list_requirements = "list_requirements"
 
     parser = argparse.ArgumentParser()
     parser.add_argument('tool',
                         choices=[
                             tool_run_algorithm,
                             tool_print_summary,
-                            tool_check_requirements
+                            tool_check_requirements,
+                            tool_list_requirements
                         ],
                         help="The subroutine that the train will perform once it is run")
     parser.add_argument('--stationid', type=int, required=True)
@@ -102,10 +75,19 @@ def cmd_for_train(train: Train):
 
     # Perform action depending on the selected tool and print the result
     tool = args.tool
+    response: Response = None
     if tool == tool_run_algorithm:
-        print(train.run_algorithm(run_info))
+        response = train.run_algorithm(run_info)
     elif tool == tool_print_summary:
-        train.print_summary(run_info)
+        response = train.print_summary(run_info)
     elif tool == tool_check_requirements:
-        train.check_requirements(run_info)
+        response = train.check_requirements(run_info)
+    elif tool == tool_list_requirements:
+        response = train.list_requirements(run_info)
 
+    # Exit with 1 if the train does
+    if response is None:
+        sys.exit(RESPONSE_UNDEFINED)
+
+    # The response is by default print to stdout
+    print(response.as_json())
