@@ -77,17 +77,18 @@ def cmd_for_train(train: Train):
     tool = args.tool
     response: Response = None
     if tool == tool_run_algorithm:
-        response = train.run_algorithm(run_info)
+        response = train.run_algorithm(run_info).as_json()
     elif tool == tool_print_summary:
         response = train.print_summary(run_info)
     elif tool == tool_check_requirements:
-        response = train.check_requirements(run_info)
+        response = train.check_requirements(run_info).as_json()
     elif tool == tool_list_requirements:
-        response = train.list_requirements(run_info)
+        response = train.list_requirements(run_info).as_json()
 
     # Exit with 1 if the train does
     if response is None:
         sys.exit(RESPONSE_UNDEFINED)
 
     # The response is by default print to stdout
-    print(response.as_json())
+    print(response)
+
