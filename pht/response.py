@@ -17,6 +17,7 @@ class ResponseKey(enum.Enum):
     NEXT_TRAIN_TAG = 'nextTrainTag'
     REQUIREMENTS = 'requirements'
     CONTENT = 'content'
+    MESSAGE = 'message'
 
 
 ResponseDict = typing.Dict[ResponseKey, typing.Any]
@@ -42,13 +43,15 @@ class Response(abc.ABC):
 
 class RunAlgorithmResponse(Response):
 
-    def __init__(self, success: bool, next_train_tag: str):
-        self.success = success
+    def __init__(self, success: bool, message: str, next_train_tag: str):
+        self.success = success,
+        self.message = message
         self.next_train_tag = next_train_tag
 
     def as_response_dict(self) -> ResponseDict:
         return {
             ResponseKey.SUCCESS: self.success,
+            ResponseKey.MESSAGE: self.message,
             ResponseKey.NEXT_TRAIN_TAG: self.next_train_tag
         }
 
