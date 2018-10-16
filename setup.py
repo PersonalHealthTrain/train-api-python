@@ -2,6 +2,6 @@ from setuptools import setup
 
 setup(
     name='PHT Train API for Python',
-    version='0.3',
+    version='0.4',
     packages=['pht']
 )
