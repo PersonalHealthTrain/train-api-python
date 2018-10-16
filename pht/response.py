@@ -44,7 +44,7 @@ class Response(abc.ABC):
 class RunAlgorithmResponse(Response):
 
     def __init__(self, success: bool, message: str, next_train_tag: str):
-        self.success = success,
+        self.success = success
         self.message = message
         self.next_train_tag = next_train_tag
 
