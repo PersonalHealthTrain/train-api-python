@@ -18,4 +18,8 @@ def process(args: Union[bytes, str, Sequence[Union[bytes, str]]])-> Tuple[List[s
         while p.poll() is None:
             extend()
         extend()
-    return stdout, stderr
+
+    def decode(it) -> List[str]:
+        return [x.decode('utf-8') for x in it]
+
+    return decode(stdout), decode(stderr)
