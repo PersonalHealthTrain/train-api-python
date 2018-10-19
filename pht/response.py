@@ -18,6 +18,8 @@ class ResponseKey(enum.Enum):
     REQUIREMENTS = 'requirements'
     CONTENT = 'content'
     MESSAGE = 'message'
+    DOCKER_BASE_IMAGE = 'dockerBaseImage',
+    EXPORT_FILES = 'exportFiles'
 
 
 ResponseDict = typing.Dict[ResponseKey, typing.Any]
@@ -43,16 +45,25 @@ class Response(abc.ABC):
 
 class RunAlgorithmResponse(Response):
 
-    def __init__(self, success: bool, message: str, next_train_tag: str):
+    def __init__(self,
+                 success: bool,
+                 message: str,
+                 next_train_tag: str,
+                 docker_base_image: str,
+                 export_files: List[str]):
         self.success = success
         self.message = message
-        self.next_train_tag = next_train_tag
+        self.next_train_tag = next_train_tag,
+        self.docker_base_image = docker_base_image,
+        self.export_files = export_files
 
     def as_response_dict(self) -> ResponseDict:
         return {
             ResponseKey.SUCCESS: self.success,
             ResponseKey.MESSAGE: self.message,
-            ResponseKey.NEXT_TRAIN_TAG: self.next_train_tag
+            ResponseKey.NEXT_TRAIN_TAG: self.next_train_tag,
+            ResponseKey.DOCKER_BASE_IMAGE: self.docker_base_image,
+            ResponseKey.EXPORT_FILES: self.export_files
         }
 
 
