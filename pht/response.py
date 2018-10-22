@@ -53,8 +53,8 @@ class RunAlgorithmResponse(Response):
                  export_files: List[str]):
         self.success = success
         self.message = message
-        self.next_train_tag = next_train_tag,
-        self.docker_base_image = docker_base_image,
+        self.next_train_tag = next_train_tag
+        self.docker_base_image = docker_base_image
         self.export_files = export_files
 
     def as_response_dict(self) -> ResponseDict:
