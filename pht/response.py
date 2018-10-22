@@ -18,7 +18,7 @@ class ResponseKey(enum.Enum):
     REQUIREMENTS = 'requirements'
     CONTENT = 'content'
     MESSAGE = 'message'
-    DOCKER_BASE_IMAGE = 'dockerBaseImage',
+    DOCKER_BASE_IMAGE = 'dockerBaseImage'
     EXPORT_FILES = 'exportFiles'
 
 
