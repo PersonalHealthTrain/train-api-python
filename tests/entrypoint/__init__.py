@@ -1,0 +1,1 @@
+from .CmdForTrainTests import CmdForTrainTests

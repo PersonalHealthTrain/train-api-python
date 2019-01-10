@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from typing import List
-from ..Requirement import Requirement
+from pht.response.requirement.Requirement import Requirement
 
 
 class Clause:
