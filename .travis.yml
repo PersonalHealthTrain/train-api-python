@@ -1,14 +1,7 @@
-sudo: required
 language: python
-services:
-  - docker
-
 python:
-  - "3.6"
-
-install:
-  - pip install testcontainers
-  - pip install sqlalchemy
+  - "3.7"
 
 script:
-  - pytest tests.py
+  - python run_tests.py
+

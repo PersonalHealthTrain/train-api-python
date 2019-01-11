@@ -3,7 +3,7 @@ from pht.station import StationRuntimeInfo
 from pht.response import RunAlgorithmResponse
 from pht.response import ListRequirementsResponse
 from pht.response import AlgorithmExitState
-from pht.response.rebase import DockerRebaseStrategy
+from pht.rebase import DockerRebaseStrategy
 
 class TestTrain(Train):
 
@@ -17,7 +17,8 @@ class TestTrain(Train):
             AlgorithmExitState.SUCCESS,
             'This is a test message',
             'next_station',
-
+            DockerRebaseStrategy('personalhealthtrain/image:tag'),
+            export_files=[]
         )
 
 

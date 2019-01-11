@@ -1,6 +1,6 @@
 import unittest
 from pht.response import RunAlgorithmResponse, AlgorithmExitState
-from pht.response.rebase import DockerRebaseStrategy
+from pht.rebase import DockerRebaseStrategy
 
 
 class RunAlgorithmResponseTests(unittest.TestCase):

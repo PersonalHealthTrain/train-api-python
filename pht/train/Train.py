@@ -16,13 +16,18 @@ class Train(abc.ABC):
         return PrintModelSummaryResponse(content=self.model_summary(run_info))
 
     @abc.abstractmethod
-    def model_summary(self, run_info: StationRuntimeInfo) -> str:
+    def run_algorithm(self, run_info: StationRuntimeInfo) -> RunAlgorithmResponse:
         pass
 
-    @abc.abstractmethod
-    def run_algorithm(self, run_info: StationRuntimeInfo) -> RunAlgorithmResponse:
+    def unmet_requirements(self):
         pass
 
     @abc.abstractmethod
     def list_requirements(self, run_info: StationRuntimeInfo) -> ListRequirementsResponse:
+        #  TODO
         pass
+
+    @abc.abstractmethod
+    def model_summary(self, run_info: StationRuntimeInfo) -> str:
+        pass
+

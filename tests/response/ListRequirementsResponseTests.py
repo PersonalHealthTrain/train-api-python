@@ -1,7 +1,7 @@
 import unittest
 from pht.response import ListRequirementsResponse
-from pht.response.requirement import req_url
-from pht.response.requirement.clause import require_all, require_any
+from pht.property import req_url
+from pht.formula import require_all, require_any
 
 
 class ListRequirementsResponseTests(unittest.TestCase):
@@ -10,7 +10,7 @@ class ListRequirementsResponseTests(unittest.TestCase):
         response = ListRequirementsResponse(require_all(req_url('FOO'))).to_json_string()
         string = '{"type": "ListRequirementsResponse", ' \
                  '"requirements":' \
-                 ' [{"id": 0, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}], ' \
+                 ' [{"id": 0, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}], ' \
                  '"clauses": [{"id": 0, "type": "all", "requirements": [0]}], '\
                  '"check": false}'
         self.assertEqual(response, string)
@@ -20,9 +20,9 @@ class ListRequirementsResponseTests(unittest.TestCase):
         response = ListRequirementsResponse(requirements).to_json_string()
         string = '{"type": "ListRequirementsResponse", '\
                  '"requirements":' \
-                 ' [{"id": 0, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO"}},' \
-                 ' {"id": 1, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAR"}},' \
-                 ' {"id": 2, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}}],' \
+                 ' [{"id": 0, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO"}},' \
+                 ' {"id": 1, "property": {"type": "environmentVariable", "target": "URL", "name": "BAR"}},' \
+                 ' {"id": 2, "property": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}}],' \
                  ' "clauses": [{"id": 0, "type": "all", "requirements": [0, 1]},' \
                  ' {"id": 1, "type": "any", "requirements": [2]}], ' \
                  '"check": false}'
@@ -35,10 +35,10 @@ class ListRequirementsResponseTests(unittest.TestCase):
         response = ListRequirementsResponse(requirements).to_json_string()
         string = '{"type": "ListRequirementsResponse", '\
                  '"requirements": ' \
-                 '[{"id": 0, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}},' \
-                 ' {"id": 1, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAM"}},' \
-                 ' {"id": 2, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO_BAR"}},' \
-                 ' {"id": 3, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}],' \
+                 '[{"id": 0, "property": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}},' \
+                 ' {"id": 1, "property": {"type": "environmentVariable", "target": "URL", "name": "BAM"}},' \
+                 ' {"id": 2, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO_BAR"}},' \
+                 ' {"id": 3, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}],' \
                  ' "clauses": [{"id": 0, "type": "any", "requirements": [0, 1]},' \
                  ' {"id": 1, "type": "all", "requirements": [2]}, {"id": 2, "type": "any", "requirements": [3]}], ' \
                  '"check": false}'
@@ -52,10 +52,10 @@ class ListRequirementsResponseTests(unittest.TestCase):
         response = ListRequirementsResponse(requirements, unmet).to_json_string()
         string = '{"type": "ListRequirementsResponse", '\
                  '"requirements": ' \
-                 '[{"id": 0, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}},' \
-                 ' {"id": 1, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAM"}},' \
-                 ' {"id": 2, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO_BAR"}},' \
-                 ' {"id": 3, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}],' \
+                 '[{"id": 0, "property": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}},' \
+                 ' {"id": 1, "property": {"type": "environmentVariable", "target": "URL", "name": "BAM"}},' \
+                 ' {"id": 2, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO_BAR"}},' \
+                 ' {"id": 3, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}],' \
                  ' "clauses": [{"id": 0, "type": "any", "requirements": [0, 1]},' \
                  ' {"id": 1, "type": "all", "requirements": [2]}, {"id": 2, "type": "any", "requirements": [3]}], ' \
                  '"check": true, "unmet": [0]}'
@@ -69,10 +69,10 @@ class ListRequirementsResponseTests(unittest.TestCase):
         response = ListRequirementsResponse(requirements, unmet).to_json_string()
         string = '{"type": "ListRequirementsResponse", '\
                  '"requirements": ' \
-                 '[{"id": 0, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}},' \
-                 ' {"id": 1, "requirement": {"type": "environmentVariable", "target": "URL", "name": "BAM"}},' \
-                 ' {"id": 2, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO_BAR"}},' \
-                 ' {"id": 3, "requirement": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}],' \
+                 '[{"id": 0, "property": {"type": "environmentVariable", "target": "URL", "name": "BAZ"}},' \
+                 ' {"id": 1, "property": {"type": "environmentVariable", "target": "URL", "name": "BAM"}},' \
+                 ' {"id": 2, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO_BAR"}},' \
+                 ' {"id": 3, "property": {"type": "environmentVariable", "target": "URL", "name": "FOO"}}],' \
                  ' "clauses": [{"id": 0, "type": "any", "requirements": [0, 1]},' \
                  ' {"id": 1, "type": "all", "requirements": [2]}, {"id": 2, "type": "any", "requirements": [3]}], ' \
                  '"check": true, "unmet": []}'

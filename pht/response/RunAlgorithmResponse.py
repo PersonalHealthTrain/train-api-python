@@ -9,7 +9,7 @@ from enum import Enum
 from pathlib import Path
 from .IllegalResponse import IllegalResponse
 from .Response import Response
-from .rebase import RebaseStrategy
+from pht.rebase import RebaseStrategy
 
 
 def _normalize_path(path: Union[Path, str, os.PathLike]) -> Path:
