@@ -10,7 +10,6 @@ class Property(abc.ABC):
     """
     Abstract base class for a property that can be formulated by a train.
     """
-
     @property
     @abc.abstractmethod
     def type(self) -> str:
@@ -42,4 +41,8 @@ class Property(abc.ABC):
         Checks whether the Property denotes by this object is met in the environment
         :return: Whether this Property is met in the environment
         """
+        pass
+
+    @abc.abstractmethod
+    def copy(self):
         pass

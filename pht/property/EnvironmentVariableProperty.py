@@ -74,6 +74,9 @@ class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
     def __str__(self):
         return self.__repr__()
 
+    def copy(self):
+        return UrlEnvironmentVariableProperty(self.name)
+
 # def req_url(name: str) -> Property:
 #     """
 #     Shortcut for creating an URL as an property

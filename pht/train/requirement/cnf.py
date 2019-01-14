@@ -1,32 +1,36 @@
-from typing import  Dict, List, Union
+import abc
+from typing import Dict, List
 from pht.formula import CNF
 from pht.formula import Clause
-from .AlgorithmRequirement import AlgorithmRequirement
 from pht.property import Property
 
 
-class CnfAlgorithmRequirement(AlgorithmRequirement):
-    def __init__(self, cnf: CNF):
-        self.cnf = cnf
+# class CnfAlgorithmRequirement(AlgorithmRequirement):
+#     def __init__(self, cnf: CNF):
+#         self.cnf = cnf
 
 
-class _AnyArgument:
-    def __init__(self, clause: Clause,  props: Dict[int, Property]):
-        self.props = props
+# class _AnyArgument:
+#     def __init__(self, clause: Clause,  props: Dict[int, Property]):
+#         self._clause = clause.copy()
+#         self._props = props.copy()
+#
 
 
-class CnfBuilder:
+class _ConjunctionBuilder(abc.ABC):
 
-    def __init__(self, clauses: List[Clause], props: Dict[int, Property]):
-        self.clauses: List[Clause] = clauses.copy()
-        self.props = props.copy()
+    @property
+    @abc.abstractmethod
+    def clauses(self) -> List[Clause]:
+        pass
 
-    def __or__(self, other) -> _AnyArgument:
-        # TODO
+    @property
+    @abc.abstractmethod
+    def props(self) -> Dict[int, Property]:
         pass
 
     def __and__(self, other):
-        if not isinstance(other, CnfBuilder):
+        if not isinstance(other, _ConjunctionBuilder):
             raise ValueError('Cannot \'and\' CnfBuilder and class {}. Must and to CnfBuilder.'.format(other.__class__))
 
         # remaps
@@ -53,19 +57,65 @@ class CnfBuilder:
             v = remap[a]
             return -v if i < 0 else v
 
-        other_clauses = [Clause(*{new_literal(i) for i in clause._literals}) for clause in other.clauses]
-        return CnfBuilder(self.clauses + other_clauses, new_properties)
+        other_clauses = [Clause(*{new_literal(i) for i in clause}) for clause in other.clauses]
+        return _ConjunctionBuilderImpl(self.clauses + other_clauses, new_properties)
 
     def cnf(self):
         return CNF(*self.clauses)
 
 
-class Require(CnfBuilder):
+class _ConjunctionBuilderImpl(_ConjunctionBuilder):
+    def __init__(self, clauses: List[Clause], props: Dict[int, Property]):
+        self._clauses: List[Clause] = clauses.copy()
+        self._props = props.copy()
+
+    @property
+    def clauses(self) -> List[Clause]:
+        return self.clauses
+
+    @property
+    def props(self) -> Dict[int, Property]:
+        return self.props
+
+
+class _Literal(_ConjunctionBuilder):
+
     def __init__(self, prop: Property):
-        super().__init__([Clause(1)], {1: prop})
+        self.prop = prop
 
 
-class Forbid(CnfBuilder):
+    @property
+    def clauses(self) -> List[Clause]:
+        pass
+
+    @property
+    def props(self) -> Dict[int, Property]:
+        pass
+
+    @property
+    @abc.abstractmethod
+    def sign(self):
+        pass
+
+
+
+class Require(_ConjunctionBuilder):
+    def __init__(self, prop: Property):
+        self._clauses = [Clause(1)]
+        self._props = {1: prop}
+
+        #super().__init__(, )
+
+    @property
+    def clauses(self) -> List[Clause]:
+        return self._clauses
+
+    @property
+    def props(self) -> Dict[int, Property]:
+        return self._props
+
+
+class Forbid(_ConjunctionBuilder):
     def __init__(self, prop: Property):
         super().__init__([Clause(-1)], {1: prop})
 

@@ -9,6 +9,10 @@ def _env(name):
 
 class EnvironmentVariablePropertyTests(unittest.TestCase):
 
+    def setUp(self):
+        self.env1 = _env('FOO')
+        self.env2 = _env('BAR')
+
     ###########################################################
     # Valid and invalid environment variable names
     ###########################################################
@@ -66,14 +70,10 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
     ###########################################################
 
     def test_hash_1(self):
-        env1 = _env('FOO')
-        env2 = _env('BAR')
-        self.assertEqual(2, len({env1, env2}))
+        self.assertEqual(2, len({self.env1, self.env2}))
 
     def test_hash_2(self):
-        env1 = _env('FOO')
-        env2 = _env('FOO')
-        self.assertEqual(1, len({env1, env2}))
+        self.assertEqual(1, len({self.env1, self.env1}))
 
     ###########################################################
     # Check
@@ -90,13 +90,18 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
     # __str__ and __repr__
     ###########################################################
     def test_str(self):
-        env1 = _env('FOO')
-        env2 = _env('BAR')
-        self.assertEqual('Url[name=FOO]', str(env1))
-        self.assertEqual('Url[name=BAR]', str(env2))
+        self.assertEqual('Url[name=FOO]', str(self.env1))
+        self.assertEqual('Url[name=BAR]', str(self.env2))
 
     def test_repr(self):
-        env1 = _env('FOO')
-        env2 = _env('BAR')
-        self.assertEqual('Url[name=FOO]', repr(env1))
-        self.assertEqual('Url[name=BAR]', repr(env2))
+        self.assertEqual('Url[name=FOO]', repr(self.env1))
+        self.assertEqual('Url[name=BAR]', repr(self.env2))
+
+    ###########################################################
+    # Copy
+    ##########################################################
+    def test_copy_1(self):
+        c1 = self.env1.copy()
+        c2 = self.env2.copy()
+        self.assertEqual(c1, self.env1)
+        self.assertEqual(c2, self.env2)
