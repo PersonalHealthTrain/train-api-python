@@ -24,5 +24,11 @@ class Clause:
             return False
         return self._literals == other._literals
 
+    def __copy__(self):
+        return self.copy()
+
+    def __deepcopy__(self, memodict=None):
+        return self.copy()
+
     def copy(self):
         return Clause(*self._literals)

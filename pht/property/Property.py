@@ -46,3 +46,13 @@ class Property(abc.ABC):
     @abc.abstractmethod
     def copy(self):
         pass
+
+    def __copy__(self):
+        return self.copy()
+
+    def __deepcopy__(self, memodict=None):
+        return self.copy()
+
+    @abc.abstractmethod
+    def __eq__(self, other):
+        pass

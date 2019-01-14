@@ -1,9 +1,12 @@
 import unittest
 from pht.property import url_by_name
-from pht.train.requirement.cnf import Require, Forbid
+from pht.train.requirement import Require, Forbid
 
 
 class CnfBuilder1Tests(unittest.TestCase):
+    """
+    Tests for Require and Forbid, now Any
+    """
 
     def setUp(self):
         self.prop1 = url_by_name('FOO')
