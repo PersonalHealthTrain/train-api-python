@@ -5,3 +5,4 @@
 from .property import EnvironmentVariablePropertyTests
 from .train import CnfBuilder1Tests
 from .formula import CnfTests
+from .formula import ClauseTests

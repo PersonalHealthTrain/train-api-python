@@ -1,4 +1,4 @@
-from typing import Set, Dict, List
+from typing import  Dict, List, Union
 from pht.formula import CNF
 from pht.formula import Clause
 from .AlgorithmRequirement import AlgorithmRequirement
@@ -10,11 +10,20 @@ class CnfAlgorithmRequirement(AlgorithmRequirement):
         self.cnf = cnf
 
 
+class _AnyArgument:
+    def __init__(self, clause: Clause,  props: Dict[int, Property]):
+        self.props = props
+
+
 class CnfBuilder:
 
     def __init__(self, clauses: List[Clause], props: Dict[int, Property]):
         self.clauses: List[Clause] = clauses.copy()
         self.props = props.copy()
+
+    def __or__(self, other) -> _AnyArgument:
+        # TODO
+        pass
 
     def __and__(self, other):
         if not isinstance(other, CnfBuilder):
@@ -44,7 +53,7 @@ class CnfBuilder:
             v = remap[a]
             return -v if i < 0 else v
 
-        other_clauses = [Clause(*{new_literal(i) for i in clause.literals}) for clause in other.clauses]
+        other_clauses = [Clause(*{new_literal(i) for i in clause._literals}) for clause in other.clauses]
         return CnfBuilder(self.clauses + other_clauses, new_properties)
 
     def cnf(self):
@@ -59,3 +68,4 @@ class Require(CnfBuilder):
 class Forbid(CnfBuilder):
     def __init__(self, prop: Property):
         super().__init__([Clause(-1)], {1: prop})
+

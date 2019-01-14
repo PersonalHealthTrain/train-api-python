@@ -5,7 +5,7 @@ from .Formula import Formula
 
 class CNF(Formula):
     def __init__(self, *clauses: Clause):
-        self.clauses: List[Clause] = [clause for clause in clauses]
+        self.clauses: List[Clause] = [clause.copy() for clause in clauses]
 
     @property
     def type(self) -> str:
