@@ -1,5 +1,5 @@
 import unittest
-from pht.internal.describe.formula import CNF, Clause
+from pht.internal import CNF, Clause
 
 
 class CnfTests(unittest.TestCase):

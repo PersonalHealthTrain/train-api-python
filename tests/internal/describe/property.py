@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+from copy import copy, deepcopy
 from pht.internal.describe.property import UrlEnvironmentVariableProperty
 
 
@@ -103,5 +104,17 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
     def test_copy_1(self):
         c1 = self.env1.copy()
         c2 = self.env2.copy()
+        self.assertEqual(c1, self.env1)
+        self.assertEqual(c2, self.env2)
+
+    def test_copy_2(self):
+        c1 = copy(self.env1)
+        c2 = copy(self.env2)
+        self.assertEqual(self.env1, c1)
+        self.assertEqual(self.env2, c2)
+
+    def test_copy_3(self):
+        c1 = deepcopy(self.env1)
+        c2 = deepcopy(self.env2)
         self.assertEqual(c1, self.env1)
         self.assertEqual(c2, self.env2)

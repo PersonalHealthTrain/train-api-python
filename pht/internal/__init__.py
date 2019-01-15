@@ -1,4 +1,5 @@
-from .describe.property import Property
 from .clause import Clause
-from .builder import ConjunctionBuilder, DisjunctionBuilder, DisjunctionComposite
-from .literal import Literal
+from .describe.property import Property, UrlEnvironmentVariableProperty
+from .describe.formula import CNF
+from .describe import TrainDescription
+from .builder import ConjunctionBuilder, ConjunctionComposite, DisjunctionBuilder, DisjunctionComposite

@@ -1,4 +1,5 @@
 import unittest
+from copy import copy, deepcopy
 from pht.internal import Clause
 
 
@@ -128,5 +129,17 @@ class ClauseTests(unittest.TestCase):
     def test_copy_2(self):
         c1 = Clause(1, -3)
         c2 = c1.copy()
+        self.assertEqual(c1, c2)
+        self.assertIsNot(c1, c2)
+
+    def test_copy_3(self):
+        c1 = Clause(1, 2)
+        c2 = copy(c1)
+        self.assertEqual(c1, c2)
+        self.assertIsNot(c1, c2)
+
+    def test_copy_4(self):
+        c1 = Clause(-1, 10)
+        c2 = deepcopy(c1)
         self.assertEqual(c1, c2)
         self.assertIsNot(c1, c2)

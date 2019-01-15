@@ -1,8 +1,9 @@
 from typing import List
 from .Formula import Formula
+from pht.internal import Clause
 
 
-class Cnf(Formula):
+class CNF(Formula):
     def __init__(self, *clauses: Clause):
         self.clauses: List[Clause] = [clause.copy() for clause in clauses]
 

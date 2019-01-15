@@ -76,11 +76,3 @@ class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def copy(self):
         return UrlEnvironmentVariableProperty(self.name)
-
-# def req_url(name: str) -> Property:
-#     """
-#     Shortcut for creating an URL as an property
-#     :param name: The name of the environment variable
-#     :return: The corresponding Requirement instance
-#     """
-#     return URLEnvironmentVariableRequirement(name)

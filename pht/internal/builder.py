@@ -1,7 +1,7 @@
 import abc
 from typing import Dict, List
 
-from pht.internal.describe.property import Property
+from pht.internal import CNF, Property
 from .property_map import _PropertyEnumerator, _copy, _merge
 from pht.internal import Clause
 
@@ -19,10 +19,13 @@ class ConjunctionBuilder(_PropertyEnumerator):
                 'Cannot \'and\' CnfBuilder and class {}. Must and to CnfBuilder.'.format(other.__class__))
 
         new_properties, other_clauses = _merge(self.props, other.props, other.clauses)
-        return _ConjunctionBuilderImpl(self.clauses + other_clauses, new_properties)
+        return ConjunctionComposite(self.clauses + other_clauses, new_properties)
+
+    def cnf(self):
+        return CNF(*self.clauses)
 
 
-class _ConjunctionBuilderImpl(ConjunctionBuilder):
+class ConjunctionComposite(ConjunctionBuilder):
     def __init__(self, clauses: List[Clause], props: Dict[int, Property]):
         self._clauses: List[Clause] = [clause.copy() for clause in clauses]
         self._props = _copy(props)

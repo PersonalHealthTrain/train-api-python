@@ -1,5 +1,5 @@
 import abc
-from pht.internal.describe import TrainDescription
+from pht.internal import TrainDescription
 
 
 class AbstractTrain(abc.ABC):
@@ -9,4 +9,7 @@ class AbstractTrain(abc.ABC):
         pass
 
 
+class SimpleTrain(AbstractTrain):
 
+    def requirements(self):
+        pass
