@@ -2,7 +2,6 @@
 # from .train import TrainTests
 # from .response import PrintModelSummaryResponseTests, ListRequirementsResponseTests, RunAlgorithmResponseTests
 # from .entrypoint import CmdForTrainTests
-from .property import EnvironmentVariablePropertyTests
-from .train import CnfBuilder1Tests, CnfBuilder2Tests
-from .formula import CnfTests
-from .formula import ClauseTests
+# from tests.legacy.internal.describe.property import EnvironmentVariablePropertyTests
+from .internal.clause import ClauseTests
+
