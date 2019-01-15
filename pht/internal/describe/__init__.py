@@ -1,6 +1,6 @@
 import json
-from typing import List
-from .algorithm import AlgorithmRequirement
+from typing import Dict, List
+from .algorithm import AlgorithmRequirement, FormulaAlgorithmRequirement
 from .formula import Formula
 from .property import Property
 
@@ -10,7 +10,7 @@ class TrainDescription:
     Description of a train that is obtained when the train is invoked with the describe command
     """
     def __init__(self,
-                 properties: List[Property],
+                 properties: Dict[int, Property],
                  formulas: List[Formula],
                  model_summary: str,
                  algorithm_requirement: AlgorithmRequirement):
@@ -20,14 +20,25 @@ class TrainDescription:
         self._algorithm_requirement = algorithm_requirement
 
     def to_json_string(self) -> str:
+
+        # Used to
+        def with_ids(iterable, id_fun, data_fun):
+            return [{'id': id_fun(x), 'data': data_fun(x)} for x in iterable]
+
+        zeroth = lambda x: x[0]
+        first_with_dict = lambda x: x[1].dict()
+
+        properties = with_ids(self._properties.items(), id_fun=zeroth, data_fun=first_with_dict)
+        formula = with_ids(enumerate(self._formula), id_fun=zeroth, data_fun=first_with_dict)
+
         dictionary = {
-            'properties': [prop.to_dict() for prop in self._properties],
-            'formula': [f.to_dict() for f in self._formula],
+            'properties': properties,
+            'formula': formula,
             'model': {
                 'summary': self._model_summary
             },
             'algorithm': {
-                'requirement': self._algorithm_requirement.to_dict()
+                'requirement': self._algorithm_requirement.dict()
             }
         }
         return json.dumps(dictionary)

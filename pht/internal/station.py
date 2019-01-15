@@ -1,5 +1,4 @@
 from typing import Optional
-from pht.internal import fatal
 
 
 class StationRuntimeInfo:
@@ -12,7 +11,7 @@ class StationRuntimeInfo:
         self.station_id = station_id
 
         if self.station_id is None:
-            raise ValueError(fatal('Station ID was encountered to be None. This is not allowed.'))
+            raise ValueError('Station ID was encountered to be None. This is not allowed.')
 
         # Optional Info about the track that the train is currently running on
         self.track_info = track_info

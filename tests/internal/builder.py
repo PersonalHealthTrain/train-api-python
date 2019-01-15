@@ -169,7 +169,6 @@ class CnfBuilder1Tests(unittest.TestCase):
         self.assertDictEqual({1: url_by_name('BAZ'), 2: url_by_name('BAR'), 3: url_by_name('FOO')}, c.props)
 
 
-
 class CnfBuilder2Tests(unittest.TestCase):
     """
     Tests for Require and Forbid, now Any

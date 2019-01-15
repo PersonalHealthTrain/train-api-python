@@ -42,10 +42,9 @@ class EnvironmentVariableProperty(Property):
     def type(self) -> str:
         return 'http://www.wikidata.org/entity/Q400857'
 
-    def to_dict(self):
+    @property
+    def data(self) -> dict:
         return {
-            'type': self.type,
-            'display': self.display,
             'target': self.target,
             'name': self.name
         }
@@ -56,7 +55,7 @@ class EnvironmentVariableProperty(Property):
         pass
 
     def check(self) -> bool:
-        return self.name in os.environ
+        return self.name in os.environ.keys()
 
 
 class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):

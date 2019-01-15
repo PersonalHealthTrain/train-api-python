@@ -18,7 +18,5 @@ class CNF(Formula):
     def __str__(self):
         return str(sorted([sorted([i for i in clause]) for clause in self.clauses]))
 
-    def value(self) -> dict:
-        return {
-            'array': [[i for i in clause] for clause in self.clauses]
-        }
+    def value(self):
+        return [[i for i in clause] for clause in self.clauses]

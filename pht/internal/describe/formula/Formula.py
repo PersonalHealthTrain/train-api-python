@@ -1,29 +1,18 @@
 import abc
+from pht.internal import Typed
 
 
-class Formula:
-
-    @property
-    @abc.abstractmethod
-    def type(self) -> str:
-        pass
+class Formula(Typed):
 
     @property
-    @abc.abstractmethod
-    def display(self) -> str:
-        pass
-
-    def to_dict(self):
+    def data(self) -> dict:
         return {
-            'type': self.type,
-            'display': self.display,
             'value': self.value()
         }
 
     @abc.abstractmethod
-    def value(self) -> dict:
+    def value(self):
         """
-        Dictionary representing the value of a formula. The concrete implementation of the formula
-        decides how this dictionary looks like
+        Value of the Formula
         """
         pass
