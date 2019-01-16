@@ -100,7 +100,7 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
 
     ###########################################################
     # Copy
-    ##########################################################
+    ###########################################################
     def test_copy_1(self):
         c1 = self.env1.copy()
         c2 = self.env2.copy()
@@ -118,3 +118,14 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
         c2 = deepcopy(self.env2)
         self.assertEqual(c1, self.env1)
         self.assertEqual(c2, self.env2)
+
+    ###########################################################
+    # get_value
+    ###########################################################
+    def test_get_value_1(self):
+        with patch.dict('os.environ', {'FOO': 'value1'}):
+            self.assertEqual(self.env1.get_value(), 'value1')
+
+    def test_get_value_2(self):
+        with patch.dict('os.environ', {'BAZ': 'value2'}):
+            self.assertEqual(_env('BAZ').get_value(), 'value2')

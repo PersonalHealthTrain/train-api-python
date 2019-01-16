@@ -25,11 +25,10 @@ class TrainDescription:
         def with_ids(iterable, id_fun, data_fun):
             return [{'id': id_fun(x), 'data': data_fun(x)} for x in iterable]
 
-        zeroth = lambda x: x[0]
         first_with_dict = lambda x: x[1].dict()
 
-        properties = with_ids(self._properties.items(), id_fun=zeroth, data_fun=first_with_dict)
-        formula = with_ids(enumerate(self._formula), id_fun=zeroth, data_fun=first_with_dict)
+        properties = with_ids(self._properties.items(), id_fun=lambda x: x[0], data_fun=first_with_dict)
+        formula = with_ids(enumerate(self._formula), id_fun=lambda x: x[0]+1, data_fun=first_with_dict)
 
         dictionary = {
             'properties': properties,

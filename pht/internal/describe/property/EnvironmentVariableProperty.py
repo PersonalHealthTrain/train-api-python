@@ -57,6 +57,9 @@ class EnvironmentVariableProperty(Property):
     def check(self) -> bool:
         return self.name in os.environ.keys()
 
+    def get_value(self) -> str:
+        return os.environ[self.name]
+
 
 class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
 
