@@ -19,4 +19,4 @@ class CNF(Formula):
         return str(sorted([sorted([i for i in clause]) for clause in self.clauses]))
 
     def value(self):
-        return [[i for i in clause] for clause in self.clauses]
+        return sorted([[i for i in clause] for clause in self.clauses])
