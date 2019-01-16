@@ -46,7 +46,8 @@ class EnvironmentVariableProperty(Property):
     def data(self) -> dict:
         return {
             'target': self.target,
-            'name': self.name
+            'name': self.name,
+            'check': self.check()
         }
 
     @property
