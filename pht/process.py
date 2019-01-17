@@ -6,11 +6,9 @@ def process(args: Union[bytes, str, Sequence[Union[bytes, str]]])-> Tuple[List[s
 
     stdout = []
     stderr = []
+    pipe = subprocess.PIPE
 
-    with subprocess.Popen(
-            args=args,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE) as p, p.stdout as p_stdout, p.stderr as p_stderr:
+    with subprocess.Popen(args=args, stdout=pipe, stderr=pipe) as p, p.stdout as p_stdout, p.stderr as p_stderr:
         def extend():
             stdout.extend(p_stdout.readlines())
             stderr.extend(p_stderr.readlines())

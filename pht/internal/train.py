@@ -1,14 +1,14 @@
 import abc
-from pht.internal import TrainDescription
+from pht.internal import StationRuntimeInfo, TrainDescription
 from pht.response import RunResponse
 
 
 class AbstractTrain(abc.ABC):
 
     @abc.abstractmethod
-    def describe(self) -> TrainDescription:
+    def describe(self, info: StationRuntimeInfo) -> TrainDescription:
         pass
 
     @abc.abstractmethod
-    def run(self) -> RunResponse:
+    def run(self, info: StationRuntimeInfo) -> RunResponse:
         pass

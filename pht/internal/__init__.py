@@ -1,3 +1,4 @@
+from .station import StationRuntimeInfo
 from .errors import IllegalResponseException
 from .typed import Typed
 from .clause import Clause
