@@ -21,7 +21,7 @@ class MyTrain(SimpleTrain):
         if not os.path.exists(model_file):
             return 'No Model'
         with open(model_file, 'r') as f:
-            print(f.read())
+            return f.read()
 
     def run(self, info: StationRuntimeInfo) -> RunResponse:
 
