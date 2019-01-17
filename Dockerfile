@@ -3,4 +3,5 @@ LABEL maintainer="luk.zim91@gmail.com"
 
 COPY . /tmp/pht
 WORKDIR /tmp/pht
-RUN python setup.py install && cd / && rm -rf /tmp/* /var/tmp/* && sync
+RUN python ./run_tests.py && python setup.py install && cd / && rm -rf /tmp/* /var/tmp/* && sync
+WORKDIR /
