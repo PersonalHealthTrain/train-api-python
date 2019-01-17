@@ -1,5 +1,6 @@
 import abc
-from pht.internal import RunResponse, TrainDescription
+from pht.internal import TrainDescription
+from pht.response import RunResponse
 
 
 class AbstractTrain(abc.ABC):

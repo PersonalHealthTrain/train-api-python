@@ -1,4 +1,5 @@
 """
+Primitives of the DSL for creating requirements for a train
 """
 import abc
 from typing import Dict, List

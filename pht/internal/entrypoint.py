@@ -1,8 +1,8 @@
 import abc
 import argparse
 from pht.train import SimpleTrain
-from pht.internal.response import Response
 from pht.internal.station import StationRuntimeInfo
+
 
 RESPONSE_UNDEFINED = 1
 _choices = 'choices'
