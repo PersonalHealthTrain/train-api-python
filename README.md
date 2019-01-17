@@ -3,7 +3,7 @@
 
 The documentation for this library is available here:
 
-https://lukas-zimmermann.gitbook.io/personal-health-train/domains/python-library-for-implementing-train-images
+https://lukas-zimmermann.gitbook.io/personal-health-train/images/python-library-for-implementing-train-images
 
 
 The Image is available on Docker Hub:
