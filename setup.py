@@ -4,5 +4,13 @@ setup(
     name='pht',
     description='PHT Train API for Python',
     version='1.0rc1',
-    packages=['pht']
+    packages=[
+        'pht',
+        'pht.internal',
+        'pht.internal.describe',
+        'pht.internal.describe.formula',
+        'pht.internal.describe.property',
+        'pht.rebase',
+        'pht.response',
+        'pht.train']
 )
