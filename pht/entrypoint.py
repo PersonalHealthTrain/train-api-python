@@ -9,7 +9,7 @@ def _fprint(msg: str):
 
 def cmd_for_train(train: AbstractTrain):
     _describe = 'describe'
-    _run = '_run'
+    _run = 'run'
 
     parser = argparse.ArgumentParser(description='Command-line interface for running a train')
     parser.add_argument('TOOL', type=str, choices=['describe', 'run'])
