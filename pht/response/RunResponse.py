@@ -8,7 +8,7 @@ from pht.rebase import RebaseStrategy
 from .exit_state import AlgorithmExitState
 
 
-_TRAIN_TAG_REGEX = re.compile(r'^[a-z]+[.a-z0-9]*$')
+_TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
 
 
 def _train_tag_is_valid(value: str):
@@ -58,7 +58,7 @@ class RunResponse:
     """
     def __init__(self,
                  state: AlgorithmExitState,
-                 message: str,
+                 free_text_message: str,
                  next_train_tag: str,
                  rebase: RebaseStrategy,
                  export_files: List[Union[Path, str, os.PathLike]]):
@@ -67,7 +67,7 @@ class RunResponse:
         self.state = state
 
         # Custom message to communicate the execution state of the algorithm
-        self.message = message
+        self.message = free_text_message
 
         # The next train tag that the new train image should be created with
         self.next_train_tag = next_train_tag
@@ -86,9 +86,9 @@ class RunResponse:
     def type(self) -> str:
         return 'RunAlgorithmResponse'
 
-    def to_json_string(self) -> dict:
+    def to_json_string(self) -> str:
         return json.dumps({
-            'state': self.state.name,
+            'state': self.state.value,
             'message': self.message,
             'next_train_tag': self.next_train_tag,
             'rebase': self.rebase.dict(),

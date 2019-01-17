@@ -1,5 +1,10 @@
 import abc
-from pht.internal import AbstractTrain, ConjunctionBuilder, TrainDescription, FormulaAlgorithmRequirement
+from pht.internal import \
+    AbstractTrain,\
+    ConjunctionBuilder,\
+    FormulaAlgorithmRequirement,\
+    StationRuntimeInfo, \
+    TrainDescription
 
 
 class SimpleTrain(AbstractTrain):
@@ -12,7 +17,7 @@ class SimpleTrain(AbstractTrain):
     def model_summary(self) -> str:
         pass
 
-    def describe(self) -> TrainDescription:
+    def describe(self, info: StationRuntimeInfo) -> TrainDescription:
 
         requirements = self.requirements()
         properties = requirements.props

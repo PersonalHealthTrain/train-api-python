@@ -4,7 +4,12 @@ Primitives of the DSL for creating requirements for a train
 import abc
 from typing import Dict, List
 from pht.internal import \
-    Clause, ConjunctionBuilder, DisjunctionBuilder, DisjunctionComposite, Property, UrlEnvironmentVariableProperty
+    ConjunctionBuilder,\
+    Clause,\
+    DisjunctionBuilder,\
+    DisjunctionComposite,\
+    Property,\
+    UrlEnvironmentVariableProperty
 
 
 class _Literal(ConjunctionBuilder, DisjunctionBuilder):
