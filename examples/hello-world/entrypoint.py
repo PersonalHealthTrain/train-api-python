@@ -1,3 +1,4 @@
+import os
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
 from pht.response import RunResponse
 from pht.train import SimpleTrain
@@ -5,6 +6,8 @@ from pht.requirement import url_by_name, Require
 from pht.response.exit_state import SUCCESS
 from pht.rebase import DockerRebaseStrategy
 from pht.entrypoint import cmd_for_train
+
+model_file = '/opt/model'
 
 
 class MyTrain(SimpleTrain):
@@ -15,18 +18,24 @@ class MyTrain(SimpleTrain):
         return Require(self.data_source)
 
     def model_summary(self) -> str:
-        return 'Hello World'
+        if not os.path.exists(model_file):
+            return 'No Model'
+        with open(model_file, 'r') as f:
+            print(f.read())
 
     def run(self, info: StationRuntimeInfo) -> RunResponse:
 
-        # Execute your algorithm here
+        if not os.path.exists('/opt'):
+            os.mkdir('/opt')
+        with open(model_file, 'w') as f:
+            f.write('Hello World')
 
         return RunResponse(
             state=SUCCESS,
             free_text_message='Hello world',
-            next_train_tag='next_tag',
+            next_train_tag='station.2',
             rebase=DockerRebaseStrategy(frm='personalhealthtrain/train-api-python:1.0rc1'),
-            export_files=[]
+            export_files=[model_file]
         )
 
 

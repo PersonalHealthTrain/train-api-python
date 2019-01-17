@@ -15,30 +15,31 @@ def _train_tag_is_valid(value: str):
     return _TRAIN_TAG_REGEX.fullmatch(value) is not None
 
 
-def _file_is_valid(path: Path) -> bool:
+def _file_is_valid(p: str) -> bool:
     """
     Checks that the file referenced by the path is an existing regular file and not a symlink. Also, the
     path needs to be absolute.
     :param path: The path to be tested
     :return: Whether the path is valid as defined above
     """
-    return path.is_absolute() and path.is_file() and not path.is_symlink()
+    path = os.path
+    return path.isabs(p) and path.isfile(p) and not path.islink(p)
 
 
-def _normalize_path(path: Union[Path, str, os.PathLike]) -> Path:
+def _normalize_path(path: Union[Path, str, os.PathLike]) -> str:
     """
     Converts several path Types to the Path type
     :param path: The object to be converted to the Path Type
     :return: The input as Path object.
     """
-    if isinstance(path, str) or isinstance(path, os.PathLike):
-        return Path(path)
-    if isinstance(path, Path):
+    if isinstance(path, str):
         return path
+    if isinstance(path, os.PathLike) or isinstance(path, Path):
+        return str(path)
     raise ValueError('Error: Not a Path type: {}'.format(path.__class__))
 
 
-def _check_paths(paths: List[Path]):
+def _check_paths(paths: List[str]):
     """
     Checks whether the Paths exists and points to a
     :param paths:
