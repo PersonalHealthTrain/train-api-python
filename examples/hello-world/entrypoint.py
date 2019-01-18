@@ -33,9 +33,11 @@ class MyTrain(SimpleTrain):
         return RunResponse(
             state=SUCCESS,
             free_text_message='Hello world',
-            next_train_tag='station.2',
-            rebase=DockerRebaseStrategy(frm='personalhealthtrain/train-api-python:1.0rc1'),
-            export_files=[model_file]
+            rebase=DockerRebaseStrategy(
+                frm='personalhealthtrain/train-api-python:1.0rc1',
+                next_train_tag='station.2',
+                export_files=[model_file]
+            )
         )
 
 
