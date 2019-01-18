@@ -1,11 +1,14 @@
-
-
-from .RebaseStrategy import RebaseStrategy
+from typing import List
+from .RebaseStrategy import RebaseStrategy, PathThing
 
 
 class DockerRebaseStrategy(RebaseStrategy):
 
-    def __init__(self, frm: str):
+    def __init__(self,
+                 frm: str,
+                 next_train_tag: str,
+                 export_files: List[PathThing]):
+        super().__init__(next_train_tag, export_files)
         self.frm = frm
 
     @property
@@ -18,6 +21,6 @@ class DockerRebaseStrategy(RebaseStrategy):
 
     @property
     def data(self) -> dict:
-        return {
-            'from': self.frm
-        }
+        result = super().data
+        result['from'] = self.frm
+        return result
