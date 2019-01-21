@@ -15,6 +15,8 @@ from pht.internal import \
 class _Literal(ConjunctionBuilder, DisjunctionBuilder):
 
     def __init__(self, prop: Property):
+        if not isinstance(prop, Property):
+            raise ValueError('Argument \'{}\' of Literal is not a property'.format(str(prop)))
         self._prop = prop.copy()
         self._literal = 1
         self._clause = Clause(self.sign * self._literal)

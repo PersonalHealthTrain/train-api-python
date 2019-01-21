@@ -3,7 +3,7 @@ Contains the RunResponse class
 """
 import json
 from pht.rebase import RebaseStrategy
-from pht.response.exit_state import AlgorithmExitState
+from pht.train.response.exit_state import AlgorithmExitState
 
 
 class RunResponse:

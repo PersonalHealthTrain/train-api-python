@@ -1,6 +1,6 @@
 import abc
+from pht.internal.train import AbstractTrain
 from pht.internal import \
-    AbstractTrain,\
     ConjunctionBuilder,\
     FormulaAlgorithmRequirement,\
     StationRuntimeInfo, \

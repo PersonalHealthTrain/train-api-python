@@ -3,7 +3,7 @@ import unittest
 from pht.internal import ConjunctionBuilder, StationRuntimeInfo
 from pht.train import SimpleTrain
 from pht.requirement import Require, Forbid, Any, url_by_name
-from pht.response import RunResponse
+from pht.train.response import RunResponse
 
 
 class _Base(SimpleTrain):
@@ -60,10 +60,27 @@ class _TestTrain7(_Base):
         pass
 
 
+# Any with only one argument is not allowd
+class _TestTrain8(_Base):
+    def requirements(self) -> ConjunctionBuilder:
+        return Any(Require(url_by_name('FOO')))
+
+
+# Argument to Literal is not a valid property
+class _TestTrain9(_Base):
+    def requirements(self) -> ConjunctionBuilder:
+        return Forbid(url_by_name('FOO')) & Forbid('foo')
+
+
+class _TestTrain10(_Base):
+    def requirements(self) -> ConjunctionBuilder:
+        return Forbid(url_by_name('BAZ')) & Forbid(url_by_name('BAM'))
+
+
 info = StationRuntimeInfo(1)
 
 
-class SimpleTrainTests(unittest.TestCase):
+class SimpleTrainDescribeTests(unittest.TestCase):
 
     def test_1(self):
         text = _TestTrain1().describe(info).to_json_string()
@@ -92,3 +109,17 @@ class SimpleTrainTests(unittest.TestCase):
     def test_7(self):
         text = _TestTrain7().describe(info).to_json_string()
         self.assertEqual('{"properties": [{"id": 1, "data": {"target": "http://schema.org/URL", "name": "DATA_SOURCE_A", "check": false, "type": "http://www.wikidata.org/entity/Q400857", "display": "environmentVariable"}}, {"id": 2, "data": {"target": "http://schema.org/URL", "name": "DATA_SOURCE_B", "check": false, "type": "http://www.wikidata.org/entity/Q400857", "display": "environmentVariable"}}, {"id": 3, "data": {"target": "http://schema.org/URL", "name": "DATA_SOURCE_C", "check": false, "type": "http://www.wikidata.org/entity/Q400857", "display": "environmentVariable"}}, {"id": 4, "data": {"target": "http://schema.org/URL", "name": "FORBIDDEN", "check": false, "type": "http://www.wikidata.org/entity/Q400857", "display": "environmentVariable"}}], "formula": [{"id": 1, "data": {"value": [[-4], [1], [2, 3]], "type": "https://www.wikidata.org/wiki/Q846564", "display": "ConjunctiveNormalForm"}}], "model": {"summary": "foo"}, "algorithm": {"requirement": {"value": 1, "type": "FormulaAlgorithmRequirement", "display": "FormulaAlgorithmRequirement"}}}', text)
+
+    # TestTrain cannot describe, because the implementation of requirements is incorrect
+    def test_8(self):
+        with self.assertRaises(ValueError):
+            _TestTrain8().describe(info).to_json_string()
+
+    # Argument to literal is not a valid property
+    def test_9(self):
+        with self.assertRaises(ValueError):
+            _TestTrain9().describe(info).to_json_string()
+
+    def test_10(self):
+        text = _TestTrain10().describe(info).to_json_string()
+        self.assertEqual('{"properties": [{"id": 1, "data": {"target": "http://schema.org/URL", "name": "BAZ", "check": false, "type": "http://www.wikidata.org/entity/Q400857", "display": "environmentVariable"}}, {"id": 2, "data": {"target": "http://schema.org/URL", "name": "BAM", "check": false, "type": "http://www.wikidata.org/entity/Q400857", "display": "environmentVariable"}}], "formula": [{"id": 1, "data": {"value": [[-2], [-1]], "type": "https://www.wikidata.org/wiki/Q846564", "display": "ConjunctiveNormalForm"}}], "model": {"summary": "foo"}, "algorithm": {"requirement": {"value": 1, "type": "FormulaAlgorithmRequirement", "display": "FormulaAlgorithmRequirement"}}}', text)

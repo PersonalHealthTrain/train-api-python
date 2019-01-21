@@ -7,4 +7,3 @@ from .describe.formula import CNF
 from .describe.algorithm import FormulaAlgorithmRequirement
 from .describe import TrainDescription
 from .builder import ConjunctionBuilder, ConjunctionComposite, DisjunctionBuilder, DisjunctionComposite
-from .train import AbstractTrain

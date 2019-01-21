@@ -1,10 +1,10 @@
 import os
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
-from pht.response import RunResponse
+from pht.train.response import RunResponse
 from pht.train import SimpleTrain
 from pht.requirement import url_by_name, Require
-from pht.response.exit_state import SUCCESS
-from pht.rebase import DockerRebaseStrategy
+from pht.train.response.exit_state import SUCCESS
+from pht.train.rebase import DockerRebaseStrategy
 from pht.entrypoint import cmd_for_train
 
 model_file = '/opt/model'

@@ -1,6 +1,6 @@
 import unittest
-from pht.response.exit_state import SUCCESS, FAILURE
-from pht.response import RunResponse
+from pht.train.response.exit_state import SUCCESS, FAILURE
+from pht.train.response import RunResponse
 from pht.rebase import DockerRebaseStrategy
 
 
