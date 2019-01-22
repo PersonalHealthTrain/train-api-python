@@ -104,18 +104,21 @@ class ClauseTests(unittest.TestCase):
         y = Clause(1)
         self.assertEqual(x, y)
         self.assertIsNot(x, y)
+        self.assertEqual(hash(x), hash(y))
 
     def test_equal_2(self):
         x = Clause(-1)
         y = Clause(-1)
         self.assertEqual(x, y)
         self.assertIsNot(x, y)
+        self.assertEqual(hash(x), hash(y))
 
     def test_equal_3(self):
         x = Clause(-5, 3)
         y = Clause(-5, 3)
         self.assertEqual(x, y)
         self.assertIsNot(x, y)
+        self.assertEqual(hash(x), hash(y))
 
     ################################################################################
     # Copy
@@ -125,21 +128,25 @@ class ClauseTests(unittest.TestCase):
         c2 = c1.copy()
         self.assertEqual(c1, c2)
         self.assertIsNot(c1, c2)
+        self.assertEqual(hash(c1), hash(c2))
 
     def test_copy_2(self):
         c1 = Clause(1, -3)
         c2 = c1.copy()
         self.assertEqual(c1, c2)
         self.assertIsNot(c1, c2)
+        self.assertEqual(hash(c1), hash(c2))
 
     def test_copy_3(self):
         c1 = Clause(1, 2)
         c2 = copy(c1)
         self.assertEqual(c1, c2)
         self.assertIsNot(c1, c2)
+        self.assertEqual(hash(c1), hash(c2))
 
     def test_copy_4(self):
         c1 = Clause(-1, 10)
         c2 = deepcopy(c1)
         self.assertEqual(c1, c2)
         self.assertIsNot(c1, c2)
+        self.assertEqual(hash(c1), hash(c2))
