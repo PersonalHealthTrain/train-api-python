@@ -8,4 +8,4 @@ from .internal.builder import CnfBuilder1Tests, CnfBuilder2Tests
 from .internal.describe.property import EnvironmentVariablePropertyTests
 from .internal.describe.formula import CnfTests
 from .train.SimpleTrainDescribe import SimpleTrainDescribeTests
-from .response import RunResponseTests
+from tests.train.response import RunResponseTests
