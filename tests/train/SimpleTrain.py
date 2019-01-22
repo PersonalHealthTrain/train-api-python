@@ -7,7 +7,7 @@ from pht.train import SimpleTrain
 from pht.requirement import Require, Forbid, Any, url_by_name
 from pht.train.response import RunResponse
 from pht.rebase import DockerRebaseStrategy
-from pht.train.response.exit_state import SUCCESS, FAILURE
+from pht.train.response.exit_state import APPLICATION, SUCCESS, FAILURE
 
 
 class _Base(SimpleTrain):
@@ -53,6 +53,17 @@ class _TestTrain2(_Base):
 class _TestTrain3(_Base):
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')))
+
+    def run(self, info: StationRuntimeInfo) -> RunResponse:
+        return RunResponse(
+            state=APPLICATION,
+            free_text_message='This is arbitrary free text',
+            rebase=DockerRebaseStrategy(
+                frm='personalhealthtrain/base:base',
+                next_train_tag='latest',
+                export_files=[]
+            )
+        )
 
 
 class _TestTrain4(_Base):
@@ -167,3 +178,6 @@ class SimpleTrainRunTests(SimpleTrainTests):
 
     def test_run_2(self):
         self.run_test(_TestTrain2(), 'train2_run.json')
+
+    def test_run_3(self):
+        self.run_test(_TestTrain3(), 'train3_run.json')

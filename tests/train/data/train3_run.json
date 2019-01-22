@@ -1,0 +1,11 @@
+{
+  "state": "application",
+  "free_text_message": "This is arbitrary free text",
+  "rebase": {
+    "export_files": [],
+    "next_train_tag": "latest",
+    "from": "personalhealthtrain/base:base",
+    "type": "docker",
+    "display": "docker"
+  }
+}
