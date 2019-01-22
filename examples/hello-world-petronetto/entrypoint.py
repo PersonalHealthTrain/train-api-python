@@ -14,17 +14,23 @@ class MyTrain(SimpleTrain):
     def __init__(self):
         self.data_source = url_by_name('MY_DATA_SOURCE')
 
+    # Define the requirements of the Train here
     def requirements(self) -> ConjunctionBuilder:
         return Require(self.data_source)
 
+    # Generate the Summary of the Model
     def model_summary(self) -> str:
         if not os.path.exists(model_file):
             return 'No Model'
         with open(model_file, 'r') as f:
             return f.read()
 
+    # Run the algorithm (fetch data, generate model, etc.)
     def run(self, info: StationRuntimeInfo) -> RunResponse:
 
+        # Fetch the data here
+
+        # Implement the algorithm here and serialze the learned model to the filesystem, something like this
         if not os.path.exists('/opt'):
             os.mkdir('/opt')
         with open(model_file, 'w') as f:
