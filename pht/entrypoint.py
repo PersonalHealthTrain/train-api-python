@@ -1,6 +1,6 @@
 import argparse
 import sys
-from pht.internal import AbstractTrain, StationRuntimeInfo
+from pht.internal.train import AbstractTrain, StationRuntimeInfo
 
 
 def _fprint(msg: str):

@@ -1,0 +1,75 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "DATA_SOURCE_A",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 2,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "DATA_SOURCE_B",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 3,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "DATA_SOURCE_C",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 4,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "FORBIDDEN",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    }
+  ],
+  "formula": [
+    {
+      "id": 1,
+      "data": {
+        "value": [
+          [
+            -4
+          ],
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "type": "https://www.wikidata.org/wiki/Q846564",
+        "display": "ConjunctiveNormalForm"
+      }
+    }
+  ],
+  "model": {
+    "summary": "foo"
+  },
+  "algorithm": {
+    "requirement": {
+      "value": 1,
+      "type": "FormulaAlgorithmRequirement",
+      "display": "FormulaAlgorithmRequirement"
+    }
+  }
+}

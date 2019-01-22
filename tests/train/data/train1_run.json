@@ -1,0 +1,11 @@
+{
+  "state": "success",
+  "free_text_message": "test",
+  "rebase": {
+    "export_files": [],
+    "next_train_tag": "train-tag",
+    "from": "personalhealthtrain/base",
+    "type": "docker",
+    "display": "docker"
+  }
+}

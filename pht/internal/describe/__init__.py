@@ -20,6 +20,9 @@ class TrainDescription:
         self._algorithm_requirement = algorithm_requirement
 
     def to_json_string(self) -> str:
+        return json.dumps(self.dict())
+
+    def dict(self) -> dict:
 
         # Used to
         def with_ids(iterable, id_fun, data_fun):
@@ -40,4 +43,4 @@ class TrainDescription:
                 'requirement': self._algorithm_requirement.dict()
             }
         }
-        return json.dumps(dictionary)
+        return dictionary

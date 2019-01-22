@@ -1,0 +1,11 @@
+{
+  "state": "failure",
+  "free_text_message": "This is arbitrary free text",
+  "rebase": {
+    "export_files": [],
+    "next_train_tag": "2.7.15-slim-jessie",
+    "from": "personalhealthtrain/base:base",
+    "type": "docker",
+    "display": "docker"
+  }
+}

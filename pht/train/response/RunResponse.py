@@ -28,9 +28,12 @@ class RunResponse:
     def type(self) -> str:
         return 'RunResponse'
 
-    def to_json_string(self) -> str:
-        return json.dumps({
+    def dict(self) -> dict:
+        return {
             'state': self.state.value,
             'free_text_message': self.message,
             'rebase': self.rebase.dict()
-        })
+        }
+
+    def to_json_string(self):
+        return json.dumps(self.dict())

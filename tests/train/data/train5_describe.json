@@ -1,0 +1,86 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "BAZ",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 2,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "BAR",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 3,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "BAM",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 4,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "FOO",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 5,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "CAT",
+        "check": false,
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    }
+  ],
+  "formula": [
+    {
+      "id": 1,
+      "data": {
+        "value": [
+          [
+            -5
+          ],
+          [
+            2,
+            -3,
+            -1
+          ],
+          [
+            4
+          ]
+        ],
+        "type": "https://www.wikidata.org/wiki/Q846564",
+        "display": "ConjunctiveNormalForm"
+      }
+    }
+  ],
+  "model": {
+    "summary": "foo"
+  },
+  "algorithm": {
+    "requirement": {
+      "value": 1,
+      "type": "FormulaAlgorithmRequirement",
+      "display": "FormulaAlgorithmRequirement"
+    }
+  }
+}
