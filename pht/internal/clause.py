@@ -14,9 +14,21 @@ class Clause:
         # 0 is not allowed as a literal
         if 0 in self._literals:
             raise ValueError("0 is not allowed as a literal for a clause")
-    
+
     def __iter__(self):
         return iter(self._literals)
+
+    def __str__(self):
+        return str(sorted(list(self)))
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __contains__(self, item):
+        return item in self._literals
+
+    def __len__(self):
+        return len(self._literals)
 
     def __eq__(self, other):
         if other is self:

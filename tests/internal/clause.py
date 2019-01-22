@@ -150,3 +150,100 @@ class ClauseTests(unittest.TestCase):
         self.assertEqual(c1, c2)
         self.assertIsNot(c1, c2)
         self.assertEqual(hash(c1), hash(c2))
+
+    ################################################################################
+    # str
+    ################################################################################
+    def test_str_1(self):
+        self.assertEqual('[1]', str(self.clause1))
+
+    def test_str_2(self):
+        self.assertEqual('[-1]', str(self.clause2))
+
+    def test_str_3(self):
+        self.assertEqual('[1, 2]', str(self.clause3))
+
+    def test_str_4(self):
+        self.assertEqual('[-1, 2]', str(self.clause4))
+
+    def test_str_5(self):
+        self.assertEqual('[-2, 1]', str(self.clause5))
+
+    def test_str_6(self):
+        self.assertEqual('[-2, -1]', str(self.clause6))
+
+    ################################################################################
+    # repr
+    ################################################################################
+    def test_repr_1(self):
+        self.assertEqual('[1]', repr(self.clause1))
+
+    def test_repr_2(self):
+        self.assertEqual('[-1]', repr(self.clause2))
+
+    def test_repr_3(self):
+        self.assertEqual('[1, 2]', repr(self.clause3))
+
+    def test_repr_4(self):
+        self.assertEqual('[-1, 2]', repr(self.clause4))
+
+    def test_repr_5(self):
+        self.assertEqual('[-2, 1]', repr(self.clause5))
+
+    def test_repr_6(self):
+        self.assertEqual('[-2, -1]', repr(self.clause6))
+
+    ################################################################################
+    # contains
+    ################################################################################
+    def test_contains_1(self):
+        self.assertIn(1, self.clause1)
+
+    def test_contains_2(self):
+        self.assertIn(-1, self.clause2)
+        self.assertNotIn(1, self.clause2)
+
+    def test_contains_3(self):
+        self.assertIn(1, self.clause3)
+        self.assertIn(2, self.clause3)
+        self.assertNotIn(-1, self.clause3)
+        self.assertNotIn(-2, self.clause3)
+
+    def test_contains_4(self):
+        self.assertIn(-1, self.clause4)
+        self.assertIn(2, self.clause4)
+        self.assertNotIn(1, self.clause4)
+        self.assertNotIn(-2, self.clause4)
+
+    def test_contains_5(self):
+        self.assertIn(1, self.clause5)
+        self.assertIn(-2, self.clause5)
+        self.assertNotIn(-1, self.clause5)
+        self.assertNotIn(2, self.clause5)
+
+    def test_contains_6(self):
+        self.assertIn(-1, self.clause6)
+        self.assertIn(-2, self.clause6)
+        self.assertNotIn(1, self.clause6)
+        self.assertNotIn(2, self.clause6)
+
+    ################################################################################
+    # len
+    ################################################################################
+    def test_len_1(self):
+        self.assertEqual(1, len(self.clause1))
+
+    def test_len_2(self):
+        self.assertEqual(1, len(self.clause2))
+
+    def test_len_3(self):
+        self.assertEqual(2, len(self.clause3))
+
+    def test_len_4(self):
+        self.assertEqual(2, len(self.clause4))
+
+    def test_len_5(self):
+        self.assertEqual(2, len(self.clause5))
+
+    def test_len_6(self):
+        self.assertEqual(2, len(self.clause6))
