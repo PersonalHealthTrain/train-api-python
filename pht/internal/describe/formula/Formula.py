@@ -13,6 +13,6 @@ class Formula(Typed):
     @abc.abstractmethod
     def value(self):
         """
-        Value of the Formula
+        Value of the Formula. The Type of the formula decides how this value actually looks like
         """
         pass

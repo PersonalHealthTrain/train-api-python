@@ -27,7 +27,7 @@ class ConjunctionBuilder(_PropertyEnumerator):
 
 class ConjunctionComposite(ConjunctionBuilder):
     def __init__(self, clauses: List[Clause], props: Dict[int, Property]):
-        self._clauses: List[Clause] = [clause.copy() for clause in clauses]
+        self._clauses = [clause.copy() for clause in clauses]
         self._props = _copy(props)
 
     @property
@@ -58,7 +58,7 @@ class DisjunctionBuilder(_PropertyEnumerator):
 
 class DisjunctionComposite(DisjunctionBuilder):
     def __init__(self, clause: Clause, props: Dict[int, Property]):
-        self._clause: Clause = clause.copy()
+        self._clause  = clause.copy()
         self._props = _copy(props)
 
     @property

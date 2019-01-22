@@ -1,7 +1,7 @@
 """
 Base class for a rebase strategy
 """
-import abc
+import sys
 import re
 import os
 from typing import List, Union
@@ -11,7 +11,11 @@ from pht.internal import IllegalResponseException, Typed
 _TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
 
 # Anything that can represent a Path
-PathThing = Union[str, Path, os.PathLike]
+# Python 3.5 does not know os.PathLike
+if sys.version_info[0] > 5:
+    PathThing = Union[str, Path, os.PathLike]
+else:
+    PathThing = Union[str, Path]
 
 
 def _train_tag_is_valid(value: str):
@@ -62,7 +66,7 @@ class RebaseStrategy(Typed):
                  next_train_tag: str,
                  export_files: List[PathThing]):
         # Next train tag
-        self.next_train_tag: str = next_train_tag
+        self.next_train_tag = next_train_tag
 
         if not _train_tag_is_valid(self.next_train_tag):
             raise IllegalResponseException('Next train tag {} is invalid!'.format(self.next_train_tag))

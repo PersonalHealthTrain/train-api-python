@@ -37,11 +37,11 @@
       "data": {
         "value": [
           [
-            1
+            -2,
+             3
           ],
           [
-            3,
-            -2
+            1
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",

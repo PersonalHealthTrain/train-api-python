@@ -1,4 +1,10 @@
-from typing import Set
+from typing import Any, Iterable
+
+
+def frozen_set(item, items: Iterable[Any]):
+    tmp = {i for i in items}
+    tmp.add(item)
+    return frozenset(tmp)
 
 
 class Clause:
@@ -7,9 +13,7 @@ class Clause:
     """
     def __init__(self, first_literal: int, *more_literals: int):
 
-        tmp_set: Set[int] = {x for x in more_literals}
-        tmp_set.add(first_literal)
-        self._literals = frozenset(tmp_set)
+        self._literals = frozen_set(first_literal, more_literals)
 
         # 0 is not allowed as a literal
         if 0 in self._literals:

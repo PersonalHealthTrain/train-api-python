@@ -27,4 +27,4 @@ class SimpleTrain(AbstractTrain):
             properties=properties,
             formulas=formulas,
             model_summary=self.model_summary(),
-            algorithm_requirement=FormulaAlgorithmRequirement({'value': 1}))
+            algorithm_requirement=FormulaAlgorithmRequirement(1))

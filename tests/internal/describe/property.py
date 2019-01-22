@@ -76,6 +76,9 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
     def test_hash_2(self):
         self.assertEqual(1, len({self.env1, self.env1}))
 
+    def test_hash3(self):
+        self.assertEqual(hash(_env('FOO')), hash(_env('FOO')))
+
     ###########################################################
     # Check
     ###########################################################
@@ -129,3 +132,68 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
     def test_get_value_2(self):
         with patch.dict('os.environ', {'BAZ': 'value2'}):
             self.assertEqual(_env('BAZ').get_value(), 'value2')
+
+    ###########################################################
+    # type
+    ###########################################################
+    def test_type_1(self):
+        expect = 'http://www.wikidata.org/entity/Q400857'
+        actual = self.env1.type
+        self.assertEqual(expect, actual)
+
+    def test_type_2(self):
+        expect = 'http://www.wikidata.org/entity/Q400857'
+        actual = self.env2.type
+        self.assertEqual(expect, actual)
+
+    ###########################################################
+    # display
+    ###########################################################
+    def test_display_1(self):
+        expect = 'environmentVariable'
+        actual = self.env1.display
+        self.assertEqual(expect, actual)
+
+    def test_display_2(self):
+        expect = 'environmentVariable'
+        actual = self.env2.display
+        self.assertEqual(expect, actual)
+
+    ###########################################################
+    # data
+    ###########################################################
+    def test_data_1(self):
+        expect = {'target': 'http://schema.org/URL', 'name': 'FOO', 'check': False}
+        actual = self.env1.data
+        self.assertDictEqual(expect, actual)
+
+    def test_data_2(self):
+        expect = {'target': 'http://schema.org/URL', 'name': 'BAR', 'check': False}
+        actual = self.env2.data
+        self.assertDictEqual(expect, actual)
+
+    ###########################################################
+    # dict
+    ###########################################################
+    def test_dict_1(self):
+        expect = {'target': 'http://schema.org/URL', 'name': 'FOO', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        actual = self.env1.dict()
+        self.assertDictEqual(expect, actual)
+
+    def test_dict_2(self):
+        expect = {'target': 'http://schema.org/URL', 'name': 'BAR', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        actual = self.env2.dict()
+        self.assertDictEqual(expect, actual)
+
+    ###########################################################
+    # target
+    ###########################################################
+    def test_target_1(self):
+        expect = 'http://schema.org/URL'
+        actual = self.env1.target
+        self.assertEqual(expect, actual)
+
+    def test_target_2(self):
+        expect = 'http://schema.org/URL'
+        actual = self.env2.target
+        self.assertEqual(expect, actual)

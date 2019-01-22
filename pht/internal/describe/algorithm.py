@@ -7,12 +7,16 @@ class AlgorithmRequirement(Typed):
 
 class FormulaAlgorithmRequirement(AlgorithmRequirement):
 
-    def __init__(self, value: dict):
-        self._value = value.copy()
+    def __init__(self, value: int):
+        self._value = value
+        if self._value < 1:
+            raise ValueError("Minimum value for FormulaAlgorithmRequirement is 1!")
 
     @property
     def data(self) -> dict:
-        return self._value
+        return {
+            'value': self._value
+        }
 
     @property
     def type(self) -> str:
