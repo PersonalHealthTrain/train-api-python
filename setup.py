@@ -1,10 +1,12 @@
-from setuptools import setup
-import os 
+from setuptools import setup, find_packages
 
-packages = [r[0] for r in os.walk('pht') if not r[0].endswith('__pycache__') ]
 setup(
     name='pht',
+    author="Lukas Zimmermann",
+    author_email="luk.zim91@gmail.com",
     description='PHT Train API for Python',
+    keywords='PHT train',
+    url='https://github.com/PersonalHealthTrain/train-api-python',
     version='1.0rc3',
-    packages=packages
+    packages=find_packages()
 )
