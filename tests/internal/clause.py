@@ -14,6 +14,29 @@ class ClauseTests(unittest.TestCase):
         self.clause6 = Clause(-1, -2)
 
     ################################################################################
+    # Invalid Argument in C'tor
+    ################################################################################
+    def test_invalid_arg_ctor_1(self):
+        with self.assertRaises(TypeError):
+            Clause('foo')
+
+    def test_invalid_arg_ctor_2(self):
+        with self.assertRaises(TypeError):
+            Clause(True)
+
+    def test_invalid_arg_ctor_3(self):
+        with self.assertRaises(TypeError):
+            Clause({})
+
+    def test_invalid_arg_ctor_4(self):
+        with self.assertRaises(TypeError):
+            Clause([])
+
+    def test_invalid_arg_ctor_5(self):
+        with self.assertRaises(TypeError):
+            Clause(1.4)
+
+    ################################################################################
     # Empty Clause is not allowed
     ################################################################################
     def test_empty_clause(self):

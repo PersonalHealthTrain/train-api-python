@@ -1,6 +1,7 @@
 """
 Base class for a rebase strategy
 """
+import abc
 import sys
 import re
 import os
@@ -12,7 +13,8 @@ _TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
 
 # Anything that can represent a Path
 # Python 3.5 does not know os.PathLike
-if sys.version_info[0] > 5:
+PYTHON_IS_RECENT = sys.version_info[0] > 5
+if PYTHON_IS_RECENT:
     PathThing = Union[str, Path, os.PathLike]
 else:
     PathThing = Union[str, Path]
@@ -41,7 +43,8 @@ def _normalize_paths(paths: List[PathThing]) -> List[str]:
     """
     def _normalize(p: PathThing):
         result = str(p)
-        if not isinstance(p, Path) and not isinstance(p, os.PathLike) and not isinstance(p, str):
+        os_path_like = not PYTHON_IS_RECENT or isinstance(p, os.PathLike)
+        if not isinstance(p, Path) and not os_path_like and not isinstance(p, str):
             raise TypeError('Invalid type for path: p'.format(result))
         return result
     return [_normalize(p) for p in paths]
@@ -81,3 +84,20 @@ class RebaseStrategy(Typed):
             'export_files': self.export_files,
             'next_train_tag': self.next_train_tag
         }
+
+    @abc.abstractmethod
+    def __eq__(self, other):
+        pass
+
+    @abc.abstractmethod
+    def __hash__(self):
+        pass
+
+    def copy(self):
+        pass
+
+    def __copy__(self):
+        return self.copy()
+
+    def __deepcopy__(self, memodict=None):
+        return self.copy()

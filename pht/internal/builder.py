@@ -2,7 +2,7 @@ import abc
 from typing import Dict, List
 
 from pht.internal import CNF, Property
-from .property_map import _PropertyEnumerator, _copy, _merge
+from .property_enumerator import _PropertyEnumerator, _copy, _merge
 from pht.internal import Clause
 
 
@@ -58,7 +58,7 @@ class DisjunctionBuilder(_PropertyEnumerator):
 
 class DisjunctionComposite(DisjunctionBuilder):
     def __init__(self, clause: Clause, props: Dict[int, Property]):
-        self._clause  = clause.copy()
+        self._clause = clause.copy()
         self._props = _copy(props)
 
     @property

@@ -1,10 +1,10 @@
 from .Formula import Formula
-from pht.internal import Clause, frozen_set
+from pht.internal import Clause, frozen_set_of
 
 
 class CNF(Formula):
     def __init__(self, clause: Clause, *clauses: Clause):
-        self._clauses = frozen_set(clause, clauses)
+        self._clauses = frozen_set_of(Clause, clause, clauses)
 
     @property
     def type(self) -> str:

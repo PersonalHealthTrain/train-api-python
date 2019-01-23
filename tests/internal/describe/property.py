@@ -15,6 +15,29 @@ class EnvironmentVariablePropertyTests(unittest.TestCase):
         self.env2 = _env('BAR')
 
     ###########################################################
+    # Invalid arguments to URLEnvironmentVariable
+    ###########################################################
+    def test_invalid_url_1(self):
+        with self.assertRaises(TypeError):
+            _env(True)
+
+    def test_invalid_url_2(self):
+        with self.assertRaises(TypeError):
+            _env({})
+
+    def test_invalid_url_3(self):
+        with self.assertRaises(TypeError):
+            _env([])
+
+    def test_invalid_url_4(self):
+        with self.assertRaises(ValueError):
+            _env('ldj')
+
+    def test_invalid_url_5(self):
+        with self.assertRaises(ValueError):
+            _env(None)
+
+    ###########################################################
     # Valid and invalid environment variable names
     ###########################################################
 

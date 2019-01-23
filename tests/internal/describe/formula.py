@@ -12,6 +12,36 @@ class CnfTests(unittest.TestCase):
         self.cnf4 = CNF(Clause(-1, -2), Clause(-1, -2))
 
     ################################################################################
+    # Invalid constructor arguments
+    ################################################################################
+    def test_invalid_ctor_args_1(self):
+        with self.assertRaises(TypeError):
+            CNF(1)
+
+    def test_invalid_ctor_args_2(self):
+        with self.assertRaises(TypeError):
+            CNF(False)
+
+    def test_invalid_ctor_args_3(self):
+        with self.assertRaises(TypeError):
+            CNF({})
+
+    def test_invalid_ctor_args_4(self):
+        with self.assertRaises(TypeError):
+            CNF([])
+
+    def test_invalid_ctor_args(self):
+        with self.assertRaises(TypeError):
+            CNF('jf;')
+
+    ################################################################################
+    # Empty CNF not allowed
+    ################################################################################
+    def test_empty_CNF_not_allowed(self):
+        with self.assertRaises(TypeError):
+            CNF()
+
+    ################################################################################
     # str
     ################################################################################
     def test_str_1(self):
@@ -132,13 +162,6 @@ class CnfTests(unittest.TestCase):
         expect = 'https://www.wikidata.org/wiki/Q846564'
         actual = self.cnf4.type
         self.assertEqual(expect, actual)
-
-    ################################################################################
-    # Empty CNF not allowed
-    ################################################################################
-    def test_empty_CNF_not_allowed(self):
-        with self.assertRaises(TypeError):
-            CNF()
 
     ################################################################################
     # Value
