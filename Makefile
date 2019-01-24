@@ -1,9 +1,12 @@
 .PHONY: all
 
-all: alpine petronetto petronetto-deepmedic
+all: alpine pandas petronetto petronetto-deepmedic
 
 alpine:
-	docker build --no-cache -f Dockerfile --rm --pull -t personalhealthtrain/train-api-python:1.0rc3 .
+	docker build --no-cache -f Dockerfile_alpine --rm --pull -t personalhealthtrain/train-api-python:1.0rc3-alpine .
+
+pandas:
+	docker build --no-cache -f Dockerfile_pandas --rm --pull -t personalhealthtrain/train-api-python:1.0rc3-pandas .
 
 petronetto:
 	docker build --no-cache -f Dockerfile_petronetto --rm --pull -t personalhealthtrain/train-api-python:1.0rc3-petronetto .

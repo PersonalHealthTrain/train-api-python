@@ -5,6 +5,6 @@ COPY . /tmp/pht
 RUN cd /tmp/pht && \
     python ./run_tests.py && \
     python setup.py install && \
+    pip install --no-cache-dir requests && \
     cd / && \
     rm -rf /tmp/* /var/tmp/* && sync
-

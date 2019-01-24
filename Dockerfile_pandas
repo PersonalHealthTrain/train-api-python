@@ -1,0 +1,16 @@
+FROM python:3.7.2-alpine3.8
+LABEL maintainer="luk.zim91@gmail.com"
+
+COPY . /tmp/pht
+RUN cd /tmp/pht && \
+    apk update --no-cache -U && \
+    apk add --no-cache -U --virtual .builddeps \
+       gcc \
+       g++ \
+       musl-dev && \
+    python ./run_tests.py && \
+    python setup.py install && \
+    pip install --no-cache-dir pandas requests && \
+    cd / && \
+    apk del --no-cache .builddeps && \
+    rm -rf /tmp/* /var/tmp/* && sync
