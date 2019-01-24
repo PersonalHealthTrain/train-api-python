@@ -21,5 +21,6 @@ RUN apt-get update -y && \
     cd /home/notebooks && \
     pip install --no-cache-dir requests && \
     apt-get purge -y unzip git wget && \
+    apt-get --purge -y autoremove && \
     apt-get clean -y && \
     rm -rf /tmp/* /var/tmp/* && sync
