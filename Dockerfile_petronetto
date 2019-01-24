@@ -6,5 +6,6 @@ RUN cd /tmp/pht && \
     python ./run_tests.py && \
     python setup.py install && \
     cd /home/notebooks && \
+    apt-get clean -y && \
     rm -rf /tmp/* /var/tmp/* && sync
 

@@ -1,0 +1,24 @@
+FROM petronetto/docker-python-deep-learning:v-23
+LABEL maintainer="luk.zim91@gmail.com"
+
+COPY . /tmp/pht
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends --no-install-suggests unzip git wget && \
+    cd /tmp/pht && \
+    python ./run_tests.py && \
+    python setup.py install && \
+    cd /tmp && \
+    rm -rf pht && \
+    wget -q https://www.parallelpython.com/downloads/pp/pp-1.6.4.4.zip && \
+    unzip pp-1.6.4.4.zip && \
+    cd pp-1.6.4.4 && \
+    python setup.py install && \
+    cd .. && \
+    rm -rf pp-* && \
+    git clone https://github.com/Kamnitsask/deepmedic/ && \
+    cd deepmedic && \
+    python setup.py install && \
+    cd /home/notebooks && \
+    apt-get purge -y unzip git wget && \
+    apt-get clean -y && \
+    rm -rf /tmp/* /var/tmp/* && sync
