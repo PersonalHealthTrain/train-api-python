@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List
+from typing import Dict, List, Optional
 from .algorithm import AlgorithmRequirement, FormulaAlgorithmRequirement
 from .formula import Formula
 from .property import Property
@@ -13,7 +13,7 @@ class TrainDescription:
                  properties: Dict[int, Property],
                  formulas: List[Formula],
                  model_summary: str,
-                 algorithm_requirement: AlgorithmRequirement):
+                 algorithm_requirement: Optional[AlgorithmRequirement]):
         self._properties = properties
         self._formula = formulas
         self._model_summary = model_summary
@@ -40,7 +40,7 @@ class TrainDescription:
                 'summary': self._model_summary
             },
             'algorithm': {
-                'requirement': self._algorithm_requirement.dict()
+                'requirement': self._algorithm_requirement.dict() if self._algorithm_requirement is not None else None
             }
         }
         return dictionary

@@ -110,6 +110,11 @@ class _TestTrain10(_Base):
         return Forbid(url_by_name('BAZ')) & Forbid(url_by_name('BAM'))
 
 
+class _TestTrain11(_Base):
+    def requirements(self):
+        pass
+
+
 info = StationRuntimeInfo(1)
 
 
@@ -166,6 +171,9 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
 
     def test_describe_10(self):
         self.describe_test(_TestTrain10(), 'train10_describe.json')
+
+    def test_describe_11(self):
+        self.describe_test(_TestTrain11(), 'train11_describe.json')
 
 
 class SimpleTrainRunTests(SimpleTrainTests):

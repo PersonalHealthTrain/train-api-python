@@ -23,12 +23,14 @@ class SimpleTrain(AbstractTrain):
         if requirements is not None:
             properties = requirements.props
             formulas = [requirements.cnf()]
+            alg_req = FormulaAlgorithmRequirement(1)
         else:
             properties = {}
             formulas = []
+            alg_req = None
 
         return TrainDescription(
             properties=properties,
             formulas=formulas,
             model_summary=self.model_summary(),
-            algorithm_requirement=FormulaAlgorithmRequirement(1))
+            algorithm_requirement=alg_req)

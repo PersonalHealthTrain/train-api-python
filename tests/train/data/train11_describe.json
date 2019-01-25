@@ -1,0 +1,10 @@
+{
+  "properties": [],
+  "formula": [],
+  "model": {
+    "summary": "foo"
+  },
+  "algorithm": {
+    "requirement": null
+  }
+}
