@@ -58,3 +58,4 @@ define function ToCode(coding FHIR.Coding):
   }
 
 define function ToQuantity(quantity FHIR.Quantity):
+  System.Quantity { value: quantity.value.value, unit: quantity.unit.value }

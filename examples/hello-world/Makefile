@@ -6,5 +6,5 @@ describe:
 	docker run --rm hello-world:station.1 --station-id 1 describe
 
 run:
-	docker run --rm hello-world:station.1 --station-id 1 run
+	docker run hello-world:station.1 --station-id 1 run
 
