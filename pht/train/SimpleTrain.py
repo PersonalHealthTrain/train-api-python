@@ -20,8 +20,12 @@ class SimpleTrain(AbstractTrain):
     def describe(self, info: StationRuntimeInfo) -> TrainDescription:
 
         requirements = self.requirements()
-        properties = requirements.props
-        formulas = [requirements.cnf()]
+        if requirements is not None:
+            properties = requirements.props
+            formulas = [requirements.cnf()]
+        else:
+            properties = {}
+            formulas = []
 
         return TrainDescription(
             properties=properties,
