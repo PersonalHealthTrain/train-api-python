@@ -12,7 +12,9 @@ RUN cd /tmp/pht && \
        musl-dev && \
     python ./run_tests.py && \
     python setup.py install && \
+    pip install --no-cache-dir numpy && \
     pip install --no-cache-dir pandas requests && \
     cd / && \
+    mkdir -p /opt/train && \
     apk del --no-cache .builddeps && \
     rm -rf /tmp/* /var/tmp/* && sync

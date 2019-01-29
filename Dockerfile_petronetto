@@ -8,5 +8,6 @@ RUN cd /tmp/pht && \
     cd /home/notebooks && \
     pip install --no-cache-dir requests && \
     apt-get clean -y && \
+    mkdir -p /opt/train && \
     rm -rf /tmp/* /var/tmp/* && sync
 

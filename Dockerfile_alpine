@@ -7,4 +7,5 @@ RUN cd /tmp/pht && \
     python setup.py install && \
     pip install --no-cache-dir requests && \
     cd / && \
+    mkdir -p /opt/train && \
     rm -rf /tmp/* /var/tmp/* && sync

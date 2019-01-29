@@ -24,7 +24,6 @@ def parse_cql():
         old = old.replace('\\\\/', '/')
         old = old.replace('\\\\"', "'")
         old = old[0:len(old) - 1]
-        f.close()
     return old
 
 
@@ -179,7 +178,7 @@ CQL = parse_cql()
 
 
 def _path(filename: str):
-    return os.path.join('/opt', filename)
+    return os.path.join('/opt/train', filename)
 
 
 class BMITrain(SimpleTrain):
@@ -208,14 +207,16 @@ class BMITrain(SimpleTrain):
         }
 
         # print(queryBody)
-        json_to_save = 'data.json'  # Change the path
+        # Not the model, save to /tmp
+        json_to_save = '/tmp/data.json'
         # print(str(queryBody))
 
         getData(cqlEngineURL, queryBody, json_to_save)
 
         input_json_file_name = json_to_save
-        preprocess_json_file = 'temp.json'  # Change the path
-        temp_csv_file = 'test.csv'  # Change the path
+        # Not the model, save to /tmp
+        preprocess_json_file = '/tmp/temp.json'
+        temp_csv_file = '/tmp/test.csv'
 
         preprocessData(input_json_file_name, preprocess_json_file, temp_csv_file)
 
