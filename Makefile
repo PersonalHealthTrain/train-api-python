@@ -14,3 +14,6 @@ petronetto:
 petronetto-deepmedic:
 	docker build --no-cache -f Dockerfile_petronetto_deepmedic --rm --pull -t personalhealthtrain/train-api-python:1.0rc3-petronetto-deepmedic .
 
+fhir:
+	docker build --no-cache -f Dockerfile_fhir --rm --pull -t personalhealthtrain/train-api-python:1.0rc3-fhir .
+

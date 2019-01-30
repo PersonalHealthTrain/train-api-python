@@ -79,3 +79,21 @@ class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def copy(self):
         return UrlEnvironmentVariableProperty(self.name)
+
+
+class TokenEnvironmentVariableProperty(EnvironmentVariableProperty):
+    def __init__(self, name):
+        super().__init__(name)
+
+    @property
+    def target(self) -> str:
+        return 'token'
+
+    def __repr__(self):
+        return 'Token[name={}]'.format(self.name)
+
+    def __str__(self):
+        return self.__repr__()
+
+    def copy(self):
+        return TokenEnvironmentVariableProperty(self.name)

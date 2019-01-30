@@ -1,2 +1,2 @@
-from .EnvironmentVariableProperty import UrlEnvironmentVariableProperty
+from .EnvironmentVariableProperty import TokenEnvironmentVariableProperty, UrlEnvironmentVariableProperty
 from .Property import Property

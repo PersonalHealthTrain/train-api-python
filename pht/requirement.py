@@ -9,6 +9,7 @@ from pht.internal import \
     DisjunctionBuilder,\
     DisjunctionComposite,\
     Property,\
+    TokenEnvironmentVariableProperty,\
     UrlEnvironmentVariableProperty
 
 
@@ -68,3 +69,7 @@ class Any(ConjunctionBuilder):
 
 def url_by_name(name: str):
     return UrlEnvironmentVariableProperty(name)
+
+
+def token_by_name(name: str):
+    return TokenEnvironmentVariableProperty(name)
