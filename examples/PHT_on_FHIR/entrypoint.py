@@ -3,6 +3,7 @@ import fhir
 import sparql
 import os
 
+# The PHT API dependencies
 from pht.train import SimpleTrain
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
 from pht.train.response import RunResponse
@@ -26,6 +27,10 @@ class Train(SimpleTrain):
         self.output_file = '/opt/train/output.txt'
 
     def requirements(self) -> ConjunctionBuilder:
+        # Declare the requirements of this train. The station needs to provide:
+        #   * The endpoint type (either 'FHIR' or 'SPARQL'
+        #   * The endpoint url
+        #   * The endpoint token
         return Require(self.endpoint_type) & Require(self.endpoint_url) & Require(self.endpoint_token)
 
     def model_summary(self) -> str:

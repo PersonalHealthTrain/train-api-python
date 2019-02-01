@@ -1,9 +1,6 @@
 from fhirclient import client
-from fhirclient.models.patient import Patient
-from fhirclient.models import fhirsearch as S
 from datetime import datetime
 from datetime import date
-from fhirclient.models import fhirsearch
 
 
 def perform_in(srch_str, server,apiBase):
