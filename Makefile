@@ -1,6 +1,6 @@
 .PHONY: all
 
-all: alpine pandas petronetto petronetto-deepmedic
+all: alpine pandas petronetto petronetto-deepmedic fhir
 
 alpine:
 	docker build --no-cache -f Dockerfile_alpine --rm --pull -t personalhealthtrain/train-api-python:1.0rc4-alpine .
