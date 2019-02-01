@@ -1,5 +1,6 @@
 import unittest
-from pht.requirement import Forbid, Require, Any, url_by_name
+from pht.requirement import Forbid, Require, Any
+from pht.requirement.env import url_by_name
 
 
 class CnfBuilder1Tests(unittest.TestCase):

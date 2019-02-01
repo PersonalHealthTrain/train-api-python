@@ -3,10 +3,11 @@ Denotes the property of having an environment variable set
 
 @author Lukas Zimmermann
 """
-from .Property import Property
 import abc
 import os
 import re
+from typing import List
+from .Property import Property
 
 
 _REGEX_ENVIRONMENT_VARIABLE = re.compile(r'^[A-Z]+(_[A-Z]+)*$')
@@ -61,11 +62,18 @@ class EnvironmentVariableProperty(Property):
     def get_value(self) -> str:
         return os.environ[self.name]
 
+    def __str__(self):
+        return self.__repr__()
+
+    @abc.abstractmethod
+    def __repr__(self):
+        pass
+
 
 class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def __init__(self, name):
-        super(UrlEnvironmentVariableProperty, self).__init__(name)
+        super().__init__(name)
 
     @property
     def target(self) -> str:
@@ -73,9 +81,6 @@ class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def __repr__(self):
         return 'Url[name={}]'.format(self.name)
-
-    def __str__(self):
-        return self.__repr__()
 
     def copy(self):
         return UrlEnvironmentVariableProperty(self.name)
@@ -92,8 +97,46 @@ class TokenEnvironmentVariableProperty(EnvironmentVariableProperty):
     def __repr__(self):
         return 'Token[name={}]'.format(self.name)
 
-    def __str__(self):
-        return self.__repr__()
-
     def copy(self):
         return TokenEnvironmentVariableProperty(self.name)
+
+
+class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
+    def __init__(self, name: str, choices: List[str]):
+        super().__init__(name)
+        self._validate_choices(choices)
+        self._choices = frozenset(choices)
+
+    @property
+    def target(self) -> str:
+        return 'enum'
+
+    def copy(self):
+        return EnumEnvironmentVariableProperty(self.name, [choice for choice in self._choices])
+
+    def __repr__(self):
+        return 'Enum[name={},choices={}]'.format(self.name, sorted(list(self._choices)))
+
+    def __eq__(self, other):
+        if self is other:
+            return True
+        if not isinstance(other, EnumEnvironmentVariableProperty):
+            return False
+        return self.name == other.name and self._choices == other._choices
+
+    def __hash__(self):
+        return hash((self.name, self._choices))
+
+    def check(self) -> bool:
+        return super().check() and self.get_value() in self._choices
+
+    def _validate_choices(self, choices: List[str]):
+        if choices is None:
+            raise ValueError('\'choices\' for enum environment variable cannot be None!')
+        if not isinstance(choices, List):
+            raise TypeError('\'choices\' for enum environment variable must be a List of str values')
+        if len(choices) == 0:
+            raise ValueError('List of choices for enum environment variable is not allowed to be empty')
+        for choice in choices:
+            if not isinstance(choice, str):
+                raise ValueError('Value \'{}\' of \'choices\' is not a str'.format(str(choice)))

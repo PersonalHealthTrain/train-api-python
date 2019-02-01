@@ -4,7 +4,8 @@ import os
 
 from pht.internal import ConjunctionBuilder, StationRuntimeInfo
 from pht.train import SimpleTrain
-from pht.requirement import Require, Forbid, Any, url_by_name
+from pht.requirement import Require, Forbid, Any
+from pht.requirement.env import url_by_name
 from pht.train.response import RunResponse
 from pht.rebase import DockerRebaseStrategy
 from pht.train.response.exit_state import APPLICATION, SUCCESS, FAILURE

@@ -1,6 +1,3 @@
-"""
-Primitives of the DSL for creating requirements for a train
-"""
 import abc
 from typing import Dict, List
 from pht.internal import \
@@ -8,9 +5,7 @@ from pht.internal import \
     Clause,\
     DisjunctionBuilder,\
     DisjunctionComposite,\
-    Property,\
-    TokenEnvironmentVariableProperty,\
-    UrlEnvironmentVariableProperty
+    Property
 
 
 class _Literal(ConjunctionBuilder, DisjunctionBuilder):
@@ -65,11 +60,3 @@ class Any(ConjunctionBuilder):
     @property
     def props(self) -> Dict[int, Property]:
         return self._dis.props
-
-
-def url_by_name(name: str):
-    return UrlEnvironmentVariableProperty(name)
-
-
-def token_by_name(name: str):
-    return TokenEnvironmentVariableProperty(name)
