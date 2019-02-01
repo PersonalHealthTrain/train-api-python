@@ -2,7 +2,7 @@ import os
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
 from pht.train.response import RunResponse
 from pht.train import SimpleTrain
-from pht.requirement import url_by_name, Require
+from pht.requirement2 import url_by_name, Require
 from pht.train.response.exit_state import SUCCESS
 from pht.rebase import DockerRebaseStrategy
 from pht.entrypoint import cmd_for_train
@@ -35,7 +35,7 @@ class MyTrain(SimpleTrain):
             free_text_message='Hello world',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/train-api-python:1.0rc3',
-                next_train_tag='station.2',
+                next_train_tags='station.2',
                 export_files=[model_file]
             )
         )

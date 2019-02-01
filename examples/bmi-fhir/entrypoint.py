@@ -228,7 +228,7 @@ class BMITrain(SimpleTrain):
                 free_text_message='BMI values have been computed successfully',
                 rebase=DockerRebaseStrategy(
                     frm='personalhealthtrain/train-api-python:1.0rc3-pandas',
-                    next_train_tag='station.2',
+                    next_train_tags='station.2',
                     export_files=[self.bmi_file]
                 )
             )
