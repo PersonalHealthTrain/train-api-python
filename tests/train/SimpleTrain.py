@@ -30,7 +30,7 @@ class _TestTrain1(_Base):
             free_text_message='test',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/base',
-                next_train_tag='train-tag',
+                next_train_tags=['train-tag'],
                 export_files=[]),
         )
 
@@ -45,7 +45,7 @@ class _TestTrain2(_Base):
             free_text_message='This is arbitrary free text',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/base:base',
-                next_train_tag='2.7.15-slim-jessie',
+                next_train_tags=['2.7.15-slim-jessie'],
                 export_files=[]
             )
         )
@@ -61,7 +61,7 @@ class _TestTrain3(_Base):
             free_text_message='This is arbitrary free text',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/base:base',
-                next_train_tag='latest',
+                next_train_tags=['latest'],
                 export_files=[]
             )
         )

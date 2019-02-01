@@ -7,4 +7,4 @@ from .internal.builder import CnfBuilder1Tests, CnfBuilder2Tests
 from .internal.clause import ClauseTests
 from .train.SimpleTrain import SimpleTrainDescribeTests
 from .train.SimpleTrain import SimpleTrainRunTests
-from .rebase import RebaseTests
+from .rebase import DockerRebaseStrategyTests

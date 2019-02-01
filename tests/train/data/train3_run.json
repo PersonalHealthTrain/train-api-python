@@ -3,7 +3,7 @@
   "free_text_message": "This is arbitrary free text",
   "rebase": {
     "export_files": [],
-    "next_train_tag": "latest",
+    "next_train_tags": ["latest"],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
     "display": "docker"

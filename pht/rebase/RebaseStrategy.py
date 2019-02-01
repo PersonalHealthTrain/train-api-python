@@ -66,13 +66,12 @@ def _check_paths(paths: List[str]):
 
 class RebaseStrategy(Typed):
     def __init__(self,
-                 next_train_tag: str,
+                 next_train_tags: List[str],
                  export_files: List[PathThing]):
-        # Next train tag
-        self.next_train_tag = next_train_tag
 
-        if not _train_tag_is_valid(self.next_train_tag):
-            raise IllegalResponseException('Next train tag {} is invalid!'.format(self.next_train_tag))
+        # Next train tags
+        self._validate_next_train_tags(next_train_tags)
+        self.next_train_tags = frozenset(next_train_tags)
 
         # The exported files
         self.export_files = _normalize_paths(export_files)
@@ -82,7 +81,7 @@ class RebaseStrategy(Typed):
     def data(self) -> dict:
         return {
             'export_files': self.export_files,
-            'next_train_tag': self.next_train_tag
+            'next_train_tags': sorted(list(self.next_train_tags))
         }
 
     @abc.abstractmethod
@@ -101,3 +100,14 @@ class RebaseStrategy(Typed):
 
     def __deepcopy__(self, memodict=None):
         return self.copy()
+
+    def _validate_next_train_tags(self, tags: List[str]):
+        if tags is None:
+            raise ValueError('\'tags\' for Rebase Strategy is not allowed be None')
+        if not isinstance(tags, List):
+            raise TypeError('\'tags\' for Rebase Strategy must be a List of str values')
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise ValueError('Tag \'{}\' of \'tag\' is not a str'.format(str(tag)))
+            if not _train_tag_is_valid(tag):
+                raise IllegalResponseException('Next train tag {} is invalid!'.format(tag))

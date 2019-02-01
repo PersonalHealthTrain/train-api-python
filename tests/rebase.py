@@ -3,10 +3,10 @@ from tests.base import BaseTest
 from pht.rebase import DockerRebaseStrategy
 
 
-class RebaseTests(BaseTest):
+class DockerRebaseStrategyTests(BaseTest):
 
     def setUp(self):
-        self.rebase1 = DockerRebaseStrategy('from', 'station.2', [])
+        self.rebase1 = DockerRebaseStrategy('from', ['station.2'], [])
 
     ################################################################################
     # Type
@@ -29,7 +29,7 @@ class RebaseTests(BaseTest):
     ################################################################################
     def test_data_1(self):
         self.checkExpect(
-            expect={'export_files': [], 'next_train_tag': 'station.2', 'from': 'from'},
+            expect={'export_files': [], 'next_train_tags': ['station.2'], 'from': 'from'},
             actual=self.rebase1.data)
 
     ################################################################################
@@ -37,7 +37,7 @@ class RebaseTests(BaseTest):
     ################################################################################
     def test_dict_1(self):
         self.checkExpect(
-            expect={'export_files': [], 'next_train_tag': 'station.2', 'from': 'from', 'type': 'docker', 'display': 'docker'},
+            expect={'export_files': [], 'next_train_tags': ['station.2'], 'from': 'from', 'type': 'docker', 'display': 'docker'},
             actual=self.rebase1.dict())
 
     ################################################################################

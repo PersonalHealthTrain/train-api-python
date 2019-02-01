@@ -6,9 +6,9 @@ class DockerRebaseStrategy(RebaseStrategy):
 
     def __init__(self,
                  frm: str,
-                 next_train_tag: str,
+                 next_train_tags: List[str],
                  export_files: List[PathThing]):
-        super().__init__(next_train_tag, export_files)
+        super().__init__(next_train_tags, export_files)
         self.frm = frm
 
     @property
@@ -30,10 +30,10 @@ class DockerRebaseStrategy(RebaseStrategy):
             return True
         if not isinstance(other, DockerRebaseStrategy):
             return False
-        return self.frm == other.frm and self.next_train_tag == other.next_train_tag and self.export_files == other.export_files
+        return self.frm == other.frm and self.next_train_tags == other.next_train_tags and self.export_files == other.export_files
 
     def __hash__(self):
-        return hash((self.frm, self.next_train_tag, ''.join(sorted(self.export_files))))
+        return hash((self.frm, self.next_train_tags, ''.join(sorted(self.export_files))))
 
     def copy(self):
-        return DockerRebaseStrategy(self.frm, self.next_train_tag, self.export_files)
+        return DockerRebaseStrategy(self.frm, list(self.next_train_tags), self.export_files)
