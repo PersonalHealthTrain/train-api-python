@@ -18,7 +18,9 @@ _SPARQL = 'SPARQL'
 
 class Train(SimpleTrain):
     def __init__(self):
-        self.endpoint_type = enum_by_name('ENDPOINT_TYPE', [_FHIR, _SPARQL])
+
+        # Declare all the properties that the Train cares about
+        self.endpoint_type = enum_by_name('ENDPOINT_TYPE', choices=[_FHIR, _SPARQL])
         self.endpoint_url = url_by_name('ENDPOINT_URL')
         self.endpoint_token = token_by_name('ENDPOINT_TOKEN')
         self.output_file = '/opt/train/output.txt'
@@ -34,10 +36,12 @@ class Train(SimpleTrain):
 
     def run(self, info: StationRuntimeInfo) -> RunResponse:
 
+        # get the values provided by the station platform
         endpoint_type = self.endpoint_type.get_value()
         endpoint_url = self.endpoint_url.get_value()
         endpoint_token = self.endpoint_token.get_value()
 
+        # Run the cohort counter
         output_json = {}
         if endpoint_type == _FHIR:
             output_json = fhir.runCohortCounter(endpoint_url, endpoint_token)

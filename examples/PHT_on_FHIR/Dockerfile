@@ -6,4 +6,3 @@ COPY sparql.py /opt/sparql.py
 COPY fhir.py /opt/fhir.py
 
 ENTRYPOINT ["python", "/opt/entrypoint.py"]
-
