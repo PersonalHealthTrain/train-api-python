@@ -11,7 +11,7 @@ from pht.requirement.env import enum_by_name, token_by_name, url_by_name
 from pht.requirement import Require
 from pht.train.response.exit_state import SUCCESS
 from pht.rebase import DockerRebaseStrategy
-from pht.entrypoint import cmd_for_train
+from pht.entrypoint import cli_for_train
 
 _FHIR = 'FHIR'
 _SPARQL = 'SPARQL'
@@ -67,4 +67,4 @@ class Train(SimpleTrain):
 
 
 if __name__ == '__main__':
-    cmd_for_train(Train())
+    cli_for_train(Train())

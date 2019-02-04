@@ -5,7 +5,10 @@
       "data": {
         "target": "http://schema.org/URL",
         "name": "DATA_SOURCE_A",
-        "check": false,
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'DATA_SOURCE_A' not set"
+        },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
@@ -15,7 +18,10 @@
       "data": {
         "target": "http://schema.org/URL",
         "name": "DATA_SOURCE_B",
-        "check": false,
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'DATA_SOURCE_B' not set"
+        },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
@@ -25,7 +31,10 @@
       "data": {
         "target": "http://schema.org/URL",
         "name": "DATA_SOURCE_C",
-        "check": false,
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'DATA_SOURCE_C' not set"
+        },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
@@ -35,7 +44,10 @@
       "data": {
         "target": "http://schema.org/URL",
         "name": "FORBIDDEN",
-        "check": false,
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'FORBIDDEN' not set"
+        },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }

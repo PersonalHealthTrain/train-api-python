@@ -1,9 +1,8 @@
 from typing import List
-from pht.internal import \
-    EnumEnvironmentVariableProperty, \
-    TokenEnvironmentVariableProperty,\
-    UrlEnvironmentVariableProperty
-
+from pht.internal.describe.property.EnvironmentVariableProperty import \
+    UrlEnvironmentVariableProperty, \
+    TokenEnvironmentVariableProperty, \
+    EnumEnvironmentVariableProperty
 
 def url_by_name(name: str):
     return UrlEnvironmentVariableProperty(name)

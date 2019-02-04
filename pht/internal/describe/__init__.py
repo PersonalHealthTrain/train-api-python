@@ -2,7 +2,7 @@ import json
 from typing import Dict, List, Optional
 from .algorithm import AlgorithmRequirement, FormulaAlgorithmRequirement
 from .formula import Formula
-from .property import Property
+from .property.Property import Property
 
 
 class TrainDescription:

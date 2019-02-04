@@ -1,5 +1,5 @@
 import abc
-from pht.internal import Typed
+from pht.internal.protocols import Typed
 
 
 class Formula(Typed):

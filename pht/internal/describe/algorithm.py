@@ -1,4 +1,4 @@
-from pht.internal import Typed
+from pht.internal.protocols import Typed
 
 
 class AlgorithmRequirement(Typed):

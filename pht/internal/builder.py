@@ -1,7 +1,8 @@
 import abc
 from typing import Dict, List
 
-from pht.internal import CNF, Property
+from pht.internal.describe.property.Property import Property
+from pht.internal import CNF
 from .property_enumerator import _PropertyEnumerator, _copy, _merge
 from pht.internal import Clause
 

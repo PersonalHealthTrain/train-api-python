@@ -5,7 +5,10 @@
       "data": {
         "target": "http://schema.org/URL",
         "name": "BAZ",
-        "check": false,
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'BAZ' not set"
+        },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
@@ -15,7 +18,10 @@
       "data": {
         "target": "http://schema.org/URL",
         "name": "BAM",
-        "check": false,
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'BAM' not set"
+        },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }

@@ -2,6 +2,8 @@ import unittest
 from unittest.mock import patch
 from copy import copy, deepcopy
 from pht.requirement.env import url_by_name, token_by_name, enum_by_name
+from pht.internal.describe.property.PropertyState import PROPERTY_AVAILABLE, PropertyUnavailable
+from tests.base import BaseTest
 
 
 class UrlEnvironmentVariablePropertyTests(unittest.TestCase):
@@ -103,11 +105,11 @@ class UrlEnvironmentVariablePropertyTests(unittest.TestCase):
     ###########################################################
     def test_check_true(self):
         with patch.dict('os.environ', {'FOO_BAR': 'value'}):
-            self.assertTrue(url_by_name('FOO_BAR').check())
+            self.assertTrue(url_by_name('FOO_BAR'))
 
     def test_check_false(self):
         with patch.dict('os.environ', {}):
-            self.assertFalse(url_by_name('FOO_BAR').check())
+            self.assertFalse(url_by_name('FOO_BAR').is_available())
 
     ###########################################################
     # __str__ and __repr__
@@ -182,25 +184,51 @@ class UrlEnvironmentVariablePropertyTests(unittest.TestCase):
     # data
     ###########################################################
     def test_data_1(self):
-        expect = {'target': 'http://schema.org/URL', 'name': 'FOO', 'check': False}
+        expect = {
+            'target': 'http://schema.org/URL',
+            'name': 'FOO',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'FOO\' not set'}
+        }
         actual = self.url1.data
         self.assertDictEqual(expect, actual)
 
     def test_data_2(self):
-        expect = {'target': 'http://schema.org/URL', 'name': 'BAR', 'check': False}
         actual = self.url2.data
+        expect = {
+            'target': 'http://schema.org/URL',
+            'name': 'BAR',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'BAR\' not set'},
+        }
         self.assertDictEqual(expect, actual)
 
     ###########################################################
     # dict
     ###########################################################
     def test_dict_1(self):
-        expect = {'target': 'http://schema.org/URL', 'name': 'FOO', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        expect = {
+            'target': 'http://schema.org/URL',
+            'name': 'FOO',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'FOO\' not set'},
+            'type': 'http://www.wikidata.org/entity/Q400857',
+            'display': 'environmentVariable'}
         actual = self.url1.dict()
         self.assertDictEqual(expect, actual)
 
     def test_dict_2(self):
-        expect = {'target': 'http://schema.org/URL', 'name': 'BAR', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        expect = {
+            'target': 'http://schema.org/URL',
+            'name': 'BAR',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'BAR\' not set'},
+            'type': 'http://www.wikidata.org/entity/Q400857',
+            'display': 'environmentVariable'}
         actual = self.url2.dict()
         self.assertDictEqual(expect, actual)
 
@@ -317,11 +345,11 @@ class TokenEnvironmentVariablePropertyTests(unittest.TestCase):
     # ###########################################################
     def test_check_true(self):
         with patch.dict('os.environ', {'FOO_BAR': 'value'}):
-            self.assertTrue(token_by_name('FOO_BAR').check())
+            self.assertTrue(token_by_name('FOO_BAR').is_available())
 
     def test_check_false(self):
         with patch.dict('os.environ', {}):
-            self.assertFalse(token_by_name('FOO_BAR').check())
+            self.assertFalse(token_by_name('FOO_BAR').is_available())
 
     ###########################################################
     # # __str__ and __repr__
@@ -396,12 +424,25 @@ class TokenEnvironmentVariablePropertyTests(unittest.TestCase):
     # # data
     # ###########################################################
     def test_data_1(self):
-        expect = {'target': 'token', 'name': 'FOO', 'check': False}
+        expect = {
+            'target': 'token',
+            'name': 'FOO',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'FOO\' not set'
+            },
+        }
         actual = self.token1.data
         self.assertDictEqual(expect, actual)
 
     def test_data_2(self):
-        expect = {'target': 'token', 'name': 'BAR', 'check': False}
+        expect = {
+            'target': 'token',
+            'name': 'BAR',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'BAR\' not set'},
+        }
         actual = self.token2.data
         self.assertDictEqual(expect, actual)
 
@@ -409,12 +450,30 @@ class TokenEnvironmentVariablePropertyTests(unittest.TestCase):
     # # dict
     # ###########################################################
     def test_dict_1(self):
-        expect = {'target': 'token', 'name': 'FOO', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        expect = {
+            'target': 'token',
+            'name': 'FOO',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'FOO\' not set'
+            },
+            'type': 'http://www.wikidata.org/entity/Q400857',
+            'display': 'environmentVariable'
+        }
         actual = self.token1.dict()
         self.assertDictEqual(expect, actual)
 
     def test_dict_2(self):
-        expect = {'target': 'token', 'name': 'BAR', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        expect = {
+            'target': 'token',
+            'name': 'BAR',
+            'state': {
+                'isAvailable': False,
+                'reason': 'Environment variable \'BAR\' not set'
+            },
+            'type': 'http://www.wikidata.org/entity/Q400857',
+            'display': 'environmentVariable'
+        }
         actual = self.token2.dict()
         self.assertDictEqual(expect, actual)
 
@@ -569,19 +628,19 @@ class EnumEnvironmentVariablePropertyTests(unittest.TestCase):
     ###########################################################
     def test_check_true_1(self):
         with patch.dict('os.environ', {'FOO_BAR': 'value'}):
-            self.assertTrue(enum_by_name('FOO_BAR', ['value']).check())
+            self.assertTrue(enum_by_name('FOO_BAR', ['value']).is_available())
 
     def test_check_true_2(self):
         with patch.dict('os.environ', {'FOO_BAR': 'value1'}):
-            self.assertTrue(enum_by_name('FOO_BAR', ['value1', 'value2']).check())
+            self.assertTrue(enum_by_name('FOO_BAR', ['value1', 'value2']).is_available())
 
     def test_check_false_when_env_var_is_missing(self):
         with patch.dict('os.environ', {}):
-            self.assertFalse(enum_by_name('FOO_BAR', ['value']).check())
+            self.assertFalse(enum_by_name('FOO_BAR', ['value']).is_available())
 
     def test_check_false_when_value_is_not_allowed(self):
         with patch.dict('os.environ', {'FOO_BAR': 'value1'}):
-            self.assertFalse(enum_by_name('FOO_BAR', ['value2']).check())
+            self.assertFalse(enum_by_name('FOO_BAR', ['value2']).is_available())
 
     ###########################################################
     # __str__ and __repr__
@@ -656,12 +715,28 @@ class EnumEnvironmentVariablePropertyTests(unittest.TestCase):
     # data
     ###########################################################
     def test_data_1(self):
-        expect = {'target': 'enum', 'name': 'FOO', 'check': False}
+        expect = {
+            'target': 'enum',
+            'name': 'FOO',
+            'choices': ['VALUE1', 'VALUE2'],
+            "state": {
+                "isAvailable": False,
+                "reason": "Environment variable 'FOO' not set"
+            },
+        }
         actual = self.enum1.data
         self.assertDictEqual(expect, actual)
 
     def test_data_2(self):
-        expect = {'target': 'enum', 'name': 'BAR', 'check': False}
+        expect = {
+            'target': 'enum',
+            'name': 'BAR',
+            'choices': ['SINGLETON'],
+            "state": {
+                "isAvailable": False,
+                "reason": "Environment variable 'BAR' not set"
+            },
+        }
         actual = self.enum2.data
         self.assertDictEqual(expect, actual)
 
@@ -669,12 +744,32 @@ class EnumEnvironmentVariablePropertyTests(unittest.TestCase):
     # dict
     ###########################################################
     def test_dict_1(self):
-        expect = {'target': 'enum', 'name': 'FOO', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        expect = {
+            'target': 'enum',
+            'name': 'FOO',
+            'choices': ['VALUE1', 'VALUE2'],
+            "state": {
+                "isAvailable": False,
+                "reason": "Environment variable 'FOO' not set"
+            },
+            'type': 'http://www.wikidata.org/entity/Q400857',
+            'display': 'environmentVariable'
+        }
         actual = self.enum1.dict()
         self.assertDictEqual(expect, actual)
 
     def test_dict_2(self):
-        expect = {'target': 'enum', 'name': 'BAR', 'check': False, 'type': 'http://www.wikidata.org/entity/Q400857', 'display': 'environmentVariable'}
+        expect = {
+            'target': 'enum',
+            'name': 'BAR',
+            'choices': ['SINGLETON'],
+            "state": {
+                "isAvailable": False,
+                "reason": "Environment variable 'BAR' not set"
+            },
+            'type': 'http://www.wikidata.org/entity/Q400857',
+            'display': 'environmentVariable'
+        }
         actual = self.enum2.dict()
         self.assertDictEqual(expect, actual)
 
@@ -690,3 +785,98 @@ class EnumEnvironmentVariablePropertyTests(unittest.TestCase):
         expect = 'enum'
         actual = self.enum2.target
         self.assertEqual(expect, actual)
+
+
+class PropertyStateTests(BaseTest):
+
+    def setUp(self):
+        self.avail1 = PROPERTY_AVAILABLE
+        self.avail2 = PROPERTY_AVAILABLE
+        self.unavail1 = PropertyUnavailable('foo')
+        self.unavail2 = PropertyUnavailable('bar')
+
+    def test_invalid_args_1(self):
+        with self.assertRaises(TypeError):
+            PropertyUnavailable(1)
+
+    def test_invalid_args_2(self):
+        with self.assertRaises(TypeError):
+            PropertyUnavailable({})
+
+    def test_invalid_args_3(self):
+        with self.assertRaises(TypeError):
+            PropertyUnavailable([])
+
+    def test_invalid_args_4(self):
+        with self.assertRaises(TypeError):
+            PropertyUnavailable(None)
+
+    def test_invalid_args_5(self):
+        with self.assertRaises(TypeError):
+            PropertyUnavailable(True)
+
+    def test_equals_1(self):
+        avail1 = PROPERTY_AVAILABLE
+        avail2 = PROPERTY_AVAILABLE
+        self.assertEqual(avail1, avail2)
+
+    def test_equals_2(self):
+        avail1 = PropertyUnavailable('foo')
+        avail2 = PropertyUnavailable('foo')
+        self.assertEqual(avail1, avail2)
+
+    def test_copy_1(self):
+        c1 = self.avail1.copy()
+        c2 = copy(self.avail1)
+        c3 = deepcopy(self.avail1)
+        self.assertEqual(c1, self.avail1)
+        self.assertEqual(c2, self.avail1)
+        self.assertEqual(c3, self.avail1)
+
+    def test_copy_2(self):
+        c1 = self.avail2.copy()
+        c2 = copy(self.avail2)
+        c3 = deepcopy(self.avail2)
+        self.assertEqual(c1, self.avail2)
+        self.assertEqual(c2, self.avail2)
+        self.assertEqual(c3, self.avail2)
+
+    def test_copy_3(self):
+        c1 = self.unavail1.copy()
+        c2 = copy(self.unavail1)
+        c3 = deepcopy(self.unavail1)
+        self.assertEqual(c1, self.unavail1)
+        self.assertEqual(c2, self.unavail1)
+        self.assertEqual(c3, self.unavail1)
+
+    def test_copy_4(self):
+        c1 = self.unavail2.copy()
+        c2 = copy(self.unavail2)
+        c3 = deepcopy(self.unavail2)
+        self.assertEqual(c1, self.unavail2)
+        self.assertEqual(c2, self.unavail2)
+        self.assertEqual(c3, self.unavail2)
+
+    def test_copy_5(self):
+        self.assertNotEqual(self.unavail1, self.unavail2)
+        self.assertNotEqual(self.avail1, self.unavail1)
+
+    def test_dict_1(self):
+        self.checkExpect(
+            expect={'isAvailable': True, 'reason': None},
+            actual=self.avail1.dict())
+
+    def test_dict_2(self):
+        self.checkExpect(
+            expect={'isAvailable': True, 'reason': None},
+            actual=self.avail2.dict())
+
+    def test_dict_3(self):
+        self.checkExpect(
+            expect={'isAvailable': False, 'reason': 'foo'},
+            actual=self.unavail1.dict())
+
+    def test_dict_4(self):
+        self.checkExpect(
+            expect={'isAvailable': False, 'reason': 'bar'},
+            actual=self.unavail2.dict())

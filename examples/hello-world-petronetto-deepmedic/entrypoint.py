@@ -5,7 +5,7 @@ from pht.train import SimpleTrain
 from pht.requirement2 import url_by_name, Require
 from pht.train.response.exit_state import SUCCESS
 from pht.rebase import DockerRebaseStrategy
-from pht.entrypoint import cmd_for_train
+from pht.entrypoint import cli_for_train
 import deepmedic
 
 model_file = '/opt/model'
@@ -46,4 +46,4 @@ class MyTrain(SimpleTrain):
 
 
 if __name__ == '__main__':
-    cmd_for_train(MyTrain())
+    cli_for_train(MyTrain())

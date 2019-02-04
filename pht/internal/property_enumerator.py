@@ -1,6 +1,7 @@
 import abc
 from typing import Dict, List
-from pht.internal import Clause, Property
+from pht.internal import Clause
+from pht.internal.describe.property.Property import Property
 
 
 def _copy(d: Dict[int, Property]):

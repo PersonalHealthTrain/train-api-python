@@ -4,8 +4,8 @@ from pht.internal import \
     ConjunctionBuilder,\
     Clause,\
     DisjunctionBuilder,\
-    DisjunctionComposite,\
-    Property
+    DisjunctionComposite
+from pht.internal.describe.property.Property import Property
 
 
 class _Literal(ConjunctionBuilder, DisjunctionBuilder):

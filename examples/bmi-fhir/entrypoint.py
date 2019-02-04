@@ -13,7 +13,7 @@ from pht.internal import StationRuntimeInfo
 from pht.train.response import RunResponse
 from pht.train.response.exit_state import SUCCESS
 from pht.rebase import DockerRebaseStrategy
-from pht.entrypoint import cmd_for_train
+from pht.entrypoint import cli_for_train
 
 
 # Parse CQL expression so that CQL evaluation engine can resolve them
@@ -235,4 +235,4 @@ class BMITrain(SimpleTrain):
 
 
 if __name__ == '__main__':
-    cmd_for_train(BMITrain())
+    cli_for_train(BMITrain())

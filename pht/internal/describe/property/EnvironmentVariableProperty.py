@@ -8,6 +8,7 @@ import os
 import re
 from typing import List
 from .Property import Property
+from .PropertyState import PropertyState, PropertyUnavailable, PROPERTY_AVAILABLE
 
 
 _REGEX_ENVIRONMENT_VARIABLE = re.compile(r'^[A-Z]+(_[A-Z]+)*$')
@@ -48,7 +49,7 @@ class EnvironmentVariableProperty(Property):
         return {
             'target': self.target,
             'name': self.name,
-            'check': self.check()
+            'state': self.state().dict()
         }
 
     @property
@@ -56,8 +57,10 @@ class EnvironmentVariableProperty(Property):
     def target(self) -> str:
         pass
 
-    def check(self) -> bool:
-        return self.name in os.environ.keys()
+    def state(self) -> PropertyState:
+        if self.name in os.environ.keys():
+            return PROPERTY_AVAILABLE
+        return PropertyUnavailable('Environment variable \'{}\' not set'.format(self.name))
 
     def get_value(self) -> str:
         return os.environ[self.name]
@@ -111,6 +114,12 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
     def target(self) -> str:
         return 'enum'
 
+    @property
+    def data(self) -> dict:
+        _data = super().data
+        _data['choices'] = sorted(list(self._choices))
+        return _data
+
     def copy(self):
         return EnumEnvironmentVariableProperty(self.name, [choice for choice in self._choices])
 
@@ -127,8 +136,14 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
     def __hash__(self):
         return hash((self.name, self._choices))
 
-    def check(self) -> bool:
-        return super().check() and self.get_value() in self._choices
+    def state(self) -> PropertyState:
+        _state = super().state()
+        if isinstance(super().state(), PropertyUnavailable):
+            return _state
+        value = self.get_value()
+        if self.get_value() not in self._choices:
+            return PropertyUnavailable('The value {} is not one of the allowed choices!'.format(value))
+        return PROPERTY_AVAILABLE
 
     def _validate_choices(self, choices: List[str]):
         if choices is None:

@@ -7,7 +7,8 @@ import re
 import os
 from typing import List, Union
 from pathlib import Path
-from pht.internal import IllegalResponseException, Typed
+from pht.internal import IllegalResponseException
+from pht.internal.protocols import Typed
 
 _TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
 
