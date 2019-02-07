@@ -1,11 +1,12 @@
 import unittest
+from unittest.mock import patch
 import json
 import os
 
 from pht.internal import ConjunctionBuilder, StationRuntimeInfo
 from pht.train import SimpleTrain
 from pht.requirement import Require, Forbid, Any
-from pht.requirement.env import url_by_name
+from pht.requirement.env import enum_by_name, url_by_name
 from pht.train.response import RunResponse
 from pht.rebase import DockerRebaseStrategy
 from pht.train.response.exit_state import APPLICATION, SUCCESS, FAILURE
@@ -20,6 +21,9 @@ class _Base(SimpleTrain):
         pass
 
 
+##################################
+#  Trains only using URLs
+##################################
 class _TestTrain1(_Base):
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO'))
@@ -116,6 +120,24 @@ class _TestTrain11(_Base):
         pass
 
 
+##################################
+#  Trains also using enums
+##################################
+class _TestTrain12(_Base):
+    def requirements(self):
+        return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
+
+
+class _TestTrain13(_Base):
+    def requirements(self):
+        return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
+
+
+class _TestTrain14(_Base):
+    def requirements(self):
+        return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
+
+
 info = StationRuntimeInfo(1)
 
 
@@ -175,6 +197,20 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
 
     def test_describe_11(self):
         self.describe_test(_TestTrain11(), 'train11_describe.json')
+
+    # test enum, do not set the env var in the environment
+    def test_describe_12(self):
+        self.describe_test(_TestTrain12(), 'train12_describe.json')
+
+    # test enum, set the environment variable, but to a wrong value
+    def test_describe_13(self):
+        with patch.dict('os.environ', {'FOO': 'VALUE3'}):
+            self.describe_test(_TestTrain13(), 'train13_describe.json')
+
+    # test enum, set the environment variable to an allowed value
+    def test_describe_14(self):
+        with patch.dict('os.environ', {'FOO': 'VALUE2'}):
+            self.describe_test(_TestTrain14(), 'train14_describe.json')
 
 
 class SimpleTrainRunTests(SimpleTrainTests):

@@ -5,10 +5,10 @@ If the train is run inside a container, a call of one of these functions should 
 """
 import argparse
 import sys
-from pht.internal.train import AbstractTrain, StationRuntimeInfo
+from pht.internal.train import TrainCommandInterface, StationRuntimeInfo
 
 
-def cli_for_train(train: AbstractTrain):
+def cli_for_train(train: TrainCommandInterface):
     """
     Creates a command-line interface for the provided abstract train.
     :param train: The abstract train for which the CLI should be created

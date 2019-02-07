@@ -1,5 +1,6 @@
 import abc
-from pht.internal.train import TrainCommandInterface
+from pht.internal.train import TrainCommandInterface, RunResponse
+from pht.train.response.exit_state import AlgorithmExitState
 from pht.internal import \
     ConjunctionBuilder,\
     FormulaAlgorithmRequirement,\
@@ -7,7 +8,7 @@ from pht.internal import \
     TrainDescription
 
 
-class SimpleTrain(TrainCommandInterface):
+class SimpleDockerTrain(TrainCommandInterface):
 
     @abc.abstractmethod
     def requirements(self) -> ConjunctionBuilder:
@@ -16,6 +17,16 @@ class SimpleTrain(TrainCommandInterface):
     @abc.abstractmethod
     def model_summary(self) -> str:
         pass
+
+    @abc.abstractmethod
+    def run_algorithm(self, info: StationRuntimeInfo) -> AlgorithmExitState:
+        pass
+
+    def run(self, info):
+        # TODO Implement Me
+        exit_state = self.run_algorithm(info)
+        return RunResponse(exit_state, )
+
 
     def describe(self, info: StationRuntimeInfo) -> TrainDescription:
 
