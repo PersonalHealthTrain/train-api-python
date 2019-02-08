@@ -1,5 +1,6 @@
 {
   "state": "success",
+  "state_reason": "Execution ran successfully",
   "free_text_message": "test",
   "rebase": {
     "export_files": [],

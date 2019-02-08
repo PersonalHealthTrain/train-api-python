@@ -31,6 +31,7 @@ class _TestTrain1(_Base):
     def run(self, info: StationRuntimeInfo) -> RunResponse:
         return RunResponse(
             state=SUCCESS,
+            state_reason='Execution ran successfully',
             free_text_message='test',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/base',
@@ -46,6 +47,7 @@ class _TestTrain2(_Base):
     def run(self, info: StationRuntimeInfo) -> RunResponse:
         return RunResponse(
             state=FAILURE,
+            state_reason='Execution of the algorithm failed',
             free_text_message='This is arbitrary free text',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/base:base',
@@ -62,6 +64,7 @@ class _TestTrain3(_Base):
     def run(self, info: StationRuntimeInfo) -> RunResponse:
         return RunResponse(
             state=APPLICATION,
+            state_reason='Application specific error, not success, but also not failure',
             free_text_message='This is arbitrary free text',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/base:base',

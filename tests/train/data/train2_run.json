@@ -1,5 +1,6 @@
 {
   "state": "failure",
+  "state_reason": "Execution of the algorithm failed",
   "free_text_message": "This is arbitrary free text",
   "rebase": {
     "export_files": [],
