@@ -1,97 +1,108 @@
 import unittest
+from typing import List
 from unittest.mock import patch
 import json
 import os
 
 from pht.internal import ConjunctionBuilder, StationRuntimeInfo
-from pht.train import SimpleTrain
+from pht.train import SimpleDockerTrain
 from pht.requirement import Require, Forbid, Any
 from pht.requirement.env import enum_by_name, url_by_name
-from pht.train.response import RunResponse
-from pht.rebase import DockerRebaseStrategy
-from pht.train.response.exit_state import APPLICATION, SUCCESS, FAILURE
+from pht.train.response.exit_state import APPLICATION, FAILURE
 
 
-class _Base(SimpleTrain):
+class NoopTrain(SimpleDockerTrain):
 
     def model_summary(self) -> str:
         return 'foo'
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
+    def default_rebase_from(self) -> str:
+        return 'personalhealthtrain/rebase'
+
+    def default_next_train_tags(self) -> List[str]:
+        return ['foo']
+
+    def run_algorithm(self, info: StationRuntimeInfo, log):
         pass
 
 
 ##################################
 #  Trains only using URLs
 ##################################
-class _TestTrain1(_Base):
+class _TestTrain1(SimpleDockerTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO'))
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
-        return RunResponse(
-            state=SUCCESS,
-            state_reason='Execution ran successfully',
-            free_text_message='test',
-            rebase=DockerRebaseStrategy(
-                frm='personalhealthtrain/base',
-                next_train_tags=['train-tag'],
-                export_files=[]),
-        )
+    def default_rebase_from(self):
+        return 'personalhealthtrain/base'
+
+    def default_next_train_tags(self) -> List[str]:
+        return ['train-tag']
+
+    def model_summary(self) -> str:
+        return 'foo'
+
+    def run_algorithm(self, info: StationRuntimeInfo, log):
+        log.set_exit_state_reason('Execution ran successfully')
+        log.set_free_text_message('test')
 
 
-class _TestTrain2(_Base):
+class _TestTrain2(SimpleDockerTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Require(url_by_name('BAR'))
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
-        return RunResponse(
-            state=FAILURE,
-            state_reason='Execution of the algorithm failed',
-            free_text_message='This is arbitrary free text',
-            rebase=DockerRebaseStrategy(
-                frm='personalhealthtrain/base:base',
-                next_train_tags=['2.7.15-slim-jessie'],
-                export_files=[]
-            )
-        )
+    def model_summary(self) -> str:
+        return 'foo'
+
+    def default_rebase_from(self) -> str:
+        return 'personalhealthtrain/base:base'
+
+    def default_next_train_tags(self) -> List[str]:
+        return ['2.7.15-slim-jessie']
+
+    def run_algorithm(self, info: StationRuntimeInfo, log):
+        log.set_free_text_message('This is arbitrary free text')
+        log.set_exit_state_reason('Execution of the algorithm failed')
+        log.set_exit_state(FAILURE)
 
 
-class _TestTrain3(_Base):
+class _TestTrain3(SimpleDockerTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')))
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
-        return RunResponse(
-            state=APPLICATION,
-            state_reason='Application specific error, not success, but also not failure',
-            free_text_message='This is arbitrary free text',
-            rebase=DockerRebaseStrategy(
-                frm='personalhealthtrain/base:base',
-                next_train_tags=['latest'],
-                export_files=[]
-            )
-        )
+    def default_rebase_from(self) -> str:
+        return 'personalhealthtrain/base:base'
+
+    def default_next_train_tags(self) -> List[str]:
+        return ['latest']
+
+    def model_summary(self) -> str:
+        return 'foo'
+
+    def run_algorithm(self, info: StationRuntimeInfo, log):
+        log.set_exit_state(APPLICATION)
+        log.set_exit_state_reason('Application specific error, not success, but also not failure')
+        log.set_free_text_message('This is arbitrary free text')
 
 
-class _TestTrain4(_Base):
+class _TestTrain4(NoopTrain):
     def requirements(self) -> ConjunctionBuilder:
-
         return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM')))  # & Require(url_by_name('FOO')) & Forbid(url_by_name('CAT'))
 
 
-class _TestTrain5(_Base):
+class _TestTrain5(NoopTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM'))) & Require(url_by_name('FOO')) & Forbid(url_by_name('CAT'))
 
 
-class _TestTrain6(_Base):
+class _TestTrain6(NoopTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM'))) & Any(Require(url_by_name('FOO')) | Forbid(url_by_name('CAT')))
 
 
-class _TestTrain7(_Base):
+class _TestTrain7(NoopTrain):
     def __init__(self):
+        super().__init__()
         self.source1 = url_by_name('DATA_SOURCE_A')
         self.source2 = url_by_name('DATA_SOURCE_B')
         self.source3 = url_by_name('DATA_SOURCE_C')
@@ -102,23 +113,23 @@ class _TestTrain7(_Base):
 
 
 # Any with only one argument is not allowd
-class _TestTrain8(_Base):
+class _TestTrain8(NoopTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Any(Require(url_by_name('FOO')))
 
 
 # Argument to Literal is not a valid property
-class _TestTrain9(_Base):
+class _TestTrain9(NoopTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Forbid(url_by_name('FOO')) & Forbid('foo')
 
 
-class _TestTrain10(_Base):
+class _TestTrain10(NoopTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Forbid(url_by_name('BAZ')) & Forbid(url_by_name('BAM'))
 
 
-class _TestTrain11(_Base):
+class _TestTrain11(NoopTrain):
     def requirements(self):
         pass
 
@@ -126,17 +137,17 @@ class _TestTrain11(_Base):
 ##################################
 #  Trains also using enums
 ##################################
-class _TestTrain12(_Base):
+class _TestTrain12(NoopTrain):
     def requirements(self):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
 
-class _TestTrain13(_Base):
+class _TestTrain13(NoopTrain):
     def requirements(self):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
 
-class _TestTrain14(_Base):
+class _TestTrain14(NoopTrain):
     def requirements(self):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
@@ -161,7 +172,7 @@ class SimpleTrainTests(unittest.TestCase):
 
 class SimpleTrainDescribeTests(SimpleTrainTests):
 
-    def describe_test(self, train: SimpleTrain, file: str):
+    def describe_test(self, train: SimpleDockerTrain, file: str):
         self.perform_test(train.describe(info), file)
 
     def test_describe_1(self):
@@ -218,7 +229,7 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
 
 class SimpleTrainRunTests(SimpleTrainTests):
 
-    def run_test(self, train: SimpleTrain, file: str):
+    def run_test(self, train: SimpleDockerTrain, file: str):
         self.perform_test(train.run(info), file)
 
     def test_run_1(self):
