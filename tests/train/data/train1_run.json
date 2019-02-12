@@ -1,6 +1,8 @@
 {
-  "exit_state": "success",
-  "exit_state_reason": "Execution ran successfully",
+  "exit": {
+    "state": "success",
+    "reason": "Execution ran successfully"
+  },
   "free_text_message": "test",
   "rebase": {
     "export_files": [],

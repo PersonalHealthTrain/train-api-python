@@ -3,7 +3,7 @@ from typing import List
 from pht.internal.train import AbstractTrain
 from pht.train.response import RunResponse
 from pht.rebase import DockerRebaseStrategy
-from pht.train.response.exit_state import SUCCESS, FAILURE
+from pht.train.response.RunExit import AlgorithmFailure, AlgorithmSuccess, RunExit
 from pht.internal import \
     ConjunctionBuilder,\
     FormulaAlgorithmRequirement,\
@@ -13,17 +13,13 @@ from pht.internal import \
 
 class Log:
     def __init__(self):
-        self.exit_state = SUCCESS
-        self.exit_state_reason = ''
+        self.exit_state = AlgorithmSuccess('')
         self.free_text_message = ''
         self.rebase_from = None
         self.next_train_tags = None
 
-    def set_exit_state(self, exit_state):
+    def set_exit_state(self, exit_state: RunExit):
         self.exit_state = exit_state
-
-    def set_exit_state_reason(self, r: str):
-        self.exit_state_reason = r
 
     def set_free_text_message(self, m: str):
         self.free_text_message = m
@@ -61,17 +57,15 @@ class SimpleDockerTrain(AbstractTrain):
         log = Log()
         try:
             self.run_algorithm(info, log)
-            exit_state = log.exit_state
-            reason = log.exit_state_reason
+            exit_state = log.exit_state.copy()
         except Exception as e:
-            exit_state = FAILURE
-            reason = str(e)
+            exit_state = AlgorithmFailure(str(e))
         message = log.free_text_message
         rebase_from = log.rebase_from if log.rebase_from is not None else self.default_rebase_from()
         next_train_tags = log.next_train_tags if log.next_train_tags is not None else self.default_next_train_tags()
         export_files = self.list_existing_trainfiles()
 
-        return RunResponse(exit_state, reason, message, DockerRebaseStrategy(
+        return RunResponse(exit_state, message, DockerRebaseStrategy(
             frm=rebase_from,
             next_train_tags=next_train_tags,
             export_files=export_files

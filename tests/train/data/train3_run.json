@@ -1,6 +1,8 @@
 {
-  "exit_state": "application",
-  "exit_state_reason": "Application specific error, not success, but also not failure",
+  "exit": {
+    "state": "application",
+    "reason": "Application specific error, not success, but also not failure"
+  },
   "free_text_message": "This is arbitrary free text",
   "rebase": {
     "export_files": [],

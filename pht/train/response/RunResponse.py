@@ -3,7 +3,7 @@ Contains the RunResponse class
 """
 import json
 from pht.rebase import RebaseStrategy
-from pht.train.response.exit_state import AlgorithmExitState
+from pht.train.response.RunExit import RunExit
 
 
 class RunResponse:
@@ -11,17 +11,12 @@ class RunResponse:
     Response for the run command
     """
     def __init__(self,
-                 state: AlgorithmExitState,
-                 state_reason: str,
+                 run_exit: RunExit,
                  free_text_message: str,
                  rebase: RebaseStrategy):
 
         # Final Execution State of the algorithm
-        self.exit_state = state
-
-        # Reason for setting the Algorithm exit state to the respective value. E.g. in case of failure, this
-        # might be an error message
-        self.exit_state_reason = state_reason
+        self.run_exit = run_exit
 
         # Custom message to communicate the execution state of the algorithm
         self.message = free_text_message
@@ -35,8 +30,7 @@ class RunResponse:
 
     def dict(self) -> dict:
         return {
-            'exit_state': self.exit_state.value,
-            'exit_state_reason': self.exit_state_reason,
+            'exit': self.run_exit.dict(),
             'free_text_message': self.message,
             'rebase': self.rebase.dict()
         }

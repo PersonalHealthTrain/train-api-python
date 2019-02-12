@@ -9,7 +9,7 @@ from pht.internal import StationRuntimeInfo, ConjunctionBuilder
 from pht.train.response import RunResponse
 from pht.requirement.env import enum_by_name, token_by_name, url_by_name
 from pht.requirement import Require
-from pht.train.response.exit_state import SUCCESS
+from pht.train.response.RunExit import SUCCESS
 from pht.rebase import DockerRebaseStrategy
 from pht.entrypoint import cli_for_train
 
@@ -58,7 +58,7 @@ class Train(SimpleTrain):
             f.write(json.dumps(output_json))
 
         return RunResponse(
-            state=SUCCESS,
+            run_exit=SUCCESS,
             free_text_message='Algorithm has been executed successfully',
             rebase=DockerRebaseStrategy(
                 frm='TODO correct train',

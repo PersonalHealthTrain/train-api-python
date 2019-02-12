@@ -11,7 +11,7 @@ import os
 from pht.train import SimpleTrain
 from pht.internal import StationRuntimeInfo
 from pht.train.response import RunResponse
-from pht.train.response.exit_state import SUCCESS
+from pht.train.response.RunExit import SUCCESS
 from pht.rebase import DockerRebaseStrategy
 from pht.entrypoint import cli_for_train
 
@@ -224,7 +224,7 @@ class BMITrain(SimpleTrain):
         computeBMI(temp_csv_file=input_phenotype, BMI_file=self.bmi_file)
 
         return RunResponse(
-                state=SUCCESS,
+                run_exit=SUCCESS,
                 free_text_message='BMI values have been computed successfully',
                 rebase=DockerRebaseStrategy(
                     frm='personalhealthtrain/train-api-python:1.0rc3-pandas',

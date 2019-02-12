@@ -8,7 +8,7 @@ from pht.internal import ConjunctionBuilder, StationRuntimeInfo
 from pht.train import SimpleDockerTrain
 from pht.requirement import Require, Forbid, Any
 from pht.requirement.env import enum_by_name, url_by_name
-from pht.train.response.exit_state import APPLICATION, FAILURE
+from pht.train.response.RunExit import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
 
 
 class NoopTrain(SimpleDockerTrain):
@@ -43,7 +43,7 @@ class _TestTrain1(SimpleDockerTrain):
         return 'foo'
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
-        log.set_exit_state_reason('Execution ran successfully')
+        log.set_exit_state(AlgorithmSuccess('Execution ran successfully'))
         log.set_free_text_message('test')
 
 
@@ -62,8 +62,7 @@ class _TestTrain2(SimpleDockerTrain):
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
         log.set_free_text_message('This is arbitrary free text')
-        log.set_exit_state_reason('Execution of the algorithm failed')
-        log.set_exit_state(FAILURE)
+        log.set_exit_state(AlgorithmFailure('Execution of the algorithm failed'))
 
 
 class _TestTrain3(SimpleDockerTrain):
@@ -80,8 +79,7 @@ class _TestTrain3(SimpleDockerTrain):
         return 'foo'
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
-        log.set_exit_state(APPLICATION)
-        log.set_exit_state_reason('Application specific error, not success, but also not failure')
+        log.set_exit_state(AlgorithmApplication('Application specific error, not success, but also not failure'))
         log.set_free_text_message('This is arbitrary free text')
 
 

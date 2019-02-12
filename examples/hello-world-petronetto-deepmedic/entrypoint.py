@@ -3,7 +3,7 @@ from pht.internal import StationRuntimeInfo, ConjunctionBuilder
 from pht.train.response import RunResponse
 from pht.train import SimpleTrain
 from pht.requirement2 import url_by_name, Require
-from pht.train.response.exit_state import SUCCESS
+from pht.train.response.RunExit import SUCCESS
 from pht.rebase import DockerRebaseStrategy
 from pht.entrypoint import cli_for_train
 import deepmedic
@@ -35,7 +35,7 @@ class MyTrain(SimpleTrain):
             f.write('Hello World')
 
         return RunResponse(
-            state=SUCCESS,
+            run_exit=SUCCESS,
             free_text_message='Hello world',
             rebase=DockerRebaseStrategy(
                 frm='personalhealthtrain/train-api-python:1.0rc3',

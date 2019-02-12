@@ -6,6 +6,6 @@ from .internal.describe.property import TokenEnvironmentVariablePropertyTests
 from .internal.describe.property import PropertyStateTests
 from .internal.builder import CnfBuilder1Tests, CnfBuilder2Tests
 from .internal.clause import ClauseTests
-from .train.SimpleTrain import SimpleTrainDescribeTests
-from .train.SimpleTrain import SimpleTrainRunTests
+from .train.SimpleDockerTrain import SimpleTrainDescribeTests
+from .train.SimpleDockerTrain import SimpleTrainRunTests
 from .rebase import DockerRebaseStrategyTests
