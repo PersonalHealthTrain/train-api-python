@@ -3,8 +3,8 @@ from pht.internal import StationRuntimeInfo, ConjunctionBuilder
 from pht.train.entity import RunResponse
 from pht.train import SimpleTrain
 from pht.requirement2 import url_by_name, Require
-from pht.internal.run.exit.RunExit import SUCCESS
-from pht.internal.run.rebase import DockerRebaseStrategy
+from pht.internal.response.run import SUCCESS
+from pht.internal.response.run import DockerRebaseStrategy
 from pht.internal.entrypoint import cli_for_train
 
 model_file = '/opt/model'

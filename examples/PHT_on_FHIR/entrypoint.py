@@ -8,8 +8,8 @@ import os
 # The PHT API dependencies
 from pht.train import SimpleDockerTrain
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
-from pht.internal.describe.requirement.env import enum_by_name, token_by_name, url_by_name
-from pht.internal.describe.requirement import Require
+from pht.internal.response.describe.requirement.env import enum_by_name, token_by_name, url_by_name
+from pht.internal.response.describe.requirement import Require
 from pht.internal.entrypoint import cli_for_train
 
 _FHIR = 'FHIR'

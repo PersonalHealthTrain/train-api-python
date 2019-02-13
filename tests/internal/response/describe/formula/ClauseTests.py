@@ -1,5 +1,5 @@
 from tests.base import BaseTest
-from pht.internal.describe.formula import Clause
+from pht.internal.response.describe.formula import Clause
 
 
 class ClauseTests(BaseTest):

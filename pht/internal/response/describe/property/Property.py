@@ -5,7 +5,7 @@ Contains the abstract base class for a Property that a container can have.
 """
 import abc
 from pht.internal.protocol import Comparable, Copyable, Typed
-from pht.internal.describe.property.PropertyState import PROPERTY_AVAILABLE, PropertyState
+from pht.internal.response.describe.property.PropertyState import PROPERTY_AVAILABLE, PropertyState
 
 
 class Property(Typed, Copyable, Comparable):

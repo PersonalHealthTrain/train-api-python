@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from pht.internal.describe.requirement.env import enum_by_name
+from pht.internal.response.describe.requirement.env import enum_by_name
 from tests.base import BaseTest
 from copy import copy, deepcopy
 

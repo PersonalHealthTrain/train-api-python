@@ -1,46 +1,46 @@
 from unittest.mock import patch
-from pht.internal.describe.requirement.env import url_by_name
+from pht.internal.response.describe.requirement.env import token_by_name
 from tests.base import BaseTest
 
 
-class UrlEnvironmentVariablePropertyTests(BaseTest):
+class TokenEnvironmentVariablePropertyTests(BaseTest):
 
     def setUp(self):
-        self.url1 = url_by_name('FOO')
-        self.url2 = url_by_name('BAR')
-        self.url3 = url_by_name('MY_VARIABLE')
-        self.url4 = url_by_name('SOME_OTHER_VARIABLE')
+        self.token1 = token_by_name('FOO')
+        self.token2 = token_by_name('BAR')
+        self.token3 = token_by_name('MY_VARIABLE')
+        self.token4 = token_by_name('SOME_OTHER_VARIABLE')
 
     def assert_invalid_env_name(self, name):
         with self.assertRaises(ValueError):
-            url_by_name(name)
+            token_by_name(name)
 
     ###########################################################
     # TypeError
     ###########################################################
     def test_type_error_1(self):
-        self.assertTypeError(lambda: url_by_name(True))
+        self.assertTypeError(lambda: token_by_name(True))
 
     def test_type_error_2(self):
-        self.assertTypeError(lambda: url_by_name({}))
+        self.assertTypeError(lambda: token_by_name({}))
 
     def test_type_error_3(self):
-        self.assertTypeError(lambda: url_by_name([]))
+        self.assertTypeError(lambda: token_by_name([]))
 
     def test_type_error_4(self):
-        self.assertTypeError(lambda: url_by_name(1))
+        self.assertTypeError(lambda: token_by_name(1))
 
     def test_type_error_5(self):
-        self.assertTypeError(lambda: url_by_name(0.9661))
+        self.assertTypeError(lambda: token_by_name(0.9661))
 
     ###########################################################
     # Value Error
     ###########################################################
     def test_valid_error_1(self):
-        self.assertValueError(lambda: url_by_name('adaf'))
+        self.assertValueError(lambda: token_by_name('adaf'))
 
     def test_valid_error_2(self):
-        self.assertValueError(lambda: url_by_name(None))
+        self.assertValueError(lambda: token_by_name(None))
 
     def test_invalid_environment_variables_1(self):
         self.assert_invalid_env_name("")
@@ -70,39 +70,39 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     # Equals and not equals
     ###########################################################
     def test_eq_1(self):
-        self.assertIsEqual(self.url1, url_by_name('FOO'))
+        self.assertIsEqual(self.token1, token_by_name('FOO'))
 
     def test_eq_2(self):
-        self.assertIsEqual(self.url2, url_by_name('BAR'))
+        self.assertIsEqual(self.token2, token_by_name('BAR'))
 
     def test_eq_3(self):
-        self.assertIsEqual(self.url3, url_by_name('MY_VARIABLE'))
+        self.assertIsEqual(self.token3, token_by_name('MY_VARIABLE'))
 
     def test_eq_4(self):
-        self.assertIsEqual(self.url4, url_by_name('SOME_OTHER_VARIABLE'))
+        self.assertIsEqual(self.token4, token_by_name('SOME_OTHER_VARIABLE'))
 
     def test_unequal(self):
-        self.assertNotEqual(self.url1, self.url2)
-        self.assertNotEqual(self.url1, self.url3)
-        self.assertNotEqual(self.url1, self.url4)
-        self.assertNotEqual(self.url2, self.url3)
-        self.assertNotEqual(self.url2, self.url4)
-        self.assertNotEqual(self.url3, self.url4)
+        self.assertNotEqual(self.token1, self.token2)
+        self.assertNotEqual(self.token1, self.token3)
+        self.assertNotEqual(self.token1, self.token4)
+        self.assertNotEqual(self.token2, self.token3)
+        self.assertNotEqual(self.token2, self.token4)
+        self.assertNotEqual(self.token3, self.token4)
 
     ###########################################################
     # Copy
     ###########################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.url1)
+        self.assertCopiesAreEqual(self.token1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.url2)
+        self.assertCopiesAreEqual(self.token2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.url3)
+        self.assertCopiesAreEqual(self.token3)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.url4)
+        self.assertCopiesAreEqual(self.token4)
 
     ###########################################################
     # dict
@@ -110,32 +110,32 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'display': 'environmentVariable'
-            }, actual=self.url1.as_dict()
+            }, actual=self.token1.as_dict()
         )
 
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'}, actual=self.url2.as_dict()
+                'display': 'environmentVariable'}, actual=self.token2.as_dict()
         )
 
     def test_as_dict_3(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': False,
@@ -143,12 +143,12 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 },
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'display': 'environmentVariable'},
-            actual=self.url3.as_dict())
+            actual=self.token3.as_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': False,
@@ -156,13 +156,13 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'display': 'environmentVariable'
             },
-            actual=self.url4.as_dict())
+            actual=self.token4.as_dict())
 
     def test_as_dict_5(self):
         with patch.dict('os.environ', {'FOO': 'value'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'FOO',
                     'state': {
                         'isAvailable': True,
@@ -171,13 +171,13 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'type': 'http://www.wikidata.org/entity/Q400857',
                     'display': 'environmentVariable'
                 },
-                actual=self.url1.as_dict())
+                actual=self.token1.as_dict())
 
     def test_as_dict_6(self):
         with patch.dict('os.environ', {'BAR': 'value'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'BAR',
                     'state': {
                         'isAvailable': True,
@@ -186,13 +186,13 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'type': 'http://www.wikidata.org/entity/Q400857',
                     'display': 'environmentVariable'
                 },
-                actual=self.url2.as_dict())
+                actual=self.token2.as_dict())
 
     def test_as_dict_7(self):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'MY_VARIABLE',
                     'state': {
                         'isAvailable': True,
@@ -201,13 +201,13 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'type': 'http://www.wikidata.org/entity/Q400857',
                     'display': 'environmentVariable'
                 },
-                actual=self.url3.as_dict())
+                actual=self.token3.as_dict())
 
     def test_as_dict_8(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
@@ -216,7 +216,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'type': 'http://www.wikidata.org/entity/Q400857',
                     'display': 'environmentVariable'
                 },
-                actual=self.url4.as_dict())
+                actual=self.token4.as_dict())
 
     ###########################################################
     # type
@@ -224,22 +224,22 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_type_1(self):
         self.checkExpect(
             expect='http://www.wikidata.org/entity/Q400857',
-            actual=self.url1.type)
+            actual=self.token1.type)
 
     def test_type_2(self):
         self.checkExpect(
             expect='http://www.wikidata.org/entity/Q400857',
-            actual=self.url2.type)
+            actual=self.token2.type)
 
     def test_type_3(self):
         self.checkExpect(
             expect='http://www.wikidata.org/entity/Q400857',
-            actual=self.url3.type)
+            actual=self.token3.type)
 
     def test_type_4(self):
         self.checkExpect(
             expect='http://www.wikidata.org/entity/Q400857',
-            actual=self.url4.type)
+            actual=self.token4.type)
 
     ###########################################################
     # display
@@ -247,22 +247,22 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url1.display)
+            actual=self.token1.display)
 
     def test_display_2(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url2.display)
+            actual=self.token2.display)
 
     def test_display_3(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url3.display)
+            actual=self.token3.display)
 
     def test_display_4(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url4.display)
+            actual=self.token4.display)
 
     ###########################################################
     # data
@@ -270,156 +270,156 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'}},
-            actual=self.url1.data
+            actual=self.token1.data
         )
 
     def test_data_2(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'}},
-            actual=self.url2.data)
+            actual=self.token2.data)
 
     def test_data_3(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'MY_VARIABLE\' not set'}},
-            actual=self.url3.data)
+            actual=self.token3.data)
 
     def test_data_4(self):
         self.checkExpect(
             expect={
-                'target': 'http://schema.org/URL',
+                'target': 'token',
                 'name': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'SOME_OTHER_VARIABLE\' not set'}},
-            actual=self.url4.data)
+            actual=self.token4.data)
 
     def test_data_5(self):
         with patch.dict('os.environ', {'FOO': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'FOO',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
-                actual=self.url1.data)
+                actual=self.token1.data)
 
     def test_data_6(self):
         with patch.dict('os.environ', {'BAR': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'BAR',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
-                actual=self.url2.data)
+                actual=self.token2.data)
 
     def test_data_7(self):
         with patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'MY_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
-                actual=self.url3.data)
+                actual=self.token3.data)
 
     def test_data_8(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'target': 'http://schema.org/URL',
+                    'target': 'token',
                     'name': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
-                actual=self.url4.data)
+                actual=self.token4.data)
 
     ###########################################################
     # is available
     ###########################################################
     def test_is_available_1(self):
         with patch.dict('os.environ', {'FOO': 'value'}):
-            self.assertTrue(self.url1.is_available())
-        self.assertFalse(self.url1.is_available())
+            self.assertTrue(self.token1.is_available())
+        self.assertFalse(self.token1.is_available())
 
     def test_is_available_2(self):
         with patch.dict('os.environ', {'BAR': 'value'}):
-            self.assertTrue(self.url2.is_available())
-        self.assertFalse(self.url2.is_available())
+            self.assertTrue(self.token2.is_available())
+        self.assertFalse(self.token2.is_available())
 
     def test_is_available_3(self):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
-            self.assertTrue(self.url3.is_available())
-        self.assertFalse(self.url3.is_available())
+            self.assertTrue(self.token3.is_available())
+        self.assertFalse(self.token3.is_available())
 
     def test_is_available_4(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
-            self.assertTrue(self.url4.is_available())
-        self.assertFalse(self.url4.is_available())
+            self.assertTrue(self.token4.is_available())
+        self.assertFalse(self.token4.is_available())
 
     ###########################################################
     # __str__
     ###########################################################
     def test_str_1(self):
         self.checkExpect(
-            expect='Url[name=FOO]',
-            actual=str(self.url1))
+            expect='Token[name=FOO]',
+            actual=str(self.token1))
 
     def test_str_2(self):
         self.checkExpect(
-            expect='Url[name=BAR]',
-            actual=str(self.url2))
+            expect='Token[name=BAR]',
+            actual=str(self.token2))
 
     def test_str_3(self):
         self.checkExpect(
-            expect='Url[name=MY_VARIABLE]',
-            actual=str(self.url3))
+            expect='Token[name=MY_VARIABLE]',
+            actual=str(self.token3))
 
     def test_str_4(self):
         self.checkExpect(
-            expect='Url[name=SOME_OTHER_VARIABLE]',
-            actual=str(self.url4))
+            expect='Token[name=SOME_OTHER_VARIABLE]',
+            actual=str(self.token4))
 
     ###########################################################
     # __repr__
     ###########################################################
     def test_repr_1(self):
         self.checkExpect(
-            expect='Url[name=FOO]',
-            actual=repr(self.url1))
+            expect='Token[name=FOO]',
+            actual=repr(self.token1))
 
     def test_repr_2(self):
         self.checkExpect(
-            expect='Url[name=BAR]',
-            actual=repr(self.url2))
+            expect='Token[name=BAR]',
+            actual=repr(self.token2))
 
     def test_repr_3(self):
         self.checkExpect(
-            expect='Url[name=MY_VARIABLE]',
-            actual=repr(self.url3))
+            expect='Token[name=MY_VARIABLE]',
+            actual=repr(self.token3))
 
     def test_repr_4(self):
         self.checkExpect(
-            expect='Url[name=SOME_OTHER_VARIABLE]',
-            actual=repr(self.url4))
+            expect='Token[name=SOME_OTHER_VARIABLE]',
+            actual=repr(self.token4))
 
     ###########################################################
     # get_value
@@ -428,45 +428,45 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'value1'}):
             self.checkExpect(
                 expect='value1',
-                actual=self.url1.get_value())
+                actual=self.token1.get_value())
 
     def test_get_value_2(self):
         with patch.dict('os.environ', {'BAR': ''}):
             self.checkExpect(
                 expect='',
-                actual=self.url2.get_value())
+                actual=self.token2.get_value())
 
     def test_get_value_3(self):
         with self.assertRaises(KeyError):
             self.checkExpect(
                 expect='',
-                actual=self.url3.get_value())
+                actual=self.token3.get_value())
 
     def test_get_value_4(self):
         with self.assertRaises(KeyError):
             self.checkExpect(
                 expect='',
-                actual=self.url4.get_value())
+                actual=self.token4.get_value())
 
     ###########################################################
     # target
     ###########################################################
     def test_target_1(self):
         self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url1.target)
+            expect='token',
+            actual=self.token1.target)
 
     def test_target_2(self):
         self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url2.target)
+            expect='token',
+            actual=self.token2.target)
 
     def test_target_3(self):
         self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url3.target)
+            expect='token',
+            actual=self.token3.target)
 
     def test_target_4(self):
         self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url4.target)
+            expect='token',
+            actual=self.token4.target)

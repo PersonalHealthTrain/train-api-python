@@ -1,4 +1,4 @@
-from pht.internal.run.rebase import DockerRebaseStrategy
+from pht.internal.response.run import DockerRebaseStrategy
 from tests.base import BaseTest
 from copy import copy, deepcopy
 

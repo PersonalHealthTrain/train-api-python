@@ -1,4 +1,4 @@
-from pht.internal.describe.algorithm import FormulaAlgorithmRequirement
+from pht.internal.response.describe.algorithm import FormulaAlgorithmRequirement
 from tests.base import BaseTest
 
 

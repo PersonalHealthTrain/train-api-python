@@ -2,8 +2,8 @@
 Contains the RunResponse class
 """
 import json
-from pht.internal.run.rebase import RebaseStrategy
-from pht.internal.run.exit.RunExit import RunExit
+from pht.internal.response.run import RebaseStrategy
+from pht.internal.response.run import RunExit
 
 
 class RunResponse:

@@ -1,11 +1,11 @@
 import abc
 from typing import Dict, List
-from pht.internal.describe.formula import Clause
+from pht.internal.response.describe.formula import Clause
 from pht.internal.util.builder import \
     ConjunctionBuilder,\
     DisjunctionBuilder,\
     DisjunctionComposite
-from pht.internal.describe.property.Property import Property
+from pht.internal.response.describe.property.Property import Property
 
 
 class _Literal(ConjunctionBuilder, DisjunctionBuilder):

@@ -1,8 +1,8 @@
 import json
 from typing import Dict, List, Optional
-from pht.internal.describe.property import Property
-from pht.internal.describe.formula import Formula
-from pht.internal.describe.algorithm import AlgorithmRequirement
+from pht.internal.response.describe.property import Property
+from pht.internal.response.describe import Formula
+from pht.internal.response.describe.algorithm import AlgorithmRequirement
 
 
 class TrainDescription:

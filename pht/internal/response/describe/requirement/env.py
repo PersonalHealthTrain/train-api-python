@@ -1,5 +1,5 @@
 from typing import List
-from pht.internal.describe.property.environment_variable import \
+from pht.internal.response.describe.property.environment_variable import \
     UrlEnvironmentVariableProperty, \
     TokenEnvironmentVariableProperty, \
     EnumEnvironmentVariableProperty
