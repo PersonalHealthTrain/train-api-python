@@ -10,10 +10,10 @@ import os
 
 from pht.train import SimpleTrain
 from pht.internal import StationRuntimeInfo
-from pht.train.response import RunResponse
-from pht.train.response.RunExit import SUCCESS
-from pht.rebase import DockerRebaseStrategy
-from pht.entrypoint import cli_for_train
+from pht.train.entity import RunResponse
+from pht.internal.train.RunExit import SUCCESS
+from pht.internal.run.rebase import DockerRebaseStrategy
+from pht.internal.entrypoint import cli_for_train
 
 
 # Parse CQL expression so that CQL evaluation engine can resolve them

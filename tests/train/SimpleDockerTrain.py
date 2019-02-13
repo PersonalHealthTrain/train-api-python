@@ -6,9 +6,9 @@ import os
 
 from pht.internal import ConjunctionBuilder, StationRuntimeInfo
 from pht.train import SimpleDockerTrain
-from pht.requirement import Require, Forbid, Any
-from pht.requirement.env import enum_by_name, url_by_name
-from pht.train.response.RunExit import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
+from pht.internal.describe.requirement import Require, Forbid, Any
+from pht.internal.describe.requirement.env import enum_by_name, url_by_name
+from pht.internal.train.RunExit import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
 
 
 class NoopTrain(SimpleDockerTrain):
@@ -163,7 +163,7 @@ def _load_json(name: str) -> dict:
 class SimpleTrainTests(unittest.TestCase):
 
     def perform_test(self, train_response, file: str):
-        actual = train_response.dict()
+        actual = train_response.as_dict()
         expect = _load_json(file)
         self.assertDictEqual(actual, expect)
 

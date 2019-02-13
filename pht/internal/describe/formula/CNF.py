@@ -1,5 +1,5 @@
 from .Formula import Formula
-from pht.internal import Clause, frozen_set_of
+from .Clause import Clause, frozen_set_of
 
 
 class CNF(Formula):
@@ -15,7 +15,7 @@ class CNF(Formula):
         return 'ConjunctiveNormalForm'
 
     def __str__(self):
-        return str(self.value())
+        return str(self.value)
 
     def __iter__(self):
         return iter(self._clauses)
@@ -30,11 +30,8 @@ class CNF(Formula):
         return item in self._clauses
 
     def __eq__(self, other):
-        if other is self:
-            return True
-        if not isinstance(other, CNF):
-            return False
-        return self._clauses == other._clauses
+        return other is self or \
+               (isinstance(other, CNF) and self._clauses == other._clauses)
 
     def __hash__(self):
         return hash(self._clauses)
@@ -42,11 +39,6 @@ class CNF(Formula):
     def copy(self):
         return CNF(*self._clauses)
 
-    def __copy__(self):
-        return self.copy()
-
-    def __deepcopy__(self, memodict=None):
-        return self.copy()
-
+    @property
     def value(self):
         return sorted([sorted([i for i in clause]) for clause in self])

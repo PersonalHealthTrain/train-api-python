@@ -1,12 +1,11 @@
 import os
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
-from pht.train.response import RunResponse
+from pht.train.entity import RunResponse
 from pht.train import SimpleTrain
 from pht.requirement2 import url_by_name, Require
-from pht.train.response.RunExit import SUCCESS
-from pht.rebase import DockerRebaseStrategy
-from pht.entrypoint import cli_for_train
-import deepmedic
+from pht.internal.train.RunExit import SUCCESS
+from pht.internal.run.rebase import DockerRebaseStrategy
+from pht.internal.entrypoint import cli_for_train
 
 model_file = '/opt/model'
 

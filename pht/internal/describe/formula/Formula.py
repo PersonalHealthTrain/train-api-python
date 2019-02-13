@@ -1,15 +1,16 @@
 import abc
-from pht.internal.protocols import Typed
+from pht.internal.protocol import Comparable, Copyable, Typed
 
 
-class Formula(Typed):
+class Formula(Typed, Comparable, Copyable):
 
     @property
     def data(self) -> dict:
         return {
-            'value': self.value()
+            'value': self.value
         }
 
+    @property
     @abc.abstractmethod
     def value(self):
         """

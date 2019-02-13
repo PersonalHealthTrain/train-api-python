@@ -1,45 +1,37 @@
 import json
+from typing import List
+
 import fhir
 import sparql
 import os
 
 # The PHT API dependencies
-from pht.train import SimpleTrain
+from pht.train import SimpleDockerTrain
 from pht.internal import StationRuntimeInfo, ConjunctionBuilder
-from pht.train.response import RunResponse
-from pht.requirement.env import enum_by_name, token_by_name, url_by_name
-from pht.requirement import Require
-from pht.train.response.RunExit import SUCCESS
-from pht.rebase import DockerRebaseStrategy
-from pht.entrypoint import cli_for_train
+from pht.internal.describe.requirement.env import enum_by_name, token_by_name, url_by_name
+from pht.internal.describe.requirement import Require
+from pht.internal.entrypoint import cli_for_train
 
 _FHIR = 'FHIR'
 _SPARQL = 'SPARQL'
 
 
-class Train(SimpleTrain):
+class Train(SimpleDockerTrain):
     def __init__(self):
-
+        super().__init__()
         # Declare all the properties that the Train cares about
         self.endpoint_type = enum_by_name('ENDPOINT_TYPE', choices=[_FHIR, _SPARQL])
         self.endpoint_url = url_by_name('ENDPOINT_URL')
         self.endpoint_token = token_by_name('ENDPOINT_TOKEN')
-        self.output_file = '/opt/train/output.txt'
+        self.output = 'output'
 
-    def requirements(self) -> ConjunctionBuilder:
-        # Declare the requirements of this train. The station needs to provide:
-        #   * The endpoint type (either 'FHIR' or 'SPARQL'
-        #   * The endpoint url
-        #   * The endpoint token
-        return Require(self.endpoint_type) & Require(self.endpoint_url) & Require(self.endpoint_token)
+    def default_rebase_from(self) -> str:
+        return 'TODO correct train'
 
-    def model_summary(self) -> str:
-        if os.path.exists(self.output_file):
-            with open(self.output_file, 'r') as f:
-                return '\n'.join(f.readlines())
-        return 'Currently no model available'
+    def default_next_train_tags(self) -> List[str]:
+        return ['train-tag']
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
+    def run_algorithm(self, info: StationRuntimeInfo, log):
 
         # get the values provided by the station platform
         endpoint_type = self.endpoint_type.get_value()
@@ -53,17 +45,23 @@ class Train(SimpleTrain):
         elif endpoint_type == _SPARQL:
             output_json = sparql.runCohortCounter(endpoint_url)
 
-        # Write output to file
-        with open(self.output_file, 'w') as f:
+        # persist the output to the container
+        with self.trainfile(self.output, 'w') as f:
             f.write(json.dumps(output_json))
+        log.set_free_text_message('Algorithm has been executed successfully')
 
-        return RunResponse(
-            run_exit=SUCCESS,
-            free_text_message='Algorithm has been executed successfully',
-            rebase=DockerRebaseStrategy(
-                frm='TODO correct train',
-                next_train_tags=['train-tag'],
-                export_files=[self.output_file]))
+    def requirements(self) -> ConjunctionBuilder:
+        # Declare the requirements of this train. The station needs to provide:
+        #   * The endpoint type (either 'FHIR' or 'SPARQL'
+        #   * The endpoint url
+        #   * The endpoint token
+        return Require(self.endpoint_type) & Require(self.endpoint_url) & Require(self.endpoint_token)
+
+    def model_summary(self) -> str:
+        if os.path.exists(self.output_file):
+            with open(self.output_file, 'r') as f:
+                return '\n'.join(f.readlines())
+        return 'Currently no model available'
 
 
 if __name__ == '__main__':
