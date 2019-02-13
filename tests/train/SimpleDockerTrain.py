@@ -8,7 +8,7 @@ from pht.internal import ConjunctionBuilder, StationRuntimeInfo
 from pht.train import SimpleDockerTrain
 from pht.internal.describe.requirement import Require, Forbid, Any
 from pht.internal.describe.requirement.env import enum_by_name, url_by_name
-from pht.internal.train.RunExit import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
+from pht.internal.run.exit.RunExit import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
 
 
 class NoopTrain(SimpleDockerTrain):

@@ -11,7 +11,7 @@ import os
 from pht.train import SimpleTrain
 from pht.internal import StationRuntimeInfo
 from pht.train.entity import RunResponse
-from pht.internal.train.RunExit import SUCCESS
+from pht.internal.run.exit.RunExit import SUCCESS
 from pht.internal.run.rebase import DockerRebaseStrategy
 from pht.internal.entrypoint import cli_for_train
 
