@@ -14,12 +14,14 @@ class TrainDescription(TrainResponse):
                  formulas: List[Formula],
                  model_summary: str,
                  train_name: str,
+                 train_version: str,
                  algorithm_requirement: Optional[AlgorithmRequirement]):
         self._properties = properties
         self._formula = formulas
         self._model_summary = model_summary
         self._algorithm_requirement = algorithm_requirement
         self._train_name = train_name
+        self._train_version = train_version
 
     @property
     def data(self) -> dict:
@@ -30,8 +32,9 @@ class TrainDescription(TrainResponse):
         properties = with_ids(self._properties.items(), id_fun=lambda x: x[0], data_fun=first_with_dict)
         formula = with_ids(enumerate(self._formula), id_fun=lambda x: x[0]+1, data_fun=first_with_dict)
         return {
+            'trainVersion': self._train_version,
             'trainName': self._train_name,
-            'version': '1.0',
+            'descriptionVersion': '1.0',
             'properties': properties,
             'formula': formula,
             'model': {

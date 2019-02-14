@@ -14,7 +14,7 @@ from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, AlgorithmFa
 
 class NoopTrain(SimpleDockerTrain):
     def __init__(self):
-        super().__init__('test_train', 'personalhealthtrain/rebase', ['foo'])
+        super().__init__('test_train', '1.0', 'personalhealthtrain/rebase', ['foo'])
 
     def model_summary(self) -> str:
         return 'foo'
@@ -28,7 +28,7 @@ class NoopTrain(SimpleDockerTrain):
 ##################################
 class _TestTrain1(SimpleDockerTrain):
     def __init__(self):
-        super().__init__('test_train', 'personalhealthtrain/base', ['train-tag'])
+        super().__init__('test_train', '1.0', 'personalhealthtrain/base', ['train-tag'])
 
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO'))
@@ -44,7 +44,7 @@ class _TestTrain1(SimpleDockerTrain):
 class _TestTrain2(SimpleDockerTrain):
 
     def __init__(self):
-        super().__init__('test_train', 'personalhealthtrain/base:base', ['2.7.15-slim-jessie'])
+        super().__init__('test_train', '1.0', 'personalhealthtrain/base:base', ['2.7.15-slim-jessie'])
 
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Require(url_by_name('BAR'))
@@ -59,7 +59,7 @@ class _TestTrain2(SimpleDockerTrain):
 
 class _TestTrain3(SimpleDockerTrain):
     def __init__(self):
-        super().__init__('test_train', 'personalhealthtrain/base:base', ['latest'])
+        super().__init__('test_train', '1.0', 'personalhealthtrain/base:base', ['latest'])
 
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')))

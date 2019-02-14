@@ -16,9 +16,10 @@ class SimpleDockerTrain(AbstractTrain):
     Train class that can be extended if the train completely relies on Docker images.
     In particular, this Train will always use the DockerRebaseStrategy
     """
-    def __init__(self, train_name: str, default_rebase_from: str, default_next_train_tags: List[str]):
+    def __init__(self, train_name: str, train_version: str, default_rebase_from: str, default_next_train_tags: List[str]):
         super().__init__()
         self.train_name = train_name
+        self.train_version = train_version
         self.default_rebase_from = default_rebase_from
         self.default_next_train_tags = default_next_train_tags.copy()
 
@@ -66,6 +67,7 @@ class SimpleDockerTrain(AbstractTrain):
 
         return TrainDescription(
             train_name=self.train_name,
+            train_version=self.train_version,
             properties=properties,
             formulas=formulas,
             model_summary=self.model_summary(),

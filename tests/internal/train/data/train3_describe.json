@@ -1,5 +1,6 @@
 {
-  "version": "1.0",
+  "trainVersion": "1.0",
+  "descriptionVersion": "1.0",
   "type": "TrainDescription",
   "display": "TrainDescription",
   "trainName": "test_train",
