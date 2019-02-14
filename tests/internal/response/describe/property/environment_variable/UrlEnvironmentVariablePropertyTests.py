@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from pht.internal.response.describe.requirement.env import url_by_name
+from pht.internal.response.describe.property.environment_variable import url_by_name
 from tests.base import BaseTest
 
 

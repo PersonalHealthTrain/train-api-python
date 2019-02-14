@@ -1,2 +1,1 @@
-from .RebaseStrategy import RebaseStrategy
-from .DockerRebaseStrategy import DockerRebaseStrategy
+from .RebaseStrategy import RebaseStrategy, DockerRebaseStrategy

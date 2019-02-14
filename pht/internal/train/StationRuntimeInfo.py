@@ -1,7 +1,9 @@
 from typing import Optional
+from pht.internal.protocol.Comparable import Comparable
+from pht.internal.protocol.Copyable import Copyable
 
 
-class StationRuntimeInfo:
+class StationRuntimeInfo(Comparable, Copyable):
     """
     Represents information on the station that will be passed on runtime.
     """
@@ -18,3 +20,14 @@ class StationRuntimeInfo:
 
         # Custom User Data that
         self.user_data = user_data
+
+    def __eq__(self, other):
+        return other is self or \
+               (isinstance(other, StationRuntimeInfo) and self.station_id == other.station_id and
+                self.track_info == other.track_info and self.user_data == other.user_data)
+
+    def __hash__(self):
+        return hash((self.station_id, self.track_info, self.user_data))
+
+    def copy(self):
+        return StationRuntimeInfo(self.station_id, self.track_info, self.user_data)

@@ -1,27 +1,21 @@
 {
+  "version": "1.0",
+  "type": "TrainDescription",
+  "display": "TrainDescription",
   "properties": [
     {
       "id": 1,
       "data": {
-        "target": "http://schema.org/URL",
-        "name": "BAZ",
+        "target": "enum",
+        "name": "FOO",
         "state": {
-          "isAvailable": false,
-          "reason": "Environment variable 'BAZ' not set"
+          "isAvailable": true,
+          "reason": null
         },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
-      }
-    },
-    {
-      "id": 2,
-      "data": {
-        "target": "http://schema.org/URL",
-        "name": "BAM",
-        "state": {
-          "isAvailable": false,
-          "reason": "Environment variable 'BAM' not set"
-        },
+        "choices": [
+          "VALUE1",
+          "VALUE2"
+        ],
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
@@ -33,10 +27,7 @@
       "data": {
         "value": [
           [
-            -2
-          ],
-          [
-            -1
+            1
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
@@ -49,7 +40,7 @@
   },
   "algorithm": {
     "requirement": {
-      "value": 1,
+      "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
       "display": "FormulaAlgorithmRequirement"
     }

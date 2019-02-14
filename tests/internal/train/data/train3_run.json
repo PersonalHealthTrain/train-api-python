@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "type": "RunResponse",
+  "display": "RunResponse",
   "exit": {
     "state": "application",
     "reason": "Application specific error, not success, but also not failure"

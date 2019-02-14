@@ -1,3 +1,7 @@
+from typing import List
+from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, RunExit
+
+
 class Log:
     def __init__(self):
         self.exit_state = AlgorithmSuccess('')

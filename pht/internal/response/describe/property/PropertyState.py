@@ -2,7 +2,9 @@
 PropertyState captures the State of the Property at runtime
 """
 from typing import Optional
-from pht.internal.protocol import Comparable, Copyable, DictRepresentable
+from pht.internal.protocol.Comparable import Comparable
+from pht.internal.protocol.Copyable import Copyable
+from pht.internal.protocol.DictRepresentable import DictRepresentable
 
 
 class PropertyState(Copyable, Comparable, DictRepresentable):

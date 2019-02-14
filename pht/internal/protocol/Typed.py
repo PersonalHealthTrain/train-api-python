@@ -1,5 +1,5 @@
 import abc
-from pht.internal.protocol import DictRepresentable
+from pht.internal.protocol.DictRepresentable import DictRepresentable
 
 
 class Typed(DictRepresentable):

@@ -1,5 +1,5 @@
 from tests.base import BaseTest
-from pht.internal.response.describe.property import PROPERTY_AVAILABLE, PropertyUnavailable
+from pht.internal.response.describe.property.PropertyState import PROPERTY_AVAILABLE, PropertyUnavailable
 
 
 class PropertyStateTests(BaseTest):

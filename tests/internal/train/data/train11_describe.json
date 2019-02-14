@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "type": "TrainDescription",
+  "display": "TrainDescription",
   "properties": [],
   "formula": [],
   "model": {

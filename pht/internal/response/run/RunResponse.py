@@ -1,12 +1,12 @@
 """
 Contains the RunResponse class
 """
-import json
-from pht.internal.response.run import RebaseStrategy
-from pht.internal.response.run import RunExit
+from pht.internal.response.run.rebase.RebaseStrategy import RebaseStrategy
+from pht.internal.response.run.exit.RunExit import RunExit
+from pht.internal.response.TrainResponse import TrainResponse
 
 
-class RunResponse:
+class RunResponse(TrainResponse):
     """
     Response for the run command
     """
@@ -26,14 +26,17 @@ class RunResponse:
 
     @property
     def type(self) -> str:
-        return 'RunResponse'
+        return self.display
 
-    def dict(self) -> dict:
+    @property
+    def data(self) -> dict:
         return {
-            'exit': self.run_exit.dict(),
+            'version': '1.0',
+            'exit': self.run_exit.as_dict(),
             'free_text_message': self.message,
-            'rebase': self.rebase.dict()
+            'rebase': self.rebase.as_dict()
         }
 
-    def to_json_string(self):
-        return json.dumps(self.dict())
+    @property
+    def display(self) -> str:
+        return 'RunResponse'

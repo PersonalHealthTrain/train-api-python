@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "type": "RunResponse",
+  "display": "RunResponse",
   "exit": {
     "state": "failure",
     "reason": "Execution of the algorithm failed"

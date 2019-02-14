@@ -2,7 +2,8 @@ import abc
 from typing import Dict, List
 
 from pht.internal.response.describe.property.Property import Property
-from pht.internal.response.describe.formula import Clause, CNF
+from pht.internal.response.describe.formula.Clause import Clause
+from pht.internal.response.describe.formula.CNF import CNF
 from pht.internal.util.property_enumerator import _PropertyEnumerator, _copy, _merge
 
 

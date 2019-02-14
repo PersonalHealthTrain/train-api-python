@@ -16,4 +16,3 @@ class Copyable(abc.ABC):
 
     def __deepcopy__(self, memodict=None):
         return self.copy()
-

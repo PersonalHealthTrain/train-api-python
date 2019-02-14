@@ -1,14 +1,15 @@
-import unittest
+from tests.base import BaseTest
 from typing import List
 from unittest.mock import patch
 import json
 import os
 
-from pht.internal import ConjunctionBuilder, StationRuntimeInfo
-from pht.train import SimpleDockerTrain
 from pht.internal.response.describe.requirement import Require, Forbid, Any
-from pht.internal.response.describe.requirement.env import enum_by_name, url_by_name
-from pht.internal.response.run import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
+from pht.internal.train.SimpleDockerTrain import SimpleDockerTrain
+from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
+from pht.internal.response.describe.requirement.builder import ConjunctionBuilder
+from pht.internal.response.describe.property.environment_variable import enum_by_name, url_by_name
+from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, AlgorithmFailure, AlgorithmApplication
 
 
 class NoopTrain(SimpleDockerTrain):
@@ -160,12 +161,12 @@ def _load_json(name: str) -> dict:
     return json.loads(text)
 
 
-class SimpleTrainTests(unittest.TestCase):
+class SimpleTrainTests(BaseTest):
 
     def perform_test(self, train_response, file: str):
-        actual = train_response.as_dict()
-        expect = _load_json(file)
-        self.assertDictEqual(actual, expect)
+        self.checkExpect(
+            expect=_load_json(file),
+            actual=train_response.as_dict())
 
 
 class SimpleTrainDescribeTests(SimpleTrainTests):

@@ -1,6 +1,6 @@
 from pht.internal.util import require
 from pht.internal.util import frozen_set_of
-from pht.internal.protocol import Comparable
+from pht.internal.protocol.Comparable import Comparable
 
 
 class Clause(Comparable):

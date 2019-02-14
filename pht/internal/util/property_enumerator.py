@@ -1,6 +1,6 @@
 import abc
 from typing import Dict, List
-from pht.internal.response.describe.formula import Clause
+from pht.internal.response.describe.formula.Clause import Clause
 from pht.internal.response.describe.property.Property import Property
 
 

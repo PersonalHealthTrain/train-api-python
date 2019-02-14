@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "type": "TrainDescription",
+  "display": "TrainDescription",
   "properties": [
     {
       "id": 1,
@@ -93,7 +96,7 @@
   },
   "algorithm": {
     "requirement": {
-      "value": 1,
+      "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
       "display": "FormulaAlgorithmRequirement"
     }

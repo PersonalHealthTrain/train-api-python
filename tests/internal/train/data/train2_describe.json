@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "type": "TrainDescription",
+  "display": "TrainDescription",
   "properties": [
     {
       "id": 1,
@@ -17,19 +20,6 @@
       "id": 2,
       "data": {
         "target": "http://schema.org/URL",
-        "name": "BAZ",
-        "state": {
-          "isAvailable": false,
-          "reason": "Environment variable 'BAZ' not set"
-        },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
-      }
-    },
-    {
-      "id": 3,
-      "data": {
-        "target": "http://schema.org/URL",
         "name": "BAR",
         "state": {
           "isAvailable": false,
@@ -46,11 +36,10 @@
       "data": {
         "value": [
           [
-            -2,
-             3
+            1
           ],
           [
-            1
+            2
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
@@ -63,9 +52,10 @@
   },
   "algorithm": {
     "requirement": {
-      "value": 1,
+      "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
       "display": "FormulaAlgorithmRequirement"
     }
   }
 }
+

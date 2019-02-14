@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "type": "TrainDescription",
+  "display": "TrainDescription",
   "properties": [
     {
       "id": 1,
@@ -38,32 +41,6 @@
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
-    },
-    {
-      "id": 4,
-      "data": {
-        "target": "http://schema.org/URL",
-        "name": "FOO",
-        "state": {
-          "isAvailable": false,
-          "reason": "Environment variable 'FOO' not set"
-        },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
-      }
-    },
-    {
-      "id": 5,
-      "data": {
-        "target": "http://schema.org/URL",
-        "name": "CAT",
-        "state": {
-          "isAvailable": false,
-          "reason": "Environment variable 'CAT' not set"
-        },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
-      }
     }
   ],
   "formula": [
@@ -72,13 +49,9 @@
       "data": {
         "value": [
           [
-            -5,
-            4
-          ],
-          [
             -3,
             -1,
-             2
+            2
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
@@ -91,7 +64,7 @@
   },
   "algorithm": {
     "requirement": {
-      "value": 1,
+      "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
       "display": "FormulaAlgorithmRequirement"
     }

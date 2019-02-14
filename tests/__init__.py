@@ -1,3 +1,4 @@
+# Describe Tests
 from tests.internal.response.describe.algorithm.FormulaAlgorithmRequirementTests import FormulaAlgorithmRequirementTests
 from tests.internal.response.describe.formula.CNFTests import CnfTests
 from tests.internal.response.describe.formula.ClauseTests import ClauseTests
@@ -10,3 +11,17 @@ from tests.internal.response.describe.property.environment_variable.UrlEnvironme
     UrlEnvironmentVariablePropertyTests
 
 from tests.internal.response.describe.requirement.builder import CnfBuilder1Tests, CnfBuilder2Tests
+
+from tests.internal.response.describe.TrainDescriptionTests import TrainDescriptionTests
+
+# Run Tests
+from tests.internal.response.run.exit.RunExitTests import RunExitTests
+from tests.internal.response.run.rebase.DockerRebaseStrategyTests import DockerRebaseStrategyTests
+
+from tests.internal.response.run.RunResponseTests import RunResponseTests
+
+
+# Train Tests
+from tests.internal.train.StationRuntimeInfoTests import StationRuntimeInfoTests
+from tests.internal.train.TrainFileTests import TrainFileTests
+from tests.internal.train.SimpleDockerTrainTests import SimpleTrainDescribeTests, SimpleTrainRunTests

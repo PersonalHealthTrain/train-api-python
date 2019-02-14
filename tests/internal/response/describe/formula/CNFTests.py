@@ -1,5 +1,6 @@
 from tests.base import BaseTest
-from pht.internal.response.describe.formula import CNF, Clause
+from pht.internal.response.describe.formula.Clause import Clause
+from pht.internal.response.describe.formula.CNF import CNF
 
 
 class CnfTests(BaseTest):

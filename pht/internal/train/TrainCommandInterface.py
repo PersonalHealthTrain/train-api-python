@@ -1,4 +1,7 @@
 import abc
+from pht.internal.response.run import RunResponse
+from pht.internal.response.describe import TrainDescription
+from .StationRuntimeInfo import StationRuntimeInfo
 
 
 class TrainCommandInterface(abc.ABC):

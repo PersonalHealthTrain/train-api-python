@@ -5,7 +5,9 @@ Contains the RunAlgorithmResponse class, which belongs to the run_algorithm comm
 """
 import abc
 from typing import Optional
-from pht.internal.protocols import Comparable, Copyable, DictRepresentable
+from pht.internal.protocol.Comparable import Comparable
+from pht.internal.protocol.Copyable import Copyable
+from pht.internal.protocol.DictRepresentable import DictRepresentable
 
 
 class RunExit(Comparable, Copyable, DictRepresentable):
@@ -18,11 +20,8 @@ class RunExit(Comparable, Copyable, DictRepresentable):
         pass
 
     def __eq__(self, other):
-        if other is self:
-            return True
-        if not isinstance(other, RunExit):
-            return False
-        return self.reason == other.reason and self.state == other.state
+        return other is self or \
+               (isinstance(other, RunExit) and self.state == other.state and self.reason == other.reason)
 
     def __hash__(self):
         return hash((self.reason, self.state))
@@ -33,7 +32,7 @@ class RunExit(Comparable, Copyable, DictRepresentable):
     def __deepcopy__(self, memodict=None):
         return self.copy()
 
-    def dict(self):
+    def as_dict(self):
         return {
             'state': self.state,
             'reason': self.reason

@@ -1,7 +1,23 @@
 {
+  "version": "1.0",
+  "type": "TrainDescription",
+  "display": "TrainDescription",
   "properties": [
     {
       "id": 1,
+      "data": {
+        "target": "http://schema.org/URL",
+        "name": "FOO",
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'FOO' not set"
+        },
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    },
+    {
+      "id": 2,
       "data": {
         "target": "http://schema.org/URL",
         "name": "BAZ",
@@ -14,26 +30,13 @@
       }
     },
     {
-      "id": 2,
+      "id": 3,
       "data": {
         "target": "http://schema.org/URL",
         "name": "BAR",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'BAR' not set"
-        },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
-      }
-    },
-    {
-      "id": 3,
-      "data": {
-        "target": "http://schema.org/URL",
-        "name": "BAM",
-        "state": {
-          "isAvailable": false,
-          "reason": "Environment variable 'BAM' not set"
         },
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
@@ -46,9 +49,11 @@
       "data": {
         "value": [
           [
-            -3,
-            -1,
-            2
+            -2,
+             3
+          ],
+          [
+            1
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
@@ -61,7 +66,7 @@
   },
   "algorithm": {
     "requirement": {
-      "value": 1,
+      "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
       "display": "FormulaAlgorithmRequirement"
     }
