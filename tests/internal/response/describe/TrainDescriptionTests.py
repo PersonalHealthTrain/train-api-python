@@ -13,7 +13,7 @@ class TrainDescriptionTests(BaseTest):
             1: url_by_name('FOO'),
             2: token_by_name('BAR'),
             3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
-        }, [CNF(Clause(1))], 'model summary', FormulaAlgorithmRequirement(1))
+        }, [CNF(Clause(1))], 'model summary', 'test_train', FormulaAlgorithmRequirement(1))
 
     ################################################################################
     # As Dict
@@ -21,6 +21,7 @@ class TrainDescriptionTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
+                'trainName': 'test_train',
                 'version': '1.0',
                 'properties': [
                     {
@@ -108,6 +109,7 @@ class TrainDescriptionTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
+                'trainName': 'test_train',
                 'version': '1.0',
                 'properties': [
                     {

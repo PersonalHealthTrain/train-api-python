@@ -13,20 +13,18 @@ from pht.internal.response.describe.algorithm.FormulaAlgorithmRequirement import
 
 class SimpleDockerTrain(AbstractTrain):
 
+    def __init__(self, train_name: str, default_rebase_from: str, default_next_train_tags: List[str]):
+        super().__init__()
+        self.train_name = train_name
+        self.default_rebase_from = default_rebase_from
+        self.default_next_train_tags = default_next_train_tags
+
     @abc.abstractmethod
     def requirements(self) -> ConjunctionBuilder:
         pass
 
     @abc.abstractmethod
     def model_summary(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def default_rebase_from(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def default_next_train_tags(self) -> List[str]:
         pass
 
     @abc.abstractmethod
@@ -41,8 +39,8 @@ class SimpleDockerTrain(AbstractTrain):
         except Exception as e:
             exit_state = AlgorithmFailure(str(e))
         message = log.free_text_message
-        rebase_from = log.rebase_from if log.rebase_from is not None else self.default_rebase_from()
-        next_train_tags = log.next_train_tags if log.next_train_tags is not None else self.default_next_train_tags()
+        rebase_from = log.rebase_from if log.rebase_from is not None else self.default_rebase_from
+        next_train_tags = log.next_train_tags if log.next_train_tags is not None else self.default_next_train_tags
         export_files = self.list_existing_trainfiles()
 
         return RunResponse(exit_state, message, DockerRebaseStrategy(
@@ -64,6 +62,7 @@ class SimpleDockerTrain(AbstractTrain):
             alg_req = None
 
         return TrainDescription(
+            train_name=self.train_name,
             properties=properties,
             formulas=formulas,
             model_summary=self.model_summary(),

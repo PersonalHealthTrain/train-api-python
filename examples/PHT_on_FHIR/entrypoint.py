@@ -1,16 +1,14 @@
-import json
 from typing import List
 
 import fhir
 import sparql
-import os
 
 # The PHT API dependencies
 from pht.train import SimpleDockerTrain
-from pht.internal import StationRuntimeInfo, ConjunctionBuilder
-from pht.internal.response.describe.requirement.env import enum_by_name, token_by_name, url_by_name
-from pht.internal.response.describe.requirement import Require
-from pht.internal.entrypoint import cli_for_train
+from pht.train.component import ConjunctionBuilder, StationRuntimeInfo
+from pht.requirement import Require
+from pht.requirement.environment_variable import enum_by_name, url_by_name, token_by_name
+from pht.entrypoint import cli_for_train
 
 _FHIR = 'FHIR'
 _SPARQL = 'SPARQL'
@@ -23,7 +21,9 @@ class Train(SimpleDockerTrain):
         self.endpoint_type = enum_by_name('ENDPOINT_TYPE', choices=[_FHIR, _SPARQL])
         self.endpoint_url = url_by_name('ENDPOINT_URL')
         self.endpoint_token = token_by_name('ENDPOINT_TOKEN')
-        self.output = 'output'
+
+        # The output of the train as trainfile
+        self.output = self.trainfile('output')
 
     def default_rebase_from(self) -> str:
         return 'TODO correct train'
@@ -45,9 +45,7 @@ class Train(SimpleDockerTrain):
         elif endpoint_type == _SPARQL:
             output_json = sparql.runCohortCounter(endpoint_url)
 
-        # persist the output to the container
-        with self.trainfile(self.output, 'w') as f:
-            f.write(json.dumps(output_json))
+        self.output.write_as_json(output_json)
         log.set_free_text_message('Algorithm has been executed successfully')
 
     def requirements(self) -> ConjunctionBuilder:
@@ -58,10 +56,7 @@ class Train(SimpleDockerTrain):
         return Require(self.endpoint_type) & Require(self.endpoint_url) & Require(self.endpoint_token)
 
     def model_summary(self) -> str:
-        if os.path.exists(self.output_file):
-            with open(self.output_file, 'r') as f:
-                return '\n'.join(f.readlines())
-        return 'Currently no model available'
+        return self.output.read_or_default('No result file in this version')
 
 
 if __name__ == '__main__':

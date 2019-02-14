@@ -2,6 +2,7 @@
   "version": "1.0",
   "type": "TrainDescription",
   "display": "TrainDescription",
+  "trainName": "test_train",
   "properties": [],
   "formula": [],
   "model": {

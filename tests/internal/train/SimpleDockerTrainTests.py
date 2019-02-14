@@ -13,15 +13,11 @@ from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, AlgorithmFa
 
 
 class NoopTrain(SimpleDockerTrain):
+    def __init__(self):
+        super().__init__('test_train', 'personalhealthtrain/rebase', ['foo'])
 
     def model_summary(self) -> str:
         return 'foo'
-
-    def default_rebase_from(self) -> str:
-        return 'personalhealthtrain/rebase'
-
-    def default_next_train_tags(self) -> List[str]:
-        return ['foo']
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
         pass
@@ -31,14 +27,11 @@ class NoopTrain(SimpleDockerTrain):
 #  Trains only using URLs
 ##################################
 class _TestTrain1(SimpleDockerTrain):
+    def __init__(self):
+        super().__init__('test_train', 'personalhealthtrain/base', ['train-tag'])
+
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO'))
-
-    def default_rebase_from(self):
-        return 'personalhealthtrain/base'
-
-    def default_next_train_tags(self) -> List[str]:
-        return ['train-tag']
 
     def model_summary(self) -> str:
         return 'foo'
@@ -49,17 +42,15 @@ class _TestTrain1(SimpleDockerTrain):
 
 
 class _TestTrain2(SimpleDockerTrain):
+
+    def __init__(self):
+        super().__init__('test_train', 'personalhealthtrain/base:base', ['2.7.15-slim-jessie'])
+
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Require(url_by_name('BAR'))
 
     def model_summary(self) -> str:
         return 'foo'
-
-    def default_rebase_from(self) -> str:
-        return 'personalhealthtrain/base:base'
-
-    def default_next_train_tags(self) -> List[str]:
-        return ['2.7.15-slim-jessie']
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
         log.set_free_text_message('This is arbitrary free text')
@@ -67,14 +58,11 @@ class _TestTrain2(SimpleDockerTrain):
 
 
 class _TestTrain3(SimpleDockerTrain):
+    def __init__(self):
+        super().__init__('test_train', 'personalhealthtrain/base:base', ['latest'])
+
     def requirements(self) -> ConjunctionBuilder:
         return Require(url_by_name('FOO')) & Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')))
-
-    def default_rebase_from(self) -> str:
-        return 'personalhealthtrain/base:base'
-
-    def default_next_train_tags(self) -> List[str]:
-        return ['latest']
 
     def model_summary(self) -> str:
         return 'foo'
@@ -198,12 +186,12 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
     # TestTrain cannot describe, because the implementation of requirements is incorrect
     def test_describe_8(self):
         with self.assertRaises(ValueError):
-            _TestTrain8().describe(info).to_json_string()
+            _TestTrain8().describe(info).as_json_string()
 
     # Argument to literal is not a valid property
     def test_describe_9(self):
         with self.assertRaises(ValueError):
-            _TestTrain9().describe(info).to_json_string()
+            _TestTrain9().describe(info).as_json_string()
 
     def test_describe_10(self):
         self.describe_test(_TestTrain10(), 'train10_describe.json')

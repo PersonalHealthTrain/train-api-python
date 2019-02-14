@@ -5,7 +5,8 @@ If the train is run inside a container, a call of one of these functions should 
 """
 import argparse
 import sys
-from pht.internal.train import TrainCommandInterface, StationRuntimeInfo
+from pht.internal.train.TrainCommandInterface import TrainCommandInterface
+from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
 
 
 def cli_for_train(train: TrainCommandInterface):
@@ -33,10 +34,10 @@ def cli_for_train(train: TrainCommandInterface):
 
     args = parser.parse_args()
     info = StationRuntimeInfo(station_id=args.station_id, track_info=args.track_info, user_data=args.user_data)
-    tool = args.TOOL
-    if tool == _run:
-        _fprint(train.run(info).to_json_string())
-    elif tool == _describe:
-        _fprint(train.describe(info).to_json_string())
+    command = args.COMMAND
+    if command == _run:
+        _fprint(train.run(info).as_json_string())
+    elif command == _describe:
+        _fprint(train.describe(info).as_json_string())
     else:
         _exit_unsupported_command()
