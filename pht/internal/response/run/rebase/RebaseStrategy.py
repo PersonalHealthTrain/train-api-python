@@ -6,6 +6,8 @@ import re
 import os
 from typing import List
 from pht.internal.protocol.Typed import Typed
+from pht.internal.protocol.Copyable import Copyable
+from pht.internal.protocol.Comparable import Comparable
 from pht.internal.train.TrainFile import TrainFile
 
 _TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
@@ -30,7 +32,7 @@ def _file_is_valid(p: str) -> bool:
     return os.path.isabs(p) and os.path.isfile(p) and not os.path.islink(p)
 
 
-class RebaseStrategy(Typed):
+class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
     def __init__(self,
                  next_train_tags: List[str],
                  export_files: List[TrainFile]):
@@ -42,26 +44,9 @@ class RebaseStrategy(Typed):
     @property
     def data(self) -> dict:
         return {
-            'export_files': sorted(list(self.export_files)),
+            'export_files': sorted(list([x.as_dict() for x in self.export_files])),
             'next_train_tags': sorted(list(self.next_train_tags))
         }
-
-    @abc.abstractmethod
-    def __eq__(self, other):
-        pass
-
-    @abc.abstractmethod
-    def __hash__(self):
-        pass
-
-    def copy(self):
-        pass
-
-    def __copy__(self):
-        return self.copy()
-
-    def __deepcopy__(self, memodict=None):
-        return self.copy()
 
     def _validate_next_train_tags(self, tags: List[str]):
         if tags is None:

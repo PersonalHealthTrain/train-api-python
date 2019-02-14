@@ -1,5 +1,3 @@
-from typing import List
-
 import fhir
 import sparql
 
@@ -16,7 +14,7 @@ _SPARQL = 'SPARQL'
 
 class Train(SimpleDockerTrain):
     def __init__(self):
-        super().__init__()
+        super().__init__('PHT on FHIR', 'TODO correct train', ['train-tag'])
         # Declare all the properties that the Train cares about
         self.endpoint_type = enum_by_name('ENDPOINT_TYPE', choices=[_FHIR, _SPARQL])
         self.endpoint_url = url_by_name('ENDPOINT_URL')
@@ -24,12 +22,6 @@ class Train(SimpleDockerTrain):
 
         # The output of the train as trainfile
         self.output = self.trainfile('output')
-
-    def default_rebase_from(self) -> str:
-        return 'TODO correct train'
-
-    def default_next_train_tags(self) -> List[str]:
-        return ['train-tag']
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
 

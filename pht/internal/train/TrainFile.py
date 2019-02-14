@@ -55,6 +55,6 @@ class TrainFile(Comparable, Typed):
             return os.linesep.join(f.readlines())
 
     def read_or_default(self, default: str):
-        if os.path.exists(self.path):
+        if os.path.isfile(self._path):
             return self.read()
         return default
