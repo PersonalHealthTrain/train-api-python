@@ -6,3 +6,7 @@ def type_is_int(obj):
 def for_value(val, func, msg):
     if not func(val):
         raise ValueError(msg)
+
+
+def is_not_none(val):
+    return val is not None

@@ -26,12 +26,6 @@ class RunExit(Comparable, Copyable, DictRepresentable):
     def __hash__(self):
         return hash((self.reason, self.state))
 
-    def __copy__(self):
-        return self.copy()
-
-    def __deepcopy__(self, memodict=None):
-        return self.copy()
-
     def as_dict(self):
         return {
             'state': self.state,

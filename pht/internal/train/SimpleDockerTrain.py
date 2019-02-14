@@ -12,12 +12,15 @@ from pht.internal.response.describe.algorithm.FormulaAlgorithmRequirement import
 
 
 class SimpleDockerTrain(AbstractTrain):
-
+    """
+    Train class that can be extended if the train completely relies on Docker images.
+    In particular, this Train will always use the DockerRebaseStrategy
+    """
     def __init__(self, train_name: str, default_rebase_from: str, default_next_train_tags: List[str]):
         super().__init__()
         self.train_name = train_name
         self.default_rebase_from = default_rebase_from
-        self.default_next_train_tags = default_next_train_tags
+        self.default_next_train_tags = default_next_train_tags.copy()
 
     @abc.abstractmethod
     def requirements(self) -> ConjunctionBuilder:

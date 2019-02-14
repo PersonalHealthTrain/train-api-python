@@ -16,13 +16,13 @@ class RunResponse(TrainResponse):
                  rebase: RebaseStrategy):
 
         # Final Execution State of the algorithm
-        self.run_exit = run_exit
+        self.run_exit = run_exit.copy()
 
         # Custom message to communicate the execution state of the algorithm
         self.message = free_text_message
 
         # The Rebase Strategy
-        self.rebase = rebase
+        self.rebase = rebase.copy()
 
     @property
     def type(self) -> str:

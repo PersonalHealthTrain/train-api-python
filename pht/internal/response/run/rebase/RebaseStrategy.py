@@ -37,7 +37,7 @@ class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
                  next_train_tags: List[str],
                  export_files: List[TrainFile]):
 
-        self._validate_next_train_tags(next_train_tags)
+        RebaseStrategy._validate_next_train_tags(next_train_tags)
         self.next_train_tags = frozenset(next_train_tags)
         self.export_files = frozenset(export_files)
 
@@ -48,7 +48,8 @@ class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
             'next_train_tags': sorted(list(self.next_train_tags))
         }
 
-    def _validate_next_train_tags(self, tags: List[str]):
+    @staticmethod
+    def _validate_next_train_tags(tags: List[str]):
         if tags is None:
             raise ValueError('\'tags\' for Rebase Strategy is not allowed be None')
         if not isinstance(tags, List):

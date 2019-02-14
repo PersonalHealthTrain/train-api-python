@@ -6,6 +6,9 @@ from .TrainCommandInterface import TrainCommandInterface
 
 
 class AbstractTrain(TrainCommandInterface, abc.ABC):
+    """
+    Train with support for trainfiles
+    """
 
     def __init__(self):
         self._trainfiles = set()

@@ -1,6 +1,8 @@
 from typing import Optional
 from pht.internal.protocol.Comparable import Comparable
 from pht.internal.protocol.Copyable import Copyable
+from pht.internal.util import require
+from pht.internal.util.require import is_not_none
 
 
 class StationRuntimeInfo(Comparable, Copyable):
@@ -12,8 +14,9 @@ class StationRuntimeInfo(Comparable, Copyable):
         # Numeric Id of the station that executed the train (required)
         self.station_id = station_id
 
-        if self.station_id is None:
-            raise ValueError('Station ID was encountered to be None. This is not allowed.')
+        require.for_value(self.station_id,
+                          is_not_none,
+                          'Station ID was encountered to be None. This is not allowed.')
 
         # Optional Info about the track that the train is currently running on
         self.track_info = track_info
