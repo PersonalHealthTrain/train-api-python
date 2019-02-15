@@ -30,6 +30,10 @@ class BaseTest(unittest.TestCase):
         self.assertIsEqual(c1, c3)
         self.assertIsEqual(c2, c3)
 
+        self.assertIsEqual(item, c1)
+        self.assertIsEqual(item, c2)
+        self.assertIsEqual(item, c3)
+
         # Assert that copy rely creates a new instance and not references the original
         self.assertIsNot(c1, item)
         self.assertIsNot(c2, item)
