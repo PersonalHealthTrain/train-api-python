@@ -16,7 +16,10 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
     @property
     def data(self) -> dict:
         _data = super().data
-        _data['choices'] = sorted(list(self._choices))
+        _choices = 'choices'
+        if _choices in _data.keys():
+            raise TypeError('Implementation Error: Key \'{}\' already defined in parent class'.format(_choices))
+        _data[_choices] = sorted(list(self._choices))
         return _data
 
     def copy(self):
@@ -40,7 +43,7 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
         if isinstance(super().state(), PropertyUnavailable):
             return _state
         value = self.get_value()
-        if self.get_value() not in self._choices:
+        if value not in self._choices:
             return PropertyUnavailable('The value {} is not one of the allowed choices!'.format(value))
         return PROPERTY_AVAILABLE
 

@@ -3,6 +3,7 @@ from .EnvironmentVariableProperty import EnvironmentVariableProperty
 from .EnumEnvironmentVariableProperty import EnumEnvironmentVariableProperty
 from .UrlEnvironmentVariableProperty import UrlEnvironmentVariableProperty
 from .TokenEnvironmentVariableProperty import TokenEnvironmentVariableProperty
+from .BindMountEnvironmentVariableProperty import BindMountVariableProperty, MountType
 
 
 def url_by_name(name: str, description: Optional[str] = None):
@@ -15,3 +16,7 @@ def token_by_name(name: str, description: Optional[str] = None):
 
 def enum_by_name(name: str, choices: List[str], description: Optional[str] = None):
     return EnumEnvironmentVariableProperty(name, description, choices)
+
+
+def bind_mount_by_name(name: str, mount_type: MountType, description: Optional[str] = None):
+    return BindMountVariableProperty(name, description, mount_type)

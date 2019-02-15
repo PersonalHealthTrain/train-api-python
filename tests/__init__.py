@@ -9,6 +9,8 @@ from tests.internal.response.describe.property.environment_variable.TokenEnviron
     TokenEnvironmentVariablePropertyTests
 from tests.internal.response.describe.property.environment_variable.UrlEnvironmentVariablePropertyTests import \
     UrlEnvironmentVariablePropertyTests
+from tests.internal.response.describe.property.environment_variable.BindMountEnvironmentVariablePropertyTests import \
+    BindMountEnvironmentVariablePropertyTests
 
 from tests.internal.response.describe.requirement.builder import CnfBuilder1Tests, CnfBuilder2Tests
 
