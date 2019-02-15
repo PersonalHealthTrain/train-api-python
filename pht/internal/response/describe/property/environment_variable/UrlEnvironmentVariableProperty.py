@@ -11,4 +11,4 @@ class UrlEnvironmentVariableProperty(EnvironmentVariableProperty):
         return 'Url[name={}]'.format(self.name)
 
     def copy(self):
-        return UrlEnvironmentVariableProperty(self.name)
+        return UrlEnvironmentVariableProperty(self.name, self.description)

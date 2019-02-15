@@ -229,6 +229,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_data_1(self):
         expect = {
+            "description": None,
             'target': 'enum',
             'name': 'FOO',
             'choices': ['VALUE1', 'VALUE2'],
@@ -242,6 +243,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
 
     def test_data_2(self):
         expect = {
+            "description": None,
             'target': 'enum',
             'name': 'BAR',
             'choices': ['SINGLETON'],
@@ -258,6 +260,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_dict_1(self):
         expect = {
+            "description": None,
             'target': 'enum',
             'name': 'FOO',
             'choices': ['VALUE1', 'VALUE2'],
@@ -273,6 +276,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
 
     def test_dict_2(self):
         expect = {
+            "description": None,
             'target': 'enum',
             'name': 'BAR',
             'choices': ['SINGLETON'],

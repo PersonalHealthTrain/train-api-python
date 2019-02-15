@@ -28,6 +28,7 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
+                            'description': None,
                             'target': 'http://schema.org/URL',
                             'name': 'FOO',
                             'state': {
@@ -40,6 +41,7 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 2,
                         'data': {
+                            'description': None,
                             'target': 'token',
                             'name': 'BAR',
                             'state': {
@@ -53,6 +55,7 @@ class TrainDescriptionTests(BaseTest):
                     {''
                      'id': 3,
                      'data': {
+                         'description': None,
                          'target': 'enum',
                          'name': 'BAZ',
                          'state': {
@@ -117,6 +120,7 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
+                            'description': None,
                             'target': 'http://schema.org/URL',
                             'name': 'FOO',
                             'state': {
@@ -130,6 +134,7 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 2,
                         'data': {
+                            'description': None,
                             'target': 'token',
                             'name': 'BAR',
                             'state': {
@@ -144,6 +149,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 3,
                         'data':
                             {
+                                'description': None,
                                 'target': 'enum',
                                 'name': 'BAZ',
                                 'state': {

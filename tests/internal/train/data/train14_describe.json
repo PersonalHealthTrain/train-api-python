@@ -8,6 +8,7 @@
     {
       "id": 1,
       "data": {
+        "description": null,
         "target": "enum",
         "name": "FOO",
         "state": {

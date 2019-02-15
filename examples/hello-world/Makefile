@@ -7,4 +7,3 @@ describe:
 
 run:
 	docker run hello-world:station.1 --station-id 1 run
-

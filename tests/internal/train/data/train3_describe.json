@@ -8,6 +8,7 @@
     {
       "id": 1,
       "data": {
+        "description": null,
         "target": "http://schema.org/URL",
         "name": "FOO",
         "state": {
@@ -21,6 +22,7 @@
     {
       "id": 2,
       "data": {
+        "description": null,
         "target": "http://schema.org/URL",
         "name": "BAZ",
         "state": {
@@ -34,6 +36,7 @@
     {
       "id": 3,
       "data": {
+        "description": null,
         "target": "http://schema.org/URL",
         "name": "BAR",
         "state": {

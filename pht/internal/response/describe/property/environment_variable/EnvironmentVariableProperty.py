@@ -13,8 +13,9 @@ def _is_valid_environment_variable(name: str) -> bool:
 
 
 class EnvironmentVariableProperty(Property):
-    def __init__(self, name):
+    def __init__(self, name: str, description: str = None):
         self.name = name
+        self.description = description
 
         if self.name is None:
             raise ValueError('\'None\' is not allowed for the name of an Environment Variable')
@@ -28,7 +29,7 @@ class EnvironmentVariableProperty(Property):
                and self.target == other.target
 
     def __hash__(self):
-        return hash(self.type + self.target + self.name)
+        return hash((self.type, self.target, self.name))
 
     @property
     def display(self) -> str:
@@ -41,6 +42,7 @@ class EnvironmentVariableProperty(Property):
     @property
     def data(self) -> dict:
         return {
+            'description': self.description,
             'target': self.target,
             'name': self.name,
             'state': self.state().as_dict()

@@ -1,19 +1,22 @@
-.PHONY: all
+define docker_build
+    docker build --no-cache --rm --pull -t personalhealthtrain/train-api-python:1.0rc5-$(1) -f dockerfiles/Dockerfile_$(1) .
+endef
+
+.PHONY: all alpine pandas petronetto petronetto-deepmedic fhir
 
 all: alpine pandas petronetto petronetto-deepmedic fhir
 
 alpine:
-	docker build --no-cache -f dockerfiles/Dockerfile_alpine --rm --pull -t personalhealthtrain/train-api-python:1.0rc5-alpine .
+	$(call docker_build,alpine)
 
 pandas:
-	docker build --no-cache -f dockerfiles/Dockerfile_pandas --rm --pull -t personalhealthtrain/train-api-python:1.0rc5-pandas .
+	$(call docker_build,pandas)
 
 petronetto:
-	docker build --no-cache -f dockerfiles/Dockerfile_petronetto --rm --pull -t personalhealthtrain/train-api-python:1.0rc5-petronetto .
+	$(call docker_build,petronetto)
 
 petronetto-deepmedic:
-	docker build --no-cache -f dockerfiles/Dockerfile_petronetto_deepmedic --rm --pull -t personalhealthtrain/train-api-python:1.0rc5-petronetto-deepmedic .
+	$(call docker_build,petronetto-deepmedic)
 
 fhir:
-	docker build --no-cache -f dockerfiles/Dockerfile_fhir --rm --pull -t personalhealthtrain/train-api-python:1.0rc5-fhir .
-
+	$(call docker_build,fhir)

@@ -110,6 +110,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'FOO',
                 'state': {
@@ -123,6 +124,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'BAR',
                 'state': {
@@ -135,6 +137,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_dict_3(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'MY_VARIABLE',
                 'state': {
@@ -148,6 +151,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_dict_4(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'SOME_OTHER_VARIABLE',
                 'state': {
@@ -162,6 +166,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'value'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'FOO',
                     'state': {
@@ -177,6 +182,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'value'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'BAR',
                     'state': {
@@ -192,6 +198,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'MY_VARIABLE',
                     'state': {
@@ -207,6 +214,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'SOME_OTHER_VARIABLE',
                     'state': {
@@ -270,6 +278,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'FOO',
                 'state': {
@@ -281,6 +290,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_2(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'BAR',
                 'state': {
@@ -291,6 +301,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_3(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'MY_VARIABLE',
                 'state': {
@@ -301,6 +312,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_4(self):
         self.checkExpect(
             expect={
+                'description': None,
                 'target': 'token',
                 'name': 'SOME_OTHER_VARIABLE',
                 'state': {
@@ -312,6 +324,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'VALUE'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'FOO',
                     'state': {
@@ -323,6 +336,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'VALUE'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'BAR',
                     'state': {
@@ -334,6 +348,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'MY_VARIABLE',
                     'state': {
@@ -345,6 +360,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
+                    'description': None,
                     'target': 'token',
                     'name': 'SOME_OTHER_VARIABLE',
                     'state': {

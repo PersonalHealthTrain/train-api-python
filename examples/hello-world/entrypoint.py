@@ -1,44 +1,24 @@
-import os
-from pht.internal import StationRuntimeInfo, ConjunctionBuilder
-from pht.train.entity import RunResponse
-from pht.train import SimpleTrain
-from pht.requirement2 import url_by_name, Require
-from pht.internal.response.run import SUCCESS
-from pht.internal.response.run import DockerRebaseStrategy
-from pht.internal.entrypoint import cli_for_train
-
-model_file = '/opt/model'
+from pht.train import SimpleDockerTrain
+from pht.train.component import ConjunctionBuilder, StationRuntimeInfo
+from pht.requirement import Require
+from pht.requirement.environment_variable import url_by_name
+from pht.entrypoint import cli_for_train
 
 
-class MyTrain(SimpleTrain):
+class MyTrain(SimpleDockerTrain):
     def __init__(self):
+        super().__init__('hello-world', '1.0', 'rebase', ['next-tag'])
         self.data_source = url_by_name('MY_DATA_SOURCE')
+        self.output = self.trainfile('output')
 
     def requirements(self) -> ConjunctionBuilder:
         return Require(self.data_source)
 
     def model_summary(self) -> str:
-        if not os.path.exists(model_file):
-            return 'No Model'
-        with open(model_file, 'r') as f:
-            return f.read()
+        return self.output.read_or_default('Not executed yet')
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
-
-        if not os.path.exists('/opt'):
-            os.mkdir('/opt')
-        with open(model_file, 'w') as f:
-            f.write('Hello World')
-
-        return RunResponse(
-            run_exit=SUCCESS,
-            free_text_message='Hello world',
-            rebase=DockerRebaseStrategy(
-                frm='personalhealthtrain/train-api-python:1.0rc3',
-                next_train_tags='station.2',
-                export_files=[model_file]
-            )
-        )
+    def run_algorithm(self, info: StationRuntimeInfo, log):
+        self.output.write('Hello World')
 
 
 if __name__ == '__main__':

@@ -2,8 +2,6 @@ from .EnvironmentVariableProperty import EnvironmentVariableProperty
 
 
 class TokenEnvironmentVariableProperty(EnvironmentVariableProperty):
-    def __init__(self, name):
-        super().__init__(name)
 
     @property
     def target(self) -> str:
@@ -13,4 +11,4 @@ class TokenEnvironmentVariableProperty(EnvironmentVariableProperty):
         return 'Token[name={}]'.format(self.name)
 
     def copy(self):
-        return TokenEnvironmentVariableProperty(self.name)
+        return TokenEnvironmentVariableProperty(self.name, self.description)

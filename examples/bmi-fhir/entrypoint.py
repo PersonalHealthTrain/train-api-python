@@ -6,14 +6,12 @@ import requests
 import pandas as pd
 import numpy as np
 import re
-import os
 
-from pht.train import SimpleTrain
-from pht.internal import StationRuntimeInfo
-from pht.train.entity import RunResponse
-from pht.internal.response.run import SUCCESS
-from pht.internal.response.run import DockerRebaseStrategy
-from pht.internal.entrypoint import cli_for_train
+from pht.train import SimpleDockerTrain
+from pht.train.component import StationRuntimeInfo
+from pht.requirement import Require
+from pht.requirement.environment_variable import url_by_name
+from pht.entrypoint import cli_for_train
 
 
 # Parse CQL expression so that CQL evaluation engine can resolve them
@@ -153,13 +151,11 @@ def computeBMI(temp_csv_file, BMI_file):
         print('BMI file has been generated!')
 
 
-# In[6]:
-
 # Provide the URL to CQL evaluation engine
-cqlEngineURL = "http://menzel.informatik.rwth-aachen.de:8082/cql/evaluate"
+# cqlEngineURL = "http://menzel.informatik.rwth-aachen.de:8082/cql/evaluate"
 
 # Provide the URL to FHIR server
-dataServiceUri = "http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/"
+# dataServiceUri = "http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/"
 
 
 # A FHIR terminology service is simply a set of functions built on the definitions provided by a collection of CodeSystem,
@@ -171,67 +167,51 @@ dataServiceUri = "http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/"
 # -- The ValueSet resource
 # -- The ConceptMap resource
 # It's mostly a RESTful Terminology Server
-terminologyServiceUri = "http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/"  # Holds our CodeSystem/ValueSet/ConceptMap resources
+# terminologyServiceUri = "http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/"  # Holds our CodeSystem/ValueSet/ConceptMap resources
 
 
 CQL = parse_cql()
 
 
-def _path(filename: str):
-    return os.path.join('/opt/train', filename)
-
-
-class BMITrain(SimpleTrain):
+class BMITrain(SimpleDockerTrain):
     def __init__(self):
-        self.bmi_file = _path('BMI1.csv')
+        super().__init__('BMI FHIR', '1.0', 'rebase', ['tag'])
+        self.terminology_server = url_by_name('TERMINOLOGY', description='The terminology server')
+        self.cql_engine = url_by_name('CQL', description='The URL of the CQL engine')
+        self.data_service = url_by_name('DATA', description='The Data service')
+
+        self.output = self.trainfile('BMI')
 
     # Currently, this train does not declare any requirements
     def requirements(self):
-        pass
+        return Require(self.terminology_server) & Require(self.cql_engine) & Require(self.data_service)
 
     def model_summary(self) -> str:
-        if os.path.exists(self.bmi_file):
-            with open(self.bmi_file, 'r') as bmi_file_handle:
-                return '\n'.join(bmi_file_handle.readlines())
-        return 'No BMIs available in this train!'
+        return self.output.read_or_default('No BMIs available in this train!')
 
-    def run(self, info: StationRuntimeInfo) -> RunResponse:
+    def run_algorithm(self, info: StationRuntimeInfo, log):
 
-        cqlCode = parse_cql()
         # Generating JSON body for HTTP POST request to FHIR server
-        queryBody = {
-            "code": cqlCode,
-            "terminologyServiceUri": terminologyServiceUri,
-            "dataServiceUri": dataServiceUri,
+        query_body = {
+            "code": parse_cql(),
+            "terminologyServiceUri": self.terminology_server.get_value(),
+            "dataServiceUri": self.data_service.get_value(),
             'Content-Type': 'application/json'
         }
 
-        # print(queryBody)
         # Not the model, save to /tmp
         json_to_save = '/tmp/data.json'
-        # print(str(queryBody))
-
-        getData(cqlEngineURL, queryBody, json_to_save)
+        getData(self.cql_engine.get_value(), query_body, json_to_save)
 
         input_json_file_name = json_to_save
         # Not the model, save to /tmp
         preprocess_json_file = '/tmp/temp.json'
         temp_csv_file = '/tmp/test.csv'
-
         preprocessData(input_json_file_name, preprocess_json_file, temp_csv_file)
 
         input_phenotype = temp_csv_file
-        computeBMI(temp_csv_file=input_phenotype, BMI_file=self.bmi_file)
-
-        return RunResponse(
-                run_exit=SUCCESS,
-                free_text_message='BMI values have been computed successfully',
-                rebase=DockerRebaseStrategy(
-                    frm='personalhealthtrain/train-api-python:1.0rc3-pandas',
-                    next_train_tags='station.2',
-                    export_files=[self.bmi_file]
-                )
-            )
+        computeBMI(temp_csv_file=input_phenotype, BMI_file=self.output.path)
+        log.set_free_text_message('BMI values have been computed successfully')
 
 
 if __name__ == '__main__':

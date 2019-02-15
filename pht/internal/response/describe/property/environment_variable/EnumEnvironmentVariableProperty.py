@@ -1,11 +1,11 @@
-from typing import List
+from typing import Optional, List
 from .EnvironmentVariableProperty import EnvironmentVariableProperty
 from ..PropertyState import PropertyState, PropertyUnavailable, PROPERTY_AVAILABLE
 
 
 class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
-    def __init__(self, name: str, choices: List[str]):
-        super().__init__(name)
+    def __init__(self, name: str, description: Optional[str], choices: List[str]):
+        super().__init__(name, description)
         self._validate_choices(choices)
         self._choices = frozenset(choices)
 
@@ -20,7 +20,7 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
         return _data
 
     def copy(self):
-        return EnumEnvironmentVariableProperty(self.name, [choice for choice in self._choices])
+        return EnumEnvironmentVariableProperty(self.name, self.description, [choice for choice in self._choices])
 
     def __repr__(self):
         return 'Enum[name={},choices={}]'.format(self.name, sorted(list(self._choices)))
