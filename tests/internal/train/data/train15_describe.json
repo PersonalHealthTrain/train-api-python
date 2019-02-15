@@ -1,0 +1,48 @@
+{
+  "trainVersion": "1.0",
+  "trainName": "test_train",
+  "descriptionVersion": "1.0",
+  "properties": [
+    {
+      "id": 1,
+      "data": {
+        "description": null,
+        "target": "bindMount",
+        "name": "FOO",
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'FOO' not set"
+        },
+        "mountType": "file",
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    }
+  ],
+  "formula": [
+    {
+      "id": 1,
+      "data": {
+        "value": [
+          [
+            1
+          ]
+        ],
+        "type": "https://www.wikidata.org/wiki/Q846564",
+        "display": "ConjunctiveNormalForm"
+      }
+    }
+  ],
+  "model": {
+    "summary": "foo"
+  },
+  "algorithm": {
+    "requirement": {
+      "formula_id": 1,
+      "type": "FormulaAlgorithmRequirement",
+      "display": "FormulaAlgorithmRequirement"
+    }
+  },
+  "type": "TrainDescription",
+  "display": "TrainDescription"
+}

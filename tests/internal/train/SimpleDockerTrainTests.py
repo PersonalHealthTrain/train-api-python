@@ -1,5 +1,4 @@
 from tests.base import BaseTest
-from typing import List
 from unittest.mock import patch
 import json
 import os
@@ -8,8 +7,9 @@ from pht.internal.response.describe.requirement import Require, Forbid, Any
 from pht.internal.train.SimpleDockerTrain import SimpleDockerTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
 from pht.internal.response.describe.requirement.builder import ConjunctionBuilder
-from pht.internal.response.describe.property.environment_variable import enum_by_name, url_by_name
+from pht.internal.response.describe.property.environment_variable import enum_by_name, url_by_name, bind_mount_by_name
 from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, AlgorithmFailure, AlgorithmApplication
+from pht.internal.response.describe.property.environment_variable.BindMountEnvironmentVariableProperty import MountType
 
 
 class NoopTrain(SimpleDockerTrain):
@@ -139,6 +139,16 @@ class _TestTrain14(NoopTrain):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
 
+class _TestTrain15(NoopTrain):
+    def requirements(self):
+        return Require(bind_mount_by_name('FOO', MountType.FILE))
+
+
+class _TestTrain16(NoopTrain):
+    def requirements(self):
+        return Require(bind_mount_by_name('FOO', MountType.DIRECTORY))
+
+
 info = StationRuntimeInfo(1)
 
 
@@ -212,6 +222,13 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
     def test_describe_14(self):
         with patch.dict('os.environ', {'FOO': 'VALUE2'}):
             self.describe_test(_TestTrain14(), 'train14_describe.json')
+
+    # test bind_mount, environment variable not present
+    def test_describe_15(self):
+        self.describe_test(_TestTrain15(), 'train15_describe.json')
+
+    def test_describe_16(self):
+        self.describe_test(_TestTrain16(), 'train16_describe.json')
 
 
 class SimpleTrainRunTests(SimpleTrainTests):
