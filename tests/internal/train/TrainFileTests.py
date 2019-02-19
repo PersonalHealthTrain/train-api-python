@@ -1,98 +1,98 @@
 from tests.base import BaseTest
-from pht.internal.train.TrainFile import TrainFile
+from pht.internal.train.cargo.ModelFile import ModelFile
 
 
 class TrainFileTests(BaseTest):
 
     def setUp(self):
-        self.trainfile1 = TrainFile('foo')
-        self.trainfile2 = TrainFile('bar')
+        self.modelfile1 = ModelFile('foo')
+        self.modelfile2 = ModelFile('bar')
 
     ########################################################
     # Value Error
     ########################################################
     def test_value_error_1(self):
-        self.assertValueError(lambda: TrainFile(''))
+        self.assertValueError(lambda: ModelFile(''))
 
     def test_value_error_2(self):
-        self.assertValueError(lambda: TrainFile(' '))
+        self.assertValueError(lambda: ModelFile(' '))
 
     def test_value_error_3(self):
-        self.assertValueError(lambda: TrainFile('foo/bar'))
+        self.assertValueError(lambda: ModelFile('foo/bar'))
 
     def test_value_error_4(self):
-        self.assertValueError(lambda: TrainFile('foo\\bar'))
+        self.assertValueError(lambda: ModelFile('foo\\bar'))
 
     ########################################################
     # eq
     ########################################################
     def test_eq_1(self):
-        self.assertIsEqual(self.trainfile1, TrainFile('foo'))
+        self.assertIsEqual(self.modelfile1, ModelFile('foo'))
 
     def test_eq_2(self):
-        self.assertIsEqual(self.trainfile2, TrainFile('bar'))
+        self.assertIsEqual(self.modelfile2, ModelFile('bar'))
 
     ########################################################
     # path
     ########################################################
     def test_path_1(self):
         self.checkExpect(
-            expect='/opt/train/foo',
-            actual=self.trainfile1.path)
+            expect='/opt/pht_train/model/foo',
+            actual=self.modelfile1.absolute_path)
 
     def test_path_2(self):
         self.checkExpect(
-            expect='/opt/train/bar',
-            actual=self.trainfile2.path)
+            expect='/opt/pht_train/model/bar',
+            actual=self.modelfile2.absolute_path)
 
     ########################################################
     # type
     ########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='TrainFile',
-            actual=self.trainfile1.type)
+            expect='ModelFile',
+            actual=self.modelfile1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='TrainFile',
-            actual=self.trainfile2.type)
+            expect='ModelFile',
+            actual=self.modelfile2.type)
 
     ########################################################
     # display
     ########################################################
     def test_display_1(self):
         self.checkExpect(
-            expect='TrainFile',
-            actual=self.trainfile1.display)
+            expect='ModelFile',
+            actual=self.modelfile1.display)
 
     def test_display_2(self):
         self.checkExpect(
-            expect='TrainFile',
-            actual=self.trainfile2.display)
+            expect='ModelFile',
+            actual=self.modelfile2.display)
 
     ########################################################
     # data
     ########################################################
     def test_data_1(self):
         self.checkExpect(
-            expect={'path': '/opt/train/foo'},
-            actual=self.trainfile1.data)
+            expect={'absolute_path': '/opt/pht_train/model/foo'},
+            actual=self.modelfile1.data)
 
     def test_data_2(self):
         self.checkExpect(
-            expect={'path': '/opt/train/bar'},
-            actual=self.trainfile2.data)
+            expect={'absolute_path': '/opt/pht_train/model/bar'},
+            actual=self.modelfile2.data)
 
     ########################################################
     # as_dict
     ########################################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={'path': '/opt/train/foo', 'type': 'TrainFile', 'display': 'TrainFile'},
-            actual=self.trainfile1.as_dict())
+            expect={'absolute_path': '/opt/pht_train/model/foo', 'type': 'ModelFile', 'display': 'ModelFile'},
+            actual=self.modelfile1.as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
-            expect={'path': '/opt/train/bar', 'type': 'TrainFile', 'display': 'TrainFile'},
-            actual=self.trainfile2.as_dict())
+            expect={'absolute_path': '/opt/pht_train/model/bar', 'type': 'ModelFile', 'display': 'ModelFile'},
+            actual=self.modelfile2.as_dict())

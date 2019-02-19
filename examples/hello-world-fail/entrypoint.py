@@ -9,7 +9,7 @@ class MyTrain(SimpleDockerTrain):
     def __init__(self):
         super().__init__('hello-world', '1.0', 'rebase', ['next-tag'])
         self.data_source = url_by_name('MY_DATA_SOURCE')
-        self.output = self.trainfile('output')
+        self.output = self.model_file('output')
 
     def requirements(self) -> ConjunctionBuilder:
         return Require(self.data_source)

@@ -8,7 +8,8 @@ from typing import List
 from pht.internal.protocol.Typed import Typed
 from pht.internal.protocol.Copyable import Copyable
 from pht.internal.protocol.Comparable import Comparable
-from pht.internal.train.TrainFile import TrainFile
+from pht.internal.train.cargo.TrainFile import TrainFile
+
 
 _TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
 
@@ -44,7 +45,7 @@ class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
     @property
     def data(self) -> dict:
         return {
-            'export_files': sorted(list([x.as_dict() for x in self.export_files])),
+            'export_files': list([x.as_dict() for x in self.export_files]),
             'next_train_tags': sorted(list(self.next_train_tags))
         }
 

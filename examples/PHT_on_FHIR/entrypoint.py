@@ -21,7 +21,7 @@ class Train(SimpleDockerTrain):
         self.endpoint_token = token_by_name('ENDPOINT_TOKEN')
 
         # The output of the train as trainfile
-        self.output = self.trainfile('output')
+        self.output = self.model_file('output')
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
 

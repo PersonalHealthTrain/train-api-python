@@ -1,10 +1,11 @@
 import json
 import os
 import re
+from functools import total_ordering
 from typing import AnyStr
-from pht.internal.protocol.Comparable import Comparable
-from pht.internal.protocol.Typed import Typed
+from .TrainFile import TrainFile
 from pht.internal.util import require
+
 
 _KEY_REGEX = re.compile(r'[a-zA-Z_][a-zA-Z0-9_-]*')
 
@@ -13,17 +14,15 @@ def _is_valid_key(key: str):
     return _KEY_REGEX.fullmatch(key) is not None
 
 
-class TrainFile(Comparable, Typed):
+@total_ordering
+class ModelFile(TrainFile):
     def __init__(self, key: str):
         require.for_value(key, lambda x: _is_valid_key(x), 'String: {} is not a valid key for TrainFile'.format(key))
-        self._path = os.path.join('/opt', 'train', key)
+        self._path = os.path.join(ModelFile.base_dir(), key)
 
-    def __eq__(self, other):
-        return other is self or \
-               (isinstance(other, TrainFile) and self._path == other._path)
-
-    def __hash__(self):
-        return hash(self._path)
+    @property
+    def absolute_path(self) -> str:
+        return self._path
 
     @property
     def type(self) -> str:
@@ -31,17 +30,14 @@ class TrainFile(Comparable, Typed):
 
     @property
     def display(self) -> str:
-        return 'TrainFile'
+        return 'ModelFile'
 
-    @property
-    def data(self) -> dict:
-        return {
-            'path': self._path
-        }
+    def exists(self) -> bool:
+        return os.path.isfile(self.absolute_path)
 
-    @property
-    def path(self):
-        return self._path
+    @staticmethod
+    def base_dir():
+        return os.path.join(TrainFile.base_dir(), 'model')
 
     def write(self, content: AnyStr):
         with open(self._path, 'w') as f:

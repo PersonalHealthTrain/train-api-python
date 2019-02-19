@@ -22,8 +22,13 @@ from tests.internal.response.run.rebase.DockerRebaseStrategyTests import DockerR
 
 from tests.internal.response.run.RunResponseTests import RunResponseTests
 
-
 # Train Tests
 from tests.internal.train.StationRuntimeInfoTests import StationRuntimeInfoTests
 from tests.internal.train.TrainFileTests import TrainFileTests
 from tests.internal.train.SimpleDockerTrainTests import SimpleTrainDescribeTests, SimpleTrainRunTests
+
+# Train Cargo Tests
+from tests.internal.train.SimpleDockerTrainTests import SimpleTrainDescribeTests, SimpleTrainRunTests
+
+from tests.internal.train.cargo.ModelFileTests import ModelFileTests
+from tests.internal.train.cargo.AlgorithmFileTests import AlgorithmFileTests

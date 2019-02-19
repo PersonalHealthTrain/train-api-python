@@ -180,7 +180,7 @@ class BMITrain(SimpleDockerTrain):
         self.cql_engine = url_by_name('CQL', description='The URL of the CQL engine')
         self.data_service = url_by_name('DATA', description='The Data service')
 
-        self.output = self.trainfile('BMI')
+        self.output = self.model_file('BMI')
 
     # Currently, this train does not declare any requirements
     def requirements(self):

@@ -45,12 +45,11 @@ class SimpleDockerTrain(AbstractTrain):
         message = log.free_text_message
         rebase_from = log.rebase_from if log.rebase_from is not None else self.default_rebase_from
         next_train_tags = log.next_train_tags if log.next_train_tags is not None else self.default_next_train_tags
-        export_files = self.list_existing_trainfiles()
 
         return RunResponse(exit_state, message, DockerRebaseStrategy(
             frm=rebase_from,
             next_train_tags=next_train_tags,
-            export_files=export_files
+            export_files=self.export_files()
         ))
 
     def describe(self, info: StationRuntimeInfo) -> TrainDescription:
