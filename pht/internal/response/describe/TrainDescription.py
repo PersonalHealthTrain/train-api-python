@@ -1,8 +1,12 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 from pht.internal.response.TrainResponse import TrainResponse
 from pht.internal.response.describe.property.Property import Property
 from pht.internal.response.describe.formula.Formula import Formula
 from pht.internal.response.describe.algorithm.AlgorithmRequirement import AlgorithmRequirement
+from pht.internal.response.describe.model.ModelSummary import ModelSummary
+from pht.internal.response.describe.model.StringModelSummary import StringModelSummary
+from pht.internal.response.describe.model.JsonModelSummary import JsonModelSummary
+from pht.internal.util.misc import as_dict_or_none
 
 
 class TrainDescription(TrainResponse):
@@ -10,15 +14,20 @@ class TrainDescription(TrainResponse):
     Description of a train that is obtained when the train is invoked with the describe command
     """
     def __init__(self,
-                 properties: Dict[int, Property],
-                 formulas: List[Formula],
-                 model_summary: str,
                  train_name: str,
                  train_version: str,
+                 properties: Dict[int, Property],
+                 formulas: List[Formula],
+                 model_summary: Union[ModelSummary, str, dict, list, None],
                  algorithm_requirement: Optional[AlgorithmRequirement]):
         self._properties = properties
         self._formula = formulas
         self._model_summary = model_summary
+        if isinstance(self._model_summary, str):
+            self._model_summary = StringModelSummary(self._model_summary)
+        elif isinstance(self._model_summary, list) or isinstance(self._model_summary, dict):
+            self._model_summary = JsonModelSummary(self._model_summary)
+
         self._algorithm_requirement = algorithm_requirement
         self._train_name = train_name
         self._train_version = train_version
@@ -26,11 +35,10 @@ class TrainDescription(TrainResponse):
     @property
     def data(self) -> dict:
 
-        def with_ids(iterable, id_fun, data_fun):
-            return [{'id': id_fun(x), 'data': data_fun(x)} for x in iterable]
-        first_with_dict = lambda x: x[1].as_dict()
-        properties = with_ids(self._properties.items(), id_fun=lambda x: x[0], data_fun=first_with_dict)
-        formula = with_ids(enumerate(self._formula), id_fun=lambda x: x[0]+1, data_fun=first_with_dict)
+        def with_ids(iterable, id_fun):
+            return [{'id': id_fun(x), 'data': x[1].as_dict()} for x in iterable]
+        properties = with_ids(self._properties.items(), id_fun=lambda x: x[0])
+        formula = with_ids(enumerate(self._formula), id_fun=lambda x: x[0]+1)
         return {
             'trainVersion': self._train_version,
             'trainName': self._train_name,
@@ -38,10 +46,10 @@ class TrainDescription(TrainResponse):
             'properties': properties,
             'formula': formula,
             'model': {
-                'summary': self._model_summary
+                'summary': as_dict_or_none(self._model_summary)
             },
             'algorithm': {
-                'requirement': self._algorithm_requirement.as_dict() if self._algorithm_requirement is not None else None
+                'requirement': as_dict_or_none(self._algorithm_requirement)
             }
         }
 

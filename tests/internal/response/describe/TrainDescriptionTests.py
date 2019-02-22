@@ -9,11 +9,17 @@ from pht.internal.response.describe.property.environment_variable import enum_by
 class TrainDescriptionTests(BaseTest):
 
     def setUp(self):
-        self.td1 = TrainDescription({
-            1: url_by_name('FOO'),
-            2: token_by_name('BAR'),
-            3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
-        }, [CNF(Clause(1))], 'model summary', 'test_train', '1.0', FormulaAlgorithmRequirement(1))
+        self.td1 = TrainDescription(
+            train_name='test_train',
+            train_version='1.0',
+            properties={
+                1: url_by_name('FOO'),
+                2: token_by_name('BAR'),
+                3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
+            },
+            formulas=[CNF(Clause(1))],
+            model_summary='model summary',
+            algorithm_requirement=FormulaAlgorithmRequirement(1))
 
     ################################################################################
     # As Dict
@@ -78,11 +84,17 @@ class TrainDescriptionTests(BaseTest):
                      }
                 ],
                 'model':
-                    {'summary': 'model summary'},
+                    {
+                        'summary': {
+                            'type': 'StringModelSummary',
+                            'display': 'StringModelSummary',
+                            'value': 'model summary'
+                        }
+                    },
                 'algorithm': {
                     'requirement':
                         {
-                            'formula_id':1,
+                            'formula_id': 1,
                             'type': 'FormulaAlgorithmRequirement',
                             'display': 'FormulaAlgorithmRequirement'
                         }
@@ -170,7 +182,13 @@ class TrainDescriptionTests(BaseTest):
                               }
                      }
                 ],
-                'model': {'summary': 'model summary'},
+                'model': {
+                    'summary': {
+                        'type': 'StringModelSummary',
+                        'display': 'StringModelSummary',
+                        'value': 'model summary'
+                    }
+                },
                 'algorithm': {
                     'requirement': {
                         'formula_id': 1,

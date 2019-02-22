@@ -1,5 +1,5 @@
 import abc
-from typing import List
+from typing import List, Union
 from pht.internal.train.AbstractTrain import AbstractTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
 from pht.internal.train.Log import Log
@@ -28,7 +28,7 @@ class SimpleDockerTrain(AbstractTrain):
         pass
 
     @abc.abstractmethod
-    def model_summary(self) -> str:
+    def model_summary(self) -> Union[str, dict, list]:
         pass
 
     @abc.abstractmethod

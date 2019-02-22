@@ -11,6 +11,8 @@ from tests.internal.response.describe.property.environment_variable.UrlEnvironme
     UrlEnvironmentVariablePropertyTests
 from tests.internal.response.describe.property.environment_variable.BindMountEnvironmentVariablePropertyTests import \
     BindMountEnvironmentVariablePropertyTests
+from tests.internal.response.describe.model.summary.StringModelSummaryTests import StringModelSummaryTests
+from tests.internal.response.describe.model.summary.JsonModelSummaryTests import JsonModelSummaryTests
 
 from tests.internal.response.describe.requirement.builder import CnfBuilder1Tests, CnfBuilder2Tests
 

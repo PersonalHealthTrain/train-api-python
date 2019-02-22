@@ -37,7 +37,7 @@ class Train(SimpleDockerTrain):
         elif endpoint_type == _SPARQL:
             output_json = sparql.runCohortCounter(endpoint_url)
 
-        self.output.write_as_json(output_json)
+        self.output.write(output_json)
         log.set_free_text_message('Algorithm has been executed successfully')
 
     def requirements(self) -> ConjunctionBuilder:

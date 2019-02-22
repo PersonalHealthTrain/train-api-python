@@ -7,7 +7,11 @@
   "properties": [],
   "formula": [],
   "model": {
-    "summary": "foo"
+    "summary": {
+      "type": "StringModelSummary",
+      "display": "StringModelSummary",
+      "value": "foo"
+    }
   },
   "algorithm": {
     "requirement": null

@@ -2,7 +2,7 @@ import json
 import os
 import re
 from functools import total_ordering
-from typing import AnyStr
+from typing import Union
 from .TrainFile import TrainFile
 from pht.internal.util import require
 
@@ -39,16 +39,20 @@ class ModelFile(TrainFile):
     def base_dir():
         return os.path.join(TrainFile.base_dir(), 'model')
 
-    def write(self, content: AnyStr):
+    def write(self, content: Union[str, list, dict]):
         with open(self._path, 'w') as f:
-            f.write(content)
-
-    def write_as_json(self, obj):
-        self.write(json.dumps(obj))
+            if isinstance(content, str):
+                f.write(content)
+            else:
+                json.dump(content, f)
 
     def read(self):
         with open(self._path, 'r') as f:
-            return os.linesep.join(f.readlines())
+            content = os.linesep.join(f.readlines())
+            try:
+                return json.loads(content)
+            except json.JSONDecodeError:
+                return content
 
     def read_or_default(self, default: str):
         if os.path.isfile(self._path):
