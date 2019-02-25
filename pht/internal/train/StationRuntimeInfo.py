@@ -13,10 +13,9 @@ class StationRuntimeInfo(Comparable, Copyable):
 
         # Numeric Id of the station that executed the train (required)
         self.station_id = station_id
-
         require.for_value(self.station_id,
-                          is_not_none,
-                          'Station ID was encountered to be None. This is not allowed.')
+                          that=is_not_none,
+                          error_if_not='Station ID was encountered to be None. This is not allowed.')
 
         # Optional Info about the track that the train is currently running on
         self.track_info = track_info

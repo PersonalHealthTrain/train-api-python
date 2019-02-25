@@ -1,8 +1,9 @@
-from tests.base import BaseTest
-from unittest.mock import patch
+import abc
 import json
 import os
-
+from typing import Optional
+from tests.base import BaseTest
+from unittest.mock import patch
 from pht.internal.response.describe.requirement import Require, Forbid, Any
 from pht.internal.train.SimpleDockerTrain import SimpleDockerTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
@@ -12,7 +13,7 @@ from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, AlgorithmFa
 from pht.internal.response.describe.property.environment_variable.BindMountEnvironmentVariableProperty import MountType
 
 
-class NoopTrain(SimpleDockerTrain):
+class DescribeOnlyTrain(SimpleDockerTrain):
     def __init__(self):
         super().__init__('test_train', '1.0', 'personalhealthtrain/rebase', ['foo'])
 
@@ -20,6 +21,10 @@ class NoopTrain(SimpleDockerTrain):
         return 'foo'
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
+        pass
+
+    @abc.abstractmethod
+    def requirements(self) -> Optional[ConjunctionBuilder]:
         pass
 
 
@@ -72,22 +77,22 @@ class _TestTrain3(SimpleDockerTrain):
         log.set_free_text_message('This is arbitrary free text')
 
 
-class _TestTrain4(NoopTrain):
+class _TestTrain4(DescribeOnlyTrain):
     def requirements(self) -> ConjunctionBuilder:
-        return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM')))  # & Require(url_by_name('FOO')) & Forbid(url_by_name('CAT'))
+        return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM')))
 
 
-class _TestTrain5(NoopTrain):
+class _TestTrain5(DescribeOnlyTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM'))) & Require(url_by_name('FOO')) & Forbid(url_by_name('CAT'))
 
 
-class _TestTrain6(NoopTrain):
+class _TestTrain6(DescribeOnlyTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Any(Forbid(url_by_name('BAZ')) | Require(url_by_name('BAR')) | Forbid(url_by_name('BAM'))) & Any(Require(url_by_name('FOO')) | Forbid(url_by_name('CAT')))
 
 
-class _TestTrain7(NoopTrain):
+class _TestTrain7(DescribeOnlyTrain):
     def __init__(self):
         super().__init__()
         self.source1 = url_by_name('DATA_SOURCE_A')
@@ -100,56 +105,68 @@ class _TestTrain7(NoopTrain):
 
 
 # Any with only one argument is not allowd
-class _TestTrain8(NoopTrain):
+class _TestTrain8(DescribeOnlyTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Any(Require(url_by_name('FOO')))
 
 
 # Argument to Literal is not a valid property
-class _TestTrain9(NoopTrain):
+class _TestTrain9(DescribeOnlyTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Forbid(url_by_name('FOO')) & Forbid('foo')
 
 
-class _TestTrain10(NoopTrain):
+class _TestTrain10(DescribeOnlyTrain):
     def requirements(self) -> ConjunctionBuilder:
         return Forbid(url_by_name('BAZ')) & Forbid(url_by_name('BAM'))
 
 
-class _TestTrain11(NoopTrain):
+class _TestTrain11(DescribeOnlyTrain):
     def requirements(self):
         pass
 
 
-##################################
+######################################################################################
 #  Trains also using enums
-##################################
-class _TestTrain12(NoopTrain):
+######################################################################################
+class _TestTrain12(DescribeOnlyTrain):
     def requirements(self):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
 
-class _TestTrain13(NoopTrain):
+class _TestTrain13(DescribeOnlyTrain):
     def requirements(self):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
 
-class _TestTrain14(NoopTrain):
+class _TestTrain14(DescribeOnlyTrain):
     def requirements(self):
         return Require(enum_by_name('FOO', choices=['VALUE1', 'VALUE2']))
 
 
-class _TestTrain15(NoopTrain):
+class _TestTrain15(DescribeOnlyTrain):
     def requirements(self):
         return Require(bind_mount_by_name('FOO', MountType.FILE))
 
 
-class _TestTrain16(NoopTrain):
+class _TestTrain16(DescribeOnlyTrain):
     def requirements(self):
         return Require(bind_mount_by_name('FOO', MountType.DIRECTORY))
 
 
-info = StationRuntimeInfo(1)
+######################################################################################
+#  Trains that operate on a File System mount
+######################################################################################
+class _TestTrain17(DescribeOnlyTrain):
+    def requirements(self):
+        return Require(
+            bind_mount_by_name(
+                'DATA_FILE_LOCATION',
+                mount_type=MountType.FILE,
+                description='The location for the data files of use case X'))
+
+
+station_runtime_info = StationRuntimeInfo(1)
 
 
 def _load_json(name: str) -> dict:
@@ -170,7 +187,7 @@ class SimpleTrainTests(BaseTest):
 class SimpleTrainDescribeTests(SimpleTrainTests):
 
     def describe_test(self, train: SimpleDockerTrain, file: str):
-        self.perform_test(train.describe(info), file)
+        self.perform_test(train.describe(station_runtime_info), file)
 
     def test_describe_1(self):
         self.describe_test(_TestTrain1(), 'train1_describe.json')
@@ -196,12 +213,12 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
     # TestTrain cannot describe, because the implementation of requirements is incorrect
     def test_describe_8(self):
         with self.assertRaises(ValueError):
-            _TestTrain8().describe(info).as_json_string()
+            _TestTrain8().describe(station_runtime_info).as_json_string()
 
     # Argument to literal is not a valid property
     def test_describe_9(self):
         with self.assertRaises(ValueError):
-            _TestTrain9().describe(info).as_json_string()
+            _TestTrain9().describe(station_runtime_info).as_json_string()
 
     def test_describe_10(self):
         self.describe_test(_TestTrain10(), 'train10_describe.json')
@@ -230,11 +247,14 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
     def test_describe_16(self):
         self.describe_test(_TestTrain16(), 'train16_describe.json')
 
+    def test_describe_17(self):
+        self.describe_test(_TestTrain17(), 'train17_describe.json')
+
 
 class SimpleTrainRunTests(SimpleTrainTests):
 
     def run_test(self, train: SimpleDockerTrain, file: str):
-        self.perform_test(train.run(info), file)
+        self.perform_test(train.run(station_runtime_info), file)
 
     def test_run_1(self):
         self.run_test(_TestTrain1(), 'train1_run.json')

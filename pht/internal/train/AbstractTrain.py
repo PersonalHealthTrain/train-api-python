@@ -24,6 +24,9 @@ class AbstractTrain(TrainCommandInterface, abc.ABC):
         return self._model_files[key]
 
     def export_files(self) -> List[TrainFile]:
+        """
+        Lists all the files that this Abstract Train should export.
+        """
         existing_model_files = [model_file for model_file in self._model_files.values() if model_file.exists()]
         algorithm_files = AlgorithmFile.list()
         return sorted(existing_model_files + algorithm_files)

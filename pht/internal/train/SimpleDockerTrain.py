@@ -1,14 +1,34 @@
 import abc
-from typing import List, Union
+from typing import List, Union, Optional
 from pht.internal.train.AbstractTrain import AbstractTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
-from pht.internal.train.Log import Log
 from pht.internal.response.run.RunResponse import RunResponse
 from pht.internal.response.run.rebase.RebaseStrategy import DockerRebaseStrategy
 from pht.internal.response.run.exit.RunExit import AlgorithmFailure
 from pht.internal.response.describe.TrainDescription import TrainDescription
 from pht.internal.response.describe.requirement.builder import ConjunctionBuilder
 from pht.internal.response.describe.algorithm.FormulaAlgorithmRequirement import FormulaAlgorithmRequirement
+from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, RunExit
+
+
+class Log:
+    def __init__(self):
+        self.exit_state = AlgorithmSuccess('')
+        self.free_text_message = ''
+        self.rebase_from = None
+        self.next_train_tags = None
+
+    def set_exit_state(self, exit_state: RunExit):
+        self.exit_state = exit_state
+
+    def set_free_text_message(self, m: str):
+        self.free_text_message = m
+
+    def set_rebase_from(self, frm: str):
+        self.rebase_from = frm
+
+    def set_next_train_tags(self, tags: List[str]):
+        self.next_train_tags = tags.copy()
 
 
 class SimpleDockerTrain(AbstractTrain):
@@ -16,7 +36,11 @@ class SimpleDockerTrain(AbstractTrain):
     Train class that can be extended if the train completely relies on Docker images.
     In particular, this Train will always use the DockerRebaseStrategy
     """
-    def __init__(self, train_name: str, train_version: str, default_rebase_from: str, default_next_train_tags: List[str]):
+    def __init__(self,
+                 train_name: str,
+                 train_version: str,
+                 default_rebase_from: str,
+                 default_next_train_tags: List[str]):
         super().__init__()
         self.train_name = train_name
         self.train_version = train_version
@@ -24,7 +48,11 @@ class SimpleDockerTrain(AbstractTrain):
         self.default_next_train_tags = default_next_train_tags.copy()
 
     @abc.abstractmethod
-    def requirements(self) -> ConjunctionBuilder:
+    def requirements(self) -> Optional[ConjunctionBuilder]:
+        """
+        The Conjunction expression to define the algorithm requirements of the train, or None if no such requirements
+        exists
+        """
         pass
 
     @abc.abstractmethod

@@ -1,0 +1,52 @@
+{
+  "trainVersion": "1.0",
+  "trainName": "test_train",
+  "descriptionVersion": "1.0",
+  "properties": [
+    {
+      "id": 1,
+      "data": {
+        "description": "The location for the data files of use case X",
+        "target": "bindMount",
+        "name": "DATA_FILE_LOCATION",
+        "state": {
+          "isAvailable": false,
+          "reason": "Environment variable 'DATA_FILE_LOCATION' not set"
+        },
+        "mountType": "file",
+        "type": "http://www.wikidata.org/entity/Q400857",
+        "display": "environmentVariable"
+      }
+    }
+  ],
+  "formula": [
+    {
+      "id": 1,
+      "data": {
+        "value": [
+          [
+            1
+          ]
+        ],
+        "type": "https://www.wikidata.org/wiki/Q846564",
+        "display": "ConjunctiveNormalForm"
+      }
+    }
+  ],
+  "model": {
+    "summary": {
+      "value": "foo",
+      "type": "StringModelSummary",
+      "display": "StringModelSummary"
+    }
+  },
+  "algorithm": {
+    "requirement": {
+      "formula_id": 1,
+      "type": "FormulaAlgorithmRequirement",
+      "display": "FormulaAlgorithmRequirement"
+    }
+  },
+  "type": "TrainDescription",
+  "display": "TrainDescription"
+}
