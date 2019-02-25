@@ -1,5 +1,6 @@
-from typing import Any, Iterable
+from typing import Any, Iterable, Optional
 from pht.internal.protocol.DictRepresentable import DictRepresentable
+from pht.internal.protocol.Copyable import Copyable
 
 
 def frozen_set_of(typ, item, items: Iterable[Any]):
@@ -13,5 +14,9 @@ def frozen_set_of(typ, item, items: Iterable[Any]):
     return frozenset(tmp)
 
 
-def as_dict_or_none(item: DictRepresentable):
+def as_dict_or_none(item: Optional[DictRepresentable]):
     return item.as_dict() if item is not None else None
+
+
+def copy_or_none(item: Optional[Copyable]):
+    return item.copy() if item is not None else None

@@ -34,3 +34,7 @@ from tests.internal.train.SimpleDockerTrainTests import SimpleTrainDescribeTests
 
 from tests.internal.train.cargo.ModelFileTests import ModelFileTests
 from tests.internal.train.cargo.AlgorithmFileTests import AlgorithmFileTests
+
+
+# Train Require
+from tests.internal.util.require import RequireTests

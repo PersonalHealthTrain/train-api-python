@@ -1,5 +1,5 @@
 """
-Contains functions to create the 'entrypoint' of the frontend program that executes the train.
+Contains functions to create the 'entrypoint' of the frontend script that executes the train.
 
 If the train is run inside a container, a call of one of these functions should be the entrypoint of the container.
 """
@@ -17,12 +17,6 @@ def cli_for_train(train: TrainCommandInterface):
     _describe = 'describe'
     _run = 'run'
 
-    def _fprint(msg: str):
-        print(msg, flush=True)
-
-    def _exit_unsupported_command():
-        sys.exit(1)
-
     parser = argparse.ArgumentParser(description='Command-line interface for running a train')
     parser.add_argument('COMMAND', type=str, choices=[_describe, _run])
     parser.add_argument(
@@ -34,10 +28,17 @@ def cli_for_train(train: TrainCommandInterface):
 
     args = parser.parse_args()
     info = StationRuntimeInfo(station_id=args.station_id, track_info=args.track_info, user_data=args.user_data)
+
+    def _flush_print(msg: str):
+        print(msg, flush=True)
+
+    def _exit_unsupported_command():
+        sys.exit(1)
+
     command = args.COMMAND
     if command == _run:
-        _fprint(train.run(info).as_json_string())
+        _flush_print(train.run(info).as_json_string())
     elif command == _describe:
-        _fprint(train.describe(info).as_json_string())
+        _flush_print(train.describe(info).as_json_string())
     else:
         _exit_unsupported_command()
