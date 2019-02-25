@@ -3,7 +3,6 @@ Base class for a rebase strategy
 """
 import abc
 import re
-import os
 from typing import List
 from pht.internal.protocol.Typed import Typed
 from pht.internal.protocol.Copyable import Copyable
@@ -23,16 +22,6 @@ def _train_tag_is_valid(value: str):
     return _TRAIN_TAG_REGEX.fullmatch(value) is not None
 
 
-def _file_is_valid(p: str) -> bool:
-    """
-    Checks that the file referenced by the path is an existing regular file and not a symlink. Also, the
-    path needs to be absolute.
-    :param path: The path to be tested
-    :return: Whether the path is valid as defined above
-    """
-    return os.path.isabs(p) and os.path.isfile(p) and not os.path.islink(p)
-
-
 class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
     def __init__(self,
                  next_train_tags: List[str],
@@ -45,7 +34,7 @@ class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
     @property
     def data(self) -> dict:
         return {
-            'export_files': list([x.as_dict() for x in self.export_files]),
+            'export_files': [x.as_dict() for x in sorted(list(self.export_files))],
             'next_train_tags': sorted(list(self.next_train_tags))
         }
 
@@ -86,11 +75,9 @@ class DockerRebaseStrategy(RebaseStrategy):
         return result
 
     def __eq__(self, other):
-        if other is self:
-            return True
-        if not isinstance(other, DockerRebaseStrategy):
-            return False
-        return self.frm == other.frm and self.next_train_tags == other.next_train_tags and self.export_files == other.export_files
+        return other is self or \
+               (isinstance(other, DockerRebaseStrategy) and self.frm == other.frm and
+                self.next_train_tags == other.next_train_tags and self.export_files == other.export_files)
 
     def __hash__(self):
         return hash((self.frm, self.next_train_tags, self.export_files))

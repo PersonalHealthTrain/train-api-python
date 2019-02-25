@@ -18,7 +18,7 @@ class AbstractTrain(TrainCommandInterface, abc.ABC):
         os.makedirs(AlgorithmFile.base_dir(), exist_ok=True)
         os.makedirs(ModelFile.base_dir(), exist_ok=True)
 
-    def model_file(self, key: str):
+    def model_file(self, key: str) -> ModelFile:
         if key not in self._model_files.keys():
             self._model_files[key] = ModelFile(key)
         return self._model_files[key]

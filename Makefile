@@ -1,5 +1,5 @@
 define docker_build
-    docker build --no-cache --rm --pull -t personalhealthtrain/train-api-python:1.0rc8-$(1) -f dockerfiles/Dockerfile_$(1) .
+    docker build --no-cache --rm --pull -t personalhealthtrain/train-api-python:1.0rc9-$(1) -f dockerfiles/Dockerfile_$(1) .
 endef
 
 .PHONY: all alpine pandas petronetto petronetto-deepmedic fhir

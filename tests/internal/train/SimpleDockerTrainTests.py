@@ -1,7 +1,7 @@
 import abc
 import json
 import os
-from typing import Optional
+from typing import Optional, Union
 from tests.base import BaseTest
 from unittest.mock import patch
 from pht.internal.response.describe.requirement import Require, Forbid, Any
@@ -157,13 +157,44 @@ class _TestTrain16(DescribeOnlyTrain):
 ######################################################################################
 #  Trains that operate on a File System mount
 ######################################################################################
-class _TestTrain17(DescribeOnlyTrain):
+class _TestTrain17(SimpleDockerTrain):
+    def __init__(self):
+        super().__init__('test_train', '1.0', 'personalhealthtrain/base:base', ['2.7.15-slim-jessie'])
+
     def requirements(self):
         return Require(
             bind_mount_by_name(
                 'DATA_FILE_LOCATION',
                 mount_type=MountType.FILE,
                 description='The location for the data files of use case X'))
+
+    # We do not expect the model file to be exported, since it does not have any content
+    def run_algorithm(self, info: StationRuntimeInfo, log):
+        self.model_file('fo')
+
+    def model_summary(self) -> Union[str, dict, list]:
+        return 'model summary'
+
+
+class _TestTrain18(SimpleDockerTrain):
+    def __init__(self):
+        super().__init__('test_train', '1.0', 'personalhealthtrain/base:base', ['2.7.15-slim-jessie', 'latest'])
+
+    def requirements(self):
+        return Require(
+            bind_mount_by_name(
+                'DATA_DIRECTORY_LOCATION',
+                mount_type=MountType.DIRECTORY,
+                description='The location for the data files of use case X'))
+
+    def model_summary(self) -> Union[str, dict, list]:
+        return {
+            'param1': 719,
+            'param2': 1
+        }
+
+    def run_algorithm(self, info: StationRuntimeInfo, log):
+        self.model_file('key').write('Some value')
 
 
 station_runtime_info = StationRuntimeInfo(1)
@@ -250,6 +281,9 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
     def test_describe_17(self):
         self.describe_test(_TestTrain17(), 'train17_describe.json')
 
+    def test_describe_18(self):
+        self.describe_test(_TestTrain18(), 'train18_describe.json')
+
 
 class SimpleTrainRunTests(SimpleTrainTests):
 
@@ -264,3 +298,9 @@ class SimpleTrainRunTests(SimpleTrainTests):
 
     def test_run_3(self):
         self.run_test(_TestTrain3(), 'train3_run.json')
+
+    def test_run_17(self):
+        self.run_test(_TestTrain17(), 'train17_run.json')
+
+    def test_run_18(self):
+        self.run_test(_TestTrain18(), 'train18_run.json')

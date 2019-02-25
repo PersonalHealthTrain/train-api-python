@@ -8,12 +8,12 @@
       "data": {
         "description": "The location for the data files of use case X",
         "target": "bindMount",
-        "name": "DATA_FILE_LOCATION",
+        "name": "DATA_DIRECTORY_LOCATION",
         "state": {
           "isAvailable": false,
-          "reason": "Environment variable 'DATA_FILE_LOCATION' not set"
+          "reason": "Environment variable 'DATA_DIRECTORY_LOCATION' not set"
         },
-        "mountType": "file",
+        "mountType": "directory",
         "type": "http://www.wikidata.org/entity/Q400857",
         "display": "environmentVariable"
       }
@@ -35,9 +35,12 @@
   ],
   "model": {
     "summary": {
-      "value": "model summary",
-      "type": "StringModelSummary",
-      "display": "StringModelSummary"
+      "value": {
+        "param1": 719,
+        "param2": 1
+      },
+      "type": "JsonModelSummary",
+      "display": "JsonModelSummary"
     }
   },
   "algorithm": {

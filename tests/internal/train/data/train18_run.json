@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "exit": {
+    "state": "success",
+    "reason": ""
+  },
+  "free_text_message": "",
+  "rebase": {
+    "export_files": [
+      {
+        "absolute_path": "/opt/pht_train/model/key",
+        "type": "ModelFile",
+        "display": "ModelFile"
+      }
+    ],
+    "next_train_tags": [
+      "2.7.15-slim-jessie",
+      "latest"
+    ],
+    "from": "personalhealthtrain/base:base",
+    "type": "docker",
+    "display": "docker"
+  },
+  "type": "RunResponse",
+  "display": "RunResponse"
+}

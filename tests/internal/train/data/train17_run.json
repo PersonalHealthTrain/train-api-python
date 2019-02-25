@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "exit": {
+    "state": "success",
+    "reason": ""
+  },
+  "free_text_message": "",
+  "rebase": {
+    "export_files": [],
+    "next_train_tags": [
+      "2.7.15-slim-jessie"
+    ],
+    "from": "personalhealthtrain/base:base",
+    "type": "docker",
+    "display": "docker"
+  },
+  "type": "RunResponse",
+  "display": "RunResponse"
+}
