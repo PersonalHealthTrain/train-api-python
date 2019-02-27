@@ -6,7 +6,7 @@
   },
   "freeTextMessage": "",
   "rebase": {
-    "export_files": [
+    "exportFiles": [
       {
         "absolutePath": "/opt/pht_train/model/key",
         "type": "ModelFile",

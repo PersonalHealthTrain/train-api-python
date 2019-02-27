@@ -39,7 +39,7 @@ class RunResponseTests(BaseTest):
                 'exit': {'state': 'failure', 'reason': 'foo'},
                 'freeTextMessage': 'bar',
                 'rebase': {
-                    'export_files': [],
+                    'exportFiles': [],
                     'next_train_tags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
@@ -59,7 +59,7 @@ class RunResponseTests(BaseTest):
                 },
                 'freeTextMessage': 'Some text',
                 'rebase': {
-                    'export_files': [
+                    'exportFiles': [
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile',
@@ -122,7 +122,7 @@ class RunResponseTests(BaseTest):
                 'exit': {'state': 'failure', 'reason': 'foo'},
                 'freeTextMessage': 'bar',
                 'rebase': {
-                    'export_files': [],
+                    'exportFiles': [],
                     'next_train_tags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
@@ -140,7 +140,7 @@ class RunResponseTests(BaseTest):
                 },
                 'freeTextMessage': 'Some text',
                 'rebase': {
-                    'export_files': [
+                    'exportFiles': [
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile', 'display': 'AlgorithmFile'

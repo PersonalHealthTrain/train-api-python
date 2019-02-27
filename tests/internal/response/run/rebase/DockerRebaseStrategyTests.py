@@ -29,7 +29,7 @@ class DockerRebaseStrategyTests(BaseTest):
     ################################################################################
     def test_data_1(self):
         self.checkExpect(
-            expect={'export_files': [], 'next_train_tags': ['station.2'], 'from': 'from'},
+            expect={'exportFiles': [], 'next_train_tags': ['station.2'], 'from': 'from'},
             actual=self.rebase1.data)
 
     ################################################################################
@@ -37,7 +37,7 @@ class DockerRebaseStrategyTests(BaseTest):
     ################################################################################
     def test_dict_1(self):
         self.checkExpect(
-            expect={'export_files': [], 'next_train_tags': ['station.2'], 'from': 'from', 'type': 'docker', 'display': 'docker'},
+            expect={'exportFiles': [], 'next_train_tags': ['station.2'], 'from': 'from', 'type': 'docker', 'display': 'docker'},
             actual=self.rebase1.as_dict())
 
     ################################################################################

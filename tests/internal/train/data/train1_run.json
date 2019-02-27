@@ -8,7 +8,7 @@
   },
   "freeTextMessage": "test",
   "rebase": {
-    "export_files": [],
+    "exportFiles": [],
     "next_train_tags": ["train-tag"],
     "from": "personalhealthtrain/base",
     "type": "docker",
