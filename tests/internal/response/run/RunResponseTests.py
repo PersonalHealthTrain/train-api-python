@@ -35,9 +35,9 @@ class RunResponseTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
-                'responseVersion': '1.0',
+                'runResponseVersion': '1.0',
                 'exit': {'state': 'failure', 'reason': 'foo'},
-                'free_text_message': 'bar',
+                'freeTextMessage': 'bar',
                 'rebase': {
                     'export_files': [],
                     'next_train_tags': ['tag1', 'tag2'],
@@ -52,12 +52,12 @@ class RunResponseTests(BaseTest):
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
-                'responseVersion': '1.0',
+                'runResponseVersion': '1.0',
                 'exit': {
                     'state': 'failure',
                     'reason': 'bar'
                 },
-                'free_text_message': 'Some text',
+                'freeTextMessage': 'Some text',
                 'rebase': {
                     'export_files': [
                         {
@@ -118,9 +118,9 @@ class RunResponseTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
-                'responseVersion': '1.0',
+                'runResponseVersion': '1.0',
                 'exit': {'state': 'failure', 'reason': 'foo'},
-                'free_text_message': 'bar',
+                'freeTextMessage': 'bar',
                 'rebase': {
                     'export_files': [],
                     'next_train_tags': ['tag1', 'tag2'],
@@ -133,12 +133,12 @@ class RunResponseTests(BaseTest):
     def test_data_2(self):
         self.checkExpect(
             expect={
-                'responseVersion': '1.0',
+                'runResponseVersion': '1.0',
                 'exit': {
                     'state': 'failure',
                     'reason': 'bar'
                 },
-                'free_text_message': 'Some text',
+                'freeTextMessage': 'Some text',
                 'rebase': {
                     'export_files': [
                         {

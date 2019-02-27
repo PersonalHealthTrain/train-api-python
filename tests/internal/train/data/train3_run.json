@@ -1,12 +1,12 @@
 {
-  "responseVersion": "1.0",
+  "runResponseVersion": "1.0",
   "type": "RunResponse",
   "display": "RunResponse",
   "exit": {
     "state": "application",
     "reason": "Application specific error, not success, but also not failure"
   },
-  "free_text_message": "This is arbitrary free text",
+  "freeTextMessage": "This is arbitrary free text",
   "rebase": {
     "export_files": [],
     "next_train_tags": ["latest"],

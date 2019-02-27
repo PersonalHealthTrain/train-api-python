@@ -1,12 +1,12 @@
 {
-  "responseVersion": "1.0",
+  "runResponseVersion": "1.0",
   "type": "RunResponse",
   "display": "RunResponse",
   "exit": {
     "state": "failure",
     "reason": "Execution of the algorithm failed"
   },
-  "free_text_message": "This is arbitrary free text",
+  "freeTextMessage": "This is arbitrary free text",
   "rebase": {
     "export_files": [],
     "next_train_tags": ["2.7.15-slim-jessie"],

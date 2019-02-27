@@ -1,10 +1,10 @@
 {
-  "responseVersion": "1.0",
+  "runResponseVersion": "1.0",
   "exit": {
     "state": "success",
     "reason": ""
   },
-  "free_text_message": "",
+  "freeTextMessage": "",
   "rebase": {
     "export_files": [],
     "next_train_tags": [

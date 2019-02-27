@@ -1,12 +1,12 @@
 {
-  "responseVersion": "1.0",
+  "runResponseVersion": "1.0",
   "type": "RunResponse",
   "display": "RunResponse",
   "exit": {
     "state": "success",
     "reason": "Execution ran successfully"
   },
-  "free_text_message": "test",
+  "freeTextMessage": "test",
   "rebase": {
     "export_files": [],
     "next_train_tags": ["train-tag"],
