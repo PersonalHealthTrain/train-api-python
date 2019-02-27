@@ -20,9 +20,6 @@ class AlgorithmFile(TrainFile):
     def display(self) -> str:
         return 'AlgorithmFile'
 
-    def exists(self) -> bool:
-        return os.path.isfile(self.absolute_path)
-
     @staticmethod
     def base_dir():
         return os.path.join(TrainFile.base_dir(), 'algorithm')

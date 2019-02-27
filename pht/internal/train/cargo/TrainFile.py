@@ -29,9 +29,8 @@ class TrainFile(Comparable, Typed):
             'absolutePath': self.absolute_path
         }
 
-    @abc.abstractmethod
     def exists(self) -> bool:
-        pass
+        return os.path.isfile(self.absolute_path)
 
     @staticmethod
     def base_dir():

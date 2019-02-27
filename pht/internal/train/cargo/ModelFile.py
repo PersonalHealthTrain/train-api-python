@@ -32,9 +32,6 @@ class ModelFile(TrainFile):
     def display(self) -> str:
         return 'ModelFile'
 
-    def exists(self) -> bool:
-        return os.path.isfile(self.absolute_path)
-
     @staticmethod
     def base_dir():
         return os.path.join(TrainFile.base_dir(), 'model')
