@@ -8,7 +8,7 @@
   "rebase": {
     "export_files": [
       {
-        "absolute_path": "/opt/pht_train/model/key",
+        "absolutePath": "/opt/pht_train/model/key",
         "type": "ModelFile",
         "display": "ModelFile"
       }

@@ -26,7 +26,7 @@ class TrainFile(Comparable, Typed):
     @property
     def data(self) -> dict:
         return {
-            'absolute_path': self.absolute_path
+            'absolutePath': self.absolute_path
         }
 
     @abc.abstractmethod

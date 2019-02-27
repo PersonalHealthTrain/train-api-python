@@ -61,17 +61,17 @@ class RunResponseTests(BaseTest):
                 'rebase': {
                     'export_files': [
                         {
-                            'absolute_path': '/opt/pht_train/algorithm/key3',
+                            'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile',
                             'display': 'AlgorithmFile'
                         },
                         {
-                            'absolute_path': '/opt/pht_train/model/key1',
+                            'absolutePath': '/opt/pht_train/model/key1',
                             'type': 'ModelFile',
                             'display': 'ModelFile'
                         },
                         {
-                            'absolute_path': '/opt/pht_train/model/key2',
+                            'absolutePath': '/opt/pht_train/model/key2',
                             'type': 'ModelFile',
                             'display': 'ModelFile'
                         }
@@ -142,16 +142,16 @@ class RunResponseTests(BaseTest):
                 'rebase': {
                     'export_files': [
                         {
-                            'absolute_path': '/opt/pht_train/algorithm/key3',
+                            'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile', 'display': 'AlgorithmFile'
                         },
                         {
-                            'absolute_path': '/opt/pht_train/model/key1',
+                            'absolutePath': '/opt/pht_train/model/key1',
                             'type': 'ModelFile',
                             'display': 'ModelFile'
                         },
                         {
-                            'absolute_path': '/opt/pht_train/model/key2',
+                            'absolutePath': '/opt/pht_train/model/key2',
                             'type': 'ModelFile',
                             'display': 'ModelFile'
                         }
