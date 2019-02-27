@@ -7,7 +7,7 @@
   "freeTextMessage": "",
   "rebase": {
     "exportFiles": [],
-    "next_train_tags": [
+    "nextTrainTags": [
       "2.7.15-slim-jessie"
     ],
     "from": "personalhealthtrain/base:base",

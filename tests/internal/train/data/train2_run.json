@@ -9,7 +9,7 @@
   "freeTextMessage": "This is arbitrary free text",
   "rebase": {
     "exportFiles": [],
-    "next_train_tags": ["2.7.15-slim-jessie"],
+    "nextTrainTags": ["2.7.15-slim-jessie"],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
     "display": "docker"

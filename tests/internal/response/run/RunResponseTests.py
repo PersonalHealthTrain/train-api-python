@@ -40,7 +40,7 @@ class RunResponseTests(BaseTest):
                 'freeTextMessage': 'bar',
                 'rebase': {
                     'exportFiles': [],
-                    'next_train_tags': ['tag1', 'tag2'],
+                    'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
                     'display': 'docker'
@@ -76,7 +76,7 @@ class RunResponseTests(BaseTest):
                             'display': 'ModelFile'
                         }
                     ],
-                    'next_train_tags': [],
+                    'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     'type': 'docker',
                     'display': 'docker'
@@ -123,7 +123,7 @@ class RunResponseTests(BaseTest):
                 'freeTextMessage': 'bar',
                 'rebase': {
                     'exportFiles': [],
-                    'next_train_tags': ['tag1', 'tag2'],
+                    'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
                     'display': 'docker'}
@@ -156,7 +156,7 @@ class RunResponseTests(BaseTest):
                             'display': 'ModelFile'
                         }
                     ],
-                    'next_train_tags': [],
+                    'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     'type': 'docker',
                     'display': 'docker'

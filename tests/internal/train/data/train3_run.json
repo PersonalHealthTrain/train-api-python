@@ -9,7 +9,7 @@
   "freeTextMessage": "This is arbitrary free text",
   "rebase": {
     "exportFiles": [],
-    "next_train_tags": ["latest"],
+    "nextTrainTags": ["latest"],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
     "display": "docker"
