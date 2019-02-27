@@ -35,7 +35,7 @@ class RunResponseTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
-                'version': '1.0',
+                'responseVersion': '1.0',
                 'exit': {'state': 'failure', 'reason': 'foo'},
                 'free_text_message': 'bar',
                 'rebase': {
@@ -52,7 +52,7 @@ class RunResponseTests(BaseTest):
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
-                'version': '1.0',
+                'responseVersion': '1.0',
                 'exit': {
                     'state': 'failure',
                     'reason': 'bar'
@@ -118,7 +118,7 @@ class RunResponseTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
-                'version': '1.0',
+                'responseVersion': '1.0',
                 'exit': {'state': 'failure', 'reason': 'foo'},
                 'free_text_message': 'bar',
                 'rebase': {
@@ -133,7 +133,7 @@ class RunResponseTests(BaseTest):
     def test_data_2(self):
         self.checkExpect(
             expect={
-                'version': '1.0',
+                'responseVersion': '1.0',
                 'exit': {
                     'state': 'failure',
                     'reason': 'bar'

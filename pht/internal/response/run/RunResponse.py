@@ -31,7 +31,7 @@ class RunResponse(TrainResponse):
     @property
     def data(self) -> dict:
         return {
-            'version': '1.0',
+            'responseVersion': '1.0',
             'exit': self.run_exit.as_dict(),
             'free_text_message': self.message,
             'rebase': self.rebase.as_dict()
