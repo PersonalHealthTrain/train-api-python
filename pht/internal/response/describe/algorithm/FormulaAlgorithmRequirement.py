@@ -17,10 +17,10 @@ class FormulaAlgorithmRequirement(AlgorithmRequirement):
 
     @property
     def type(self) -> str:
-        return self.display
+        return self.type_name
 
     @property
-    def display(self) -> str:
+    def type_name(self) -> str:
         return 'FormulaAlgorithmRequirement'
 
     def __eq__(self, other):

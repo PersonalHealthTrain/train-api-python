@@ -61,17 +61,17 @@ class StringModelSummaryTests(BaseTest):
             actual=self.model2.type)
 
     ##############################################################
-    # display
+    # typeName
     ##############################################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='StringModelSummary',
-            actual=self.model1.display)
+            actual=self.model1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='StringModelSummary',
-            actual=self.model2.display)
+            actual=self.model2.type_name)
 
     ##############################################################
     # value
@@ -107,7 +107,7 @@ class StringModelSummaryTests(BaseTest):
             expect={
                 'value': 'This is the model summary',
                 'type': 'StringModelSummary',
-                'display': 'StringModelSummary'
+                'typeName': 'StringModelSummary'
             },
             actual=self.model1.as_dict())
 
@@ -116,5 +116,5 @@ class StringModelSummaryTests(BaseTest):
             expect={
                 'value': 'This is another model summary',
                 'type': 'StringModelSummary',
-                'display': 'StringModelSummary'},
+                'typeName': 'StringModelSummary'},
             actual=self.model2.as_dict())

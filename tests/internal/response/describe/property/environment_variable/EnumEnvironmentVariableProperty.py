@@ -216,12 +216,12 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_display_1(self):
         expect = 'environmentVariable'
-        actual = self.enum1.display
+        actual = self.enum1.type_name
         self.assertEqual(expect, actual)
 
     def test_display_2(self):
         expect = 'environmentVariable'
-        actual = self.enum2.display
+        actual = self.enum2.type_name
         self.assertEqual(expect, actual)
 
     ###########################################################
@@ -269,7 +269,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                 "reason": "Environment variable 'FOO' not set"
             },
             'type': 'http://www.wikidata.org/entity/Q400857',
-            'display': 'environmentVariable'
+            'typeName': 'environmentVariable'
         }
         actual = self.enum1.as_dict()
         self.assertDictEqual(expect, actual)
@@ -285,7 +285,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                 "reason": "Environment variable 'BAR' not set"
             },
             'type': 'http://www.wikidata.org/entity/Q400857',
-            'display': 'environmentVariable'
+            'typeName': 'environmentVariable'
         }
         actual = self.enum2.as_dict()
         self.assertDictEqual(expect, actual)

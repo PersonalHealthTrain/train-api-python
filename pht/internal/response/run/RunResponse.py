@@ -26,7 +26,7 @@ class RunResponse(TrainResponse):
 
     @property
     def type(self) -> str:
-        return self.display
+        return self.type_name
 
     @property
     def data(self) -> dict:
@@ -38,5 +38,5 @@ class RunResponse(TrainResponse):
         }
 
     @property
-    def display(self) -> str:
+    def type_name(self) -> str:
         return 'RunResponse'

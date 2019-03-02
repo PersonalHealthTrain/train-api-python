@@ -58,12 +58,12 @@ class JsonModelSummaryTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='JsonModelSummary',
-            actual=self.model1.display)
+            actual=self.model1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='JsonModelSummary',
-            actual=self.model2.display)
+            actual=self.model2.type_name)
 
     ##############################################################
     # value
@@ -111,7 +111,7 @@ class JsonModelSummaryTests(BaseTest):
                     'key2': 'value2'
                 },
                 'type': 'JsonModelSummary',
-                'display': 'JsonModelSummary'
+                'typeName': 'JsonModelSummary'
             },
             actual=self.model1.as_dict())
 
@@ -120,5 +120,5 @@ class JsonModelSummaryTests(BaseTest):
             expect={
                 'value': ['entry1', 'entry2'],
                 'type': 'JsonModelSummary',
-                'display': 'JsonModelSummary'},
+                'typeName': 'JsonModelSummary'},
             actual=self.model2.as_dict())

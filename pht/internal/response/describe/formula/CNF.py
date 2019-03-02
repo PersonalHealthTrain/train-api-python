@@ -11,7 +11,7 @@ class CNF(Formula):
         return 'https://www.wikidata.org/wiki/Q846564'
 
     @property
-    def display(self) -> str:
+    def type_name(self) -> str:
         return 'ConjunctiveNormalForm'
 
     def __str__(self):

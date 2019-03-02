@@ -2,14 +2,14 @@
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
   "type": "TrainDescription",
-  "display": "TrainDescription",
+  "typeName": "TrainDescription",
   "trainName": "test_train",
   "properties": [],
   "formula": [],
   "model": {
     "summary": {
       "type": "StringModelSummary",
-      "display": "StringModelSummary",
+      "typeName": "StringModelSummary",
       "value": "foo"
     }
   },

@@ -76,7 +76,7 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[1, 2], [3, 4]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'display': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm'
             },
             actual=self.cnf1.as_dict())
 
@@ -85,7 +85,7 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[1]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'display': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm'
             },
             actual=self.cnf2.as_dict())
 
@@ -94,7 +94,7 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[1], [1, 2]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'display': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm'
             },
             actual=self.cnf3.as_dict())
 
@@ -103,7 +103,7 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[-2, -1]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'display': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm'
             },
             actual=self.cnf4.as_dict())
 
@@ -136,22 +136,22 @@ class CnfTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='ConjunctiveNormalForm',
-            actual=self.cnf1.display)
+            actual=self.cnf1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='ConjunctiveNormalForm',
-            actual=self.cnf2.display)
+            actual=self.cnf2.type_name)
 
     def test_display_3(self):
         self.checkExpect(
             expect='ConjunctiveNormalForm',
-            actual=self.cnf3.display)
+            actual=self.cnf3.type_name)
 
     def test_display_4(self):
         self.checkExpect(
             expect='ConjunctiveNormalForm',
-            actual=self.cnf4.display)
+            actual=self.cnf4.type_name)
 
     ################################################################################
     # data

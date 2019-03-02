@@ -2,7 +2,7 @@
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
   "type": "TrainDescription",
-  "display": "TrainDescription",
+  "typeName": "TrainDescription",
   "trainName": "test_train",
   "properties": [
     {
@@ -16,7 +16,7 @@
           "reason": "Environment variable 'FOO' not set"
         },
         "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
+        "typeName": "environmentVariable"
       }
     }
   ],
@@ -30,14 +30,14 @@
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
-        "display": "ConjunctiveNormalForm"
+        "typeName": "ConjunctiveNormalForm"
       }
     }
   ],
   "model": {
     "summary": {
       "type": "StringModelSummary",
-      "display": "StringModelSummary",
+      "typeName": "StringModelSummary",
       "value": "foo"
     }
   },
@@ -45,7 +45,7 @@
     "requirement": {
       "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
-      "display": "FormulaAlgorithmRequirement"
+      "typeName": "FormulaAlgorithmRequirement"
     }
   }
 }

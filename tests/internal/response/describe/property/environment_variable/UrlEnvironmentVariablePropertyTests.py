@@ -117,7 +117,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'
+                'typeName': 'environmentVariable'
             }, actual=self.url1.as_dict()
         )
 
@@ -131,7 +131,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'}, actual=self.url2.as_dict()
+                'typeName': 'environmentVariable'}, actual=self.url2.as_dict()
         )
 
     def test_as_dict_3(self):
@@ -145,7 +145,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'},
+                'typeName': 'environmentVariable'},
             actual=self.url3.as_dict())
 
     def test_as_dict_4(self):
@@ -158,7 +158,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'
+                'typeName': 'environmentVariable'
             },
             actual=self.url4.as_dict())
 
@@ -174,7 +174,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.url1.as_dict())
 
@@ -190,7 +190,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.url2.as_dict())
 
@@ -206,7 +206,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.url3.as_dict())
 
@@ -222,7 +222,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.url4.as_dict())
 
@@ -250,27 +250,27 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
             actual=self.url4.type)
 
     ###########################################################
-    # display
+    # type_name
     ###########################################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url1.display)
+            actual=self.url1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url2.display)
+            actual=self.url2.type_name)
 
-    def test_display_3(self):
+    def test_type_name_3(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url3.display)
+            actual=self.url3.type_name)
 
-    def test_display_4(self):
+    def test_type_name_4(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.url4.display)
+            actual=self.url4.type_name)
 
     ###########################################################
     # data

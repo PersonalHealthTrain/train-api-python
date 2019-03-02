@@ -119,7 +119,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'
+                'typeName': 'environmentVariable'
             }, actual=self.mount1.as_dict()
         )
 
@@ -134,7 +134,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'}, actual=self.mount2.as_dict()
+                'typeName': 'environmentVariable'}, actual=self.mount2.as_dict()
         )
 
     def test_as_dict_3(self):
@@ -149,7 +149,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'FOO' not set"
                 },
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'},
+                'typeName': 'environmentVariable'},
             actual=self.mount3.as_dict())
 
     def test_as_dict_4(self):
@@ -163,7 +163,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'BAR' not set"},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'display': 'environmentVariable'
+                'typeName': 'environmentVariable'
             },
             actual=self.mount4.as_dict())
 
@@ -180,7 +180,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.mount1.as_dict())
 
@@ -197,7 +197,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.mount2.as_dict())
 
@@ -214,7 +214,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.mount3.as_dict())
 
@@ -231,7 +231,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'display': 'environmentVariable'
+                    'typeName': 'environmentVariable'
                 },
                 actual=self.mount4.as_dict())
 
@@ -264,22 +264,22 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.mount1.display)
+            actual=self.mount1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.mount2.display)
+            actual=self.mount2.type_name)
 
     def test_display_3(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.mount3.display)
+            actual=self.mount3.type_name)
 
     def test_display_4(self):
         self.checkExpect(
             expect='environmentVariable',
-            actual=self.mount4.display)
+            actual=self.mount4.type_name)
 
     ###########################################################
     # data

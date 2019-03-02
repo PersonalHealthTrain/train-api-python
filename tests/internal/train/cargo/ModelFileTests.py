@@ -48,12 +48,12 @@ class ModelFileTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='ModelFile',
-            actual=self.model_file1.display)
+            actual=self.model_file1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='ModelFile',
-            actual=self.model_file2.display)
+            actual=self.model_file2.type_name)
 
     ###########################################
     # Data
@@ -73,12 +73,12 @@ class ModelFileTests(BaseTest):
     ###########################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={'absolutePath': '/opt/pht_train/model/foo', 'type': 'ModelFile', 'display': 'ModelFile'},
+            expect={'absolutePath': '/opt/pht_train/model/foo', 'type': 'ModelFile', 'typeName': 'ModelFile'},
             actual=self.model_file1.as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
-            expect={'absolutePath': '/opt/pht_train/model/bar', 'type': 'ModelFile', 'display': 'ModelFile'},
+            expect={'absolutePath': '/opt/pht_train/model/bar', 'type': 'ModelFile', 'typeName': 'ModelFile'},
             actual=self.model_file2.as_dict())
 
     ###########################################

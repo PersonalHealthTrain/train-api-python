@@ -32,7 +32,7 @@ class EnvironmentVariableProperty(Property):
         return hash((self.type, self.target, self.name))
 
     @property
-    def display(self) -> str:
+    def type_name(self) -> str:
         return 'environmentVariable'
 
     @property

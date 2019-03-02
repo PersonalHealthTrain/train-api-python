@@ -15,7 +15,7 @@
         },
         "mountType": "file",
         "type": "http://www.wikidata.org/entity/Q400857",
-        "display": "environmentVariable"
+        "typeName": "environmentVariable"
       }
     }
   ],
@@ -29,7 +29,7 @@
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
-        "display": "ConjunctiveNormalForm"
+        "typeName": "ConjunctiveNormalForm"
       }
     }
   ],
@@ -37,16 +37,16 @@
     "summary": {
       "value": "model summary",
       "type": "StringModelSummary",
-      "display": "StringModelSummary"
+      "typeName": "StringModelSummary"
     }
   },
   "algorithm": {
     "requirement": {
       "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
-      "display": "FormulaAlgorithmRequirement"
+      "typeName": "FormulaAlgorithmRequirement"
     }
   },
   "type": "TrainDescription",
-  "display": "TrainDescription"
+  "typeName": "TrainDescription"
 }

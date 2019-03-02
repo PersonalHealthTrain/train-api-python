@@ -10,7 +10,7 @@
       {
         "absolutePath": "/opt/pht_train/model/key",
         "type": "ModelFile",
-        "display": "ModelFile"
+        "typeName": "ModelFile"
       }
     ],
     "nextTrainTags": [
@@ -19,8 +19,8 @@
     ],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
-    "display": "docker"
+    "typeName": "docker"
   },
   "type": "RunResponse",
-  "display": "RunResponse"
+  "typeName": "RunResponse"
 }

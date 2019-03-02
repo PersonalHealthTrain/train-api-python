@@ -86,22 +86,22 @@ class FormulaAlgorithmRequirementTests(BaseTest):
     ################################################################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={'formula_id': 1, 'type': 'FormulaAlgorithmRequirement', 'display': 'FormulaAlgorithmRequirement'},
+            expect={'formula_id': 1, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
             actual=self.alg1.as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
-            expect={'formula_id': 2, 'type': 'FormulaAlgorithmRequirement', 'display': 'FormulaAlgorithmRequirement'},
+            expect={'formula_id': 2, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
             actual=self.alg2.as_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
-            expect={'formula_id': 3, 'type': 'FormulaAlgorithmRequirement', 'display': 'FormulaAlgorithmRequirement'},
+            expect={'formula_id': 3, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
             actual=self.alg3.as_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
-            expect={'formula_id': 127, 'type': 'FormulaAlgorithmRequirement', 'display': 'FormulaAlgorithmRequirement'},
+            expect={'formula_id': 127, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
             actual=self.alg4.as_dict())
 
     ################################################################################
@@ -128,27 +128,27 @@ class FormulaAlgorithmRequirementTests(BaseTest):
             actual=self.alg4.type)
 
     ################################################################################
-    # Display
+    # typeName
     ################################################################################
-    def test_dislay_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='FormulaAlgorithmRequirement',
-            actual=self.alg1.display)
+            actual=self.alg1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='FormulaAlgorithmRequirement',
-            actual=self.alg2.display)
+            actual=self.alg2.type_name)
 
-    def test_display_3(self):
+    def test_type_name_3(self):
         self.checkExpect(
             expect='FormulaAlgorithmRequirement',
-            actual=self.alg3.display)
+            actual=self.alg3.type_name)
 
-    def test_display_4(self):
+    def test_type_name_4(self):
         self.checkExpect(
             expect='FormulaAlgorithmRequirement',
-            actual=self.alg4.display)
+            actual=self.alg4.type_name)
 
     ################################################################################
     # Data

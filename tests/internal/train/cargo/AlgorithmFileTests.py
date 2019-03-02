@@ -39,12 +39,12 @@ class AlgorithmFileTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='AlgorithmFile',
-            actual=self.algo_file1.display)
+            actual=self.algo_file1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='AlgorithmFile',
-            actual=self.algo_file2.display)
+            actual=self.algo_file2.type_name)
 
     ###########################################
     # Data
@@ -67,7 +67,7 @@ class AlgorithmFileTests(BaseTest):
             expect={
                 'absolutePath': '/opt/pht_train/algorithm/foo',
                 'type': 'AlgorithmFile',
-                'display': 'AlgorithmFile'},
+                'typeName': 'AlgorithmFile'},
             actual=self.algo_file1.as_dict())
 
     def test_as_dict_2(self):
@@ -75,7 +75,7 @@ class AlgorithmFileTests(BaseTest):
             expect={
                 'absolutePath': '/opt/pht_train/algorithm/bar',
                 'type': 'AlgorithmFile',
-                'display': 'AlgorithmFile'},
+                'typeName': 'AlgorithmFile'},
             actual=self.algo_file2.as_dict())
 
     ###########################################

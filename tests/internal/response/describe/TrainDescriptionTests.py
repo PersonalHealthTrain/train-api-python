@@ -153,7 +153,7 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             }, 'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -167,7 +167,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAR' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {''
@@ -182,7 +182,7 @@ class TrainDescriptionTests(BaseTest):
                          },
                          'choices': ['VALUE1', 'VALUE2'],
                          'type': 'http://www.wikidata.org/entity/Q400857',
-                         'display': 'environmentVariable'
+                         'typeName': 'environmentVariable'
                      }
                      }
                 ],
@@ -191,7 +191,7 @@ class TrainDescriptionTests(BaseTest):
                      'data': {
                          'value': [[1]],
                          'type': 'https://www.wikidata.org/wiki/Q846564',
-                         'display': 'ConjunctiveNormalForm'
+                         'typeName': 'ConjunctiveNormalForm'
                      }
                      }
                 ],
@@ -199,7 +199,7 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'summary': {
                             'type': 'StringModelSummary',
-                            'display': 'StringModelSummary',
+                            'typeName': 'StringModelSummary',
                             'value': 'model summary'
                         }
                     },
@@ -208,10 +208,11 @@ class TrainDescriptionTests(BaseTest):
                         {
                             'formula_id': 1,
                             'type': 'FormulaAlgorithmRequirement',
-                            'display': 'FormulaAlgorithmRequirement'
+                            'typeName': 'FormulaAlgorithmRequirement'
                         }
                 },
-                'type': 'TrainDescription', 'display': 'TrainDescription'}, actual=self.td1.as_dict())
+                'type': 'TrainDescription',
+                'typeName': 'TrainDescription'}, actual=self.td1.as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -231,7 +232,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'FOO' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -245,7 +246,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAR' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -260,7 +261,7 @@ class TrainDescriptionTests(BaseTest):
                             },
                             'choices': ['VALUE1', 'VALUE2'],
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     }
                 ], 'formula': [
@@ -269,7 +270,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[1]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     }
                 ],
@@ -277,13 +278,13 @@ class TrainDescriptionTests(BaseTest):
                     'summary': {
                         'value': 'model summary',
                         'type': 'StringModelSummary',
-                        'display': 'StringModelSummary'
+                        'typeName': 'StringModelSummary'
                     }
                 }, 'algorithm': {
                     'requirement': None
                 },
                 'type': 'TrainDescription',
-                'display': 'TrainDescription'
+                'typeName': 'TrainDescription'
             },
             actual=self.td2.as_dict())
 
@@ -305,7 +306,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'FOO' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     }
                     , {
@@ -319,7 +320,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAR' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -334,7 +335,7 @@ class TrainDescriptionTests(BaseTest):
                             },
                             'choices': ['VALUE1', 'VALUE2'],
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     }
                 ],
@@ -344,7 +345,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     },
                     {
@@ -352,7 +353,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     },
                     {
@@ -360,7 +361,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[-1]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     }
                 ],
@@ -368,18 +369,18 @@ class TrainDescriptionTests(BaseTest):
                     'summary': {
                         'value': 'model summary',
                         'type': 'StringModelSummary',
-                        'display': 'StringModelSummary'
+                        'typeName': 'StringModelSummary'
                     }
                 },
                 'algorithm': {
                     'requirement': {
                         'formula_id': 3,
                         'type': 'FormulaAlgorithmRequirement',
-                        'display': 'FormulaAlgorithmRequirement'
+                        'typeName': 'FormulaAlgorithmRequirement'
                     }
                 },
                 'type': 'TrainDescription',
-                'display': 'TrainDescription'
+                'typeName': 'TrainDescription'
             },
             actual=self.td3.as_dict())
 
@@ -407,17 +408,17 @@ class TrainDescriptionTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='TrainDescription',
-            actual=self.td1.display)
+            actual=self.td1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='TrainDescription',
-            actual=self.td2.display)
+            actual=self.td2.type_name)
 
     def test_display_3(self):
         self.checkExpect(
             expect='TrainDescription',
-            actual=self.td3.display)
+            actual=self.td3.type_name)
 
     ################################################################################
     # Data
@@ -440,7 +441,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'FOO' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -454,7 +455,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAR' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -470,7 +471,7 @@ class TrainDescriptionTests(BaseTest):
                                 },
                                 'choices': ['VALUE1', 'VALUE2'],
                                 'type': 'http://www.wikidata.org/entity/Q400857',
-                                'display': 'environmentVariable'
+                                'typeName': 'environmentVariable'
                             }
                     }
                 ],
@@ -478,14 +479,14 @@ class TrainDescriptionTests(BaseTest):
                     {'id': 1,
                      'data': {'value': [[1]],
                               'type': 'https://www.wikidata.org/wiki/Q846564',
-                              'display': 'ConjunctiveNormalForm'
-                              }
+                              'typeName': 'ConjunctiveNormalForm'
+                            }
                      }
                 ],
                 'model': {
                     'summary': {
                         'type': 'StringModelSummary',
-                        'display': 'StringModelSummary',
+                        'typeName': 'StringModelSummary',
                         'value': 'model summary'
                     }
                 },
@@ -493,7 +494,7 @@ class TrainDescriptionTests(BaseTest):
                     'requirement': {
                         'formula_id': 1,
                         'type': 'FormulaAlgorithmRequirement',
-                        'display': 'FormulaAlgorithmRequirement'}}},
+                        'typeName': 'FormulaAlgorithmRequirement'}}},
             actual=self.td1.data)
 
     def test_data_2(self):
@@ -514,7 +515,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'FOO' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -528,7 +529,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAR' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -543,7 +544,7 @@ class TrainDescriptionTests(BaseTest):
                             },
                             'choices': ['VALUE1', 'VALUE2'],
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     }
                 ],
@@ -553,7 +554,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[1]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     }
                 ],
@@ -561,7 +562,7 @@ class TrainDescriptionTests(BaseTest):
                     'summary': {
                         'value': 'model summary',
                         'type': 'StringModelSummary',
-                        'display': 'StringModelSummary'
+                        'typeName': 'StringModelSummary'
                     }
                 }, 'algorithm': {'requirement': None}
             },
@@ -585,7 +586,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'FOO' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     },
                     {
@@ -599,7 +600,7 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAR' not set"
                             },
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     }, {
                         'id': 3,
@@ -613,7 +614,7 @@ class TrainDescriptionTests(BaseTest):
                             },
                             'choices': ['VALUE1', 'VALUE2'],
                             'type': 'http://www.wikidata.org/entity/Q400857',
-                            'display': 'environmentVariable'
+                            'typeName': 'environmentVariable'
                         }
                     }
                 ],
@@ -623,7 +624,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     },
                     {
@@ -631,7 +632,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     },
                     {
@@ -639,7 +640,7 @@ class TrainDescriptionTests(BaseTest):
                         'data': {
                             'value': [[-1]],
                             'type': 'https://www.wikidata.org/wiki/Q846564',
-                            'display': 'ConjunctiveNormalForm'
+                            'typeName': 'ConjunctiveNormalForm'
                         }
                     }
                 ],
@@ -647,14 +648,14 @@ class TrainDescriptionTests(BaseTest):
                     'summary': {
                         'value': 'model summary',
                         'type': 'StringModelSummary',
-                        'display': 'StringModelSummary'
+                        'typeName': 'StringModelSummary'
                     }
                 },
                 'algorithm': {
                     'requirement': {
                         'formula_id': 3,
                         'type': 'FormulaAlgorithmRequirement',
-                        'display': 'FormulaAlgorithmRequirement'
+                        'typeName': 'FormulaAlgorithmRequirement'
                     }
                 }
             },

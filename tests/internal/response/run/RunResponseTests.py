@@ -43,10 +43,10 @@ class RunResponseTests(BaseTest):
                     'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
-                    'display': 'docker'
+                    'typeName': 'docker'
                 },
                 'type': 'RunResponse',
-                'display': 'RunResponse'},
+                'typeName': 'RunResponse'},
             actual=self.response1.as_dict())
 
     def test_as_dict_2(self):
@@ -63,26 +63,26 @@ class RunResponseTests(BaseTest):
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile',
-                            'display': 'AlgorithmFile'
+                            'typeName': 'AlgorithmFile'
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
                             'type': 'ModelFile',
-                            'display': 'ModelFile'
+                            'typeName': 'ModelFile'
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
                             'type': 'ModelFile',
-                            'display': 'ModelFile'
+                            'typeName': 'ModelFile'
                         }
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     'type': 'docker',
-                    'display': 'docker'
+                    'typeName': 'docker'
                 },
                 'type': 'RunResponse',
-                'display': 'RunResponse'
+                'typeName': 'RunResponse'
             },
             actual=self.response2.as_dict())
 
@@ -105,12 +105,12 @@ class RunResponseTests(BaseTest):
     def test_display_1(self):
         self.checkExpect(
             expect='RunResponse',
-            actual=self.response1.display)
+            actual=self.response1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
             expect='RunResponse',
-            actual=self.response2.display)
+            actual=self.response2.type_name)
 
     ################################################################################
     # Data
@@ -126,7 +126,7 @@ class RunResponseTests(BaseTest):
                     'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
-                    'display': 'docker'}
+                    'typeName': 'docker'}
             },
             actual=self.response1.data)
 
@@ -143,23 +143,24 @@ class RunResponseTests(BaseTest):
                     'exportFiles': [
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
-                            'type': 'AlgorithmFile', 'display': 'AlgorithmFile'
+                            'type': 'AlgorithmFile',
+                            'typeName': 'AlgorithmFile'
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
                             'type': 'ModelFile',
-                            'display': 'ModelFile'
+                            'typeName': 'ModelFile'
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
                             'type': 'ModelFile',
-                            'display': 'ModelFile'
+                            'typeName': 'ModelFile'
                         }
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     'type': 'docker',
-                    'display': 'docker'
+                    'typeName': 'docker'
                 }
             },
             actual=self.response2.data)

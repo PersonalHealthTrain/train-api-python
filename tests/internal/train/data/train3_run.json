@@ -1,7 +1,7 @@
 {
   "runResponseVersion": "1.0",
   "type": "RunResponse",
-  "display": "RunResponse",
+  "typeName": "RunResponse",
   "exit": {
     "state": "application",
     "reason": "Application specific error, not success, but also not failure"
@@ -12,6 +12,6 @@
     "nextTrainTags": ["latest"],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
-    "display": "docker"
+    "typeName": "docker"
   }
 }
