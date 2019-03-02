@@ -1,5 +1,7 @@
 import abc
 from pht.internal.protocol.DictRepresentable import DictRepresentable
+from pht.internal.util.require import not_in
+from pht.internal.util import require
 
 
 class Typed(DictRepresentable):
@@ -23,10 +25,12 @@ class Typed(DictRepresentable):
         # Meta Keys for the Type
         _type = 'type'
         _typeName = 'typeName'
+
         data = self.data
-        for key in [_type, _typeName]:
-            if key in data:
-                raise TypeError('Key \'{}\' not allowed in data dictionary of class'.format(key))
+        require.for_each_value(
+            within=[_type, _typeName],
+            that=not_in(data.keys()),
+            error_if_not='Key \'{}\' not allowed in data dictionary of class')
         data[_type] = self.type
         data[_typeName] = self.type_name
         return data

@@ -37,9 +37,11 @@ def is_positive(val: int) -> bool:
 
 
 def is_in_closed_range(start, end):
-    def result(val):
-        return val in range(start, end+1)
-    return result
+    return lambda val: val in range(start, end + 1)
+
+
+def not_in(collection):
+    return lambda val: val not in collection
 
 
 def that(test: bool, error_if_not):
