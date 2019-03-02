@@ -18,8 +18,8 @@ def type_is_str(obj: Any):
         'Object \'{}\' is required to be of type \'str\''.format(str(obj)))
 
 
-def for_each_value(within: Iterable[Any], that, error_if_not: str):
-    for i in within:
+def for_each_value(inside: Iterable[Any], that, error_if_not: str):
+    for i in inside:
         for_value(i, that, error_if_not.format(i))
 
 

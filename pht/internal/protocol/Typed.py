@@ -28,7 +28,7 @@ class Typed(DictRepresentable):
 
         data = self.data
         require.for_each_value(
-            within=[_type, _typeName],
+            inside=[_type, _typeName],
             that=not_in(data.keys()),
             error_if_not='Key \'{}\' not allowed in data dictionary of class')
         data[_type] = self.type

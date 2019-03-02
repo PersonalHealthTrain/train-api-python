@@ -96,7 +96,7 @@ class TrainDescription(TrainResponse):
         Checks that all Property numbers are positive (otherwise they could not be literals in the formula)
         """
         require.for_each_value(
-            within=self._properties.keys(),
+            inside=self._properties.keys(),
             that=is_positive,
             error_if_not='Property Number {} is not positive!')
 
