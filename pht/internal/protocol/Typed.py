@@ -21,16 +21,18 @@ class Typed(DictRepresentable):
     def data(self) -> dict:
         pass
 
-    def as_dict(self):
+    def as_dict(self) -> dict:
         # Meta Keys for the Type
         _type = 'type'
         _typeName = 'typeName'
+        _typeSystem = 'typeSystem'
 
         data = self.data
         require.for_each_value(
-            inside=[_type, _typeName],
+            inside=[_type, _typeName, _typeSystem],
             that=not_in(data.keys()),
             error_if_not='Key \'{}\' not allowed in data dictionary of class')
         data[_type] = self.type
         data[_typeName] = self.type_name
+        data[_typeSystem] = 'pythonclass'
         return data

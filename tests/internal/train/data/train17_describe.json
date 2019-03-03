@@ -1,6 +1,7 @@
 {
   "trainVersion": "1.0",
   "trainName": "test_train",
+  "typeSystem": "pythonclass",
   "descriptionVersion": "1.0",
   "properties": [
     {
@@ -15,7 +16,8 @@
         },
         "mountType": "file",
         "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable"
+        "typeName": "environmentVariable",
+        "typeSystem": "pythonclass"
       }
     }
   ],
@@ -29,7 +31,8 @@
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
-        "typeName": "ConjunctiveNormalForm"
+        "typeName": "ConjunctiveNormalForm",
+        "typeSystem": "pythonclass"
       }
     }
   ],
@@ -37,14 +40,16 @@
     "summary": {
       "value": "model summary",
       "type": "StringModelSummary",
-      "typeName": "StringModelSummary"
+      "typeName": "StringModelSummary",
+      "typeSystem": "pythonclass"
     }
   },
   "algorithm": {
     "requirement": {
       "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
-      "typeName": "FormulaAlgorithmRequirement"
+      "typeName": "FormulaAlgorithmRequirement",
+      "typeSystem": "pythonclass"
     }
   },
   "type": "TrainDescription",

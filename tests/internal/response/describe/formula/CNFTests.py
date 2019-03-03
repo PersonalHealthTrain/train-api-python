@@ -76,7 +76,8 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[1, 2], [3, 4]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'typeName': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm',
+                "typeSystem": "pythonclass",
             },
             actual=self.cnf1.as_dict())
 
@@ -85,7 +86,8 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[1]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'typeName': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm',
+                "typeSystem": "pythonclass",
             },
             actual=self.cnf2.as_dict())
 
@@ -94,7 +96,8 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[1], [1, 2]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'typeName': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm',
+                "typeSystem": "pythonclass",
             },
             actual=self.cnf3.as_dict())
 
@@ -103,7 +106,8 @@ class CnfTests(BaseTest):
             expect={
                 'value': [[-2, -1]],
                 'type': 'https://www.wikidata.org/wiki/Q846564',
-                'typeName': 'ConjunctiveNormalForm'
+                'typeName': 'ConjunctiveNormalForm',
+                "typeSystem": "pythonclass",
             },
             actual=self.cnf4.as_dict())
 

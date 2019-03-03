@@ -43,10 +43,13 @@ class RunResponseTests(BaseTest):
                     'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
-                    'typeName': 'docker'
+                    'typeName': 'docker',
+                    "typeSystem": "pythonclass",
                 },
                 'type': 'RunResponse',
-                'typeName': 'RunResponse'},
+                'typeName': 'RunResponse',
+                "typeSystem": "pythonclass",
+            },
             actual=self.response1.as_dict())
 
     def test_as_dict_2(self):
@@ -63,26 +66,31 @@ class RunResponseTests(BaseTest):
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile',
-                            'typeName': 'AlgorithmFile'
+                            'typeName': 'AlgorithmFile',
+                            "typeSystem": "pythonclass",
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
                             'type': 'ModelFile',
-                            'typeName': 'ModelFile'
+                            'typeName': 'ModelFile',
+                            "typeSystem": "pythonclass",
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
                             'type': 'ModelFile',
-                            'typeName': 'ModelFile'
+                            'typeName': 'ModelFile',
+                            "typeSystem": "pythonclass",
                         }
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     'type': 'docker',
-                    'typeName': 'docker'
+                    'typeName': 'docker',
+                    "typeSystem": "pythonclass",
                 },
                 'type': 'RunResponse',
-                'typeName': 'RunResponse'
+                'typeName': 'RunResponse',
+                "typeSystem": "pythonclass",
             },
             actual=self.response2.as_dict())
 
@@ -126,7 +134,9 @@ class RunResponseTests(BaseTest):
                     'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
                     'type': 'docker',
-                    'typeName': 'docker'}
+                    'typeName': 'docker',
+                    "typeSystem": "pythonclass",
+                }
             },
             actual=self.response1.data)
 
@@ -144,23 +154,27 @@ class RunResponseTests(BaseTest):
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             'type': 'AlgorithmFile',
-                            'typeName': 'AlgorithmFile'
+                            'typeName': 'AlgorithmFile',
+                            "typeSystem": "pythonclass",
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
                             'type': 'ModelFile',
-                            'typeName': 'ModelFile'
+                            'typeName': 'ModelFile',
+                            "typeSystem": "pythonclass",
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
                             'type': 'ModelFile',
-                            'typeName': 'ModelFile'
+                            'typeName': 'ModelFile',
+                            "typeSystem": "pythonclass",
                         }
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     'type': 'docker',
-                    'typeName': 'docker'
+                    'typeName': 'docker',
+                    "typeSystem": "pythonclass",
                 }
             },
             actual=self.response2.data)

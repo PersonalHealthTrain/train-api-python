@@ -2,6 +2,7 @@
   "runResponseVersion": "1.0",
   "type": "RunResponse",
   "typeName": "RunResponse",
+  "typeSystem": "pythonclass",
   "exit": {
     "state": "failure",
     "reason": "Execution of the algorithm failed"
@@ -12,6 +13,7 @@
     "nextTrainTags": ["2.7.15-slim-jessie"],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
-    "typeName": "docker"
+    "typeName": "docker",
+    "typeSystem": "pythonclass"
   }
 }

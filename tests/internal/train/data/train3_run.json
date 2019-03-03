@@ -2,6 +2,7 @@
   "runResponseVersion": "1.0",
   "type": "RunResponse",
   "typeName": "RunResponse",
+  "typeSystem": "pythonclass",
   "exit": {
     "state": "application",
     "reason": "Application specific error, not success, but also not failure"
@@ -12,6 +13,7 @@
     "nextTrainTags": ["latest"],
     "from": "personalhealthtrain/base:base",
     "type": "docker",
-    "typeName": "docker"
+    "typeName": "docker",
+    "typeSystem": "pythonclass"
   }
 }

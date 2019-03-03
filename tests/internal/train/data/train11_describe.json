@@ -3,6 +3,7 @@
   "descriptionVersion": "1.0",
   "type": "TrainDescription",
   "typeName": "TrainDescription",
+  "typeSystem": "pythonclass",
   "trainName": "test_train",
   "properties": [],
   "formula": [],
@@ -10,6 +11,7 @@
     "summary": {
       "type": "StringModelSummary",
       "typeName": "StringModelSummary",
+      "typeSystem": "pythonclass",
       "value": "foo"
     }
   },

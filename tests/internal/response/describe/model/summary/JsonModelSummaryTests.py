@@ -111,7 +111,8 @@ class JsonModelSummaryTests(BaseTest):
                     'key2': 'value2'
                 },
                 'type': 'JsonModelSummary',
-                'typeName': 'JsonModelSummary'
+                'typeName': 'JsonModelSummary',
+                "typeSystem": "pythonclass",
             },
             actual=self.model1.as_dict())
 
@@ -120,5 +121,7 @@ class JsonModelSummaryTests(BaseTest):
             expect={
                 'value': ['entry1', 'entry2'],
                 'type': 'JsonModelSummary',
-                'typeName': 'JsonModelSummary'},
+                'typeName': 'JsonModelSummary',
+                "typeSystem": "pythonclass",
+            },
             actual=self.model2.as_dict())

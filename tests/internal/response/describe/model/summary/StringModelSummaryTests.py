@@ -107,7 +107,8 @@ class StringModelSummaryTests(BaseTest):
             expect={
                 'value': 'This is the model summary',
                 'type': 'StringModelSummary',
-                'typeName': 'StringModelSummary'
+                'typeName': 'StringModelSummary',
+                'typeSystem': 'pythonclass'
             },
             actual=self.model1.as_dict())
 
@@ -116,5 +117,7 @@ class StringModelSummaryTests(BaseTest):
             expect={
                 'value': 'This is another model summary',
                 'type': 'StringModelSummary',
-                'typeName': 'StringModelSummary'},
+                'typeName': 'StringModelSummary',
+                'typeSystem': 'pythonclass'
+            },
             actual=self.model2.as_dict())

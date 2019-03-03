@@ -119,7 +119,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'
+                'typeName': 'environmentVariable',
+                "typeSystem": "pythonclass",
             }, actual=self.mount1.as_dict()
         )
 
@@ -134,7 +135,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'}, actual=self.mount2.as_dict()
+                'typeName': 'environmentVariable',
+                "typeSystem": "pythonclass",
+            }, actual=self.mount2.as_dict()
         )
 
     def test_as_dict_3(self):
@@ -149,7 +152,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'FOO' not set"
                 },
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'},
+                'typeName': 'environmentVariable',
+                "typeSystem": "pythonclass",
+            },
             actual=self.mount3.as_dict())
 
     def test_as_dict_4(self):
@@ -163,7 +168,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'BAR' not set"},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'
+                'typeName': 'environmentVariable',
+                "typeSystem": "pythonclass",
             },
             actual=self.mount4.as_dict())
 
@@ -180,7 +186,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    "typeSystem": "pythonclass",
                 },
                 actual=self.mount1.as_dict())
 
@@ -197,7 +204,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    "typeSystem": "pythonclass",
                 },
                 actual=self.mount2.as_dict())
 
@@ -214,7 +222,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    "typeSystem": "pythonclass",
                 },
                 actual=self.mount3.as_dict())
 
@@ -231,7 +240,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    "typeSystem": "pythonclass",
                 },
                 actual=self.mount4.as_dict())
 

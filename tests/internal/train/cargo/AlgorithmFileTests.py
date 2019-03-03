@@ -67,7 +67,9 @@ class AlgorithmFileTests(BaseTest):
             expect={
                 'absolutePath': '/opt/pht_train/algorithm/foo',
                 'type': 'AlgorithmFile',
-                'typeName': 'AlgorithmFile'},
+                'typeName': 'AlgorithmFile',
+                "typeSystem": "pythonclass",
+            },
             actual=self.algo_file1.as_dict())
 
     def test_as_dict_2(self):
@@ -75,7 +77,9 @@ class AlgorithmFileTests(BaseTest):
             expect={
                 'absolutePath': '/opt/pht_train/algorithm/bar',
                 'type': 'AlgorithmFile',
-                'typeName': 'AlgorithmFile'},
+                'typeName': 'AlgorithmFile',
+                "typeSystem": "pythonclass",
+            },
             actual=self.algo_file2.as_dict())
 
     ###########################################

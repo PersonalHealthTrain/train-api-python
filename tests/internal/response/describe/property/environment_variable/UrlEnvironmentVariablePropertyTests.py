@@ -117,7 +117,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'
+                'typeName': 'environmentVariable',
+                'typeSystem': 'pythonclass'
             }, actual=self.url1.as_dict()
         )
 
@@ -131,7 +132,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'}, actual=self.url2.as_dict()
+                'typeName': 'environmentVariable',
+                'typeSystem': 'pythonclass'
+            }, actual=self.url2.as_dict()
         )
 
     def test_as_dict_3(self):
@@ -145,7 +148,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'},
+                'typeName': 'environmentVariable',
+                'typeSystem': 'pythonclass'
+            },
             actual=self.url3.as_dict())
 
     def test_as_dict_4(self):
@@ -158,7 +163,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
                 'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable'
+                'typeName': 'environmentVariable',
+                'typeSystem': 'pythonclass'
             },
             actual=self.url4.as_dict())
 
@@ -174,7 +180,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    'typeSystem': 'pythonclass'
                 },
                 actual=self.url1.as_dict())
 
@@ -190,7 +197,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    'typeSystem': 'pythonclass'
                 },
                 actual=self.url2.as_dict())
 
@@ -206,7 +214,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    'typeSystem': 'pythonclass'
                 },
                 actual=self.url3.as_dict())
 
@@ -222,7 +231,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'reason': None
                     },
                     'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable'
+                    'typeName': 'environmentVariable',
+                    'typeSystem': 'pythonclass'
                 },
                 actual=self.url4.as_dict())
 

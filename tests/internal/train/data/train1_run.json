@@ -2,6 +2,7 @@
   "runResponseVersion": "1.0",
   "type": "RunResponse",
   "typeName": "RunResponse",
+  "typeSystem": "pythonclass",
   "exit": {
     "state": "success",
     "reason": "Execution ran successfully"
@@ -12,6 +13,7 @@
     "nextTrainTags": ["train-tag"],
     "from": "personalhealthtrain/base",
     "type": "docker",
-    "typeName": "docker"
+    "typeName": "docker",
+    "typeSystem": "pythonclass"
   }
 }

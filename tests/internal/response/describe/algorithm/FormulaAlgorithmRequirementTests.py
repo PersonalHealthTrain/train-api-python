@@ -86,22 +86,42 @@ class FormulaAlgorithmRequirementTests(BaseTest):
     ################################################################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={'formula_id': 1, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
+            expect={
+                'formula_id': 1,
+                'type': 'FormulaAlgorithmRequirement',
+                'typeName': 'FormulaAlgorithmRequirement',
+                "typeSystem": "pythonclass",
+            },
             actual=self.alg1.as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
-            expect={'formula_id': 2, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
+            expect={
+                'formula_id': 2,
+                'type': 'FormulaAlgorithmRequirement',
+                'typeName': 'FormulaAlgorithmRequirement',
+                "typeSystem": "pythonclass",
+            },
             actual=self.alg2.as_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
-            expect={'formula_id': 3, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
+            expect={
+                'formula_id': 3,
+                'type': 'FormulaAlgorithmRequirement',
+                'typeName': 'FormulaAlgorithmRequirement',
+                "typeSystem": "pythonclass",
+            },
             actual=self.alg3.as_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
-            expect={'formula_id': 127, 'type': 'FormulaAlgorithmRequirement', 'typeName': 'FormulaAlgorithmRequirement'},
+            expect={
+                'formula_id': 127,
+                'type': 'FormulaAlgorithmRequirement',
+                'typeName': 'FormulaAlgorithmRequirement',
+                "typeSystem": "pythonclass",
+            },
             actual=self.alg4.as_dict())
 
     ################################################################################

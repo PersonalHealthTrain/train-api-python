@@ -3,6 +3,7 @@
   "descriptionVersion": "1.0",
   "type": "TrainDescription",
   "typeName": "TrainDescription",
+  "typeSystem": "pythonclass",
   "trainName": "test_train",
   "properties": [
     {
@@ -20,7 +21,8 @@
           "VALUE2"
         ],
         "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable"
+        "typeName": "environmentVariable",
+        "typeSystem": "pythonclass"
       }
     }
   ],
@@ -34,7 +36,8 @@
           ]
         ],
         "type": "https://www.wikidata.org/wiki/Q846564",
-        "typeName": "ConjunctiveNormalForm"
+        "typeName": "ConjunctiveNormalForm",
+        "typeSystem": "pythonclass"
       }
     }
   ],
@@ -42,6 +45,7 @@
     "summary": {
       "type": "StringModelSummary",
       "typeName": "StringModelSummary",
+      "typeSystem": "pythonclass",
       "value": "foo"
     }
   },
@@ -49,7 +53,8 @@
     "requirement": {
       "formula_id": 1,
       "type": "FormulaAlgorithmRequirement",
-      "typeName": "FormulaAlgorithmRequirement"
+      "typeName": "FormulaAlgorithmRequirement",
+      "typeSystem": "pythonclass"
     }
   }
 }
