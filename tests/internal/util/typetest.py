@@ -1,5 +1,5 @@
 from tests.base import BaseTest
-from pht.internal.util.typetest import is_primitive, is_list
+from pht.internal.util.typetest import is_primitive, is_list, is_simple_dict
 
 
 class TypetestTests(BaseTest):
@@ -64,3 +64,17 @@ class TypetestTests(BaseTest):
     def test_is_not_list_1(self):
         self.assertFalse(is_list(range(3)))
 
+    def test_is_simple_dict_1(self):
+        self.assertTrue(is_simple_dict({}))
+
+    def test_is_simple_dict_2(self):
+        self.assertTrue(is_simple_dict({'foo': 'bar'}))
+
+    def test_is_simple_dict_3(self):
+        self.assertTrue(is_simple_dict({'foo': {'bar': 1, 'baz': 2}}))
+
+    def test_is_simple_dict_4(self):
+        self.assertTrue(is_simple_dict({'foo': {'bar': 1, 'baz': [1, 2]}}))
+
+    def test_is_not_simple_dict_1(self):
+        self.assertFalse(is_simple_dict({'foo': range(1)}))
