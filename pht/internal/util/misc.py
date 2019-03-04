@@ -14,9 +14,13 @@ def frozen_set_of(typ, item, items: Iterable[Any]):
     return frozenset(tmp)
 
 
+def _do_or_none(x, f):
+    return f(x) if x is not None else None
+
+
 def as_dict_or_none(item: Optional[DictRepresentable]):
-    return item.as_dict() if item is not None else None
+    return _do_or_none(item, lambda x: x.as_dict())
 
 
 def copy_or_none(item: Optional[Copyable]):
-    return item.copy() if item is not None else None
+    return _do_or_none(item, lambda x: x.copy())

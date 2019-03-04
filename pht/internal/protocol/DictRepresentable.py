@@ -8,4 +8,3 @@ class DictRepresentable(abc.ABC):
     @abc.abstractmethod
     def as_dict(self) -> dict:
         pass
-
