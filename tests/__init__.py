@@ -38,3 +38,7 @@ from tests.internal.train.cargo.AlgorithmFileTests import AlgorithmFileTests
 
 # Train Require
 from tests.internal.util.require import RequireTests
+
+
+# Type Test
+from tests.internal.util.typetest import TypetestTests
