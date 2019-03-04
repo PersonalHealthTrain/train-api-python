@@ -107,7 +107,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # dict
     ###########################################################
-    def test_as_dict_1(self):
+    def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -119,10 +119,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'typeName': 'environmentVariable',
                 'typeSystem': 'pythonclass'
-            }, actual=self.url1.as_dict()
+            }, actual=self.url1.as_simple_dict()
         )
 
-    def test_as_dict_2(self):
+    def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -134,10 +134,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'typeName': 'environmentVariable',
                 'typeSystem': 'pythonclass'
-            }, actual=self.url2.as_dict()
+            }, actual=self.url2.as_simple_dict()
         )
 
-    def test_as_dict_3(self):
+    def test_as_simple_dict_3(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -151,9 +151,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'typeName': 'environmentVariable',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.url3.as_dict())
+            actual=self.url3.as_simple_dict())
 
-    def test_as_dict_4(self):
+    def test_as_simple_dict_4(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -166,9 +166,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'typeName': 'environmentVariable',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.url4.as_dict())
+            actual=self.url4.as_simple_dict())
 
-    def test_as_dict_5(self):
+    def test_as_simple_dict_5(self):
         with patch.dict('os.environ', {'FOO': 'value'}):
             self.checkExpect(
                 expect={
@@ -183,9 +183,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     'typeSystem': 'pythonclass'
                 },
-                actual=self.url1.as_dict())
+                actual=self.url1.as_simple_dict())
 
-    def test_as_dict_6(self):
+    def test_as_simple_dict_6(self):
         with patch.dict('os.environ', {'BAR': 'value'}):
             self.checkExpect(
                 expect={
@@ -200,9 +200,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     'typeSystem': 'pythonclass'
                 },
-                actual=self.url2.as_dict())
+                actual=self.url2.as_simple_dict())
 
-    def test_as_dict_7(self):
+    def test_as_simple_dict_7(self):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
@@ -217,9 +217,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     'typeSystem': 'pythonclass'
                 },
-                actual=self.url3.as_dict())
+                actual=self.url3.as_simple_dict())
 
-    def test_as_dict_8(self):
+    def test_as_simple_dict_8(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
@@ -234,7 +234,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     'typeSystem': 'pythonclass'
                 },
-                actual=self.url4.as_dict())
+                actual=self.url4.as_simple_dict())
 
     ###########################################################
     # type

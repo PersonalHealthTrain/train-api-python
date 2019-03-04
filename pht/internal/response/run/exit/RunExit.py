@@ -7,10 +7,10 @@ import abc
 from typing import Optional
 from pht.internal.protocol.Comparable import Comparable
 from pht.internal.protocol.Copyable import Copyable
-from pht.internal.protocol.DictRepresentable import DictRepresentable
+from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
 
 
-class RunExit(Comparable, Copyable, DictRepresentable):
+class RunExit(Comparable, Copyable, SimpleDictRepresentable):
     def __init__(self, reason: Optional[str]):
         self.reason = reason
 
@@ -26,7 +26,7 @@ class RunExit(Comparable, Copyable, DictRepresentable):
     def __hash__(self):
         return hash((self.reason, self.state))
 
-    def as_dict(self):
+    def _as_dict(self):
         return {
             'state': self.state,
             'reason': self.reason

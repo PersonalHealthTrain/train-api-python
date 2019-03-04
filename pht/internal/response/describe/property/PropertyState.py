@@ -4,10 +4,10 @@ PropertyState captures the State of the Property at runtime
 from typing import Optional
 from pht.internal.protocol.Comparable import Comparable
 from pht.internal.protocol.Copyable import Copyable
-from pht.internal.protocol.DictRepresentable import DictRepresentable
+from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
 
 
-class PropertyState(Copyable, Comparable, DictRepresentable):
+class PropertyState(Copyable, Comparable, SimpleDictRepresentable):
     def __init__(self, is_available: bool, reason: Optional[str]):
         self._is_available = is_available
         self._reason = reason
@@ -18,7 +18,7 @@ class PropertyState(Copyable, Comparable, DictRepresentable):
         if not isinstance(self._reason, str) and self._reason is not None:
             raise TypeError('reason must be a str value or None')
 
-    def as_dict(self):
+    def _as_dict(self):
         return {
             'isAvailable': self._is_available,
             'reason': self._reason

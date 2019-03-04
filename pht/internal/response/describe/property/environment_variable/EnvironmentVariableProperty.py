@@ -45,7 +45,7 @@ class EnvironmentVariableProperty(Property):
             'description': self.description,
             'target': self.target,
             'name': self.name,
-            'state': self.state().as_dict()
+            'state': self.state()._as_dict()
         }
 
     @property

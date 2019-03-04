@@ -92,7 +92,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'typeName': 'FormulaAlgorithmRequirement',
                 "typeSystem": "pythonclass",
             },
-            actual=self.alg1.as_dict())
+            actual=self.alg1._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -102,7 +102,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'typeName': 'FormulaAlgorithmRequirement',
                 "typeSystem": "pythonclass",
             },
-            actual=self.alg2.as_dict())
+            actual=self.alg2._as_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
@@ -112,7 +112,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'typeName': 'FormulaAlgorithmRequirement',
                 "typeSystem": "pythonclass",
             },
-            actual=self.alg3.as_dict())
+            actual=self.alg3._as_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
@@ -122,7 +122,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'typeName': 'FormulaAlgorithmRequirement',
                 "typeSystem": "pythonclass",
             },
-            actual=self.alg4.as_dict())
+            actual=self.alg4._as_dict())
 
     ################################################################################
     # Type

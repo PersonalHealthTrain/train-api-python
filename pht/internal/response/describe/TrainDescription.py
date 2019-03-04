@@ -45,7 +45,7 @@ class TrainDescription(TrainResponse):
     def data(self) -> dict:
 
         def with_ids(iterable, id_fun):
-            return [{'id': id_fun(x), 'data': x[1].as_dict()} for x in iterable]
+            return [{'id': id_fun(x), 'data': x[1].as_simple_dict()} for x in iterable]
         properties = with_ids(self._properties.items(), id_fun=lambda x: x[0])
         formula = with_ids(enumerate(self._formulas), id_fun=lambda x: x[0] + 1)
         return {

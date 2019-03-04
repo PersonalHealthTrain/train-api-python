@@ -50,7 +50,7 @@ class RunResponseTests(BaseTest):
                 'typeName': 'RunResponse',
                 "typeSystem": "pythonclass",
             },
-            actual=self.response1.as_dict())
+            actual=self.response1._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -92,7 +92,7 @@ class RunResponseTests(BaseTest):
                 'typeName': 'RunResponse',
                 "typeSystem": "pythonclass",
             },
-            actual=self.response2.as_dict())
+            actual=self.response2._as_dict())
 
     ################################################################################
     # Type

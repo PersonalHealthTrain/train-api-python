@@ -99,7 +99,7 @@ class TrainFileTests(BaseTest):
                 'typeName': 'ModelFile',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.modelfile1.as_dict())
+            actual=self.modelfile1._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -109,4 +109,4 @@ class TrainFileTests(BaseTest):
                 'typeName': 'ModelFile',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.modelfile2.as_dict())
+            actual=self.modelfile2._as_dict())

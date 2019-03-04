@@ -212,7 +212,7 @@ class SimpleTrainTests(BaseTest):
     def perform_test(self, train_response, file: str):
         self.checkExpect(
             expect=_load_json(file),
-            actual=train_response.as_dict())
+            actual=train_response.as_simple_dict())
 
 
 class SimpleTrainDescribeTests(SimpleTrainTests):

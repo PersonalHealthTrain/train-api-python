@@ -79,7 +79,7 @@ class ModelFileTests(BaseTest):
                 'typeName': 'ModelFile',
                 "typeSystem": "pythonclass",
             },
-            actual=self.model_file1.as_dict())
+            actual=self.model_file1._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -89,7 +89,7 @@ class ModelFileTests(BaseTest):
                 'typeName': 'ModelFile',
                 "typeSystem": "pythonclass",
             },
-            actual=self.model_file2.as_dict())
+            actual=self.model_file2._as_dict())
 
     ###########################################
     # absolute path

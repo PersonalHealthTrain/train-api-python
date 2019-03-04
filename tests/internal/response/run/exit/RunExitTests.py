@@ -65,29 +65,29 @@ class RunExitTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={'state': 'success', 'reason': 'success state'},
-            actual=self.success.as_dict())
+            actual=self.success._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
             expect={'state': 'failure', 'reason': 'failure state'},
-            actual=self.failure.as_dict())
+            actual=self.failure._as_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
             expect={'state': 'application', 'reason': 'app state'},
-            actual=self.application.as_dict())
+            actual=self.application._as_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
             expect={'state': 'success', 'reason': None},
-            actual=self.success2.as_dict())
+            actual=self.success2._as_dict())
 
     def test_as_dict_5(self):
         self.checkExpect(
             expect={'state': 'failure', 'reason': None},
-            actual=self.failure2.as_dict())
+            actual=self.failure2._as_dict())
 
     def test_as_dict_6(self):
         self.checkExpect(
             expect={'state': 'application', 'reason': None},
-            actual=self.application2.as_dict())
+            actual=self.application2._as_dict())

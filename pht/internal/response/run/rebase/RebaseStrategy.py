@@ -34,7 +34,7 @@ class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
     @property
     def data(self) -> dict:
         return {
-            'exportFiles': [x.as_dict() for x in sorted(list(self.export_files))],
+            'exportFiles': [x.as_simple_dict() for x in sorted(list(self.export_files))],
             'nextTrainTags': sorted(list(self.next_train_tags))
         }
 

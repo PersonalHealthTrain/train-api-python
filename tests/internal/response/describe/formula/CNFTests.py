@@ -79,7 +79,7 @@ class CnfTests(BaseTest):
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
-            actual=self.cnf1.as_dict())
+            actual=self.cnf1._as_dict())
 
     def test_dict_2(self):
         self.checkExpect(
@@ -89,7 +89,7 @@ class CnfTests(BaseTest):
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
-            actual=self.cnf2.as_dict())
+            actual=self.cnf2._as_dict())
 
     def test_dict_3(self):
         self.checkExpect(
@@ -99,7 +99,7 @@ class CnfTests(BaseTest):
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
-            actual=self.cnf3.as_dict())
+            actual=self.cnf3._as_dict())
 
     def test_dict_4(self):
         self.checkExpect(
@@ -109,7 +109,7 @@ class CnfTests(BaseTest):
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
-            actual=self.cnf4.as_dict())
+            actual=self.cnf4._as_dict())
 
     ################################################################################
     # type

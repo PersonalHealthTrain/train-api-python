@@ -258,7 +258,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # dict
     ###########################################################
-    def test_dict_1(self):
+    def test_simple_dict_1(self):
         expect = {
             "description": None,
             'target': 'enum',
@@ -272,10 +272,10 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
             'typeName': 'environmentVariable',
             "typeSystem": "pythonclass",
         }
-        actual = self.enum1.as_dict()
+        actual = self.enum1.as_simple_dict()
         self.assertDictEqual(expect, actual)
 
-    def test_dict_2(self):
+    def test_simple_dict_2(self):
         expect = {
             "description": None,
             'target': 'enum',
@@ -289,7 +289,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
             'typeName': 'environmentVariable',
             "typeSystem": "pythonclass",
         }
-        actual = self.enum2.as_dict()
+        actual = self.enum2.as_simple_dict()
         self.assertDictEqual(expect, actual)
 
     ###########################################################

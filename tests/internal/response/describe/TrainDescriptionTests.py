@@ -220,7 +220,7 @@ class TrainDescriptionTests(BaseTest):
                 'type': 'TrainDescription',
                 'typeName': 'TrainDescription',
                 'typeSystem': 'pythonclass'
-            }, actual=self.td1.as_dict())
+            }, actual=self.td1._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -300,7 +300,7 @@ class TrainDescriptionTests(BaseTest):
                 'typeName': 'TrainDescription',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.td2.as_dict())
+            actual=self.td2._as_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
@@ -405,7 +405,7 @@ class TrainDescriptionTests(BaseTest):
                 'typeName': 'TrainDescription',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.td3.as_dict())
+            actual=self.td3._as_dict())
 
     ################################################################################
     # Type

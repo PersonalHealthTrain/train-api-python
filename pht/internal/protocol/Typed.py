@@ -1,10 +1,10 @@
 import abc
-from pht.internal.protocol.DictRepresentable import DictRepresentable
+from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
 from pht.internal.util.require import not_in
 from pht.internal.util import require
 
 
-class Typed(DictRepresentable):
+class Typed(SimpleDictRepresentable):
 
     @property
     @abc.abstractmethod
@@ -21,7 +21,7 @@ class Typed(DictRepresentable):
     def data(self) -> dict:
         pass
 
-    def as_dict(self) -> dict:
+    def _as_dict(self) -> dict:
         # Meta Keys for the Type
         _type = 'type'
         _typeName = 'typeName'

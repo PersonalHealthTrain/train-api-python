@@ -1,5 +1,5 @@
 from typing import Any, Iterable, Optional
-from pht.internal.protocol.DictRepresentable import DictRepresentable
+from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
 from pht.internal.protocol.Copyable import Copyable
 
 
@@ -18,8 +18,8 @@ def _do_or_none(x, f):
     return f(x) if x is not None else None
 
 
-def as_dict_or_none(item: Optional[DictRepresentable]):
-    return _do_or_none(item, lambda x: x.as_dict())
+def as_dict_or_none(item: Optional[SimpleDictRepresentable]):
+    return _do_or_none(item, lambda x: x.as_simple_dict())
 
 
 def copy_or_none(item: Optional[Copyable]):

@@ -44,7 +44,7 @@ class DockerRebaseStrategyTests(BaseTest):
                 'type': 'docker',
                 'typeName': 'docker',
                 "typeSystem": "pythonclass"},
-            actual=self.rebase1.as_dict())
+            actual=self.rebase1._as_dict())
 
     ################################################################################
     # Copy, deepcopy, hash

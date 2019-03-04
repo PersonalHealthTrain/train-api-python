@@ -108,7 +108,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # dict
     ###########################################################
-    def test_as_dict_1(self):
+    def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -121,10 +121,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'typeName': 'environmentVariable',
                 "typeSystem": "pythonclass",
-            }, actual=self.mount1.as_dict()
+            }, actual=self.mount1.as_simple_dict()
         )
 
-    def test_as_dict_2(self):
+    def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -137,10 +137,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'type': 'http://www.wikidata.org/entity/Q400857',
                 'typeName': 'environmentVariable',
                 "typeSystem": "pythonclass",
-            }, actual=self.mount2.as_dict()
+            }, actual=self.mount2.as_simple_dict()
         )
 
-    def test_as_dict_3(self):
+    def test_as_simple_dict_3(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -155,9 +155,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'typeName': 'environmentVariable',
                 "typeSystem": "pythonclass",
             },
-            actual=self.mount3.as_dict())
+            actual=self.mount3.as_simple_dict())
 
-    def test_as_dict_4(self):
+    def test_as_simple_dict_4(self):
         self.checkExpect(
             expect={
                 'description': None,
@@ -171,9 +171,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'typeName': 'environmentVariable',
                 "typeSystem": "pythonclass",
             },
-            actual=self.mount4.as_dict())
+            actual=self.mount4.as_simple_dict())
 
-    def test_as_dict_5(self):
+    def test_as_simple_dict_5(self):
         with patch.dict('os.environ', {'FOO': 'not a file'}):
             self.checkExpect(
                 expect={
@@ -189,9 +189,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     "typeSystem": "pythonclass",
                 },
-                actual=self.mount1.as_dict())
+                actual=self.mount1.as_simple_dict())
 
-    def test_as_dict_6(self):
+    def test_as_simple_dict_6(self):
         with patch.dict('os.environ', {'BAR': 'not a file'}):
             self.checkExpect(
                 expect={
@@ -207,9 +207,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     "typeSystem": "pythonclass",
                 },
-                actual=self.mount2.as_dict())
+                actual=self.mount2.as_simple_dict())
 
-    def test_as_dict_7(self):
+    def test_as_simple_dict_7(self):
         with patch.dict('os.environ', {'FOO': 'not a directory'}):
             self.checkExpect(
                 expect={
@@ -225,9 +225,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     "typeSystem": "pythonclass",
                 },
-                actual=self.mount3.as_dict())
+                actual=self.mount3.as_simple_dict())
 
-    def test_as_dict_8(self):
+    def test_as_simple_dict_8(self):
         with patch.dict('os.environ', {'BAR': 'not a directory'}):
             self.checkExpect(
                 expect={
@@ -243,7 +243,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'typeName': 'environmentVariable',
                     "typeSystem": "pythonclass",
                 },
-                actual=self.mount4.as_dict())
+                actual=self.mount4.as_simple_dict())
 
     ###########################################################
     # type

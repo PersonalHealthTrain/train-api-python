@@ -110,7 +110,7 @@ class StringModelSummaryTests(BaseTest):
                 'typeName': 'StringModelSummary',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.model1.as_dict())
+            actual=self.model1._as_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -120,4 +120,4 @@ class StringModelSummaryTests(BaseTest):
                 'typeName': 'StringModelSummary',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.model2.as_dict())
+            actual=self.model2._as_dict())
