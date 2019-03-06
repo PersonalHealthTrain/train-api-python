@@ -1,10 +1,8 @@
 import abc
-from pht.internal.protocol.Copyable import Copyable
-from pht.internal.protocol.Comparable import Comparable
-from pht.internal.protocol.Typed import Typed
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 
 
-class Formula(Typed, Comparable, Copyable):
+class Formula(TypedAsPythonClass):
 
     @property
     def data(self) -> dict:

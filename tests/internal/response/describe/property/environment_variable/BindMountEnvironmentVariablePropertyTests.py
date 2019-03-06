@@ -111,48 +111,47 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'file',
-                'name': 'FOO',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'BindMountEnvironmentVariableProperty',
+                'typeName': 'BindMountEnvironmentVariableProperty',
                 "typeSystem": "pythonclass",
-            }, actual=self.mount1.as_simple_dict()
+            },
+            actual=self.mount1.as_simple_dict()
         )
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'file',
-                'name': 'BAR',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'BindMountEnvironmentVariableProperty',
+                'typeName': 'BindMountEnvironmentVariableProperty',
                 "typeSystem": "pythonclass",
-            }, actual=self.mount2.as_simple_dict()
+            },
+            actual=self.mount2.as_simple_dict()
         )
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'directory',
-                'name': 'FOO',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'FOO' not set"
                 },
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'BindMountEnvironmentVariableProperty',
+                'typeName': 'BindMountEnvironmentVariableProperty',
                 "typeSystem": "pythonclass",
             },
             actual=self.mount3.as_simple_dict())
@@ -160,15 +159,14 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_4(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'directory',
-                'name': 'BAR',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'BAR' not set"},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'BindMountEnvironmentVariableProperty',
+                'typeName': 'BindMountEnvironmentVariableProperty',
                 "typeSystem": "pythonclass",
             },
             actual=self.mount4.as_simple_dict())
@@ -177,16 +175,15 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'not a file'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'file',
-                    'name': 'FOO',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'BindMountEnvironmentVariableProperty',
+                    'typeName': 'BindMountEnvironmentVariableProperty',
                     "typeSystem": "pythonclass",
                 },
                 actual=self.mount1.as_simple_dict())
@@ -195,16 +192,15 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'not a file'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'file',
-                    'name': 'BAR',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'BindMountEnvironmentVariableProperty',
+                    'typeName': 'BindMountEnvironmentVariableProperty',
                     "typeSystem": "pythonclass",
                 },
                 actual=self.mount2.as_simple_dict())
@@ -213,16 +209,15 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'not a directory'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'directory',
-                    'name': 'FOO',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'BindMountEnvironmentVariableProperty',
+                    'typeName': 'BindMountEnvironmentVariableProperty',
                     "typeSystem": "pythonclass",
                 },
                 actual=self.mount3.as_simple_dict())
@@ -231,16 +226,15 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'not a directory'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'directory',
-                    'name': 'BAR',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'BindMountEnvironmentVariableProperty',
+                    'typeName': 'BindMountEnvironmentVariableProperty',
                     "typeSystem": "pythonclass",
                 },
                 actual=self.mount4.as_simple_dict())
@@ -250,22 +244,22 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount4.type)
 
     ###########################################################
@@ -273,22 +267,22 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_display_1(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount1.type_name)
 
     def test_display_2(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount2.type_name)
 
     def test_display_3(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount3.type_name)
 
     def test_display_4(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='BindMountEnvironmentVariableProperty',
             actual=self.mount4.type_name)
 
     ###########################################################
@@ -297,10 +291,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
-                'target': 'bindMount',
                 'mountType': 'file',
-                'description': None,
-                'name': 'FOO',
+                'description': '',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'}},
@@ -310,10 +303,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_data_2(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'file',
-                'name': 'BAR',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'}},
@@ -322,10 +314,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_data_3(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'directory',
-                'name': 'FOO',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'}},
@@ -334,10 +325,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     def test_data_4(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'bindMount',
+                'description': '',
                 'mountType': 'directory',
-                'name': 'BAR',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'}},
@@ -347,10 +337,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'not a file'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'file',
-                    'name': 'FOO',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
@@ -362,10 +351,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'not a file'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'file',
-                    'name': 'BAR',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
@@ -377,10 +365,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'not a directory'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'directory',
-                    'name': 'FOO',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
@@ -392,10 +379,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'not a directory'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'bindMount',
+                    'description': '',
                     'mountType': 'directory',
-                    'name': 'BAR',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': False,
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
@@ -498,26 +484,3 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
             self.checkExpect(
                 expect='',
                 actual=self.mount4.get_value())
-
-    ###########################################################
-    # target
-    ###########################################################
-    def test_target_1(self):
-        self.checkExpect(
-            expect='bindMount',
-            actual=self.mount1.target)
-
-    def test_target_2(self):
-        self.checkExpect(
-            expect='bindMount',
-            actual=self.mount2.target)
-
-    def test_target_3(self):
-        self.checkExpect(
-            expect='bindMount',
-            actual=self.mount3.target)
-
-    def test_target_4(self):
-        self.checkExpect(
-            expect='bindMount',
-            actual=self.mount4.target)

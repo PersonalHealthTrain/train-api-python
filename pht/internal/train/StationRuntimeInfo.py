@@ -1,11 +1,11 @@
+from collections.abc import Hashable
 from typing import Optional
-from pht.internal.protocol.Comparable import Comparable
 from pht.internal.protocol.Copyable import Copyable
 from pht.internal.util import require
 from pht.internal.util.require import is_not_none
 
 
-class StationRuntimeInfo(Comparable, Copyable):
+class StationRuntimeInfo(Copyable, Hashable):
     """
     Represents information on the station that will be passed on runtime.
     """

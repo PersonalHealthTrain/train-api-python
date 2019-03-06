@@ -1,9 +1,9 @@
+from collections.abc import Hashable, Sized
 from pht.internal.util import require
 from pht.internal.util import frozen_set_of
-from pht.internal.protocol.Comparable import Comparable
 
 
-class Clause(Comparable):
+class Clause(Hashable, Sized):
     """
     A clause is a set of literals. Here we represent literals simply as signed integers
     """
@@ -11,7 +11,9 @@ class Clause(Comparable):
         self._literals = frozen_set_of(int, first_literal, more_literals)
         for literal in self._literals:
             require.type_is_int(literal)
-        require.for_value(self._literals, lambda x: 0 not in x, "0 is not allowed as a literal for a clause")
+        require.for_value(self._literals,
+                          that=lambda x: 0 not in x,
+                          error_if_not="0 is not allowed as a literal for a clause")
 
     def __iter__(self):
         return iter(self._literals)

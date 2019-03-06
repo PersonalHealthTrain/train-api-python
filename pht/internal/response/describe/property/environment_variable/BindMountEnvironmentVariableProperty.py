@@ -10,28 +10,17 @@ class MountType(enum.Enum):
     DIRECTORY = 'directory'
 
 
-class BindMountVariableProperty(EnvironmentVariableProperty):
+class BindMountEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def __init__(self, name: str, description: Optional[str], mount_type: MountType):
         super().__init__(name, description)
         self.mount_type = mount_type
 
-    @property
-    def target(self) -> str:
-        return 'bindMount'
-
     def copy(self):
-        return BindMountVariableProperty(self.name, self.description, self.mount_type)
+        return BindMountEnvironmentVariableProperty(self.name, self.description, self.mount_type)
 
     def __repr__(self):
         return 'BindMount[name={},mountType={}]'.format(self.name, self.mount_type.value)
-
-    def __eq__(self, other):
-        if self is other:
-            return True
-        if not isinstance(other, BindMountVariableProperty):
-            return False
-        return self.name == other.name and self.mount_type == other.mount_type
 
     def __hash__(self):
         return hash((self.name, self.mount_type))

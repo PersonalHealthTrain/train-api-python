@@ -41,6 +41,19 @@ class TrainDescription(TrainResponse):
 
         self._validate_literals_in_formulas()
 
+    def copy(self):
+        return TrainDescription(
+            train_name=self._train_name,
+            train_version=self._train_version,
+            properties=self._properties,
+            formulas=self._formulas,
+            model_summary=self._model_summary,
+            algorithm_requirement=self._algorithm_requirement)
+
+    def __hash__(self):
+        # TODO Useful hash function
+        return 1
+
     @property
     def data(self) -> dict:
 
@@ -62,14 +75,6 @@ class TrainDescription(TrainResponse):
             }
         }
 
-    @property
-    def type(self) -> str:
-        return self.type_name
-
-    @property
-    def type_name(self) -> str:
-        return 'TrainDescription'
-
     @staticmethod
     def _create_model_summary(model_summary: Union[ModelSummary, str, dict, list, None]):
         """
@@ -79,7 +84,7 @@ class TrainDescription(TrainResponse):
             return StringModelSummary(model_summary)
         elif isinstance(model_summary, list) or isinstance(model_summary, dict):
             return JsonModelSummary(model_summary)
-        return model_summary
+        return model_summary.copy()
 
     def _validate_formula_algorithm_requirement(self):
         """

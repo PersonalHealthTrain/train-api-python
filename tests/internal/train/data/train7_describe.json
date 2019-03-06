@@ -9,60 +9,56 @@
     {
       "id": 1,
       "data": {
-        "description": null,
-        "target": "http://schema.org/URL",
-        "name": "DATA_SOURCE_A",
+        "description": "",
+        "environmentVariableName": "DATA_SOURCE_A",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'DATA_SOURCE_A' not set"
         },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "UrlEnvironmentVariableProperty",
+        "typeName": "UrlEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     },
     {
       "id": 2,
       "data": {
-        "description": null,
-        "target": "http://schema.org/URL",
-        "name": "DATA_SOURCE_B",
+        "description": "",
+        "environmentVariableName": "DATA_SOURCE_B",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'DATA_SOURCE_B' not set"
         },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "UrlEnvironmentVariableProperty",
+        "typeName": "UrlEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     },
     {
       "id": 3,
       "data": {
-        "description": null,
-        "target": "http://schema.org/URL",
-        "name": "DATA_SOURCE_C",
+        "description": "",
+        "environmentVariableName": "DATA_SOURCE_C",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'DATA_SOURCE_C' not set"
         },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "UrlEnvironmentVariableProperty",
+        "typeName": "UrlEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     },
     {
       "id": 4,
       "data": {
-        "description": null,
-        "target": "http://schema.org/URL",
-        "name": "FORBIDDEN",
+        "description": "",
+        "environmentVariableName": "FORBIDDEN",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'FORBIDDEN' not set"
         },
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "UrlEnvironmentVariableProperty",
+        "typeName": "UrlEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     }
@@ -83,7 +79,7 @@
             3
           ]
         ],
-        "type": "https://www.wikidata.org/wiki/Q846564",
+        "type": "ConjunctiveNormalForm",
         "typeName": "ConjunctiveNormalForm",
         "typeSystem": "pythonclass"
       }

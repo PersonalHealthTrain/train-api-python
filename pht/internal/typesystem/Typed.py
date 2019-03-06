@@ -1,10 +1,11 @@
 import abc
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
-from pht.internal.util.require import not_in
 from pht.internal.util import require
+from pht.internal.util.require import not_in
+from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.protocol.Copyable import Copyable
 
 
-class Typed(SimpleDictRepresentable):
+class Typed(Copyable, SimpleDictRepresentable):
 
     @property
     @abc.abstractmethod
@@ -14,6 +15,11 @@ class Typed(SimpleDictRepresentable):
     @property
     @abc.abstractmethod
     def type_name(self) -> str:
+        pass
+
+    @property
+    @abc.abstractmethod
+    def type_system(self) -> str:
         pass
 
     @property
@@ -34,5 +40,5 @@ class Typed(SimpleDictRepresentable):
             error_if_not='Key \'{}\' not allowed in data dictionary of class')
         data[_type] = self.type
         data[_typeName] = self.type_name
-        data[_typeSystem] = 'pythonclass'
+        data[_typeSystem] = self.type_system
         return data

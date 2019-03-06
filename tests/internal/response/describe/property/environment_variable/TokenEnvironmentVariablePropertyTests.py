@@ -110,14 +110,13 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'FOO',
+                'description': '',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'TokenEnvironmentVariableProperty',
+                'typeName': 'TokenEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
             }, actual=self.token1.as_simple_dict()
         )
@@ -125,14 +124,13 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'BAR',
+                'description': '',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'TokenEnvironmentVariableProperty',
+                'typeName': 'TokenEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
             }, actual=self.token2.as_simple_dict()
         )
@@ -140,15 +138,14 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_3(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'MY_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'TokenEnvironmentVariableProperty',
+                'typeName': 'TokenEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
             },
             actual=self.token3.as_simple_dict())
@@ -156,14 +153,13 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_4(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'SOME_OTHER_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'TokenEnvironmentVariableProperty',
+                'typeName': 'TokenEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
             },
             actual=self.token4.as_simple_dict())
@@ -172,15 +168,14 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'FOO',
+                    'description': '',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'TokenEnvironmentVariableProperty',
+                    'typeName': 'TokenEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.token1.as_simple_dict())
@@ -189,15 +184,14 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'BAR',
+                    'description': '',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'TokenEnvironmentVariableProperty',
+                    'typeName': 'TokenEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.token2.as_simple_dict())
@@ -206,15 +200,14 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'MY_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'MY_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'TokenEnvironmentVariableProperty',
+                    'typeName': 'TokenEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.token3.as_simple_dict())
@@ -223,15 +216,14 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'SOME_OTHER_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'TokenEnvironmentVariableProperty',
+                    'typeName': 'TokenEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.token4.as_simple_dict())
@@ -241,22 +233,22 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token4.type)
 
     ###########################################################
@@ -264,22 +256,22 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_name_1(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token1.type_name)
 
     def test_type_name_2(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token2.type_name)
 
     def test_type_name_3(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token3.type_name)
 
     def test_type_name_4(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='TokenEnvironmentVariableProperty',
             actual=self.token4.type_name)
 
     ###########################################################
@@ -288,9 +280,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'FOO',
+                'description': '',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'}},
@@ -300,9 +291,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_2(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'BAR',
+                'description': '',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'}},
@@ -311,9 +301,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_3(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'MY_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'MY_VARIABLE\' not set'}},
@@ -322,9 +311,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     def test_data_4(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'token',
-                'name': 'SOME_OTHER_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'SOME_OTHER_VARIABLE\' not set'}},
@@ -334,9 +322,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'FOO',
+                    'description': '',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
@@ -346,9 +333,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'BAR',
+                    'description': '',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
@@ -358,9 +344,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'MY_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'MY_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
@@ -370,9 +355,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'token',
-                    'name': 'SOME_OTHER_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None}},
@@ -473,26 +457,3 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             self.checkExpect(
                 expect='',
                 actual=self.token4.get_value())
-
-    ###########################################################
-    # target
-    ###########################################################
-    def test_target_1(self):
-        self.checkExpect(
-            expect='token',
-            actual=self.token1.target)
-
-    def test_target_2(self):
-        self.checkExpect(
-            expect='token',
-            actual=self.token2.target)
-
-    def test_target_3(self):
-        self.checkExpect(
-            expect='token',
-            actual=self.token3.target)
-
-    def test_target_4(self):
-        self.checkExpect(
-            expect='token',
-            actual=self.token4.target)

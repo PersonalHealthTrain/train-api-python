@@ -146,57 +146,56 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
-                            'description': None,
-                            'target': 'http://schema.org/URL',
-                            'name': 'FOO',
+                            'description': '',
+                            'environmentVariableName': 'FOO',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
-                            }, 'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            },
+                            'type': 'UrlEnvironmentVariableProperty',
+                            'typeName': 'UrlEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
-                            'description': None,
-                            'target': 'token',
-                            'name': 'BAR',
+                            'description': '',
+                            'environmentVariableName': 'BAR',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'TokenEnvironmentVariableProperty',
+                            'typeName': 'TokenEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {''
                      'id': 3,
                      'data': {
-                         'description': None,
-                         'target': 'enum',
-                         'name': 'BAZ',
+                         'description': '',
+                         'environmentVariableName': 'BAZ',
                          'state': {
                              'isAvailable': False,
                              'reason': "Environment variable 'BAZ' not set"
                          },
                          'choices': ['VALUE1', 'VALUE2'],
-                         'type': 'http://www.wikidata.org/entity/Q400857',
-                         'typeName': 'environmentVariable',
+                         'type': 'EnumEnvironmentVariableProperty',
+                         'typeName': 'EnumEnvironmentVariableProperty',
                          'typeSystem': 'pythonclass'
                      }
                      }
                 ],
                 'formula': [
-                    {'id': 1,
-                     'data': {
-                         'value': [[1]],
-                         'type': 'https://www.wikidata.org/wiki/Q846564',
-                         'typeName': 'ConjunctiveNormalForm',
-                         'typeSystem': 'pythonclass'
-                     }
+                    {
+                        'id': 1,
+                        'data': {
+                            'value': [[1]],
+                            'type': 'ConjunctiveNormalForm',
+                            'typeName': 'ConjunctiveNormalForm',
+                            'typeSystem': 'pythonclass'
+                        }
                     }
                 ],
                 'model':
@@ -232,46 +231,43 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
-                            'description': None,
-                            'target': 'http://schema.org/URL',
-                            'name': 'FOO',
+                            'description': '',
+                            'environmentVariableName': 'FOO',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'UrlEnvironmentVariableProperty',
+                            'typeName': 'UrlEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
-                            'description': None,
-                            'target': 'token',
-                            'name': 'BAR',
+                            'description': '',
+                            'environmentVariableName': 'BAR',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'TokenEnvironmentVariableProperty',
+                            'typeName': 'TokenEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 3,
                         'data': {
-                            'description': None,
-                            'target': 'enum',
-                            'name': 'BAZ',
+                            'description': '',
+                            'environmentVariableName': 'BAZ',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'EnumEnvironmentVariableProperty',
+                            'typeName': 'EnumEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     }
@@ -280,7 +276,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -300,7 +296,7 @@ class TrainDescriptionTests(BaseTest):
                 'typeName': 'TrainDescription',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.td2._as_dict())
+            actual=self.td2.as_simple_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
@@ -312,46 +308,43 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
-                            'description': None,
-                            'target': 'http://schema.org/URL',
-                            'name': 'FOO',
+                            'description': '',
+                            'environmentVariableName': 'FOO',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'UrlEnvironmentVariableProperty',
+                            'typeName': 'UrlEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     }
                     , {
                         'id': 2,
                         'data': {
-                            'description': None,
-                            'target': 'token',
-                            'name': 'BAR',
+                            'description': '',
+                            'environmentVariableName': 'BAR',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'TokenEnvironmentVariableProperty',
+                            'typeName': 'TokenEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 3,
                         'data': {
-                            'description': None,
-                            'target': 'enum',
-                            'name': 'BAZ',
+                            'description': '',
+                            'environmentVariableName': 'BAZ',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'EnumEnvironmentVariableProperty',
+                            'typeName': 'EnumEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     }
@@ -361,7 +354,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -370,7 +363,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 2,
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -379,7 +372,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 3,
                         'data': {
                             'value': [[-1]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -405,7 +398,7 @@ class TrainDescriptionTests(BaseTest):
                 'typeName': 'TrainDescription',
                 'typeSystem': 'pythonclass'
             },
-            actual=self.td3._as_dict())
+            actual=self.td3.as_simple_dict())
 
     ################################################################################
     # Type
@@ -456,30 +449,28 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
-                            'description': None,
-                            'target': 'http://schema.org/URL',
-                            'name': 'FOO',
+                            'description': '',
+                            'environmentVariableName': 'FOO',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'UrlEnvironmentVariableProperty',
+                            'typeName': 'UrlEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
-                            'description': None,
-                            'target': 'token',
-                            'name': 'BAR',
+                            'description': '',
+                            'environmentVariableName': 'BAR',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'TokenEnvironmentVariableProperty',
+                            'typeName': 'TokenEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
@@ -487,27 +478,28 @@ class TrainDescriptionTests(BaseTest):
                         'id': 3,
                         'data':
                             {
-                                'description': None,
-                                'target': 'enum',
-                                'name': 'BAZ',
+                                'description': '',
+                                'environmentVariableName': 'BAZ',
                                 'state': {
                                     'isAvailable': False,
                                     'reason': "Environment variable 'BAZ' not set"
                                 },
                                 'choices': ['VALUE1', 'VALUE2'],
-                                'type': 'http://www.wikidata.org/entity/Q400857',
-                                'typeName': 'environmentVariable',
+                                'type': 'EnumEnvironmentVariableProperty',
+                                'typeName': 'EnumEnvironmentVariableProperty',
                                 'typeSystem': 'pythonclass'
                             }
                     }
                 ],
                 'formula': [
-                    {'id': 1,
-                     'data': {'value': [[1]],
-                              'type': 'https://www.wikidata.org/wiki/Q846564',
-                              'typeName': 'ConjunctiveNormalForm',
-                              'typeSystem': 'pythonclass'
-                              }
+                    {
+                        'id': 1,
+                        'data': {
+                            'value': [[1]],
+                            'type': 'ConjunctiveNormalForm',
+                            'typeName': 'ConjunctiveNormalForm',
+                            'typeSystem': 'pythonclass'
+                        }
                      }
                 ],
                 'model': {
@@ -539,46 +531,43 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
-                            'description': None,
-                            'target': 'http://schema.org/URL',
-                            'name': 'FOO',
+                            'description': '',
+                            'environmentVariableName': 'FOO',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'UrlEnvironmentVariableProperty',
+                            'typeName': 'UrlEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
-                            'description': None,
-                            'target': 'token',
-                            'name': 'BAR',
+                            'description': '',
+                            'environmentVariableName': 'BAR',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'TokenEnvironmentVariableProperty',
+                            'typeName': 'TokenEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 3,
                         'data': {
-                            'description': None,
-                            'target': 'enum',
-                            'name': 'BAZ',
+                            'description': '',
+                            'environmentVariableName': 'BAZ',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'EnumEnvironmentVariableProperty',
+                            'typeName': 'EnumEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     }
@@ -588,7 +577,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -615,45 +604,42 @@ class TrainDescriptionTests(BaseTest):
                     {
                         'id': 1,
                         'data': {
-                            'description': None,
-                            'target': 'http://schema.org/URL',
-                            'name': 'FOO',
+                            'description': '',
+                            'environmentVariableName': 'FOO',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'UrlEnvironmentVariableProperty',
+                            'typeName': 'UrlEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
-                            'description': None,
-                            'target': 'token',
-                            'name': 'BAR',
+                            'description': '',
+                            'environmentVariableName': 'BAR',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'TokenEnvironmentVariableProperty',
+                            'typeName': 'TokenEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     }, {
                         'id': 3,
                         'data': {
-                            'description': None,
-                            'target': 'enum',
-                            'name': 'BAZ',
+                            'description': '',
+                            'environmentVariableName': 'BAZ',
                             'state': {
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'http://www.wikidata.org/entity/Q400857',
-                            'typeName': 'environmentVariable',
+                            'type': 'EnumEnvironmentVariableProperty',
+                            'typeName': 'EnumEnvironmentVariableProperty',
                             'typeSystem': 'pythonclass'
                         }
                     }
@@ -663,7 +649,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -672,7 +658,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 2,
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }
@@ -681,7 +667,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 3,
                         'data': {
                             'value': [[-1]],
-                            'type': 'https://www.wikidata.org/wiki/Q846564',
+                            'type': 'ConjunctiveNormalForm',
                             'typeName': 'ConjunctiveNormalForm',
                             'typeSystem': 'pythonclass'
                         }

@@ -210,6 +210,7 @@ def _load_json(name: str) -> dict:
 class SimpleTrainTests(BaseTest):
 
     def perform_test(self, train_response, file: str):
+        self.maxDiff = None
         self.checkExpect(
             expect=_load_json(file),
             actual=train_response.as_simple_dict())

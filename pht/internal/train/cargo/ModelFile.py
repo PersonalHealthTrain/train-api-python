@@ -18,7 +18,11 @@ def _is_valid_key(key: str):
 class ModelFile(TrainFile):
     def __init__(self, key: str):
         require.for_value(key, lambda x: _is_valid_key(x), 'String: {} is not a valid key for TrainFile'.format(key))
+        self._key = key
         self._path = os.path.join(ModelFile.base_dir(), key)
+
+    def copy(self):
+        return ModelFile(self._key)
 
     @property
     def absolute_path(self) -> str:

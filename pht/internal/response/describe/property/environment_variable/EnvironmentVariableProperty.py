@@ -1,6 +1,7 @@
 import abc
 import os
 import re
+from typing import Optional
 from ..Property import Property
 from ..PropertyState import PropertyState, PropertyUnavailable, PROPERTY_AVAILABLE
 
@@ -13,9 +14,9 @@ def _is_valid_environment_variable(name: str) -> bool:
 
 
 class EnvironmentVariableProperty(Property):
-    def __init__(self, name: str, description: str = None):
+    def __init__(self, name: str, description: Optional[str] = None):
         self.name = name
-        self.description = description
+        self.description = '' if description is None else description
 
         if self.name is None:
             raise ValueError('\'None\' is not allowed for the name of an Environment Variable')
@@ -23,35 +24,16 @@ class EnvironmentVariableProperty(Property):
         if not _is_valid_environment_variable(self.name):
             raise ValueError('Not a valid Environment variable: {}'.format(self.name))
 
-    def __eq__(self, other):
-        return isinstance(other, EnvironmentVariableProperty) \
-               and self.name == other.name \
-               and self.target == other.target
-
     def __hash__(self):
-        return hash((self.type, self.target, self.name))
-
-    @property
-    def type_name(self) -> str:
-        return 'environmentVariable'
-
-    @property
-    def type(self) -> str:
-        return 'http://www.wikidata.org/entity/Q400857'
+        return hash((self.type, self.name))
 
     @property
     def data(self) -> dict:
         return {
             'description': self.description,
-            'target': self.target,
-            'name': self.name,
-            'state': self.state()._as_dict()
+            'environmentVariableName': self.name,
+            'state': self.state().as_simple_dict()
         }
-
-    @property
-    @abc.abstractmethod
-    def target(self) -> str:
-        pass
 
     def state(self) -> PropertyState:
         if self.name in os.environ.keys():

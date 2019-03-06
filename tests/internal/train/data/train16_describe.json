@@ -7,16 +7,15 @@
     {
       "id": 1,
       "data": {
-        "description": null,
-        "target": "bindMount",
-        "name": "FOO",
+        "description": "",
+        "environmentVariableName": "FOO",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'FOO' not set"
         },
         "mountType": "directory",
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "BindMountEnvironmentVariableProperty",
+        "typeName": "BindMountEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     }
@@ -30,7 +29,7 @@
             1
           ]
         ],
-        "type": "https://www.wikidata.org/wiki/Q846564",
+        "type": "ConjunctiveNormalForm",
         "typeName": "ConjunctiveNormalForm",
         "typeSystem": "pythonclass"
       }

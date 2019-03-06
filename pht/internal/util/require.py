@@ -44,6 +44,10 @@ def not_in(collection):
     return lambda val: val not in collection
 
 
+def does_not_contain(value: Any):
+    return lambda collection: value not in collection
+
+
 def that(test: bool, error_if_not):
     if not test:
         raise ValueError(error_if_not)

@@ -110,45 +110,44 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'FOO',
+                'description': '',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'UrlEnvironmentVariableProperty',
+                'typeName': 'UrlEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
-            }, actual=self.url1.as_simple_dict()
+            },
+            actual=self.url1.as_simple_dict()
         )
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'BAR',
+                'description': '',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'UrlEnvironmentVariableProperty',
+                'typeName': 'UrlEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
-            }, actual=self.url2.as_simple_dict()
+            },
+            actual=self.url2.as_simple_dict()
         )
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'MY_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'UrlEnvironmentVariableProperty',
+                'typeName': 'UrlEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
             },
             actual=self.url3.as_simple_dict())
@@ -156,14 +155,13 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_as_simple_dict_4(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'SOME_OTHER_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
-                'type': 'http://www.wikidata.org/entity/Q400857',
-                'typeName': 'environmentVariable',
+                'type': 'UrlEnvironmentVariableProperty',
+                'typeName': 'UrlEnvironmentVariableProperty',
                 'typeSystem': 'pythonclass'
             },
             actual=self.url4.as_simple_dict())
@@ -172,15 +170,14 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'FOO',
+                    'description': '',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'UrlEnvironmentVariableProperty',
+                    'typeName': 'UrlEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.url1.as_simple_dict())
@@ -189,15 +186,14 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'BAR': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'BAR',
+                    'description': '',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'UrlEnvironmentVariableProperty',
+                    'typeName': 'UrlEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.url2.as_simple_dict())
@@ -206,15 +202,14 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'MY_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'MY_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'UrlEnvironmentVariableProperty',
+                    'typeName': 'UrlEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.url3.as_simple_dict())
@@ -223,15 +218,14 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'SOME_OTHER_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'http://www.wikidata.org/entity/Q400857',
-                    'typeName': 'environmentVariable',
+                    'type': 'UrlEnvironmentVariableProperty',
+                    'typeName': 'UrlEnvironmentVariableProperty',
                     'typeSystem': 'pythonclass'
                 },
                 actual=self.url4.as_simple_dict())
@@ -241,22 +235,22 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='http://www.wikidata.org/entity/Q400857',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url4.type)
 
     ###########################################################
@@ -264,22 +258,22 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_name_1(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url1.type_name)
 
     def test_type_name_2(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url2.type_name)
 
     def test_type_name_3(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url3.type_name)
 
     def test_type_name_4(self):
         self.checkExpect(
-            expect='environmentVariable',
+            expect='UrlEnvironmentVariableProperty',
             actual=self.url4.type_name)
 
     ###########################################################
@@ -288,43 +282,44 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     def test_data_1(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'FOO',
+                'description': '',
+                'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': False,
-                    'reason': 'Environment variable \'FOO\' not set'}},
-            actual=self.url1.data
-        )
+                    'reason': 'Environment variable \'FOO\' not set'
+                }
+            },
+            actual=self.url1.data)
 
     def test_data_2(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'BAR',
+                'description': '',
+                'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': False,
-                    'reason': 'Environment variable \'BAR\' not set'}},
+                    'reason': 'Environment variable \'BAR\' not set'
+                }
+            },
             actual=self.url2.data)
 
     def test_data_3(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'MY_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': False,
-                    'reason': 'Environment variable \'MY_VARIABLE\' not set'}},
+                    'reason': 'Environment variable \'MY_VARIABLE\' not set'
+                }
+            },
             actual=self.url3.data)
 
     def test_data_4(self):
         self.checkExpect(
             expect={
-                'description': None,
-                'target': 'http://schema.org/URL',
-                'name': 'SOME_OTHER_VARIABLE',
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'SOME_OTHER_VARIABLE\' not set'}},
@@ -334,48 +329,52 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         with patch.dict('os.environ', {'FOO': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'FOO',
+                    'description': '',
+                    'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': True,
-                        'reason': None}},
+                        'reason': None
+                    }
+                },
                 actual=self.url1.data)
 
     def test_data_6(self):
         with patch.dict('os.environ', {'BAR': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'BAR',
+                    'description': '',
+                    'environmentVariableName': 'BAR',
                     'state': {
                         'isAvailable': True,
-                        'reason': None}},
+                        'reason': None
+                    }
+                },
                 actual=self.url2.data)
 
     def test_data_7(self):
         with patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'MY_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'MY_VARIABLE',
                     'state': {
                         'isAvailable': True,
-                        'reason': None}},
+                        'reason': None
+                    }
+                },
                 actual=self.url3.data)
 
     def test_data_8(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'}):
             self.checkExpect(
                 expect={
-                    'description': None,
-                    'target': 'http://schema.org/URL',
-                    'name': 'SOME_OTHER_VARIABLE',
+                    'description': '',
+                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
-                        'reason': None}},
+                        'reason': None
+                    }
+                },
                 actual=self.url4.data)
 
     ###########################################################
@@ -473,26 +472,3 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
             self.checkExpect(
                 expect='',
                 actual=self.url4.get_value())
-
-    ###########################################################
-    # target
-    ###########################################################
-    def test_target_1(self):
-        self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url1.target)
-
-    def test_target_2(self):
-        self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url2.target)
-
-    def test_target_3(self):
-        self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url3.target)
-
-    def test_target_4(self):
-        self.checkExpect(
-            expect='http://schema.org/URL',
-            actual=self.url4.target)

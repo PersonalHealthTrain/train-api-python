@@ -1,9 +1,10 @@
+from collections.abc import Hashable
 from pht.internal.util import require
 
 from .ModelSummary import ModelSummary
 
 
-class StringModelSummary(ModelSummary):
+class StringModelSummary(Hashable, ModelSummary):
     def __init__(self, val: str):
         self._val = val
         require.type_is_str(self._val)
@@ -11,19 +12,8 @@ class StringModelSummary(ModelSummary):
     def copy(self):
         return StringModelSummary(self._val)
 
-    def __eq__(self, other):
-        return (other is self) or (isinstance(other, StringModelSummary) and self.value == other.value)
-
     def __hash__(self):
         return hash(self._val)
-
-    @property
-    def type(self) -> str:
-        return self.type_name
-
-    @property
-    def type_name(self) -> str:
-        return 'StringModelSummary'
 
     @property
     def value(self):

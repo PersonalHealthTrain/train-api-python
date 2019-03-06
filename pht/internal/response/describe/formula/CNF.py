@@ -1,14 +1,11 @@
+from collections.abc import Hashable
 from .Formula import Formula
 from .Clause import Clause, frozen_set_of
 
 
-class CNF(Formula):
+class CNF(Hashable, Formula):
     def __init__(self, clause: Clause, *clauses: Clause):
         self._clauses = frozen_set_of(Clause, clause, clauses)
-
-    @property
-    def type(self) -> str:
-        return 'https://www.wikidata.org/wiki/Q846564'
 
     @property
     def type_name(self) -> str:
@@ -28,10 +25,6 @@ class CNF(Formula):
 
     def __contains__(self, item):
         return item in self._clauses
-
-    def __eq__(self, other):
-        return other is self or \
-               (isinstance(other, CNF) and self._clauses == other._clauses)
 
     def __hash__(self):
         return hash(self._clauses)

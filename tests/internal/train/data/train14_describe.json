@@ -9,9 +9,8 @@
     {
       "id": 1,
       "data": {
-        "description": null,
-        "target": "enum",
-        "name": "FOO",
+        "description": "",
+        "environmentVariableName": "FOO",
         "state": {
           "isAvailable": true,
           "reason": null
@@ -20,8 +19,8 @@
           "VALUE1",
           "VALUE2"
         ],
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "EnumEnvironmentVariableProperty",
+        "typeName": "EnumEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     }
@@ -35,7 +34,7 @@
             1
           ]
         ],
-        "type": "https://www.wikidata.org/wiki/Q846564",
+        "type": "ConjunctiveNormalForm",
         "typeName": "ConjunctiveNormalForm",
         "typeSystem": "pythonclass"
       }

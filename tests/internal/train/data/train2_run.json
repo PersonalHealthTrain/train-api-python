@@ -12,8 +12,8 @@
     "exportFiles": [],
     "nextTrainTags": ["2.7.15-slim-jessie"],
     "from": "personalhealthtrain/base:base",
-    "type": "docker",
-    "typeName": "docker",
+    "type": "DockerRebaseStrategy",
+    "typeName": "DockerRebaseStrategy",
     "typeSystem": "pythonclass"
   }
 }

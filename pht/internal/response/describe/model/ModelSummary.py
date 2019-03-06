@@ -1,9 +1,9 @@
 import abc
-from pht.internal.protocol.Typed import Typed
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 from pht.internal.protocol.Copyable import Copyable
 
 
-class ModelSummary(Typed, Copyable, abc.ABC):
+class ModelSummary(TypedAsPythonClass, Copyable, abc.ABC):
 
     @property
     def data(self) -> dict:

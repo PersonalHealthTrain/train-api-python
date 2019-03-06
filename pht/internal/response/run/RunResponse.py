@@ -24,9 +24,11 @@ class RunResponse(TrainResponse):
         # The Rebase Strategy
         self.rebase = rebase.copy()
 
-    @property
-    def type(self) -> str:
-        return self.type_name
+    def copy(self):
+        return RunResponse(self.run_exit, self.message, self.rebase)
+
+    def __hash__(self) -> int:
+        return hash((self.run_exit, self.message, self.rebase))
 
     @property
     def data(self) -> dict:
@@ -36,7 +38,3 @@ class RunResponse(TrainResponse):
             'freeTextMessage': self.message,
             'rebase': self.rebase.as_simple_dict()
         }
-
-    @property
-    def type_name(self) -> str:
-        return 'RunResponse'

@@ -8,15 +8,14 @@
       "id": 1,
       "data": {
         "description": "The location for the data files of use case X",
-        "target": "bindMount",
-        "name": "DATA_FILE_LOCATION",
+        "environmentVariableName": "DATA_FILE_LOCATION",
         "state": {
           "isAvailable": false,
           "reason": "Environment variable 'DATA_FILE_LOCATION' not set"
         },
         "mountType": "file",
-        "type": "http://www.wikidata.org/entity/Q400857",
-        "typeName": "environmentVariable",
+        "type": "BindMountEnvironmentVariableProperty",
+        "typeName": "BindMountEnvironmentVariableProperty",
         "typeSystem": "pythonclass"
       }
     }
@@ -30,7 +29,7 @@
             1
           ]
         ],
-        "type": "https://www.wikidata.org/wiki/Q846564",
+        "type": "ConjunctiveNormalForm",
         "typeName": "ConjunctiveNormalForm",
         "typeSystem": "pythonclass"
       }

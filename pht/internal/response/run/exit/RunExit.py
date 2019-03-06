@@ -4,13 +4,13 @@ Contains the RunAlgorithmResponse class, which belongs to the run_algorithm comm
 @author Lukas Zimmermann
 """
 import abc
+from collections.abc import Hashable
 from typing import Optional
-from pht.internal.protocol.Comparable import Comparable
 from pht.internal.protocol.Copyable import Copyable
 from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
 
 
-class RunExit(Comparable, Copyable, SimpleDictRepresentable):
+class RunExit(Copyable, Hashable, SimpleDictRepresentable):
     def __init__(self, reason: Optional[str]):
         self.reason = reason
 
@@ -18,10 +18,6 @@ class RunExit(Comparable, Copyable, SimpleDictRepresentable):
     @abc.abstractmethod
     def state(self) -> str:
         pass
-
-    def __eq__(self, other):
-        return other is self or \
-               (isinstance(other, RunExit) and self.state == other.state and self.reason == other.reason)
 
     def __hash__(self):
         return hash((self.reason, self.state))

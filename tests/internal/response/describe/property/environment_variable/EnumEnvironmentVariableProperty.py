@@ -202,106 +202,88 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     # type
     ###########################################################
     def test_type_1(self):
-        expect = 'http://www.wikidata.org/entity/Q400857'
-        actual = self.enum1.type
-        self.assertEqual(expect, actual)
+        self.checkExpect(
+            expect='EnumEnvironmentVariableProperty',
+            actual=self.enum1.type)
 
     def test_type_2(self):
-        expect = 'http://www.wikidata.org/entity/Q400857'
-        actual = self.enum2.type
-        self.assertEqual(expect, actual)
+        self.checkExpect(
+            expect='EnumEnvironmentVariableProperty',
+            actual=self.enum2.type)
 
     ###########################################################
-    # display
+    # type_name
     ###########################################################
-    def test_display_1(self):
-        expect = 'environmentVariable'
-        actual = self.enum1.type_name
-        self.assertEqual(expect, actual)
+    def test_type_name_1(self):
+        self.checkExpect(
+            expect='EnumEnvironmentVariableProperty',
+            actual=self.enum1.type_name)
 
-    def test_display_2(self):
-        expect = 'environmentVariable'
-        actual = self.enum2.type_name
-        self.assertEqual(expect, actual)
+    def test_type_name_2(self):
+        self.checkExpect(
+            expect='EnumEnvironmentVariableProperty',
+            actual=self.enum2.type_name)
 
     ###########################################################
     # data
     ###########################################################
     def test_data_1(self):
-        expect = {
-            "description": None,
-            'target': 'enum',
-            'name': 'FOO',
-            'choices': ['VALUE1', 'VALUE2'],
-            "state": {
-                "isAvailable": False,
-                "reason": "Environment variable 'FOO' not set"
+        self.checkExpect(
+            expect={
+                "description": '',
+                'environmentVariableName': 'FOO',
+                'choices': ['VALUE1', 'VALUE2'],
+                "state": {
+                    "isAvailable": False,
+                    "reason": "Environment variable 'FOO' not set"
+                }
             },
-        }
-        actual = self.enum1.data
-        self.assertDictEqual(expect, actual)
+            actual=self.enum1.data)
 
     def test_data_2(self):
-        expect = {
-            "description": None,
-            'target': 'enum',
-            'name': 'BAR',
-            'choices': ['SINGLETON'],
-            "state": {
-                "isAvailable": False,
-                "reason": "Environment variable 'BAR' not set"
+        self.checkExpect(
+            expect={
+                "description": '',
+                'environmentVariableName': 'BAR',
+                'choices': ['SINGLETON'],
+                "state": {
+                    "isAvailable": False,
+                    "reason": "Environment variable 'BAR' not set"
+                },
             },
-        }
-        actual = self.enum2.data
-        self.assertDictEqual(expect, actual)
+            actual=self.enum2.data)
 
     ###########################################################
     # dict
     ###########################################################
     def test_simple_dict_1(self):
-        expect = {
-            "description": None,
-            'target': 'enum',
-            'name': 'FOO',
-            'choices': ['VALUE1', 'VALUE2'],
-            "state": {
-                "isAvailable": False,
-                "reason": "Environment variable 'FOO' not set"
+        self.checkExpect(
+            expect={
+                "description": '',
+                'environmentVariableName': 'FOO',
+                'choices': ['VALUE1', 'VALUE2'],
+                "state": {
+                    "isAvailable": False,
+                    "reason": "Environment variable 'FOO' not set"
+                },
+                'type': 'EnumEnvironmentVariableProperty',
+                'typeName': 'EnumEnvironmentVariableProperty',
+                "typeSystem": "pythonclass",
             },
-            'type': 'http://www.wikidata.org/entity/Q400857',
-            'typeName': 'environmentVariable',
-            "typeSystem": "pythonclass",
-        }
-        actual = self.enum1.as_simple_dict()
-        self.assertDictEqual(expect, actual)
+            actual=self.enum1.as_simple_dict())
 
     def test_simple_dict_2(self):
-        expect = {
-            "description": None,
-            'target': 'enum',
-            'name': 'BAR',
-            'choices': ['SINGLETON'],
-            "state": {
-                "isAvailable": False,
-                "reason": "Environment variable 'BAR' not set"
+        self.checkExpect(
+            expect={
+                "description": '',
+                'environmentVariableName': 'BAR',
+                'choices': ['SINGLETON'],
+                "state": {
+                    "isAvailable": False,
+                    "reason": "Environment variable 'BAR' not set"
+                },
+                'type': 'EnumEnvironmentVariableProperty',
+                'typeName': 'EnumEnvironmentVariableProperty',
+                "typeSystem": "pythonclass",
             },
-            'type': 'http://www.wikidata.org/entity/Q400857',
-            'typeName': 'environmentVariable',
-            "typeSystem": "pythonclass",
-        }
-        actual = self.enum2.as_simple_dict()
-        self.assertDictEqual(expect, actual)
-
-    ###########################################################
-    # target
-    ###########################################################
-    def test_target_1(self):
-        expect = 'enum'
-        actual = self.enum1.target
-        self.assertEqual(expect, actual)
-
-    def test_target_2(self):
-        expect = 'enum'
-        actual = self.enum2.target
-        self.assertEqual(expect, actual)
-
+            actual=self.enum2.as_simple_dict())

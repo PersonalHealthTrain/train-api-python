@@ -75,7 +75,7 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[1, 2], [3, 4]],
-                'type': 'https://www.wikidata.org/wiki/Q846564',
+                'type': 'ConjunctiveNormalForm',
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
@@ -85,7 +85,7 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[1]],
-                'type': 'https://www.wikidata.org/wiki/Q846564',
+                'type': 'ConjunctiveNormalForm',
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
@@ -95,7 +95,7 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[1], [1, 2]],
-                'type': 'https://www.wikidata.org/wiki/Q846564',
+                'type': 'ConjunctiveNormalForm',
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
@@ -105,7 +105,7 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[-2, -1]],
-                'type': 'https://www.wikidata.org/wiki/Q846564',
+                'type': 'ConjunctiveNormalForm',
                 'typeName': 'ConjunctiveNormalForm',
                 "typeSystem": "pythonclass",
             },
@@ -116,22 +116,22 @@ class CnfTests(BaseTest):
     ################################################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='https://www.wikidata.org/wiki/Q846564',
+            expect='ConjunctiveNormalForm',
             actual=self.cnf1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='https://www.wikidata.org/wiki/Q846564',
+            expect='ConjunctiveNormalForm',
             actual=self.cnf2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='https://www.wikidata.org/wiki/Q846564',
+            expect='ConjunctiveNormalForm',
             actual=self.cnf3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='https://www.wikidata.org/wiki/Q846564',
+            expect='ConjunctiveNormalForm',
             actual=self.cnf4.type)
 
     ################################################################################

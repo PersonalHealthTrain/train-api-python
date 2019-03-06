@@ -19,8 +19,8 @@
       "latest"
     ],
     "from": "personalhealthtrain/base:base",
-    "type": "docker",
-    "typeName": "docker",
+    "type": "DockerRebaseStrategy",
+    "typeName": "DockerRebaseStrategy",
     "typeSystem": "pythonclass"
   },
   "type": "RunResponse",

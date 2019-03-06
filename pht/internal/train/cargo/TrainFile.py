@@ -1,12 +1,11 @@
 import abc
 import os
 from functools import total_ordering
-from pht.internal.protocol.Comparable import Comparable
-from pht.internal.protocol.Typed import Typed
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 
 
 @total_ordering
-class TrainFile(Comparable, Typed):
+class TrainFile(TypedAsPythonClass):
 
     @property
     @abc.abstractmethod

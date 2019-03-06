@@ -4,9 +4,7 @@ Base class for a rebase strategy
 import abc
 import re
 from typing import List
-from pht.internal.protocol.Typed import Typed
-from pht.internal.protocol.Copyable import Copyable
-from pht.internal.protocol.Comparable import Comparable
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 from pht.internal.train.cargo.TrainFile import TrainFile
 
 
@@ -22,7 +20,7 @@ def _train_tag_is_valid(value: str):
     return _TRAIN_TAG_REGEX.fullmatch(value) is not None
 
 
-class RebaseStrategy(Copyable, Comparable, Typed, abc.ABC):
+class RebaseStrategy(TypedAsPythonClass, abc.ABC):
     def __init__(self,
                  next_train_tags: List[str],
                  export_files: List[TrainFile]):
@@ -61,23 +59,10 @@ class DockerRebaseStrategy(RebaseStrategy):
         self.frm = frm
 
     @property
-    def type(self) -> str:
-        return self.type_name
-
-    @property
-    def type_name(self) -> str:
-        return 'docker'
-
-    @property
     def data(self) -> dict:
         result = super().data
         result['from'] = self.frm
         return result
-
-    def __eq__(self, other):
-        return other is self or \
-               (isinstance(other, DockerRebaseStrategy) and self.frm == other.frm and
-                self.next_train_tags == other.next_train_tags and self.export_files == other.export_files)
 
     def __hash__(self):
         return hash((self.frm, self.next_train_tags, self.export_files))

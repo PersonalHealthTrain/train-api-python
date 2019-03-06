@@ -12,8 +12,8 @@
     "exportFiles": [],
     "nextTrainTags": ["train-tag"],
     "from": "personalhealthtrain/base",
-    "type": "docker",
-    "typeName": "docker",
+    "type": "DockerRebaseStrategy",
+    "typeName": "DockerRebaseStrategy",
     "typeSystem": "pythonclass"
   }
 }

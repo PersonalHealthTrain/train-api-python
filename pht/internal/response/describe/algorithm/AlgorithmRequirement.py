@@ -1,8 +1,6 @@
 import abc
-from pht.internal.protocol.Comparable import Comparable
-from pht.internal.protocol.Copyable import Copyable
-from pht.internal.protocol.Typed import Typed
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 
 
-class AlgorithmRequirement(Comparable, Copyable, Typed, abc.ABC):
+class AlgorithmRequirement(TypedAsPythonClass, abc.ABC):
     pass

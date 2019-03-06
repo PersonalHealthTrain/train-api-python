@@ -15,3 +15,7 @@ class SimpleDictRepresentable(abc.ABC):
     @abc.abstractmethod
     def _as_dict(self) -> dict:
         pass
+
+    def __eq__(self, other):
+        return other is self or \
+               isinstance(other, SimpleDictRepresentable) and self.as_simple_dict() == other.as_simple_dict()

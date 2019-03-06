@@ -2,12 +2,11 @@
 PropertyState captures the State of the Property at runtime
 """
 from typing import Optional
-from pht.internal.protocol.Comparable import Comparable
 from pht.internal.protocol.Copyable import Copyable
 from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
 
 
-class PropertyState(Copyable, Comparable, SimpleDictRepresentable):
+class PropertyState(SimpleDictRepresentable):
     def __init__(self, is_available: bool, reason: Optional[str]):
         self._is_available = is_available
         self._reason = reason
@@ -26,11 +25,6 @@ class PropertyState(Copyable, Comparable, SimpleDictRepresentable):
 
     def copy(self):
         return PropertyState(self._is_available, self._reason)
-
-    def __eq__(self, other):
-        return other is self or \
-               (isinstance(other, PropertyState) and
-                self._is_available == other._is_available and self._reason == other._reason)
 
     def __hash__(self):
         return hash((self._is_available, self._reason))

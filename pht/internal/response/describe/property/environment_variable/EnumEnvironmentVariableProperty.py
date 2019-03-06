@@ -10,10 +10,6 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
         self._choices = frozenset(choices)
 
     @property
-    def target(self) -> str:
-        return 'enum'
-
-    @property
     def data(self) -> dict:
         _data = super().data
         _choices = 'choices'
@@ -27,13 +23,6 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def __repr__(self):
         return 'Enum[name={},choices={}]'.format(self.name, sorted(list(self._choices)))
-
-    def __eq__(self, other):
-        if self is other:
-            return True
-        if not isinstance(other, EnumEnvironmentVariableProperty):
-            return False
-        return self.name == other.name and self._choices == other._choices
 
     def __hash__(self):
         return hash((self.name, self._choices))

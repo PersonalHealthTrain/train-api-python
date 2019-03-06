@@ -13,7 +13,7 @@ class DockerRebaseStrategyTests(BaseTest):
     ################################################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='docker',
+            expect='DockerRebaseStrategy',
             actual=self.rebase1.type)
 
     ################################################################################
@@ -21,7 +21,7 @@ class DockerRebaseStrategyTests(BaseTest):
     ################################################################################
     def test_display_1(self):
         self.checkExpect(
-            expect='docker',
+            expect='DockerRebaseStrategy',
             actual=self.rebase1.type_name)
 
     ################################################################################
@@ -41,8 +41,8 @@ class DockerRebaseStrategyTests(BaseTest):
                 'exportFiles': [],
                 'nextTrainTags': ['station.2'],
                 'from': 'from',
-                'type': 'docker',
-                'typeName': 'docker',
+                'type': 'DockerRebaseStrategy',
+                'typeName': 'DockerRebaseStrategy',
                 "typeSystem": "pythonclass"},
             actual=self.rebase1._as_dict())
 

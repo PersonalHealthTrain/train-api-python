@@ -6,19 +6,15 @@ from .TrainFile import TrainFile
 @total_ordering
 class AlgorithmFile(TrainFile):
     def __init__(self, file_name: str):
+        self._file_name = file_name
         self._path = os.path.join(AlgorithmFile.base_dir(), file_name)
 
     @property
     def absolute_path(self) -> str:
         return self._path
 
-    @property
-    def type(self) -> str:
-        return self.type_name
-
-    @property
-    def type_name(self) -> str:
-        return 'AlgorithmFile'
+    def copy(self):
+        return AlgorithmFile(self._file_name)
 
     @staticmethod
     def base_dir():
