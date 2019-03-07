@@ -1,7 +1,7 @@
 {
   "trainVersion": "1.0",
   "trainName": "test_train",
-  "typeSystem": "pythonclass",
+  "@typeSystem": "pythonclass",
   "descriptionVersion": "1.0",
   "properties": [
     {
@@ -14,9 +14,9 @@
           "reason": "Environment variable 'DATA_DIRECTORY_LOCATION' not set"
         },
         "mountType": "directory",
-        "type": "BindMountEnvironmentVariableProperty",
-        "typeName": "BindMountEnvironmentVariableProperty",
-        "typeSystem": "pythonclass"
+        "@type": "BindMountEnvironmentVariableProperty",
+        "@typeName": "BindMountEnvironmentVariableProperty",
+        "@typeSystem": "pythonclass"
       }
     }
   ],
@@ -29,9 +29,9 @@
             1
           ]
         ],
-        "type": "ConjunctiveNormalForm",
-        "typeName": "ConjunctiveNormalForm",
-        "typeSystem": "pythonclass"
+        "@type": "ConjunctiveNormalForm",
+        "@typeName": "ConjunctiveNormalForm",
+        "@typeSystem": "pythonclass"
       }
     }
   ],
@@ -41,19 +41,19 @@
         "param1": 719,
         "param2": 1
       },
-      "type": "JsonModelSummary",
-      "typeName": "JsonModelSummary",
-      "typeSystem": "pythonclass"
+      "@type": "JsonModelSummary",
+      "@typeName": "JsonModelSummary",
+      "@typeSystem": "pythonclass"
     }
   },
   "algorithm": {
     "requirement": {
       "formula_id": 1,
-      "type": "FormulaAlgorithmRequirement",
-      "typeName": "FormulaAlgorithmRequirement",
-      "typeSystem": "pythonclass"
+      "@type": "FormulaAlgorithmRequirement",
+      "@typeName": "FormulaAlgorithmRequirement",
+      "@typeSystem": "pythonclass"
     }
   },
-  "type": "TrainDescription",
-  "typeName": "TrainDescription"
+  "@type": "TrainDescription",
+  "@typeName": "TrainDescription"
 }

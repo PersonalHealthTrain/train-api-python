@@ -1,10 +1,10 @@
 {
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
-  "type": "TrainDescription",
-  "typeName": "TrainDescription",
+  "@type": "TrainDescription",
+  "@typeName": "TrainDescription",
   "trainName": "test_train",
-  "typeSystem": "pythonclass",
+  "@typeSystem": "pythonclass",
   "properties": [
     {
       "id": 1,
@@ -15,9 +15,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'BAZ' not set"
         },
-        "type": "UrlEnvironmentVariableProperty",
-        "typeName": "UrlEnvironmentVariableProperty",
-        "typeSystem": "pythonclass"
+        "@type": "UrlEnvironmentVariableProperty",
+        "@typeName": "UrlEnvironmentVariableProperty",
+        "@typeSystem": "pythonclass"
       }
     },
     {
@@ -29,9 +29,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'BAR' not set"
         },
-        "type": "UrlEnvironmentVariableProperty",
-        "typeName": "UrlEnvironmentVariableProperty",
-        "typeSystem": "pythonclass"
+        "@type": "UrlEnvironmentVariableProperty",
+        "@typeName": "UrlEnvironmentVariableProperty",
+        "@typeSystem": "pythonclass"
       }
     },
     {
@@ -43,9 +43,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'BAM' not set"
         },
-        "type": "UrlEnvironmentVariableProperty",
-        "typeName": "UrlEnvironmentVariableProperty",
-        "typeSystem": "pythonclass"
+        "@type": "UrlEnvironmentVariableProperty",
+        "@typeName": "UrlEnvironmentVariableProperty",
+        "@typeSystem": "pythonclass"
       }
     }
   ],
@@ -60,26 +60,26 @@
             2
           ]
         ],
-        "type": "ConjunctiveNormalForm",
-        "typeName": "ConjunctiveNormalForm",
-        "typeSystem": "pythonclass"
+        "@type": "ConjunctiveNormalForm",
+        "@typeName": "ConjunctiveNormalForm",
+        "@typeSystem": "pythonclass"
       }
     }
   ],
   "model": {
     "summary": {
-      "type": "StringModelSummary",
-      "typeName": "StringModelSummary",
-      "typeSystem": "pythonclass",
+      "@type": "StringModelSummary",
+      "@typeName": "StringModelSummary",
+      "@typeSystem": "pythonclass",
       "value": "foo"
     }
   },
   "algorithm": {
     "requirement": {
       "formula_id": 1,
-      "type": "FormulaAlgorithmRequirement",
-      "typeName": "FormulaAlgorithmRequirement",
-      "typeSystem": "pythonclass"
+      "@type": "FormulaAlgorithmRequirement",
+      "@typeName": "FormulaAlgorithmRequirement",
+      "@typeSystem": "pythonclass"
     }
   }
 }

@@ -88,9 +88,9 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 1,
-                'type': 'FormulaAlgorithmRequirement',
-                'typeName': 'FormulaAlgorithmRequirement',
-                "typeSystem": "pythonclass",
+                '@type': 'FormulaAlgorithmRequirement',
+                '@typeName': 'FormulaAlgorithmRequirement',
+                "@typeSystem": "pythonclass",
             },
             actual=self.alg1._as_dict())
 
@@ -98,9 +98,9 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 2,
-                'type': 'FormulaAlgorithmRequirement',
-                'typeName': 'FormulaAlgorithmRequirement',
-                "typeSystem": "pythonclass",
+                '@type': 'FormulaAlgorithmRequirement',
+                '@typeName': 'FormulaAlgorithmRequirement',
+                "@typeSystem": "pythonclass",
             },
             actual=self.alg2._as_dict())
 
@@ -108,9 +108,9 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 3,
-                'type': 'FormulaAlgorithmRequirement',
-                'typeName': 'FormulaAlgorithmRequirement',
-                "typeSystem": "pythonclass",
+                '@type': 'FormulaAlgorithmRequirement',
+                '@typeName': 'FormulaAlgorithmRequirement',
+                "@typeSystem": "pythonclass",
             },
             actual=self.alg3._as_dict())
 
@@ -118,9 +118,9 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 127,
-                'type': 'FormulaAlgorithmRequirement',
-                'typeName': 'FormulaAlgorithmRequirement',
-                "typeSystem": "pythonclass",
+                '@type': 'FormulaAlgorithmRequirement',
+                '@typeName': 'FormulaAlgorithmRequirement',
+                "@typeSystem": "pythonclass",
             },
             actual=self.alg4._as_dict())
 

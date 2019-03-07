@@ -9,9 +9,9 @@
     "exportFiles": [
       {
         "absolutePath": "/opt/pht_train/model/key",
-        "type": "ModelFile",
-        "typeName": "ModelFile",
-        "typeSystem": "pythonclass"
+        "@type": "ModelFile",
+        "@typeName": "ModelFile",
+        "@typeSystem": "pythonclass"
       }
     ],
     "nextTrainTags": [
@@ -19,11 +19,11 @@
       "latest"
     ],
     "from": "personalhealthtrain/base:base",
-    "type": "DockerRebaseStrategy",
-    "typeName": "DockerRebaseStrategy",
-    "typeSystem": "pythonclass"
+    "@type": "DockerRebaseStrategy",
+    "@typeName": "DockerRebaseStrategy",
+    "@typeSystem": "pythonclass"
   },
-  "type": "RunResponse",
-  "typeName": "RunResponse",
-  "typeSystem": "pythonclass"
+  "@type": "RunResponse",
+  "@typeName": "RunResponse",
+  "@typeSystem": "pythonclass"
 }

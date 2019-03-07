@@ -1,17 +1,17 @@
 {
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
-  "type": "TrainDescription",
-  "typeName": "TrainDescription",
-  "typeSystem": "pythonclass",
+  "@type": "TrainDescription",
+  "@typeName": "TrainDescription",
+  "@typeSystem": "pythonclass",
   "trainName": "test_train",
   "properties": [],
   "formula": [],
   "model": {
     "summary": {
-      "type": "StringModelSummary",
-      "typeName": "StringModelSummary",
-      "typeSystem": "pythonclass",
+      "@type": "StringModelSummary",
+      "@typeName": "StringModelSummary",
+      "@typeSystem": "pythonclass",
       "value": "foo"
     }
   },

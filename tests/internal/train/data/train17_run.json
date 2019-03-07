@@ -11,11 +11,11 @@
       "2.7.15-slim-jessie"
     ],
     "from": "personalhealthtrain/base:base",
-    "type": "DockerRebaseStrategy",
-    "typeName": "DockerRebaseStrategy",
-    "typeSystem": "pythonclass"
+    "@type": "DockerRebaseStrategy",
+    "@typeName": "DockerRebaseStrategy",
+    "@typeSystem": "pythonclass"
   },
-  "type": "RunResponse",
-  "typeName": "RunResponse",
-  "typeSystem": "pythonclass"
+  "@type": "RunResponse",
+  "@typeName": "RunResponse",
+  "@typeSystem": "pythonclass"
 }

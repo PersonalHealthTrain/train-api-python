@@ -1,8 +1,8 @@
 {
   "runResponseVersion": "1.0",
-  "type": "RunResponse",
-  "typeName": "RunResponse",
-  "typeSystem": "pythonclass",
+  "@type": "RunResponse",
+  "@typeName": "RunResponse",
+  "@typeSystem": "pythonclass",
   "exit": {
     "state": "application",
     "reason": "Application specific error, not success, but also not failure"
@@ -12,8 +12,8 @@
     "exportFiles": [],
     "nextTrainTags": ["latest"],
     "from": "personalhealthtrain/base:base",
-    "type": "DockerRebaseStrategy",
-    "typeName": "DockerRebaseStrategy",
-    "typeSystem": "pythonclass"
+    "@type": "DockerRebaseStrategy",
+    "@typeName": "DockerRebaseStrategy",
+    "@typeSystem": "pythonclass"
   }
 }

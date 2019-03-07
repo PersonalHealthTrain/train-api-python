@@ -1,4 +1,4 @@
-import abc
+from abc import abstractmethod
 from pht.internal.util import require
 from pht.internal.util.require import not_in
 from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
@@ -6,32 +6,34 @@ from pht.internal.protocol.Copyable import Copyable
 
 
 class Typed(Copyable, SimpleDictRepresentable):
+    """
 
+    """
     @property
-    @abc.abstractmethod
+    @abstractmethod
     def type(self) -> str:
         pass
 
     @property
-    @abc.abstractmethod
+    @abstractmethod
     def type_name(self) -> str:
         pass
 
     @property
-    @abc.abstractmethod
+    @abstractmethod
     def type_system(self) -> str:
         pass
 
     @property
-    @abc.abstractmethod
+    @abstractmethod
     def data(self) -> dict:
         pass
 
     def _as_dict(self) -> dict:
         # Meta Keys for the Type
-        _type = 'type'
-        _typeName = 'typeName'
-        _typeSystem = 'typeSystem'
+        _type = '@type'
+        _typeName = '@typeName'
+        _typeSystem = '@typeSystem'
 
         data = self.data
         require.for_each_value(

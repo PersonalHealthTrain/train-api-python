@@ -75,9 +75,9 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[1, 2], [3, 4]],
-                'type': 'ConjunctiveNormalForm',
-                'typeName': 'ConjunctiveNormalForm',
-                "typeSystem": "pythonclass",
+                '@type': 'ConjunctiveNormalForm',
+                '@typeName': 'ConjunctiveNormalForm',
+                "@typeSystem": "pythonclass",
             },
             actual=self.cnf1._as_dict())
 
@@ -85,9 +85,9 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[1]],
-                'type': 'ConjunctiveNormalForm',
-                'typeName': 'ConjunctiveNormalForm',
-                "typeSystem": "pythonclass",
+                '@type': 'ConjunctiveNormalForm',
+                '@typeName': 'ConjunctiveNormalForm',
+                "@typeSystem": "pythonclass",
             },
             actual=self.cnf2._as_dict())
 
@@ -95,9 +95,9 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[1], [1, 2]],
-                'type': 'ConjunctiveNormalForm',
-                'typeName': 'ConjunctiveNormalForm',
-                "typeSystem": "pythonclass",
+                '@type': 'ConjunctiveNormalForm',
+                '@typeName': 'ConjunctiveNormalForm',
+                "@typeSystem": "pythonclass",
             },
             actual=self.cnf3._as_dict())
 
@@ -105,9 +105,9 @@ class CnfTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': [[-2, -1]],
-                'type': 'ConjunctiveNormalForm',
-                'typeName': 'ConjunctiveNormalForm',
-                "typeSystem": "pythonclass",
+                '@type': 'ConjunctiveNormalForm',
+                '@typeName': 'ConjunctiveNormalForm',
+                "@typeSystem": "pythonclass",
             },
             actual=self.cnf4._as_dict())
 

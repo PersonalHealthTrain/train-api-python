@@ -1,7 +1,7 @@
 {
   "trainVersion": "1.0",
   "trainName": "test_train",
-  "typeSystem": "pythonclass",
+  "@typeSystem": "pythonclass",
   "descriptionVersion": "1.0",
   "properties": [
     {
@@ -14,9 +14,9 @@
           "reason": "Environment variable 'FOO' not set"
         },
         "mountType": "directory",
-        "type": "BindMountEnvironmentVariableProperty",
-        "typeName": "BindMountEnvironmentVariableProperty",
-        "typeSystem": "pythonclass"
+        "@type": "BindMountEnvironmentVariableProperty",
+        "@typeName": "BindMountEnvironmentVariableProperty",
+        "@typeSystem": "pythonclass"
       }
     }
   ],
@@ -29,28 +29,28 @@
             1
           ]
         ],
-        "type": "ConjunctiveNormalForm",
-        "typeName": "ConjunctiveNormalForm",
-        "typeSystem": "pythonclass"
+        "@type": "ConjunctiveNormalForm",
+        "@typeName": "ConjunctiveNormalForm",
+        "@typeSystem": "pythonclass"
       }
     }
   ],
   "model": {
     "summary": {
-      "type": "StringModelSummary",
-      "typeName": "StringModelSummary",
-      "typeSystem": "pythonclass",
+      "@type": "StringModelSummary",
+      "@typeName": "StringModelSummary",
+      "@typeSystem": "pythonclass",
       "value": "foo"
     }
   },
   "algorithm": {
     "requirement": {
       "formula_id": 1,
-      "type": "FormulaAlgorithmRequirement",
-      "typeName": "FormulaAlgorithmRequirement",
-      "typeSystem": "pythonclass"
+      "@type": "FormulaAlgorithmRequirement",
+      "@typeName": "FormulaAlgorithmRequirement",
+      "@typeSystem": "pythonclass"
     }
   },
-  "type": "TrainDescription",
-  "typeName": "TrainDescription"
+  "@type": "TrainDescription",
+  "@typeName": "TrainDescription"
 }

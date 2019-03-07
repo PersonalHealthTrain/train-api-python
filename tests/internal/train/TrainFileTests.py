@@ -95,9 +95,9 @@ class TrainFileTests(BaseTest):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/model/foo',
-                'type': 'ModelFile',
-                'typeName': 'ModelFile',
-                'typeSystem': 'pythonclass'
+                '@type': 'ModelFile',
+                '@typeName': 'ModelFile',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.modelfile1._as_dict())
 
@@ -105,8 +105,8 @@ class TrainFileTests(BaseTest):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/model/bar',
-                'type': 'ModelFile',
-                'typeName': 'ModelFile',
-                'typeSystem': 'pythonclass'
+                '@type': 'ModelFile',
+                '@typeName': 'ModelFile',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.modelfile2._as_dict())

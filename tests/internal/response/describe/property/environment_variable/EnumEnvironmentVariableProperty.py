@@ -266,9 +266,9 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                     "isAvailable": False,
                     "reason": "Environment variable 'FOO' not set"
                 },
-                'type': 'EnumEnvironmentVariableProperty',
-                'typeName': 'EnumEnvironmentVariableProperty',
-                "typeSystem": "pythonclass",
+                '@type': 'EnumEnvironmentVariableProperty',
+                '@typeName': 'EnumEnvironmentVariableProperty',
+                "@typeSystem": "pythonclass",
             },
             actual=self.enum1.as_simple_dict())
 
@@ -282,8 +282,8 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                     "isAvailable": False,
                     "reason": "Environment variable 'BAR' not set"
                 },
-                'type': 'EnumEnvironmentVariableProperty',
-                'typeName': 'EnumEnvironmentVariableProperty',
-                "typeSystem": "pythonclass",
+                '@type': 'EnumEnvironmentVariableProperty',
+                '@typeName': 'EnumEnvironmentVariableProperty',
+                "@typeSystem": "pythonclass",
             },
             actual=self.enum2.as_simple_dict())

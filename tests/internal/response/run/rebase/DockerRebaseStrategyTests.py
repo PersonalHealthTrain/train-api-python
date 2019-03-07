@@ -41,21 +41,13 @@ class DockerRebaseStrategyTests(BaseTest):
                 'exportFiles': [],
                 'nextTrainTags': ['station.2'],
                 'from': 'from',
-                'type': 'DockerRebaseStrategy',
-                'typeName': 'DockerRebaseStrategy',
-                "typeSystem": "pythonclass"},
+                '@type': 'DockerRebaseStrategy',
+                '@typeName': 'DockerRebaseStrategy',
+                "@typeSystem": "pythonclass"},
             actual=self.rebase1._as_dict())
 
     ################################################################################
     # Copy, deepcopy, hash
     ################################################################################
     def test_copy_1(self):
-        c1 = copy(self.rebase1)
-        c2 = self.rebase1.copy()
-        c3 = deepcopy(self.rebase1)
-        self.assertEqual(c1, self.rebase1)
-        self.assertEqual(c2, self.rebase1)
-        self.assertEqual(c3, self.rebase1)
-        self.assertEqual(hash(c1), hash(self.rebase1))
-        self.assertEqual(hash(c2), hash(self.rebase1))
-        self.assertEqual(hash(c3), hash(self.rebase1))
+        self.assertCopiesAreEqual(self.rebase1)

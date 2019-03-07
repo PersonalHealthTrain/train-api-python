@@ -117,9 +117,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                'type': 'BindMountEnvironmentVariableProperty',
-                'typeName': 'BindMountEnvironmentVariableProperty',
-                "typeSystem": "pythonclass",
+                '@type': 'BindMountEnvironmentVariableProperty',
+                '@typeName': 'BindMountEnvironmentVariableProperty',
+                "@typeSystem": "pythonclass",
             },
             actual=self.mount1.as_simple_dict()
         )
@@ -133,9 +133,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                'type': 'BindMountEnvironmentVariableProperty',
-                'typeName': 'BindMountEnvironmentVariableProperty',
-                "typeSystem": "pythonclass",
+                '@type': 'BindMountEnvironmentVariableProperty',
+                '@typeName': 'BindMountEnvironmentVariableProperty',
+                "@typeSystem": "pythonclass",
             },
             actual=self.mount2.as_simple_dict()
         )
@@ -150,9 +150,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'FOO' not set"
                 },
-                'type': 'BindMountEnvironmentVariableProperty',
-                'typeName': 'BindMountEnvironmentVariableProperty',
-                "typeSystem": "pythonclass",
+                '@type': 'BindMountEnvironmentVariableProperty',
+                '@typeName': 'BindMountEnvironmentVariableProperty',
+                "@typeSystem": "pythonclass",
             },
             actual=self.mount3.as_simple_dict())
 
@@ -165,9 +165,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'BAR' not set"},
-                'type': 'BindMountEnvironmentVariableProperty',
-                'typeName': 'BindMountEnvironmentVariableProperty',
-                "typeSystem": "pythonclass",
+                '@type': 'BindMountEnvironmentVariableProperty',
+                '@typeName': 'BindMountEnvironmentVariableProperty',
+                "@typeSystem": "pythonclass",
             },
             actual=self.mount4.as_simple_dict())
 
@@ -182,9 +182,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': False,
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
-                    'type': 'BindMountEnvironmentVariableProperty',
-                    'typeName': 'BindMountEnvironmentVariableProperty',
-                    "typeSystem": "pythonclass",
+                    '@type': 'BindMountEnvironmentVariableProperty',
+                    '@typeName': 'BindMountEnvironmentVariableProperty',
+                    "@typeSystem": "pythonclass",
                 },
                 actual=self.mount1.as_simple_dict())
 
@@ -199,9 +199,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': False,
                         'reason': 'The value \'not a file\' is not an existing path in the file system'
                     },
-                    'type': 'BindMountEnvironmentVariableProperty',
-                    'typeName': 'BindMountEnvironmentVariableProperty',
-                    "typeSystem": "pythonclass",
+                    '@type': 'BindMountEnvironmentVariableProperty',
+                    '@typeName': 'BindMountEnvironmentVariableProperty',
+                    "@typeSystem": "pythonclass",
                 },
                 actual=self.mount2.as_simple_dict())
 
@@ -216,9 +216,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': False,
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
-                    'type': 'BindMountEnvironmentVariableProperty',
-                    'typeName': 'BindMountEnvironmentVariableProperty',
-                    "typeSystem": "pythonclass",
+                    '@type': 'BindMountEnvironmentVariableProperty',
+                    '@typeName': 'BindMountEnvironmentVariableProperty',
+                    "@typeSystem": "pythonclass",
                 },
                 actual=self.mount3.as_simple_dict())
 
@@ -233,9 +233,9 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': False,
                         'reason': 'The value \'not a directory\' is not an existing path in the file system'
                     },
-                    'type': 'BindMountEnvironmentVariableProperty',
-                    'typeName': 'BindMountEnvironmentVariableProperty',
-                    "typeSystem": "pythonclass",
+                    '@type': 'BindMountEnvironmentVariableProperty',
+                    '@typeName': 'BindMountEnvironmentVariableProperty',
+                    "@typeSystem": "pythonclass",
                 },
                 actual=self.mount4.as_simple_dict())
 

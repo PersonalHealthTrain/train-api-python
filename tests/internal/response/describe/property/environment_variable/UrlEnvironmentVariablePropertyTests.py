@@ -115,9 +115,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                'type': 'UrlEnvironmentVariableProperty',
-                'typeName': 'UrlEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'UrlEnvironmentVariableProperty',
+                '@typeName': 'UrlEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.url1.as_simple_dict()
         )
@@ -130,9 +130,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                'type': 'UrlEnvironmentVariableProperty',
-                'typeName': 'UrlEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'UrlEnvironmentVariableProperty',
+                '@typeName': 'UrlEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.url2.as_simple_dict()
         )
@@ -146,9 +146,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
-                'type': 'UrlEnvironmentVariableProperty',
-                'typeName': 'UrlEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'UrlEnvironmentVariableProperty',
+                '@typeName': 'UrlEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.url3.as_simple_dict())
 
@@ -160,9 +160,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
-                'type': 'UrlEnvironmentVariableProperty',
-                'typeName': 'UrlEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'UrlEnvironmentVariableProperty',
+                '@typeName': 'UrlEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.url4.as_simple_dict())
 
@@ -176,9 +176,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'UrlEnvironmentVariableProperty',
-                    'typeName': 'UrlEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@typeName': 'UrlEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.url1.as_simple_dict())
 
@@ -192,9 +192,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'UrlEnvironmentVariableProperty',
-                    'typeName': 'UrlEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@typeName': 'UrlEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.url2.as_simple_dict())
 
@@ -208,9 +208,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'UrlEnvironmentVariableProperty',
-                    'typeName': 'UrlEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@typeName': 'UrlEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.url3.as_simple_dict())
 
@@ -224,9 +224,9 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'UrlEnvironmentVariableProperty',
-                    'typeName': 'UrlEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@typeName': 'UrlEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.url4.as_simple_dict())
 

@@ -115,9 +115,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                'type': 'TokenEnvironmentVariableProperty',
-                'typeName': 'TokenEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'TokenEnvironmentVariableProperty',
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             }, actual=self.token1.as_simple_dict()
         )
 
@@ -129,9 +129,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                'type': 'TokenEnvironmentVariableProperty',
-                'typeName': 'TokenEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'TokenEnvironmentVariableProperty',
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             }, actual=self.token2.as_simple_dict()
         )
 
@@ -144,9 +144,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
-                'type': 'TokenEnvironmentVariableProperty',
-                'typeName': 'TokenEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'TokenEnvironmentVariableProperty',
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.token3.as_simple_dict())
 
@@ -158,9 +158,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
-                'type': 'TokenEnvironmentVariableProperty',
-                'typeName': 'TokenEnvironmentVariableProperty',
-                'typeSystem': 'pythonclass'
+                '@type': 'TokenEnvironmentVariableProperty',
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.token4.as_simple_dict())
 
@@ -174,9 +174,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'TokenEnvironmentVariableProperty',
-                    'typeName': 'TokenEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@typeName': 'TokenEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.token1.as_simple_dict())
 
@@ -190,9 +190,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'TokenEnvironmentVariableProperty',
-                    'typeName': 'TokenEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@typeName': 'TokenEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.token2.as_simple_dict())
 
@@ -206,9 +206,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'TokenEnvironmentVariableProperty',
-                    'typeName': 'TokenEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@typeName': 'TokenEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.token3.as_simple_dict())
 
@@ -222,9 +222,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    'type': 'TokenEnvironmentVariableProperty',
-                    'typeName': 'TokenEnvironmentVariableProperty',
-                    'typeSystem': 'pythonclass'
+                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@typeName': 'TokenEnvironmentVariableProperty',
+                    '@typeSystem': 'pythonclass'
                 },
                 actual=self.token4.as_simple_dict())
 

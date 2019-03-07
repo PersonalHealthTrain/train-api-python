@@ -152,9 +152,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'UrlEnvironmentVariableProperty',
-                            'typeName': 'UrlEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@typeName': 'UrlEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -166,9 +166,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'TokenEnvironmentVariableProperty',
-                            'typeName': 'TokenEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@typeName': 'TokenEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {''
@@ -181,29 +181,29 @@ class TrainDescriptionTests(BaseTest):
                              'reason': "Environment variable 'BAZ' not set"
                          },
                          'choices': ['VALUE1', 'VALUE2'],
-                         'type': 'EnumEnvironmentVariableProperty',
-                         'typeName': 'EnumEnvironmentVariableProperty',
-                         'typeSystem': 'pythonclass'
+                         '@type': 'EnumEnvironmentVariableProperty',
+                         '@typeName': 'EnumEnvironmentVariableProperty',
+                         '@typeSystem': 'pythonclass'
                      }
-                     }
+                    }
                 ],
                 'formula': [
                     {
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
                 'model':
                     {
                         'summary': {
-                            'type': 'StringModelSummary',
-                            'typeName': 'StringModelSummary',
-                            'typeSystem': 'pythonclass',
+                            '@type': 'StringModelSummary',
+                            '@typeName': 'StringModelSummary',
+                            '@typeSystem': 'pythonclass',
                             'value': 'model summary'
                         }
                     },
@@ -211,14 +211,14 @@ class TrainDescriptionTests(BaseTest):
                     'requirement':
                         {
                             'formula_id': 1,
-                            'type': 'FormulaAlgorithmRequirement',
-                            'typeName': 'FormulaAlgorithmRequirement',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'FormulaAlgorithmRequirement',
+                            '@typeName': 'FormulaAlgorithmRequirement',
+                            '@typeSystem': 'pythonclass'
                         }
                 },
-                'type': 'TrainDescription',
-                'typeName': 'TrainDescription',
-                'typeSystem': 'pythonclass'
+                '@type': 'TrainDescription',
+                '@typeName': 'TrainDescription',
+                '@typeSystem': 'pythonclass'
             }, actual=self.td1._as_dict())
 
     def test_as_dict_2(self):
@@ -237,9 +237,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'UrlEnvironmentVariableProperty',
-                            'typeName': 'UrlEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@typeName': 'UrlEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -251,9 +251,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'TokenEnvironmentVariableProperty',
-                            'typeName': 'TokenEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@typeName': 'TokenEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -266,9 +266,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'EnumEnvironmentVariableProperty',
-                            'typeName': 'EnumEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@typeName': 'EnumEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ], 'formula': [
@@ -276,25 +276,25 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        'type': 'StringModelSummary',
-                        'typeName': 'StringModelSummary',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'StringModelSummary',
+                        '@typeName': 'StringModelSummary',
+                        '@typeSystem': 'pythonclass'
                     }
                 }, 'algorithm': {
                     'requirement': None
                 },
-                'type': 'TrainDescription',
-                'typeName': 'TrainDescription',
-                'typeSystem': 'pythonclass'
+                '@type': 'TrainDescription',
+                '@typeName': 'TrainDescription',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.td2.as_simple_dict())
 
@@ -314,9 +314,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'UrlEnvironmentVariableProperty',
-                            'typeName': 'UrlEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@typeName': 'UrlEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                     , {
@@ -328,9 +328,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'TokenEnvironmentVariableProperty',
-                            'typeName': 'TokenEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@typeName': 'TokenEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -343,9 +343,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'EnumEnvironmentVariableProperty',
-                            'typeName': 'EnumEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@typeName': 'EnumEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
@@ -354,49 +354,49 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 3,
                         'data': {
                             'value': [[-1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        'type': 'StringModelSummary',
-                        'typeName': 'StringModelSummary',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'StringModelSummary',
+                        '@typeName': 'StringModelSummary',
+                        '@typeSystem': 'pythonclass'
                     }
                 },
                 'algorithm': {
                     'requirement': {
                         'formula_id': 3,
-                        'type': 'FormulaAlgorithmRequirement',
-                        'typeName': 'FormulaAlgorithmRequirement',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'FormulaAlgorithmRequirement',
+                        '@typeName': 'FormulaAlgorithmRequirement',
+                        '@typeSystem': 'pythonclass'
                     }
                 },
-                'type': 'TrainDescription',
-                'typeName': 'TrainDescription',
-                'typeSystem': 'pythonclass'
+                '@type': 'TrainDescription',
+                '@typeName': 'TrainDescription',
+                '@typeSystem': 'pythonclass'
             },
             actual=self.td3.as_simple_dict())
 
@@ -455,9 +455,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'UrlEnvironmentVariableProperty',
-                            'typeName': 'UrlEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@typeName': 'UrlEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -469,9 +469,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'TokenEnvironmentVariableProperty',
-                            'typeName': 'TokenEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@typeName': 'TokenEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -485,9 +485,9 @@ class TrainDescriptionTests(BaseTest):
                                     'reason': "Environment variable 'BAZ' not set"
                                 },
                                 'choices': ['VALUE1', 'VALUE2'],
-                                'type': 'EnumEnvironmentVariableProperty',
-                                'typeName': 'EnumEnvironmentVariableProperty',
-                                'typeSystem': 'pythonclass'
+                                '@type': 'EnumEnvironmentVariableProperty',
+                                '@typeName': 'EnumEnvironmentVariableProperty',
+                                '@typeSystem': 'pythonclass'
                             }
                     }
                 ],
@@ -496,26 +496,26 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                      }
                 ],
                 'model': {
                     'summary': {
-                        'type': 'StringModelSummary',
-                        'typeName': 'StringModelSummary',
-                        'typeSystem': 'pythonclass',
+                        '@type': 'StringModelSummary',
+                        '@typeName': 'StringModelSummary',
+                        '@typeSystem': 'pythonclass',
                         'value': 'model summary'
                     }
                 },
                 'algorithm': {
                     'requirement': {
                         'formula_id': 1,
-                        'type': 'FormulaAlgorithmRequirement',
-                        'typeName': 'FormulaAlgorithmRequirement',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'FormulaAlgorithmRequirement',
+                        '@typeName': 'FormulaAlgorithmRequirement',
+                        '@typeSystem': 'pythonclass'
                     }
                 }
             },
@@ -537,9 +537,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'UrlEnvironmentVariableProperty',
-                            'typeName': 'UrlEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@typeName': 'UrlEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -551,9 +551,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'TokenEnvironmentVariableProperty',
-                            'typeName': 'TokenEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@typeName': 'TokenEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -566,9 +566,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'EnumEnvironmentVariableProperty',
-                            'typeName': 'EnumEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@typeName': 'EnumEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
@@ -577,18 +577,18 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        'type': 'StringModelSummary',
-                        'typeName': 'StringModelSummary',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'StringModelSummary',
+                        '@typeName': 'StringModelSummary',
+                        '@typeSystem': 'pythonclass'
                     }
                 }, 'algorithm': {'requirement': None}
             },
@@ -610,9 +610,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            'type': 'UrlEnvironmentVariableProperty',
-                            'typeName': 'UrlEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@typeName': 'UrlEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
@@ -624,9 +624,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            'type': 'TokenEnvironmentVariableProperty',
-                            'typeName': 'TokenEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@typeName': 'TokenEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     }, {
                         'id': 3,
@@ -638,9 +638,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            'type': 'EnumEnvironmentVariableProperty',
-                            'typeName': 'EnumEnvironmentVariableProperty',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@typeName': 'EnumEnvironmentVariableProperty',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
@@ -649,44 +649,44 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 2,
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     },
                     {
                         'id': 3,
                         'data': {
                             'value': [[-1]],
-                            'type': 'ConjunctiveNormalForm',
-                            'typeName': 'ConjunctiveNormalForm',
-                            'typeSystem': 'pythonclass'
+                            '@type': 'ConjunctiveNormalForm',
+                            '@typeName': 'ConjunctiveNormalForm',
+                            '@typeSystem': 'pythonclass'
                         }
                     }
                 ],
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        'type': 'StringModelSummary',
-                        'typeName': 'StringModelSummary',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'StringModelSummary',
+                        '@typeName': 'StringModelSummary',
+                        '@typeSystem': 'pythonclass'
                     }
                 },
                 'algorithm': {
                     'requirement': {
                         'formula_id': 3,
-                        'type': 'FormulaAlgorithmRequirement',
-                        'typeName': 'FormulaAlgorithmRequirement',
-                        'typeSystem': 'pythonclass'
+                        '@type': 'FormulaAlgorithmRequirement',
+                        '@typeName': 'FormulaAlgorithmRequirement',
+                        '@typeSystem': 'pythonclass'
                     }
                 }
             },

@@ -110,9 +110,9 @@ class JsonModelSummaryTests(BaseTest):
                     'key1': 'value1',
                     'key2': 'value2'
                 },
-                'type': 'JsonModelSummary',
-                'typeName': 'JsonModelSummary',
-                "typeSystem": "pythonclass",
+                '@type': 'JsonModelSummary',
+                '@typeName': 'JsonModelSummary',
+                "@typeSystem": "pythonclass",
             },
             actual=self.model1._as_dict())
 
@@ -120,8 +120,8 @@ class JsonModelSummaryTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': ['entry1', 'entry2'],
-                'type': 'JsonModelSummary',
-                'typeName': 'JsonModelSummary',
-                "typeSystem": "pythonclass",
+                '@type': 'JsonModelSummary',
+                '@typeName': 'JsonModelSummary',
+                "@typeSystem": "pythonclass",
             },
             actual=self.model2._as_dict())
