@@ -82,12 +82,8 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
         self.assertIsEqual(self.url4, url_by_name('SOME_OTHER_VARIABLE'))
 
     def test_unequal(self):
-        self.assertNotEqual(self.url1, self.url2)
-        self.assertNotEqual(self.url1, self.url3)
-        self.assertNotEqual(self.url1, self.url4)
-        self.assertNotEqual(self.url2, self.url3)
-        self.assertNotEqual(self.url2, self.url4)
-        self.assertNotEqual(self.url3, self.url4)
+        self.assertUnequalCominationPairs([
+            self.url1, self.url2, self.url3, self.url4])
 
     ###########################################################
     # Copy
@@ -122,8 +118,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                 }
             },
-            actual=self.url1.as_simple_dict()
-        )
+            actual=self.url1.as_simple_dict())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
@@ -140,8 +135,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                     }
             },
-            actual=self.url2.as_simple_dict()
-        )
+            actual=self.url2.as_simple_dict())
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
@@ -404,25 +398,33 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # is available
     ###########################################################
-    def test_is_available_1(self):
-        with patch.dict('os.environ', {'FOO': 'value'}):
-            self.assertTrue(self.url1.is_available())
-        self.assertFalse(self.url1.is_available())
+    @patch.dict('os.environ', {'FOO': 'value'})
+    def test_is_available_1_1(self):
+        self.assertThat(self.url1.is_available())
 
-    def test_is_available_2(self):
-        with patch.dict('os.environ', {'BAR': 'value'}):
-            self.assertTrue(self.url2.is_available())
-        self.assertFalse(self.url2.is_available())
+    def test_is_available_1_2(self):
+        self.assertThatNot(self.url1.is_available())
 
-    def test_is_available_3(self):
-        with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
-            self.assertTrue(self.url3.is_available())
-        self.assertFalse(self.url3.is_available())
+    @patch.dict('os.environ', {'BAR': 'value'})
+    def test_is_available_2_1(self):
+        self.assertThat(self.url2.is_available())
 
-    def test_is_available_4(self):
-        with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
-            self.assertTrue(self.url4.is_available())
-        self.assertFalse(self.url4.is_available())
+    def test_is_available_2_2(self):
+        self.assertThatNot(self.url2.is_available())
+
+    @patch.dict('os.environ', {'MY_VARIABLE': 'value'})
+    def test_is_available_3_1(self):
+        self.assertThat(self.url3.is_available())
+
+    def test_is_available_3_2(self):
+        self.assertThatNot(self.url3.is_available())
+
+    @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'})
+    def test_is_available_4_1(self):
+        self.assertThat(self.url4.is_available())
+
+    def test_is_available_4_2(self):
+        self.assertThatNot(self.url4.is_available())
 
     ###########################################################
     # __str__

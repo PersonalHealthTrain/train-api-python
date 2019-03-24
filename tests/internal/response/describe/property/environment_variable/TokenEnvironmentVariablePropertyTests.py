@@ -82,12 +82,8 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         self.assertIsEqual(self.token4, token_by_name('SOME_OTHER_VARIABLE'))
 
     def test_unequal(self):
-        self.assertNotEqual(self.token1, self.token2)
-        self.assertNotEqual(self.token1, self.token3)
-        self.assertNotEqual(self.token1, self.token4)
-        self.assertNotEqual(self.token2, self.token3)
-        self.assertNotEqual(self.token2, self.token4)
-        self.assertNotEqual(self.token3, self.token4)
+        self.assertUnequalCominationPairs([
+            self.token1, self.token2, self.token3, self.token4])
 
     ###########################################################
     # Copy
@@ -121,8 +117,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
-            }, actual=self.token1.as_simple_dict()
-        )
+            }, actual=self.token1.as_simple_dict())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
@@ -138,8 +133,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
-            }, actual=self.token2.as_simple_dict()
-        )
+            }, actual=self.token2.as_simple_dict())
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
@@ -309,8 +303,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'}},
-            actual=self.token1.data
-        )
+            actual=self.token1.data)
 
     def test_data_2(self):
         self.checkExpect(
@@ -389,25 +382,33 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # is available
     ###########################################################
-    def test_is_available_1(self):
-        with patch.dict('os.environ', {'FOO': 'value'}):
-            self.assertTrue(self.token1.is_available())
-        self.assertFalse(self.token1.is_available())
+    @patch.dict('os.environ', {'FOO': 'value'})
+    def test_is_available_1_1(self):
+        self.assertThat(self.token1.is_available())
 
-    def test_is_available_2(self):
-        with patch.dict('os.environ', {'BAR': 'value'}):
-            self.assertTrue(self.token2.is_available())
-        self.assertFalse(self.token2.is_available())
+    def test_is_available_1_2(self):
+        self.assertThatNot(self.token1.is_available())
 
-    def test_is_available_3(self):
-        with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
-            self.assertTrue(self.token3.is_available())
-        self.assertFalse(self.token3.is_available())
+    @patch.dict('os.environ', {'BAR': 'value'})
+    def test_is_available_2_1(self):
+        self.assertThat(self.token2.is_available())
 
-    def test_is_available_4(self):
-        with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
-            self.assertTrue(self.token4.is_available())
-        self.assertFalse(self.token4.is_available())
+    def test_is_available_2_2(self):
+        self.assertThatNot(self.token2.is_available())
+
+    @patch.dict('os.environ', {'MY_VARIABLE': 'value'})
+    def test_is_available_3_1(self):
+        self.assertThat(self.token3.is_available())
+
+    def test_is_available_3_2(self):
+        self.assertThatNot(self.token3.is_available())
+
+    @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'})
+    def test_is_available_4_1(self):
+        self.assertThat(self.token4.is_available())
+
+    def test_is_available_4_2(self):
+        self.assertThatNot(self.token4.is_available())
 
     ###########################################################
     # __str__

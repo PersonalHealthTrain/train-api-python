@@ -1,5 +1,6 @@
 import unittest
 import copy
+from itertools import combinations
 
 
 class BaseTest(unittest.TestCase):
@@ -11,11 +12,31 @@ class BaseTest(unittest.TestCase):
         with self.assertRaises(error):
             func()
 
+    def assertThat(self, test):
+        self.assertTrue(test)
+
+    def assertThatNot(self, test):
+        self.assertFalse(test)
+
     def assertValueError(self, func):
         self._assertError(func, ValueError)
 
     def assertTypeError(self, func):
         self._assertError(func, TypeError)
+
+    def assertUnequalCominationPairs(self, items):
+        for pair in combinations(items, 2):
+            self.assertNotEqual(pair[0], pair[1])
+
+    def assertMembership(self, for_container, elements=None, not_elements=None):
+        if elements is None:
+            elements = []
+        if not_elements is None:
+            not_elements = []
+        for element in elements:
+            self.assertIn(element, for_container)
+        for element in not_elements:
+            self.assertNotIn(element, for_container)
 
     def assertIsEqual(self, left, right):
         self.assertEqual(left, right)

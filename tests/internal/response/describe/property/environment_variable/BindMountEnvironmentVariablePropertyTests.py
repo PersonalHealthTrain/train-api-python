@@ -83,12 +83,8 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         self.assertIsEqual(self.mount4, bind_mount_by_name('BAR', mount_type=MountType.DIRECTORY))
 
     def test_unequal(self):
-        self.assertNotEqual(self.mount1, self.mount2)
-        self.assertNotEqual(self.mount1, self.mount3)
-        self.assertNotEqual(self.mount1, self.mount4)
-        self.assertNotEqual(self.mount2, self.mount3)
-        self.assertNotEqual(self.mount2, self.mount3)
-        self.assertNotEqual(self.mount3, self.mount4)
+        self.assertUnequalCominationPairs([
+            self.mount1, self.mount2, self.mount3, self.mount4])
 
     ###########################################################
     # Copy
@@ -124,8 +120,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount1.as_simple_dict()
-        )
+            actual=self.mount1.as_simple_dict())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
@@ -143,8 +138,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount2.as_simple_dict()
-        )
+            actual=self.mount2.as_simple_dict())
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
@@ -321,8 +315,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'}},
-            actual=self.mount1.data
-        )
+            actual=self.mount1.data)
 
     def test_data_2(self):
         self.checkExpect(
@@ -416,25 +409,34 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # is available
     ###########################################################
-    def test_is_available_1(self):
-        with patch.dict('os.environ', {'FOO': 'value'}):
-            self.assertFalse(self.mount1.is_available())
+    @patch.dict('os.environ', {'FOO': 'value'})
+    def test_is_available_11(self):
         self.assertFalse(self.mount1.is_available())
 
-    def test_is_available_2(self):
-        with patch.dict('os.environ', {'BAR': 'value'}):
-            self.assertFalse(self.mount2.is_available())
+    def test_is_available_12(self):
+        self.assertFalse(self.mount1.is_available())
+
+    @patch.dict('os.environ', {'BAR': 'value'})
+    def test_is_available_21(self):
         self.assertFalse(self.mount2.is_available())
 
-    def test_is_available_3(self):
-        with patch.dict('os.environ', {'FOO': 'value'}):
-            self.assertFalse(self.mount3.is_available())
+    def test_is_available_22(self):
+        self.assertFalse(self.mount2.is_available())
+
+    @patch.dict('os.environ', {'FOO': 'value'})
+    def test_is_available_31(self):
         self.assertFalse(self.mount3.is_available())
 
-    def test_is_available_4(self):
-        with patch.dict('os.environ', {'BAR': 'value'}):
-            self.assertFalse(self.mount4.is_available())
+    def test_is_available_32(self):
+        self.assertFalse(self.mount3.is_available())
+
+    @patch.dict('os.environ', {'BAR': 'value'})
+    def test_is_available_41(self):
         self.assertFalse(self.mount4.is_available())
+
+    def test_is_available_42(self):
+        self.assertFalse(self.mount4.is_available())
+
 
     ###########################################################
     # __str__

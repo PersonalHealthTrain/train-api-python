@@ -46,10 +46,13 @@ class PropertyStateTests(BaseTest):
     def test_equals_4(self):
         self.assertIsEqual(self.unavail2, PropertyUnavailable('bar'))
 
-    def test_unequal(self):
-        self.assertNotEqual(self.avail1, self.unavail1)
-        self.assertNotEqual(self.avail1, self.unavail2)
-        self.assertNotEqual(self.unavail1, self.unavail2)
+    def test_unequal_1(self):
+        self.assertUnequalCominationPairs([
+            self.avail1, self.unavail1, self.unavail2])
+
+    def test_unequal_2(self):
+        self.assertUnequalCominationPairs([
+            self.avail2, self.unavail1, self.unavail2])
 
     ###########################################################################
     # Copy

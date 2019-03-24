@@ -174,7 +174,6 @@ class CnfBuilder2Tests(unittest.TestCase):
     """
     Tests for Require and Forbid, now Any
     """
-
     def setUp(self):
         self.prop1 = url_by_name('FOO')
         self.prop2 = url_by_name('BAR')

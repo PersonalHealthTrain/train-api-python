@@ -50,13 +50,24 @@ def list_rows_of_test_functions(dirname):
     return result
 
 
-def assert_that_test_methods_have_only_one_line():
-    for row in list_rows_of_test_functions('tests'):
+def assert_that_test_methods_have_only_one_line(skip_files=None):
+    if skip_files is None:
+        skip_files = set()
+    else:
+        skip_files = set(skip_files)
+
+    def too_many_lines(row):
+        return row[2] > 1
+    rows = [row for row in list_rows_of_test_functions('tests') if os.path.basename(row[0]) not in skip_files]
+    total_violations = sum(too_many_lines(row) for row in rows)
+    for row in rows:
         nlines = row[2]
-        if nlines > 1:
-            raise AssertionError('Method {} in file {} has {} line, not 1'.format(row[1], row[0], nlines))
+        if too_many_lines(row):
+            raise AssertionError(
+                'Method {} in file {} has {} line, not 1. Total violations: {}'.format(
+                    row[1], row[0], nlines, total_violations))
 
 
 if __name__ == '__main__':
-    # assert_that_test_methods_have_only_one_line()
+    assert_that_test_methods_have_only_one_line(skip_files=['builder.py'])
     unittest.main('tests')

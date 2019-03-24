@@ -242,22 +242,28 @@ class CnfTests(BaseTest):
     # Contains
     ################################################################################
     def test_contains_1(self):
-        self.assertIn(Clause(1, 2), self.cnf1)
-        self.assertIn(Clause(3, 4), self.cnf1)
-        self.assertNotIn(Clause(1), self.cnf1)
+        self.assertMembership(
+            for_container=self.cnf1,
+            elements=[Clause(1, 2), Clause(3, 4)],
+            not_elements=[Clause(1)])
 
     def test_contains_2(self):
-        self.assertIn(Clause(1), self.cnf2)
-        self.assertNotIn(Clause(1, 2), self.cnf2)
+        self.assertMembership(
+            for_container=self.cnf2,
+            elements=[Clause(1)],
+            not_elements=[Clause(1, 2)])
 
     def test_contains_3(self):
-        self.assertIn(Clause(1), self.cnf3)
-        self.assertIn(Clause(1, 2), self.cnf3)
-        self.assertNotIn(Clause(-4, -2), self.cnf3)
+        self.assertMembership(
+            for_container=self.cnf3,
+            elements=[Clause(1), Clause(1, 2)],
+            not_elements=[Clause(-4, -2)])
 
     def test_contains_4(self):
-        self.assertIn(Clause(-1, -2), self.cnf4)
-        self.assertNotIn(Clause(1), self.cnf4)
+        self.assertMembership(
+            for_container=self.cnf4,
+            elements=[Clause(-1, -2)],
+            not_elements=[Clause(1)])
 
     ################################################################################
     # len

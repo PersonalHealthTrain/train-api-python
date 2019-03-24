@@ -64,13 +64,19 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
 
     def assert_invalid_env_name(self, name):
-        with self.assertRaises(ValueError):
-            enum_by_name(name, ["SINGLETON"])
+        self.assertValueError(lambda: enum_by_name(name, ["SINGLETON"]))
 
-    def test_valid_environment_variables(self):
-        envs = ["MY_URL", "A", "FOO", "TEST_THIS_URL"]
-        for env in envs:
-            enum_by_name(env, ["SINGLETON"])
+    def test_valid_environment_variable_1(self):
+        enum_by_name('MY_URL', ["SINGLETON"])
+
+    def test_valid_environment_variable_2(self):
+        enum_by_name('A', ["SINGLETON"])
+
+    def test_valid_environment_variable_3(self):
+        enum_by_name('FOO', ["SINGLETON"])
+
+    def test_valid_environment_variable_4(self):
+        enum_by_name('TEST_THIS_URL', ["SINGLETON"])
 
     def test_invalid_environment_variables_1(self):
         self.assert_invalid_env_name("")
@@ -99,42 +105,63 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # Equals and not equals
     ###########################################################
-    def test_equals_env(self):
-        choices = ['SINGLETON']
-        self.assertEqual(enum_by_name("FOO", choices), enum_by_name("FOO", choices))
-        self.assertEqual(enum_by_name("BAR", choices), enum_by_name("BAR", choices))
-        self.assertEqual(enum_by_name("BAZ", choices), enum_by_name("BAZ", choices))
-        self.assertEqual(enum_by_name("MY_VARIABLE", choices), enum_by_name("MY_VARIABLE", choices))
-        self.assertEqual(enum_by_name("SOME_OTHER_VARIABLE", choices), enum_by_name("SOME_OTHER_VARIABLE", choices))
+    def test_equals_1(self):
+        self.assertEqual(
+            enum_by_name("FOO", ['SINGLETON']),
+            enum_by_name("FOO", ['SINGLETON']))
+
+    def test_equals_2(self):
+        self.assertEqual(
+            enum_by_name("BAR", ['SINGLETON']),
+            enum_by_name("BAR", ['SINGLETON']))
+
+    def test_equals_3(self):
+        self.assertEqual(
+            enum_by_name("BAZ", ['SINGLETON']),
+            enum_by_name("BAZ", ['SINGLETON']))
+
+    def test_equals_4(self):
+        self.assertEqual(
+            enum_by_name("MY_VARIABLE", ['SINGLETON']),
+            enum_by_name("MY_VARIABLE", ['SINGLETON']))
+
+    def test_equals_5(self):
+        self.assertEqual(
+            enum_by_name("SOME_OTHER_VARIABLE", ['SINGLETON']),
+            enum_by_name("SOME_OTHER_VARIABLE", ['SINGLETON']))
 
     def test_unequal_env_by_name(self):
-        # Unequal by name
-        choices = ['SINGLETON']
-        self.assertNotEqual(enum_by_name("FOO", choices), enum_by_name("BAR", choices))
-        self.assertNotEqual(enum_by_name("MY_VARIABLE", choices), enum_by_name("SOME_OTHER_VARIABLE", choices))
+        self.assertUnequalCominationPairs([
+            enum_by_name("FOO", ['SINGLETON']),
+            enum_by_name("BAR", ['SINGLETON']),
+            enum_by_name("MY_VARIABLE", ['SINGLETON']),
+            enum_by_name("SOME_OTHER_VARIABLE", ['SINGLETON'])])
 
     def test_unequal_env_by_choices(self):
-        name = 'FOO'
-        self.assertNotEqual(enum_by_name(name, ['SINGLETON']), enum_by_name(name, ['FOO', 'BAR']))
-        self.assertNotEqual(enum_by_name(name, ['FOO', 'BAR']), enum_by_name(name, ['ARG1', 'ARG2']))
+        self.assertUnequalCominationPairs([
+            enum_by_name('FOO', ['SINGLETON']),
+            enum_by_name('FOO', ['FOO', 'BAR']),
+            enum_by_name('FOO', ['ARG1', 'ARG2'])])
 
     def test_unequal_env_by_name_and_choices(self):
-        self.assertNotEqual(enum_by_name('BLA', ['SINGLETON']), enum_by_name('BLUB', ['FOO', 'BAR']))
-        self.assertNotEqual(enum_by_name('BLA', ['FOO', 'BAR']), enum_by_name('BLUB', ['ARG1', 'ARG2']))
+        self.assertUnequalCominationPairs([
+            enum_by_name('BLA', ['SINGLETON']), enum_by_name('BLUB', ['FOO', 'BAR']),
+            enum_by_name('BLA', ['FOO', 'BAR']), enum_by_name('BLUB', ['ARG1', 'ARG2'])])
 
     ###########################################################
     # Hash
     ###########################################################
 
     def test_hash_1(self):
-        self.assertEqual(2, len({self.enum1, self.enum2}))
+        self.assertIsEqual(2, len({self.enum1, self.enum2}))
 
     def test_hash_2(self):
-        self.assertEqual(1, len({self.enum1, self.enum1}))
+        self.assertIsEqual(1, len({self.enum1, self.enum1}))
 
-    def test_hash3(self):
-        choices = ['SINGLETON']
-        self.assertEqual(hash(enum_by_name('FOO', choices)), hash(enum_by_name('FOO', choices)))
+    def test_hash_3(self):
+        self.assertIsEqual(
+            enum_by_name('FOO', choices=['SINGLETON']),
+            enum_by_name('FOO', choices=['SINGLETON']))
 
     ###########################################################
     # Check
@@ -158,34 +185,26 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # __str__ and __repr__
     ###########################################################
-    def test_str(self):
+    def test_str_1(self):
         self.assertEqual('Enum[name=FOO,choices=[\'VALUE1\', \'VALUE2\']]', str(self.enum1))
+
+    def test_str_2(self):
         self.assertEqual('Enum[name=BAR,choices=[\'SINGLETON\']]', str(self.enum2))
 
-    def test_repr(self):
+    def test_repr_1(self):
         self.assertEqual('Enum[name=FOO,choices=[\'VALUE1\', \'VALUE2\']]', repr(self.enum1))
+
+    def test_repr_2(self):
         self.assertEqual('Enum[name=BAR,choices=[\'SINGLETON\']]', repr(self.enum2))
 
     ###########################################################
     # Copy
     ###########################################################
     def test_copy_1(self):
-        c1 = self.enum1.deepcopy()
-        c2 = self.enum2.deepcopy()
-        self.assertEqual(c1, self.enum1)
-        self.assertEqual(c2, self.enum2)
+        self.assertCopiesAreEqual(self.enum1)
 
     def test_copy_2(self):
-        c1 = copy(self.enum1)
-        c2 = copy(self.enum2)
-        self.assertEqual(self.enum1, c1)
-        self.assertEqual(self.enum2, c2)
-
-    def test_copy_3(self):
-        c1 = deepcopy(self.enum1)
-        c2 = deepcopy(self.enum2)
-        self.assertEqual(c1, self.enum1)
-        self.assertEqual(c2, self.enum2)
+        self.assertCopiesAreEqual(self.enum2)
 
     ###########################################################
     # get_value

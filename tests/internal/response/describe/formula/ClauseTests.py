@@ -100,50 +100,40 @@ class ClauseTests(BaseTest):
     # iter
     ################################################################################
     def test_iter_1(self):
-        clause = self.clause1
-        self.assertIn(1, clause)
-        self.assertNotIn(2, clause)
+        self.assertMembership(
+            for_container=self.clause1,
+            elements=[1],
+            not_elements=[2])
 
     def test_iter_2(self):
-        clause = self.clause2
-        self.assertIn(-1, clause)
-        self.assertNotIn(1, clause)
+        self.assertMembership(
+            for_container=self.clause2,
+            elements=[-1],
+            not_elements=[1])
 
     def test_iter_3(self):
-        clause = self.clause3
-        self.assertIn(1, clause)
-        self.assertIn(2, clause)
-        self.assertNotIn(-1, clause)
-        self.assertNotIn(-2, clause)
-        self.assertNotIn(0, clause)
-        self.assertNotIn(117, clause)
+        self.assertMembership(
+            for_container=self.clause3,
+            elements=[1, 2],
+            not_elements=[-1, -2, 0, 117])
 
     def test_iter_4(self):
-        clause = self.clause4
-        self.assertIn(-1, clause)
-        self.assertIn(2, clause)
-        self.assertNotIn(1, clause)
-        self.assertNotIn(-2, clause)
-        self.assertNotIn(0, clause)
-        self.assertNotIn(-5, clause)
+        self.assertMembership(
+            for_container=self.clause4,
+            elements=[-1, 2],
+            not_elements=[1, -2, -0, -5])
 
     def test_iter_5(self):
-        clause = self.clause5
-        self.assertIn(1, clause)
-        self.assertIn(-2, clause)
-        self.assertNotIn(-1, clause)
-        self.assertNotIn(2, clause)
-        self.assertNotIn(0, clause)
-        self.assertNotIn(-17, clause)
+        self.assertMembership(
+            for_container=self.clause5,
+            elements=[1, -2],
+            not_elements=[-1, 2, 0, -17])
 
     def test_iter_6(self):
-        clause = self.clause6
-        self.assertIn(-1, clause)
-        self.assertIn(-2, clause)
-        self.assertNotIn(1, clause)
-        self.assertNotIn(2, clause)
-        self.assertNotIn(0, clause)
-        self.assertNotIn(255, clause)
+        self.assertMembership(
+            for_container=self.clause6,
+            elements=[-1, -2],
+            not_elements=[1, 2, 0, 255])
 
     ################################################################################
     # str
@@ -215,35 +205,38 @@ class ClauseTests(BaseTest):
     # contains
     ################################################################################
     def test_contains_1(self):
-        self.assertIn(1, self.clause1)
+        self.assertMembership(
+            for_container=self.clause1,
+            elements=[1])
 
     def test_contains_2(self):
-        self.assertIn(-1, self.clause2)
-        self.assertNotIn(1, self.clause2)
+        self.assertMembership(
+            for_container=self.clause2,
+            not_elements=[1])
 
     def test_contains_3(self):
-        self.assertIn(1, self.clause3)
-        self.assertIn(2, self.clause3)
-        self.assertNotIn(-1, self.clause3)
-        self.assertNotIn(-2, self.clause3)
+        self.assertMembership(
+            for_container=self.clause3,
+            elements=[1, 2],
+            not_elements=[-1, -2])
 
     def test_contains_4(self):
-        self.assertIn(-1, self.clause4)
-        self.assertIn(2, self.clause4)
-        self.assertNotIn(1, self.clause4)
-        self.assertNotIn(-2, self.clause4)
+        self.assertMembership(
+            for_container=self.clause4,
+            elements=[-1, 2],
+            not_elements=[1, -2])
 
     def test_contains_5(self):
-        self.assertIn(1, self.clause5)
-        self.assertIn(-2, self.clause5)
-        self.assertNotIn(-1, self.clause5)
-        self.assertNotIn(2, self.clause5)
+        self.assertMembership(
+            for_container=self.clause5,
+            elements=[-2, 1],
+            not_elements=[-1, 2])
 
     def test_contains_6(self):
-        self.assertIn(-1, self.clause6)
-        self.assertIn(-2, self.clause6)
-        self.assertNotIn(1, self.clause6)
-        self.assertNotIn(2, self.clause6)
+        self.assertMembership(
+            for_container=self.clause6,
+            elements=[-1, -2],
+            not_elements=[1, 2])
 
     ################################################################################
     # len

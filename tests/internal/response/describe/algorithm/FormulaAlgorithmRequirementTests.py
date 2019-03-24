@@ -58,13 +58,9 @@ class FormulaAlgorithmRequirementTests(BaseTest):
     def test_eq_hash_4(self):
         self.assertIsEqual(FormulaAlgorithmRequirement(127), self.alg4)
 
-    def test_unequal(self):
-        self.assertNotEqual(self.alg1, self.alg2)
-        self.assertNotEqual(self.alg1, self.alg3)
-        self.assertNotEqual(self.alg1, self.alg4)
-        self.assertNotEqual(self.alg2, self.alg3)
-        self.assertNotEqual(self.alg2, self.alg4)
-        self.assertNotEqual(self.alg3, self.alg4)
+    def test_unequal_combination_pairs(self):
+        self.assertUnequalCominationPairs([
+            self.alg1, self.alg2, self.alg3, self.alg4])
 
     ################################################################################
     # Copy
