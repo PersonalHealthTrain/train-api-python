@@ -1,5 +1,6 @@
 import abc
 from pht.internal.typesystem.Typed import Typed
+from pht.internal.typesystem.TypeSystem import TypeSystem
 
 
 class TypedAsPythonClass(Typed, abc.ABC):
@@ -17,5 +18,5 @@ class TypedAsPythonClass(Typed, abc.ABC):
         return self.__class__.__name__
 
     @property
-    def type_system(self) -> str:
-        return 'pythonclass'
+    def type_system(self) -> TypeSystem:
+        return TypeSystem('pythonclass', '1.0')

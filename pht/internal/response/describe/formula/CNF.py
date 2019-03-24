@@ -29,7 +29,7 @@ class CNF(Hashable, Formula):
     def __hash__(self):
         return hash(self._clauses)
 
-    def copy(self):
+    def deepcopy(self):
         return CNF(*self._clauses)
 
     @property

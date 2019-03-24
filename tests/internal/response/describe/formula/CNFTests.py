@@ -71,13 +71,16 @@ class CnfTests(BaseTest):
     ################################################################################
     # as_dict
     ################################################################################
-    def test_dict_1(self):
+    def test_simple_dict_1(self):
         self.checkExpect(
             expect={
                 'value': [[1, 2], [3, 4]],
                 '@type': 'ConjunctiveNormalForm',
                 '@typeName': 'ConjunctiveNormalForm',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.cnf1._as_dict())
 
@@ -87,9 +90,12 @@ class CnfTests(BaseTest):
                 'value': [[1]],
                 '@type': 'ConjunctiveNormalForm',
                 '@typeName': 'ConjunctiveNormalForm',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             },
-            actual=self.cnf2._as_dict())
+            actual=self.cnf2.as_simple_dict())
 
     def test_dict_3(self):
         self.checkExpect(
@@ -97,9 +103,12 @@ class CnfTests(BaseTest):
                 'value': [[1], [1, 2]],
                 '@type': 'ConjunctiveNormalForm',
                 '@typeName': 'ConjunctiveNormalForm',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
-            actual=self.cnf3._as_dict())
+            actual=self.cnf3.as_simple_dict())
 
     def test_dict_4(self):
         self.checkExpect(
@@ -107,9 +116,12 @@ class CnfTests(BaseTest):
                 'value': [[-2, -1]],
                 '@type': 'ConjunctiveNormalForm',
                 '@typeName': 'ConjunctiveNormalForm',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
-            actual=self.cnf4._as_dict())
+            actual=self.cnf4.as_simple_dict())
 
     ################################################################################
     # type

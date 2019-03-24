@@ -23,7 +23,7 @@ class BaseTest(unittest.TestCase):
         self.assertEqual(hash(left), hash(right))
 
     def assertCopiesAreEqual(self, item):
-        c1 = item.copy()
+        c1 = item.deepcopy()
         c2 = copy.copy(item)
         c3 = copy.deepcopy(item)
         self.assertIsEqual(c1, c2)

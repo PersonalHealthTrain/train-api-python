@@ -2,8 +2,17 @@
   "runResponseVersion": "1.0",
   "@type": "RunResponse",
   "@typeName": "RunResponse",
-  "@typeSystem": "pythonclass",
+  "@typeSystem": {
+    "name": "pythonclass",
+    "version": "1.0"
+  },
   "exit": {
+    "@type": "AlgorithmSuccessRunExit",
+    "@typeName": "AlgorithmSuccessRunExit",
+    "@typeSystem": {
+      "name": "pythonclass",
+      "version": "1.0"
+    },
     "state": "success",
     "reason": "Execution ran successfully"
   },
@@ -14,6 +23,9 @@
     "from": "personalhealthtrain/base",
     "@type": "DockerRebaseStrategy",
     "@typeName": "DockerRebaseStrategy",
-    "@typeSystem": "pythonclass"
+    "@typeSystem": {
+      "name": "pythonclass",
+      "version": "1.0"
+    }
   }
 }

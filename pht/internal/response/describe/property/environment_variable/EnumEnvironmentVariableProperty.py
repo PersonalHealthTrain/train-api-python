@@ -18,7 +18,7 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
         _data[_choices] = sorted(list(self._choices))
         return _data
 
-    def copy(self):
+    def deepcopy(self):
         return EnumEnvironmentVariableProperty(self.name, self.description, [choice for choice in self._choices])
 
     def __repr__(self):

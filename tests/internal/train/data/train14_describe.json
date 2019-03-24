@@ -3,7 +3,10 @@
   "descriptionVersion": "1.0",
   "@type": "TrainDescription",
   "@typeName": "TrainDescription",
-  "@typeSystem": "pythonclass",
+  "@typeSystem": {
+    "name": "pythonclass",
+    "version": "1.0"
+  },
   "trainName": "test_train",
   "properties": [
     {
@@ -21,7 +24,10 @@
         ],
         "@type": "EnumEnvironmentVariableProperty",
         "@typeName": "EnumEnvironmentVariableProperty",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     }
   ],
@@ -36,7 +42,10 @@
         ],
         "@type": "ConjunctiveNormalForm",
         "@typeName": "ConjunctiveNormalForm",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     }
   ],
@@ -44,7 +53,10 @@
     "summary": {
       "@type": "StringModelSummary",
       "@typeName": "StringModelSummary",
-      "@typeSystem": "pythonclass",
+      "@typeSystem": {
+        "name": "pythonclass",
+        "version": "1.0"
+      },
       "value": "foo"
     }
   },
@@ -53,7 +65,10 @@
       "formula_id": 1,
       "@type": "FormulaAlgorithmRequirement",
       "@typeName": "FormulaAlgorithmRequirement",
-      "@typeSystem": "pythonclass"
+      "@typeSystem": {
+        "name": "pythonclass",
+        "version": "1.0"
+      }
     }
   }
 }

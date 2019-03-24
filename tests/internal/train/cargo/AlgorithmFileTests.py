@@ -68,9 +68,12 @@ class AlgorithmFileTests(BaseTest):
                 'absolutePath': '/opt/pht_train/algorithm/foo',
                 '@type': 'AlgorithmFile',
                 '@typeName': 'AlgorithmFile',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
-            actual=self.algo_file1._as_dict())
+            actual=self.algo_file1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -78,9 +81,12 @@ class AlgorithmFileTests(BaseTest):
                 'absolutePath': '/opt/pht_train/algorithm/bar',
                 '@type': 'AlgorithmFile',
                 '@typeName': 'AlgorithmFile',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
-            actual=self.algo_file2._as_dict())
+            actual=self.algo_file2.as_simple_dict())
 
     ###########################################
     # absolute path

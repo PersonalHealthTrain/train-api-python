@@ -4,39 +4,39 @@ Contains the RunAlgorithmResponse class, which belongs to the run_algorithm comm
 @author Lukas Zimmermann
 """
 from tests.base import BaseTest
-from pht.internal.response.run.exit.RunExit import AlgorithmApplication, AlgorithmFailure, AlgorithmSuccess
+from pht.internal.response.run.exit.RunExit import AlgorithmApplicationRunExit, AlgorithmFailureRunExit, AlgorithmSuccessRunExit
 
 
 class RunExitTests(BaseTest):
 
     def setUp(self):
-        self.application = AlgorithmApplication('app state')
-        self.success = AlgorithmSuccess('success state')
-        self.failure = AlgorithmFailure('failure state')
-        self.application2 = AlgorithmApplication(None)
-        self.success2 = AlgorithmSuccess(None)
-        self.failure2 = AlgorithmFailure(None)
+        self.application = AlgorithmApplicationRunExit('app state')
+        self.success = AlgorithmSuccessRunExit('success state')
+        self.failure = AlgorithmFailureRunExit('failure state')
+        self.application2 = AlgorithmApplicationRunExit(None)
+        self.success2 = AlgorithmSuccessRunExit(None)
+        self.failure2 = AlgorithmFailureRunExit(None)
 
     ################################################################################
     # eq and hash
     ################################################################################
     def test_eq_1(self):
-        self.assertIsEqual(self.application, AlgorithmApplication('app state'))
+        self.assertIsEqual(self.application, AlgorithmApplicationRunExit('app state'))
 
     def test_eq_2(self):
-        self.assertIsEqual(self.success, AlgorithmSuccess('success state'))
+        self.assertIsEqual(self.success, AlgorithmSuccessRunExit('success state'))
 
     def test_eq_3(self):
-        self.assertIsEqual(self.failure, AlgorithmFailure('failure state'))
+        self.assertIsEqual(self.failure, AlgorithmFailureRunExit('failure state'))
 
     def test_eq_4(self):
-        self.assertIsEqual(self.application2, AlgorithmApplication(None))
+        self.assertIsEqual(self.application2, AlgorithmApplicationRunExit(None))
 
     def test_eq_5(self):
-        self.assertIsEqual(self.success2, AlgorithmSuccess(None))
+        self.assertIsEqual(self.success2, AlgorithmSuccessRunExit(None))
 
     def test_eq_6(self):
-        self.assertIsEqual(self.failure2, AlgorithmFailure(None))
+        self.assertIsEqual(self.failure2, AlgorithmFailureRunExit(None))
 
     ################################################################################
     # Copy
@@ -64,30 +64,82 @@ class RunExitTests(BaseTest):
     ################################################################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={'state': 'success', 'reason': 'success state'},
-            actual=self.success._as_dict())
+            expect={
+                '@type': 'AlgorithmSuccessRunExit',
+                '@typeName': 'AlgorithmSuccessRunExit',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
+                'state': 'success',
+                'reason': 'success state'
+            },
+            actual=self.success.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
-            expect={'state': 'failure', 'reason': 'failure state'},
-            actual=self.failure._as_dict())
+            expect={
+                '@type': 'AlgorithmFailureRunExit',
+                '@typeName': 'AlgorithmFailureRunExit',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
+                'state': 'failure',
+                'reason': 'failure state'},
+            actual=self.failure.as_simple_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
-            expect={'state': 'application', 'reason': 'app state'},
-            actual=self.application._as_dict())
+            expect={
+                '@type': 'AlgorithmApplicationRunExit',
+                '@typeName': 'AlgorithmApplicationRunExit',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
+                'state': 'application',
+                'reason': 'app state'
+            },
+            actual=self.application.as_simple_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
-            expect={'state': 'success', 'reason': None},
-            actual=self.success2._as_dict())
+            expect={
+                '@type': 'AlgorithmSuccessRunExit',
+                '@typeName': 'AlgorithmSuccessRunExit',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
+                'state': 'success',
+                'reason': None
+            },
+            actual=self.success2.as_simple_dict())
 
     def test_as_dict_5(self):
         self.checkExpect(
-            expect={'state': 'failure', 'reason': None},
-            actual=self.failure2._as_dict())
+            expect={
+                '@type': 'AlgorithmFailureRunExit',
+                '@typeName': 'AlgorithmFailureRunExit',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
+                'state': 'failure',
+                'reason': None},
+            actual=self.failure2.as_simple_dict())
 
     def test_as_dict_6(self):
         self.checkExpect(
-            expect={'state': 'application', 'reason': None},
-            actual=self.application2._as_dict())
+            expect={
+                '@type': 'AlgorithmApplicationRunExit',
+                '@typeName': 'AlgorithmApplicationRunExit',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
+                'state': 'application',
+                'reason': None
+            },
+            actual=self.application2.as_simple_dict())

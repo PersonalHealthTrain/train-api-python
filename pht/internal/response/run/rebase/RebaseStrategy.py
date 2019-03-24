@@ -67,5 +67,5 @@ class DockerRebaseStrategy(RebaseStrategy):
     def __hash__(self):
         return hash((self.frm, self.next_train_tags, self.export_files))
 
-    def copy(self):
+    def deepcopy(self):
         return DockerRebaseStrategy(self.frm, list(self.next_train_tags), list(self.export_files))

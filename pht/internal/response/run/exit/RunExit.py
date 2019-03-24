@@ -6,11 +6,10 @@ Contains the RunAlgorithmResponse class, which belongs to the run_algorithm comm
 import abc
 from collections.abc import Hashable
 from typing import Optional
-from pht.internal.protocol.Copyable import Copyable
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 
 
-class RunExit(Copyable, Hashable, SimpleDictRepresentable):
+class RunExit(Hashable, TypedAsPythonClass):
     def __init__(self, reason: Optional[str]):
         self.reason = reason
 
@@ -22,38 +21,39 @@ class RunExit(Copyable, Hashable, SimpleDictRepresentable):
     def __hash__(self):
         return hash((self.reason, self.state))
 
-    def _as_dict(self):
+    @property
+    def data(self) -> dict:
         return {
             'state': self.state,
             'reason': self.reason
         }
 
 
-class AlgorithmSuccess(RunExit):
+class AlgorithmSuccessRunExit(RunExit):
 
     @property
     def state(self) -> str:
         return 'success'
 
-    def copy(self):
-        return AlgorithmSuccess(self.reason)
+    def deepcopy(self):
+        return AlgorithmSuccessRunExit(self.reason)
 
 
-class AlgorithmFailure(RunExit):
+class AlgorithmFailureRunExit(RunExit):
 
     @property
     def state(self) -> str:
         return 'failure'
 
-    def copy(self):
-        return AlgorithmFailure(self.reason)
+    def deepcopy(self):
+        return AlgorithmFailureRunExit(self.reason)
 
 
-class AlgorithmApplication(RunExit):
+class AlgorithmApplicationRunExit(RunExit):
 
     @property
     def state(self) -> str:
         return 'application'
 
-    def copy(self):
-        return AlgorithmApplication(self.reason)
+    def deepcopy(self):
+        return AlgorithmApplicationRunExit(self.reason)

@@ -1,6 +1,6 @@
 from typing import Any, Iterable, Optional
 from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
-from pht.internal.protocol.Copyable import Copyable
+from pht.internal.protocol.DeepCopyable import DeepCopyable
 
 
 def frozen_set_of(typ, item, items: Iterable[Any]):
@@ -22,5 +22,5 @@ def as_dict_or_none(item: Optional[SimpleDictRepresentable]):
     return _do_or_none(item, lambda x: x.as_simple_dict())
 
 
-def copy_or_none(item: Optional[Copyable]):
-    return _do_or_none(item, lambda x: x.copy())
+def copy_or_none(item: Optional[DeepCopyable]):
+    return _do_or_none(item, lambda x: x.deepcopy())

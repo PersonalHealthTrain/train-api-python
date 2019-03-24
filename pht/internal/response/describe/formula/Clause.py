@@ -1,9 +1,10 @@
 from collections.abc import Hashable, Sized
 from pht.internal.util import require
 from pht.internal.util import frozen_set_of
+from pht.internal.protocol.DeepCopyable import DeepCopyable
 
 
-class Clause(Hashable, Sized):
+class Clause(DeepCopyable, Hashable, Sized):
     """
     A clause is a set of literals. Here we represent literals simply as signed integers
     """
@@ -37,5 +38,5 @@ class Clause(Hashable, Sized):
     def __hash__(self):
         return hash(self._literals)
 
-    def copy(self):
+    def deepcopy(self):
         return Clause(*self._literals)

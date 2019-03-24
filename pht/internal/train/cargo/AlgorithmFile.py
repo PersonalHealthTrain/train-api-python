@@ -13,7 +13,7 @@ class AlgorithmFile(TrainFile):
     def absolute_path(self) -> str:
         return self._path
 
-    def copy(self):
+    def deepcopy(self):
         return AlgorithmFile(self._file_name)
 
     @staticmethod

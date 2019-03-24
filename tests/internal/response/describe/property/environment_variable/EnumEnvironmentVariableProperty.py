@@ -170,8 +170,8 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     # Copy
     ###########################################################
     def test_copy_1(self):
-        c1 = self.enum1.copy()
-        c2 = self.enum2.copy()
+        c1 = self.enum1.deepcopy()
+        c2 = self.enum2.deepcopy()
         self.assertEqual(c1, self.enum1)
         self.assertEqual(c2, self.enum2)
 
@@ -268,7 +268,10 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                 },
                 '@type': 'EnumEnvironmentVariableProperty',
                 '@typeName': 'EnumEnvironmentVariableProperty',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.enum1.as_simple_dict())
 
@@ -284,6 +287,9 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                 },
                 '@type': 'EnumEnvironmentVariableProperty',
                 '@typeName': 'EnumEnvironmentVariableProperty',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.enum2.as_simple_dict())

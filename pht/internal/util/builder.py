@@ -1,5 +1,6 @@
 import abc
 from typing import Dict, List
+from copy import deepcopy
 
 from pht.internal.response.describe.property.Property import Property
 from pht.internal.response.describe.formula.Clause import Clause
@@ -8,7 +9,7 @@ from pht.internal.response.describe.formula.CNF import CNF
 
 def copy_property_map(d: Dict[int, Property]):
     return {
-        i: prop.copy() for (i, prop) in d.items()
+        i: prop.deepcopy() for (i, prop) in d.items()
     }
 
 
@@ -71,7 +72,7 @@ class ConjunctionBuilder(_PropertyEnumerator):
 
 class ConjunctionComposite(ConjunctionBuilder):
     def __init__(self, clauses: List[Clause], props: Dict[int, Property]):
-        self._clauses = [clause.copy() for clause in clauses]
+        self._clauses = deepcopy(clauses)
         self._props = copy_property_map(props)
 
     @property
@@ -102,7 +103,7 @@ class DisjunctionBuilder(_PropertyEnumerator):
 
 class DisjunctionComposite(DisjunctionBuilder):
     def __init__(self, clause: Clause, props: Dict[int, Property]):
-        self._clause = clause.copy()
+        self._clause = clause.deepcopy()
         self._props = copy_property_map(props)
 
     @property

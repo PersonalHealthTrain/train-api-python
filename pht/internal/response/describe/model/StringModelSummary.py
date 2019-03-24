@@ -9,7 +9,7 @@ class StringModelSummary(Hashable, ModelSummary):
         self._val = val
         require.type_is_str(self._val)
 
-    def copy(self):
+    def deepcopy(self):
         return StringModelSummary(self._val)
 
     def __hash__(self):

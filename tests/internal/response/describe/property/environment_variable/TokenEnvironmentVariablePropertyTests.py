@@ -117,7 +117,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'FOO\' not set'},
                 '@type': 'TokenEnvironmentVariableProperty',
                 '@typeName': 'TokenEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             }, actual=self.token1.as_simple_dict()
         )
 
@@ -131,7 +134,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'BAR\' not set'},
                 '@type': 'TokenEnvironmentVariableProperty',
                 '@typeName': 'TokenEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             }, actual=self.token2.as_simple_dict()
         )
 
@@ -146,7 +152,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 },
                 '@type': 'TokenEnvironmentVariableProperty',
                 '@typeName': 'TokenEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             },
             actual=self.token3.as_simple_dict())
 
@@ -160,7 +169,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
                 '@type': 'TokenEnvironmentVariableProperty',
                 '@typeName': 'TokenEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             },
             actual=self.token4.as_simple_dict())
 
@@ -176,7 +188,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'TokenEnvironmentVariableProperty',
                     '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.token1.as_simple_dict())
 
@@ -192,7 +207,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'TokenEnvironmentVariableProperty',
                     '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.token2.as_simple_dict())
 
@@ -208,7 +226,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'TokenEnvironmentVariableProperty',
                     '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.token3.as_simple_dict())
 
@@ -224,7 +245,10 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'TokenEnvironmentVariableProperty',
                     '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.token4.as_simple_dict())
 

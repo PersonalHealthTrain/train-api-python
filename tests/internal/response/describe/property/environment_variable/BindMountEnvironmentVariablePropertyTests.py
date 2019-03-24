@@ -119,7 +119,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'FOO\' not set'},
                 '@type': 'BindMountEnvironmentVariableProperty',
                 '@typeName': 'BindMountEnvironmentVariableProperty',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.mount1.as_simple_dict()
         )
@@ -135,7 +138,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'BAR\' not set'},
                 '@type': 'BindMountEnvironmentVariableProperty',
                 '@typeName': 'BindMountEnvironmentVariableProperty',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.mount2.as_simple_dict()
         )
@@ -152,7 +158,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 },
                 '@type': 'BindMountEnvironmentVariableProperty',
                 '@typeName': 'BindMountEnvironmentVariableProperty',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.mount3.as_simple_dict())
 
@@ -167,7 +176,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'BAR' not set"},
                 '@type': 'BindMountEnvironmentVariableProperty',
                 '@typeName': 'BindMountEnvironmentVariableProperty',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.mount4.as_simple_dict())
 
@@ -184,7 +196,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'BindMountEnvironmentVariableProperty',
                     '@typeName': 'BindMountEnvironmentVariableProperty',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 },
                 actual=self.mount1.as_simple_dict())
 
@@ -201,7 +216,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'BindMountEnvironmentVariableProperty',
                     '@typeName': 'BindMountEnvironmentVariableProperty',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 },
                 actual=self.mount2.as_simple_dict())
 
@@ -218,7 +236,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'BindMountEnvironmentVariableProperty',
                     '@typeName': 'BindMountEnvironmentVariableProperty',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 },
                 actual=self.mount3.as_simple_dict())
 
@@ -235,7 +256,10 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'BindMountEnvironmentVariableProperty',
                     '@typeName': 'BindMountEnvironmentVariableProperty',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 },
                 actual=self.mount4.as_simple_dict())
 

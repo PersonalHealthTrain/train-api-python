@@ -16,15 +16,15 @@ class RunResponse(TrainResponse):
                  rebase: RebaseStrategy):
 
         # Final Execution State of the algorithm
-        self.run_exit = run_exit.copy()
+        self.run_exit = run_exit.deepcopy()
 
         # Custom message to communicate the execution state of the algorithm
         self.message = free_text_message
 
         # The Rebase Strategy
-        self.rebase = rebase.copy()
+        self.rebase = rebase.deepcopy()
 
-    def copy(self):
+    def deepcopy(self):
         return RunResponse(self.run_exit, self.message, self.rebase)
 
     def __hash__(self) -> int:

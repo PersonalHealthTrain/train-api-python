@@ -4,7 +4,10 @@
   "@type": "TrainDescription",
   "@typeName": "TrainDescription",
   "trainName": "test_train",
-  "@typeSystem": "pythonclass",
+  "@typeSystem": {
+    "name": "pythonclass",
+    "version": "1.0"
+  },
   "properties": [
     {
       "id": 1,
@@ -17,7 +20,10 @@
         },
         "@type": "UrlEnvironmentVariableProperty",
         "@typeName": "UrlEnvironmentVariableProperty",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     },
     {
@@ -31,7 +37,10 @@
         },
         "@type": "UrlEnvironmentVariableProperty",
         "@typeName": "UrlEnvironmentVariableProperty",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     },
     {
@@ -45,7 +54,10 @@
         },
         "@type": "UrlEnvironmentVariableProperty",
         "@typeName": "UrlEnvironmentVariableProperty",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     }
   ],
@@ -62,7 +74,10 @@
         ],
         "@type": "ConjunctiveNormalForm",
         "@typeName": "ConjunctiveNormalForm",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     }
   ],
@@ -70,7 +85,10 @@
     "summary": {
       "@type": "StringModelSummary",
       "@typeName": "StringModelSummary",
-      "@typeSystem": "pythonclass",
+      "@typeSystem": {
+        "name": "pythonclass",
+        "version": "1.0"
+      },
       "value": "foo"
     }
   },
@@ -79,7 +97,10 @@
       "formula_id": 1,
       "@type": "FormulaAlgorithmRequirement",
       "@typeName": "FormulaAlgorithmRequirement",
-      "@typeSystem": "pythonclass"
+      "@typeSystem": {
+        "name": "pythonclass",
+        "version": "1.0"
+      }
     }
   }
 }

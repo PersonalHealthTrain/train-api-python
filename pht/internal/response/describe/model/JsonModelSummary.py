@@ -1,13 +1,14 @@
 from typing import Union
-from pht.internal.protocol.Copyable import Copyable
+from copy import deepcopy
+from pht.internal.protocol.DeepCopyable import DeepCopyable
 from .ModelSummary import ModelSummary
 
 
 class JsonModelSummary(ModelSummary):
-    def __init__(self, val: Union[Copyable, dict, list]):
-        self._val = val.copy()
+    def __init__(self, val: Union[DeepCopyable, dict, list]):
+        self._val = deepcopy(val)
 
-    def copy(self):
+    def deepcopy(self):
         return JsonModelSummary(self._val)
 
     @property

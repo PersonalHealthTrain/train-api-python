@@ -12,10 +12,6 @@ class TrainFile(TypedAsPythonClass):
     def absolute_path(self) -> str:
         pass
 
-    def __eq__(self, other):
-        return self is other or \
-               (isinstance(other, TrainFile) and self.absolute_path == other.absolute_path)
-
     def __hash__(self):
         return hash(self.absolute_path)
 

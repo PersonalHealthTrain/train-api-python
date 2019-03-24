@@ -16,7 +16,7 @@ class BindMountEnvironmentVariableProperty(EnvironmentVariableProperty):
         super().__init__(name, description)
         self.mount_type = mount_type
 
-    def copy(self):
+    def deepcopy(self):
         return BindMountEnvironmentVariableProperty(self.name, self.description, self.mount_type)
 
     def __repr__(self):

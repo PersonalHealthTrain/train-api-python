@@ -1,11 +1,11 @@
 from collections.abc import Hashable
 from typing import Optional
-from pht.internal.protocol.Copyable import Copyable
+from pht.internal.protocol.DeepCopyable import DeepCopyable
 from pht.internal.util import require
 from pht.internal.util.require import is_not_none
 
 
-class StationRuntimeInfo(Copyable, Hashable):
+class StationRuntimeInfo(DeepCopyable, Hashable):
     """
     Represents information on the station that will be passed on runtime.
     """
@@ -31,5 +31,5 @@ class StationRuntimeInfo(Copyable, Hashable):
     def __hash__(self):
         return hash((self.station_id, self.track_info, self.user_data))
 
-    def copy(self):
+    def deepcopy(self):
         return StationRuntimeInfo(self.station_id, self.track_info, self.user_data)

@@ -35,7 +35,7 @@ class DockerRebaseStrategyTests(BaseTest):
     ################################################################################
     # Dict
     ################################################################################
-    def test_dict_1(self):
+    def test_simple_dict_1(self):
         self.checkExpect(
             expect={
                 'exportFiles': [],
@@ -43,8 +43,12 @@ class DockerRebaseStrategyTests(BaseTest):
                 'from': 'from',
                 '@type': 'DockerRebaseStrategy',
                 '@typeName': 'DockerRebaseStrategy',
-                "@typeSystem": "pythonclass"},
-            actual=self.rebase1._as_dict())
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
+            },
+            actual=self.rebase1.as_simple_dict())
 
     ################################################################################
     # Copy, deepcopy, hash

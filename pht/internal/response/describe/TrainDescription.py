@@ -33,7 +33,7 @@ class TrainDescription(TrainResponse):
         self._properties = copy_property_map(properties)
         self._validate_property_map()
 
-        self._formulas = [formula.copy() for formula in formulas]
+        self._formulas = [formula.deepcopy() for formula in formulas]
         self._algorithm_requirement = copy_or_none(algorithm_requirement)
         self._validate_formula_algorithm_requirement()
 
@@ -41,7 +41,7 @@ class TrainDescription(TrainResponse):
 
         self._validate_literals_in_formulas()
 
-    def copy(self):
+    def deepcopy(self):
         return TrainDescription(
             train_name=self._train_name,
             train_version=self._train_version,
@@ -84,7 +84,7 @@ class TrainDescription(TrainResponse):
             return StringModelSummary(model_summary)
         elif isinstance(model_summary, list) or isinstance(model_summary, dict):
             return JsonModelSummary(model_summary)
-        return model_summary.copy()
+        return model_summary.deepcopy()
 
     def _validate_formula_algorithm_requirement(self):
         """

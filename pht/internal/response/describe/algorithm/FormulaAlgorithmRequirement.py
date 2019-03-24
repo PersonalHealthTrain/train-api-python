@@ -19,5 +19,5 @@ class FormulaAlgorithmRequirement(AlgorithmRequirement, Hashable):
     def __hash__(self):
         return hash(self._formula_id)
 
-    def copy(self):
+    def deepcopy(self):
         return FormulaAlgorithmRequirement(self._formula_id)

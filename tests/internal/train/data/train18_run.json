@@ -1,6 +1,12 @@
 {
   "runResponseVersion": "1.0",
   "exit": {
+    "@type": "AlgorithmSuccessRunExit",
+    "@typeName": "AlgorithmSuccessRunExit",
+    "@typeSystem": {
+      "name": "pythonclass",
+      "version": "1.0"
+    },
     "state": "success",
     "reason": ""
   },
@@ -11,7 +17,10 @@
         "absolutePath": "/opt/pht_train/model/key",
         "@type": "ModelFile",
         "@typeName": "ModelFile",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     ],
     "nextTrainTags": [
@@ -21,9 +30,15 @@
     "from": "personalhealthtrain/base:base",
     "@type": "DockerRebaseStrategy",
     "@typeName": "DockerRebaseStrategy",
-    "@typeSystem": "pythonclass"
+    "@typeSystem": {
+      "name": "pythonclass",
+      "version": "1.0"
+    }
   },
   "@type": "RunResponse",
   "@typeName": "RunResponse",
-  "@typeSystem": "pythonclass"
+  "@typeSystem": {
+    "name": "pythonclass",
+    "version": "1.0"
+  }
 }

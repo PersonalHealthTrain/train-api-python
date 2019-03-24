@@ -1,5 +1,5 @@
 from tests.base import BaseTest
-from pht.internal.response.run.exit.RunExit import AlgorithmFailure
+from pht.internal.response.run.exit.RunExit import AlgorithmFailureRunExit
 from pht.internal.response.run.rebase.RebaseStrategy import DockerRebaseStrategy
 from pht.internal.response.run.RunResponse import RunResponse
 from pht.internal.train.cargo.ModelFile import ModelFile
@@ -10,7 +10,7 @@ class RunResponseTests(BaseTest):
 
     def setUp(self):
         self.response1 = RunResponse(
-            run_exit=AlgorithmFailure('foo'),
+            run_exit=AlgorithmFailureRunExit('foo'),
             free_text_message='bar',
             rebase=DockerRebaseStrategy(
                 frm='frm',
@@ -18,7 +18,7 @@ class RunResponseTests(BaseTest):
                 export_files=[]
             ))
         self.response2 = RunResponse(
-            run_exit=AlgorithmFailure('bar'),
+            run_exit=AlgorithmFailureRunExit('bar'),
             free_text_message='Some text',
             rebase=DockerRebaseStrategy(
                 frm='some remote Docker repository',
@@ -36,7 +36,16 @@ class RunResponseTests(BaseTest):
         self.checkExpect(
             expect={
                 'runResponseVersion': '1.0',
-                'exit': {'state': 'failure', 'reason': 'foo'},
+                'exit': {
+                    "@type": "AlgorithmFailureRunExit",
+                    "@typeName": "AlgorithmFailureRunExit",
+                    "@typeSystem": {
+                        "name": "pythonclass",
+                        "version": "1.0"
+                    },
+                    'state': 'failure',
+                    'reason': 'foo'
+                },
                 'freeTextMessage': 'bar',
                 'rebase': {
                     'exportFiles': [],
@@ -44,11 +53,17 @@ class RunResponseTests(BaseTest):
                     'from': 'frm',
                     '@type': 'DockerRebaseStrategy',
                     '@typeName': 'DockerRebaseStrategy',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 },
                 '@type': 'RunResponse',
                 '@typeName': 'RunResponse',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.response1._as_dict())
 
@@ -57,6 +72,12 @@ class RunResponseTests(BaseTest):
             expect={
                 'runResponseVersion': '1.0',
                 'exit': {
+                    "@type": "AlgorithmFailureRunExit",
+                    "@typeName": "AlgorithmFailureRunExit",
+                    "@typeSystem": {
+                        "name": "pythonclass",
+                        "version": "1.0"
+                    },
                     'state': 'failure',
                     'reason': 'bar'
                 },
@@ -67,30 +88,45 @@ class RunResponseTests(BaseTest):
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             '@type': 'AlgorithmFile',
                             '@typeName': 'AlgorithmFile',
-                            "@typeSystem": "pythonclass",
+                            "@typeSystem": {
+                                'name': 'pythonclass',
+                                'version': '1.0'
+                            },
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
                             '@type': 'ModelFile',
                             '@typeName': 'ModelFile',
-                            "@typeSystem": "pythonclass",
+                            "@typeSystem": {
+                                'name': 'pythonclass',
+                                'version': '1.0'
+                            },
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
                             '@type': 'ModelFile',
                             '@typeName': 'ModelFile',
-                            "@typeSystem": "pythonclass",
+                            "@typeSystem": {
+                                'name': 'pythonclass',
+                                'version': '1.0'
+                            },
                         }
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     '@type': 'DockerRebaseStrategy',
                     '@typeName': 'DockerRebaseStrategy',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 },
                 '@type': 'RunResponse',
                 '@typeName': 'RunResponse',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.response2._as_dict())
 
@@ -127,7 +163,16 @@ class RunResponseTests(BaseTest):
         self.checkExpect(
             expect={
                 'runResponseVersion': '1.0',
-                'exit': {'state': 'failure', 'reason': 'foo'},
+                'exit': {
+                    "@type": "AlgorithmFailureRunExit",
+                    "@typeName": "AlgorithmFailureRunExit",
+                    "@typeSystem": {
+                        "name": "pythonclass",
+                        "version": "1.0"
+                    },
+                    'state': 'failure',
+                    'reason': 'foo'
+                },
                 'freeTextMessage': 'bar',
                 'rebase': {
                     'exportFiles': [],
@@ -135,7 +180,10 @@ class RunResponseTests(BaseTest):
                     'from': 'frm',
                     '@type': 'DockerRebaseStrategy',
                     '@typeName': 'DockerRebaseStrategy',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 }
             },
             actual=self.response1.data)
@@ -145,6 +193,12 @@ class RunResponseTests(BaseTest):
             expect={
                 'runResponseVersion': '1.0',
                 'exit': {
+                    "@type": "AlgorithmFailureRunExit",
+                    "@typeName": "AlgorithmFailureRunExit",
+                    "@typeSystem": {
+                        "name": "pythonclass",
+                        "version": "1.0"
+                    },
                     'state': 'failure',
                     'reason': 'bar'
                 },
@@ -155,26 +209,38 @@ class RunResponseTests(BaseTest):
                             'absolutePath': '/opt/pht_train/algorithm/key3',
                             '@type': 'AlgorithmFile',
                             '@typeName': 'AlgorithmFile',
-                            "@typeSystem": "pythonclass",
+                            "@typeSystem": {
+                                'name': 'pythonclass',
+                                'version': '1.0'
+                            },
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
                             '@type': 'ModelFile',
                             '@typeName': 'ModelFile',
-                            "@typeSystem": "pythonclass",
+                            "@typeSystem": {
+                                'name': 'pythonclass',
+                                'version': '1.0'
+                            },
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
                             '@type': 'ModelFile',
                             '@typeName': 'ModelFile',
-                            "@typeSystem": "pythonclass",
+                            "@typeSystem": {
+                                'name': 'pythonclass',
+                                'version': '1.0'
+                            },
                         }
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
                     '@type': 'DockerRebaseStrategy',
                     '@typeName': 'DockerRebaseStrategy',
-                    "@typeSystem": "pythonclass",
+                    "@typeSystem": {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    },
                 }
             },
             actual=self.response2.data)

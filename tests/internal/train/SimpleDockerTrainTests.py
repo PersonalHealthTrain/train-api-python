@@ -9,7 +9,7 @@ from pht.internal.train.SimpleDockerTrain import SimpleDockerTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
 from pht.internal.response.describe.requirement.builder import ConjunctionBuilder
 from pht.internal.response.describe.property.environment_variable import enum_by_name, url_by_name, bind_mount_by_name
-from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, AlgorithmFailure, AlgorithmApplication
+from pht.internal.response.run.exit.RunExit import AlgorithmSuccessRunExit, AlgorithmFailureRunExit, AlgorithmApplicationRunExit
 from pht.internal.response.describe.property.environment_variable.BindMountEnvironmentVariableProperty import MountType
 
 
@@ -42,7 +42,7 @@ class _TestTrain1(SimpleDockerTrain):
         return 'foo'
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
-        log.set_exit_state(AlgorithmSuccess('Execution ran successfully'))
+        log.set_exit_state(AlgorithmSuccessRunExit('Execution ran successfully'))
         log.set_free_text_message('test')
 
 
@@ -59,7 +59,7 @@ class _TestTrain2(SimpleDockerTrain):
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
         log.set_free_text_message('This is arbitrary free text')
-        log.set_exit_state(AlgorithmFailure('Execution of the algorithm failed'))
+        log.set_exit_state(AlgorithmFailureRunExit('Execution of the algorithm failed'))
 
 
 class _TestTrain3(SimpleDockerTrain):
@@ -73,7 +73,7 @@ class _TestTrain3(SimpleDockerTrain):
         return 'foo'
 
     def run_algorithm(self, info: StationRuntimeInfo, log):
-        log.set_exit_state(AlgorithmApplication('Application specific error, not success, but also not failure'))
+        log.set_exit_state(AlgorithmApplicationRunExit('Application specific error, not success, but also not failure'))
         log.set_free_text_message('This is arbitrary free text')
 
 

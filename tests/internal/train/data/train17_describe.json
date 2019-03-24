@@ -1,7 +1,10 @@
 {
   "trainVersion": "1.0",
   "trainName": "test_train",
-  "@typeSystem": "pythonclass",
+  "@typeSystem": {
+    "name": "pythonclass",
+    "version": "1.0"
+  },
   "descriptionVersion": "1.0",
   "properties": [
     {
@@ -16,7 +19,10 @@
         "mountType": "file",
         "@type": "BindMountEnvironmentVariableProperty",
         "@typeName": "BindMountEnvironmentVariableProperty",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     }
   ],
@@ -31,7 +37,10 @@
         ],
         "@type": "ConjunctiveNormalForm",
         "@typeName": "ConjunctiveNormalForm",
-        "@typeSystem": "pythonclass"
+        "@typeSystem": {
+          "name": "pythonclass",
+          "version": "1.0"
+        }
       }
     }
   ],
@@ -40,7 +49,10 @@
       "value": "model summary",
       "@type": "StringModelSummary",
       "@typeName": "StringModelSummary",
-      "@typeSystem": "pythonclass"
+      "@typeSystem": {
+        "name": "pythonclass",
+        "version": "1.0"
+      }
     }
   },
   "algorithm": {
@@ -48,7 +60,10 @@
       "formula_id": 1,
       "@type": "FormulaAlgorithmRequirement",
       "@typeName": "FormulaAlgorithmRequirement",
-      "@typeSystem": "pythonclass"
+      "@typeSystem": {
+        "name": "pythonclass",
+        "version": "1.0"
+      }
     }
   },
   "@type": "TrainDescription",

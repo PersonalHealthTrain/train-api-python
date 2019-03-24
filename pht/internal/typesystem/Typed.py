@@ -2,13 +2,11 @@ from abc import abstractmethod
 from pht.internal.util import require
 from pht.internal.util.require import not_in
 from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
-from pht.internal.protocol.Copyable import Copyable
+from pht.internal.protocol.DeepCopyable import DeepCopyable
+from pht.internal.typesystem.TypeSystem import TypeSystem
 
 
-class Typed(Copyable, SimpleDictRepresentable):
-    """
-
-    """
+class Typed(DeepCopyable, SimpleDictRepresentable):
     @property
     @abstractmethod
     def type(self) -> str:
@@ -21,7 +19,7 @@ class Typed(Copyable, SimpleDictRepresentable):
 
     @property
     @abstractmethod
-    def type_system(self) -> str:
+    def type_system(self) -> TypeSystem:
         pass
 
     @property
@@ -42,5 +40,5 @@ class Typed(Copyable, SimpleDictRepresentable):
             error_if_not='Key \'{}\' not allowed in data dictionary of class')
         data[_type] = self.type
         data[_typeName] = self.type_name
-        data[_typeSystem] = self.type_system
+        data[_typeSystem] = self.type_system.as_simple_dict()
         return data

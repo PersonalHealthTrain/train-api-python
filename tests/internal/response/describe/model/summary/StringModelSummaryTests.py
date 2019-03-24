@@ -108,7 +108,10 @@ class StringModelSummaryTests(BaseTest):
                 'value': 'This is the model summary',
                 '@type': 'StringModelSummary',
                 '@typeName': 'StringModelSummary',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             },
             actual=self.model1._as_dict())
 
@@ -118,6 +121,9 @@ class StringModelSummaryTests(BaseTest):
                 'value': 'This is another model summary',
                 '@type': 'StringModelSummary',
                 '@typeName': 'StringModelSummary',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
             },
             actual=self.model2._as_dict())

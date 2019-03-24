@@ -4,16 +4,16 @@ from pht.internal.train.AbstractTrain import AbstractTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
 from pht.internal.response.run.RunResponse import RunResponse
 from pht.internal.response.run.rebase.RebaseStrategy import DockerRebaseStrategy
-from pht.internal.response.run.exit.RunExit import AlgorithmFailure
+from pht.internal.response.run.exit.RunExit import AlgorithmFailureRunExit
 from pht.internal.response.describe.TrainDescription import TrainDescription
 from pht.internal.response.describe.requirement.builder import ConjunctionBuilder
 from pht.internal.response.describe.algorithm.FormulaAlgorithmRequirement import FormulaAlgorithmRequirement
-from pht.internal.response.run.exit.RunExit import AlgorithmSuccess, RunExit
+from pht.internal.response.run.exit.RunExit import AlgorithmSuccessRunExit, RunExit
 
 
 class Log:
     def __init__(self):
-        self.exit_state = AlgorithmSuccess('')
+        self.exit_state = AlgorithmSuccessRunExit('')
         self.free_text_message = ''
         self.rebase_from = None
         self.next_train_tags = None
@@ -67,9 +67,9 @@ class SimpleDockerTrain(AbstractTrain):
         log = Log()
         try:
             self.run_algorithm(info, log)
-            exit_state = log.exit_state.copy()
+            exit_state = log.exit_state.deepcopy()
         except Exception as e:
-            exit_state = AlgorithmFailure(str(e))
+            exit_state = AlgorithmFailureRunExit(str(e))
         message = log.free_text_message
         rebase_from = log.rebase_from if log.rebase_from is not None else self.default_rebase_from
         next_train_tags = log.next_train_tags if log.next_train_tags is not None else self.default_next_train_tags

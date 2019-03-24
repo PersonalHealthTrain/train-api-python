@@ -97,7 +97,10 @@ class TrainFileTests(BaseTest):
                 'absolutePath': '/opt/pht_train/model/foo',
                 '@type': 'ModelFile',
                 '@typeName': 'ModelFile',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                }
             },
             actual=self.modelfile1._as_dict())
 
@@ -107,6 +110,9 @@ class TrainFileTests(BaseTest):
                 'absolutePath': '/opt/pht_train/model/bar',
                 '@type': 'ModelFile',
                 '@typeName': 'ModelFile',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                }
             },
             actual=self.modelfile2._as_dict())

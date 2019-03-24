@@ -90,7 +90,10 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'formula_id': 1,
                 '@type': 'FormulaAlgorithmRequirement',
                 '@typeName': 'FormulaAlgorithmRequirement',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.alg1._as_dict())
 
@@ -100,7 +103,10 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'formula_id': 2,
                 '@type': 'FormulaAlgorithmRequirement',
                 '@typeName': 'FormulaAlgorithmRequirement',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.alg2._as_dict())
 
@@ -110,7 +116,10 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'formula_id': 3,
                 '@type': 'FormulaAlgorithmRequirement',
                 '@typeName': 'FormulaAlgorithmRequirement',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.alg3._as_dict())
 
@@ -120,7 +129,10 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                 'formula_id': 127,
                 '@type': 'FormulaAlgorithmRequirement',
                 '@typeName': 'FormulaAlgorithmRequirement',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.alg4._as_dict())
 

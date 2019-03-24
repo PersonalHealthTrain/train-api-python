@@ -117,7 +117,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'FOO\' not set'},
                 '@type': 'UrlEnvironmentVariableProperty',
                 '@typeName': 'UrlEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                }
             },
             actual=self.url1.as_simple_dict()
         )
@@ -132,7 +135,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'BAR\' not set'},
                 '@type': 'UrlEnvironmentVariableProperty',
                 '@typeName': 'UrlEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
             },
             actual=self.url2.as_simple_dict()
         )
@@ -148,7 +154,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 },
                 '@type': 'UrlEnvironmentVariableProperty',
                 '@typeName': 'UrlEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
             },
             actual=self.url3.as_simple_dict())
 
@@ -162,7 +171,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
                 '@type': 'UrlEnvironmentVariableProperty',
                 '@typeName': 'UrlEnvironmentVariableProperty',
-                '@typeSystem': 'pythonclass'
+                '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
             },
             actual=self.url4.as_simple_dict())
 
@@ -178,7 +190,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'UrlEnvironmentVariableProperty',
                     '@typeName': 'UrlEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.url1.as_simple_dict())
 
@@ -194,7 +209,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'UrlEnvironmentVariableProperty',
                     '@typeName': 'UrlEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.url2.as_simple_dict())
 
@@ -210,7 +228,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'UrlEnvironmentVariableProperty',
                     '@typeName': 'UrlEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.url3.as_simple_dict())
 
@@ -226,7 +247,10 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     },
                     '@type': 'UrlEnvironmentVariableProperty',
                     '@typeName': 'UrlEnvironmentVariableProperty',
-                    '@typeSystem': 'pythonclass'
+                    '@typeSystem': {
+                        'name': 'pythonclass',
+                        'version': '1.0'
+                    }
                 },
                 actual=self.url4.as_simple_dict())
 

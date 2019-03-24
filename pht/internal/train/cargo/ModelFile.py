@@ -21,7 +21,7 @@ class ModelFile(TrainFile):
         self._key = key
         self._path = os.path.join(ModelFile.base_dir(), key)
 
-    def copy(self):
+    def deepcopy(self):
         return ModelFile(self._key)
 
     @property

@@ -112,7 +112,10 @@ class JsonModelSummaryTests(BaseTest):
                 },
                 '@type': 'JsonModelSummary',
                 '@typeName': 'JsonModelSummary',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.model1._as_dict())
 
@@ -122,6 +125,9 @@ class JsonModelSummaryTests(BaseTest):
                 'value': ['entry1', 'entry2'],
                 '@type': 'JsonModelSummary',
                 '@typeName': 'JsonModelSummary',
-                "@typeSystem": "pythonclass",
+                "@typeSystem": {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                },
             },
             actual=self.model2._as_dict())
