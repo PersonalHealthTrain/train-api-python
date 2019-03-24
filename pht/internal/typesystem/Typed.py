@@ -1,4 +1,5 @@
 from abc import abstractmethod
+from typing import List, Union
 from pht.internal.util import require
 from pht.internal.util.require import not_in
 from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
@@ -9,7 +10,7 @@ from pht.internal.typesystem.TypeSystem import TypeSystem
 class Typed(DeepCopyable, SimpleDictRepresentable):
     @property
     @abstractmethod
-    def type(self) -> str:
+    def type(self) -> Union[str, List[str]]:
         pass
 
     @property
