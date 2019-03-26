@@ -17,7 +17,9 @@
           "reason": "Environment variable 'DATA_DIRECTORY_LOCATION' not set"
         },
         "mountType": "directory",
-        "@type": "BindMountEnvironmentVariableProperty",
+        "@type": ["BindMountEnvironmentVariableProperty",
+                  "EnvironmentVariableProperty",
+                  "Property"],
         "@typeName": "BindMountEnvironmentVariableProperty",
         "@typeSystem": {
           "name": "pythonclass",
@@ -35,7 +37,7 @@
             1
           ]
         ],
-        "@type": "ConjunctiveNormalForm",
+        "@type": ["ConjunctiveNormalForm", "Formula"],
         "@typeName": "ConjunctiveNormalForm",
         "@typeSystem": {
           "name": "pythonclass",
@@ -50,7 +52,7 @@
         "param1": 719,
         "param2": 1
       },
-      "@type": "JsonModelSummary",
+      "@type": ["JsonModelSummary", "ModelSummary"],
       "@typeName": "JsonModelSummary",
       "@typeSystem": {
         "name": "pythonclass",
@@ -61,7 +63,7 @@
   "algorithm": {
     "requirement": {
       "formula_id": 1,
-      "@type": "FormulaAlgorithmRequirement",
+      "@type": ["FormulaAlgorithmRequirement", "AlgorithmRequirement"],
       "@typeName": "FormulaAlgorithmRequirement",
       "@typeSystem": {
         "name": "pythonclass",
@@ -69,6 +71,6 @@
       }
     }
   },
-  "@type": "TrainDescription",
+  "@type": ["TrainDescription", "TrainResponse"],
   "@typeName": "TrainDescription"
 }

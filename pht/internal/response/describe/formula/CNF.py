@@ -3,7 +3,7 @@ from .Formula import Formula
 from .Clause import Clause, frozen_set_of
 
 
-class CNF(Hashable, Formula):
+class ConjunctiveNormalForm(Hashable, Formula):
     def __init__(self, clause: Clause, *clauses: Clause):
         self._clauses = frozen_set_of(Clause, clause, clauses)
 
@@ -30,7 +30,7 @@ class CNF(Hashable, Formula):
         return hash(self._clauses)
 
     def deepcopy(self):
-        return CNF(*self._clauses)
+        return ConjunctiveNormalForm(*self._clauses)
 
     @property
     def value(self):

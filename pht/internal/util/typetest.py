@@ -2,7 +2,7 @@
 Contains helpers for type checking
 """
 from typing import Any
-
+from collections.abc import Hashable
 
 def is_primitive(value: Any) -> bool:
     """
@@ -32,3 +32,7 @@ def is_str(value: Any) -> bool:
     Checks whether the provided value is a str.
     """
     return isinstance(value, str)
+
+
+def is_hashable(value: Any) -> bool:
+    return isinstance(value, Hashable)

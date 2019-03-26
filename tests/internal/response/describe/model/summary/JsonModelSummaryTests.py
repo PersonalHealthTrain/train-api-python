@@ -44,23 +44,23 @@ class JsonModelSummaryTests(BaseTest):
     ##############################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='JsonModelSummary',
+            expect=['JsonModelSummary', 'ModelSummary'],
             actual=self.model1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='JsonModelSummary',
+            expect=['JsonModelSummary', 'ModelSummary'],
             actual=self.model2.type)
 
     ##############################################################
     # display
     ##############################################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='JsonModelSummary',
             actual=self.model1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='JsonModelSummary',
             actual=self.model2.type_name)
@@ -110,24 +110,24 @@ class JsonModelSummaryTests(BaseTest):
                     'key1': 'value1',
                     'key2': 'value2'
                 },
-                '@type': 'JsonModelSummary',
+                '@type': ['JsonModelSummary', 'ModelSummary'],
                 '@typeName': 'JsonModelSummary',
                 "@typeSystem": {
                     'name': 'pythonclass',
                     'version': '1.0'
                 },
             },
-            actual=self.model1._as_dict())
+            actual=self.model1._as_dict())  # TODO
 
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
                 'value': ['entry1', 'entry2'],
-                '@type': 'JsonModelSummary',
+                '@type': ['JsonModelSummary', 'ModelSummary'],
                 '@typeName': 'JsonModelSummary',
                 "@typeSystem": {
                     'name': 'pythonclass',
                     'version': '1.0'
                 },
             },
-            actual=self.model2._as_dict())
+            actual=self.model2._as_dict())  # TODO

@@ -18,7 +18,7 @@ class TypeSystemTests(BaseTest):
             actual=self.type_system.version)
 
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.type_system)
+        self.assertCopiesAreEqualOf(self.type_system)
 
     def test_eq_1(self):
         self.assertIsEqual(self.type_system, TypeSystem("pythonclass", "1.0"))

@@ -50,23 +50,23 @@ class TrainFileTests(BaseTest):
     ########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='ModelFile',
+            expect=['ModelFile', 'TrainFile'],
             actual=self.modelfile1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='ModelFile',
+            expect=['ModelFile', 'TrainFile'],
             actual=self.modelfile2.type)
 
     ########################################################
     # display
     ########################################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='ModelFile',
             actual=self.modelfile1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='ModelFile',
             actual=self.modelfile2.type_name)
@@ -91,28 +91,28 @@ class TrainFileTests(BaseTest):
     ########################################################
     # as_dict
     ########################################################
-    def test_as_dict_1(self):
+    def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/model/foo',
-                '@type': 'ModelFile',
+                '@type': ['ModelFile', 'TrainFile'],
                 '@typeName': 'ModelFile',
                 '@typeSystem': {
                         'name': 'pythonclass',
                         'version': '1.0'
                 }
             },
-            actual=self.modelfile1._as_dict())
+            actual=self.modelfile1._as_dict())  # TODO Check that in assertion test
 
-    def test_as_dict_2(self):
+    def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/model/bar',
-                '@type': 'ModelFile',
+                '@type': ['ModelFile', 'TrainFile'],
                 '@typeName': 'ModelFile',
                 '@typeSystem': {
                         'name': 'pythonclass',
                         'version': '1.0'
                 }
             },
-            actual=self.modelfile2._as_dict())
+            actual=self.modelfile2.as_simple_dict())

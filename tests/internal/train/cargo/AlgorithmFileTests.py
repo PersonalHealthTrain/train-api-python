@@ -25,23 +25,23 @@ class AlgorithmFileTests(BaseTest):
     ###########################################
     def test_type_1(self):
         self.checkExpect(
-            expect='AlgorithmFile',
+            expect=['AlgorithmFile', 'TrainFile'],
             actual=self.algo_file1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='AlgorithmFile',
+            expect=['AlgorithmFile', 'TrainFile'],
             actual=self.algo_file2.type)
 
     ###########################################
     # Display
     ###########################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='AlgorithmFile',
             actual=self.algo_file1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='AlgorithmFile',
             actual=self.algo_file2.type_name)
@@ -64,9 +64,9 @@ class AlgorithmFileTests(BaseTest):
     ###########################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={
+            expect={\
                 'absolutePath': '/opt/pht_train/algorithm/foo',
-                '@type': 'AlgorithmFile',
+                '@type': ['AlgorithmFile', 'TrainFile'],
                 '@typeName': 'AlgorithmFile',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -79,7 +79,7 @@ class AlgorithmFileTests(BaseTest):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/algorithm/bar',
-                '@type': 'AlgorithmFile',
+                '@type': ['AlgorithmFile', 'TrainFile'],
                 '@typeName': 'AlgorithmFile',
                 "@typeSystem": {
                     'name': 'pythonclass',

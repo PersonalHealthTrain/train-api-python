@@ -66,16 +66,16 @@ class FormulaAlgorithmRequirementTests(BaseTest):
     # Copy
     ################################################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.alg1)
+        self.assertCopiesAreEqualOf(self.alg1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.alg2)
+        self.assertCopiesAreEqualOf(self.alg2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.alg3)
+        self.assertCopiesAreEqualOf(self.alg3)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.alg4)
+        self.assertCopiesAreEqualOf(self.alg4)
 
     ################################################################################
     # As Dict
@@ -84,7 +84,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 1,
-                '@type': 'FormulaAlgorithmRequirement',
+                '@type': ['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
                 '@typeName': 'FormulaAlgorithmRequirement',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -97,7 +97,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 2,
-                '@type': 'FormulaAlgorithmRequirement',
+                '@type': ['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
                 '@typeName': 'FormulaAlgorithmRequirement',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -110,7 +110,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 3,
-                '@type': 'FormulaAlgorithmRequirement',
+                '@type': ['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
                 '@typeName': 'FormulaAlgorithmRequirement',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -123,7 +123,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
         self.checkExpect(
             expect={
                 'formula_id': 127,
-                '@type': 'FormulaAlgorithmRequirement',
+                '@type': ['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
                 '@typeName': 'FormulaAlgorithmRequirement',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -137,22 +137,22 @@ class FormulaAlgorithmRequirementTests(BaseTest):
     ################################################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='FormulaAlgorithmRequirement',
+            expect=['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
             actual=self.alg1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='FormulaAlgorithmRequirement',
+            expect=['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
             actual=self.alg2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='FormulaAlgorithmRequirement',
+            expect=['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
             actual=self.alg3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='FormulaAlgorithmRequirement',
+            expect=['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
             actual=self.alg4.type)
 
     ################################################################################

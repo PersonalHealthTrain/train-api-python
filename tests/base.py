@@ -1,6 +1,7 @@
 import unittest
 import copy
 from itertools import combinations
+from pht.internal.util.typetest import is_hashable
 
 
 class BaseTest(unittest.TestCase):
@@ -28,7 +29,7 @@ class BaseTest(unittest.TestCase):
         for pair in combinations(items, 2):
             self.assertNotEqual(pair[0], pair[1])
 
-    def assertMembership(self, for_container, elements=None, not_elements=None):
+    def assertMembership(self, *, for_container, elements=None, not_elements=None):
         if elements is None:
             elements = []
         if not_elements is None:
@@ -41,9 +42,12 @@ class BaseTest(unittest.TestCase):
     def assertIsEqual(self, left, right):
         self.assertEqual(left, right)
         self.assertEqual(right, left)
-        self.assertEqual(hash(left), hash(right))
 
-    def assertCopiesAreEqual(self, item):
+        # If the types are Hashable, the hash values need to be the same
+        if is_hashable(left) and is_hashable(right):
+            self.assertEqual(hash(left), hash(right))
+
+    def assertCopiesAreEqualOf(self, item):
         c1 = item.deepcopy()
         c2 = copy.copy(item)
         c3 = copy.deepcopy(item)

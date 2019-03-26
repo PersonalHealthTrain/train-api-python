@@ -1,7 +1,7 @@
 {
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
-  "@type": "TrainDescription",
+  "@type": ["TrainDescription", "TrainResponse"],
   "@typeName": "TrainDescription",
   "@typeSystem": {
     "name": "pythonclass",
@@ -12,7 +12,7 @@
   "formula": [],
   "model": {
     "summary": {
-      "@type": "StringModelSummary",
+      "@type": ["StringModelSummary", "ModelSummary"],
       "@typeName": "StringModelSummary",
       "@typeSystem": {
         "name": "pythonclass",

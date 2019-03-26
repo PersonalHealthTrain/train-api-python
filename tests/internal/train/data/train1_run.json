@@ -1,13 +1,13 @@
 {
   "runResponseVersion": "1.0",
-  "@type": "RunResponse",
+  "@type": ["RunResponse", "TrainResponse"],
   "@typeName": "RunResponse",
   "@typeSystem": {
     "name": "pythonclass",
     "version": "1.0"
   },
   "exit": {
-    "@type": "AlgorithmSuccessRunExit",
+    "@type": ["AlgorithmSuccessRunExit", "RunExit"],
     "@typeName": "AlgorithmSuccessRunExit",
     "@typeSystem": {
       "name": "pythonclass",
@@ -21,7 +21,7 @@
     "exportFiles": [],
     "nextTrainTags": ["train-tag"],
     "from": "personalhealthtrain/base",
-    "@type": "DockerRebaseStrategy",
+    "@type": ["DockerRebaseStrategy", "RebaseStrategy"],
     "@typeName": "DockerRebaseStrategy",
     "@typeSystem": {
       "name": "pythonclass",

@@ -42,22 +42,22 @@ class StringModelSummaryTests(BaseTest):
     # copy
     ##############################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.model1)
+        self.assertCopiesAreEqualOf(self.model1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.model2)
+        self.assertCopiesAreEqualOf(self.model2)
 
     ##############################################################
     # type
     ##############################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='StringModelSummary',
+            expect=['StringModelSummary', 'ModelSummary'],
             actual=self.model1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='StringModelSummary',
+            expect=['StringModelSummary', 'ModelSummary'],
             actual=self.model2.type)
 
     ##############################################################
@@ -106,24 +106,24 @@ class StringModelSummaryTests(BaseTest):
         self.checkExpect(
             expect={
                 'value': 'This is the model summary',
-                '@type': 'StringModelSummary',
+                '@type': ['StringModelSummary', 'ModelSummary'],
                 '@typeName': 'StringModelSummary',
                 '@typeSystem': {
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
             },
-            actual=self.model1._as_dict())
+            actual=self.model1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
                 'value': 'This is another model summary',
-                '@type': 'StringModelSummary',
+                '@type': ['StringModelSummary', 'ModelSummary'],
                 '@typeName': 'StringModelSummary',
                 '@typeSystem': {
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
             },
-            actual=self.model2._as_dict())
+            actual=self.model2.as_simple_dict())

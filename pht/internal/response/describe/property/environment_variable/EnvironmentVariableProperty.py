@@ -25,7 +25,7 @@ class EnvironmentVariableProperty(Property):
             raise ValueError('Not a valid Environment variable: {}'.format(self.name))
 
     def __hash__(self):
-        return hash((self.type, self.name))
+        return hash((tuple(self.type), self.name))
 
     @property
     def data(self) -> dict:

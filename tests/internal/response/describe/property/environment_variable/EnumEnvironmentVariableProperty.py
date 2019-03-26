@@ -201,15 +201,15 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     # Copy
     ###########################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.enum1)
+        self.assertCopiesAreEqualOf(self.enum1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.enum2)
+        self.assertCopiesAreEqualOf(self.enum2)
 
     ###########################################################
     # get_value
     ###########################################################
-    def test_get_value_1(self):
+    def test_get_value_1(self):    # TODO Test with fixed assertion method
         with patch.dict('os.environ', {'FOO': 'value1'}):
             self.assertEqual(self.enum1.get_value(), 'value1')
 
@@ -222,12 +222,12 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='EnumEnvironmentVariableProperty',
+            expect=['EnumEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.enum1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='EnumEnvironmentVariableProperty',
+            expect=['EnumEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.enum2.type)
 
     ###########################################################
@@ -285,7 +285,9 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                     "isAvailable": False,
                     "reason": "Environment variable 'FOO' not set"
                 },
-                '@type': 'EnumEnvironmentVariableProperty',
+                '@type': ['EnumEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
                 '@typeName': 'EnumEnvironmentVariableProperty',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -304,7 +306,9 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                     "isAvailable": False,
                     "reason": "Environment variable 'BAR' not set"
                 },
-                '@type': 'EnumEnvironmentVariableProperty',
+                '@type': ['EnumEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
                 '@typeName': 'EnumEnvironmentVariableProperty',
                 "@typeSystem": {
                     'name': 'pythonclass',

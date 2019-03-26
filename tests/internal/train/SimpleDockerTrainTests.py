@@ -263,14 +263,14 @@ class SimpleTrainDescribeTests(SimpleTrainTests):
         self.describe_test(_TestTrain12(), 'train12_describe.json')
 
     # test enum, set the environment variable, but to a wrong value
+    @patch.dict('os.environ', {'FOO': 'VALUE3'})
     def test_describe_13(self):
-        with patch.dict('os.environ', {'FOO': 'VALUE3'}):
-            self.describe_test(_TestTrain13(), 'train13_describe.json')
+        self.describe_test(_TestTrain13(), 'train13_describe.json')
 
     # test enum, set the environment variable to an allowed value
+    @patch.dict('os.environ', {'FOO': 'VALUE2'})
     def test_describe_14(self):
-        with patch.dict('os.environ', {'FOO': 'VALUE2'}):
-            self.describe_test(_TestTrain14(), 'train14_describe.json')
+        self.describe_test(_TestTrain14(), 'train14_describe.json')
 
     # test bind_mount, environment variable not present
     def test_describe_15(self):

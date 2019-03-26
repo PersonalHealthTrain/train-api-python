@@ -58,16 +58,16 @@ class PropertyStateTests(BaseTest):
     # Copy
     ###########################################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.avail1)
+        self.assertCopiesAreEqualOf(self.avail1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.avail2)
+        self.assertCopiesAreEqualOf(self.avail2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.unavail1)
+        self.assertCopiesAreEqualOf(self.unavail1)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.unavail2)
+        self.assertCopiesAreEqualOf(self.unavail2)
 
     ###########################################################################
     # as_dict

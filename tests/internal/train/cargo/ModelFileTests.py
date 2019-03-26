@@ -34,12 +34,12 @@ class ModelFileTests(BaseTest):
     ###########################################
     def test_type_1(self):
         self.checkExpect(
-            expect='ModelFile',
+            expect=['ModelFile', 'TrainFile'],
             actual=self.model_file1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='ModelFile',
+            expect=['ModelFile', 'TrainFile'],
             actual=self.model_file2.type)
 
     ###########################################
@@ -75,7 +75,7 @@ class ModelFileTests(BaseTest):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/model/foo',
-                '@type': 'ModelFile',
+                '@type': ['ModelFile', 'TrainFile'],
                 '@typeName': 'ModelFile',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -88,14 +88,14 @@ class ModelFileTests(BaseTest):
         self.checkExpect(
             expect={
                 'absolutePath': '/opt/pht_train/model/bar',
-                '@type': 'ModelFile',
+                '@type': ['ModelFile', 'TrainFile'],
                 '@typeName': 'ModelFile',
                 "@typeSystem": {
                     'name': 'pythonclass',
                     'version': '1.0'
                 },
             },
-            actual=self.model_file2._as_dict())
+            actual=self.model_file2._as_dict())  # TODO Check with tests that no protected members are called
 
     ###########################################
     # absolute path

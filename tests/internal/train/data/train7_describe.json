@@ -1,7 +1,7 @@
 {
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
-  "@type": "TrainDescription",
+  "@type": ["TrainDescription", "TrainResponse"],
   "@typeName": "TrainDescription",
   "trainName": "test_train",
   "@typeSystem": {
@@ -18,7 +18,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'DATA_SOURCE_A' not set"
         },
-        "@type": "UrlEnvironmentVariableProperty",
+        "@type": ["UrlEnvironmentVariableProperty",
+                  "EnvironmentVariableProperty",
+                  "Property"],
         "@typeName": "UrlEnvironmentVariableProperty",
         "@typeSystem": {
           "name": "pythonclass",
@@ -35,7 +37,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'DATA_SOURCE_B' not set"
         },
-        "@type": "UrlEnvironmentVariableProperty",
+        "@type": ["UrlEnvironmentVariableProperty",
+                  "EnvironmentVariableProperty",
+                  "Property"],
         "@typeName": "UrlEnvironmentVariableProperty",
         "@typeSystem": {
           "name": "pythonclass",
@@ -52,7 +56,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'DATA_SOURCE_C' not set"
         },
-        "@type": "UrlEnvironmentVariableProperty",
+        "@type": ["UrlEnvironmentVariableProperty",
+                  "EnvironmentVariableProperty",
+                  "Property"],
         "@typeName": "UrlEnvironmentVariableProperty",
         "@typeSystem": {
           "name": "pythonclass",
@@ -69,7 +75,9 @@
           "isAvailable": false,
           "reason": "Environment variable 'FORBIDDEN' not set"
         },
-        "@type": "UrlEnvironmentVariableProperty",
+        "@type": ["UrlEnvironmentVariableProperty",
+                  "EnvironmentVariableProperty",
+                  "Property"],
         "@typeName": "UrlEnvironmentVariableProperty",
         "@typeSystem": {
           "name": "pythonclass",
@@ -94,7 +102,7 @@
             3
           ]
         ],
-        "@type": "ConjunctiveNormalForm",
+        "@type": ["ConjunctiveNormalForm", "Formula"],
         "@typeName": "ConjunctiveNormalForm",
         "@typeSystem": {
           "name": "pythonclass",
@@ -105,7 +113,7 @@
   ],
   "model": {
     "summary": {
-      "@type": "StringModelSummary",
+      "@type": ["StringModelSummary", "ModelSummary"],
       "@typeName": "StringModelSummary",
       "@typeSystem": {
         "name": "pythonclass",
@@ -117,7 +125,7 @@
   "algorithm": {
     "requirement": {
       "formula_id": 1,
-      "@type": "FormulaAlgorithmRequirement",
+      "@type": ["FormulaAlgorithmRequirement", "AlgorithmRequirement"],
       "@typeName": "FormulaAlgorithmRequirement",
       "@typeSystem": {
         "name": "pythonclass",

@@ -13,13 +13,13 @@ class DockerRebaseStrategyTests(BaseTest):
     ################################################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='DockerRebaseStrategy',
+            expect=['DockerRebaseStrategy', 'RebaseStrategy'],
             actual=self.rebase1.type)
 
     ################################################################################
     # Display
     ################################################################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='DockerRebaseStrategy',
             actual=self.rebase1.type_name)
@@ -41,7 +41,7 @@ class DockerRebaseStrategyTests(BaseTest):
                 'exportFiles': [],
                 'nextTrainTags': ['station.2'],
                 'from': 'from',
-                '@type': 'DockerRebaseStrategy',
+                '@type': ['DockerRebaseStrategy', 'RebaseStrategy'],
                 '@typeName': 'DockerRebaseStrategy',
                 "@typeSystem": {
                     'name': 'pythonclass',
@@ -54,4 +54,4 @@ class DockerRebaseStrategyTests(BaseTest):
     # Copy, deepcopy, hash
     ################################################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.rebase1)
+        self.assertCopiesAreEqualOf(self.rebase1)

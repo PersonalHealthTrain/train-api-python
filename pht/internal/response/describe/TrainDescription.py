@@ -11,7 +11,7 @@ from pht.internal.util.misc import as_dict_or_none, copy_or_none
 from pht.internal.util import require
 from pht.internal.util.builder import copy_property_map
 from pht.internal.util.require import is_positive, is_in_closed_range
-from pht.internal.response.describe.formula.CNF import CNF
+from pht.internal.response.describe.formula.CNF import ConjunctiveNormalForm
 
 
 class TrainDescription(TrainResponse):
@@ -110,7 +110,7 @@ class TrainDescription(TrainResponse):
         literals = {abs(literal)
                     for formula in self._formulas
                     for clause in formula
-                    for literal in clause if isinstance(formula, CNF)}
+                    for literal in clause if isinstance(formula, ConjunctiveNormalForm)}
         require.that(
             literals.issubset(prop_keys),
             error_if_not='There are literals in the formula that are not declared as properties!')

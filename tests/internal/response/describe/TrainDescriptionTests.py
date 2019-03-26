@@ -1,7 +1,7 @@
 from tests.base import BaseTest
 from pht.internal.response.describe.TrainDescription import TrainDescription
 from pht.internal.response.describe.formula.Clause import Clause
-from pht.internal.response.describe.formula.CNF import CNF
+from pht.internal.response.describe.formula.CNF import ConjunctiveNormalForm
 from pht.internal.response.describe.algorithm.FormulaAlgorithmRequirement import FormulaAlgorithmRequirement
 from pht.internal.response.describe.property.environment_variable import enum_by_name, token_by_name, url_by_name
 
@@ -9,6 +9,7 @@ from pht.internal.response.describe.property.environment_variable import enum_by
 class TrainDescriptionTests(BaseTest):
 
     def setUp(self):
+        self.maxDiff = None
         self.td1 = TrainDescription(
             train_name='test_train',
             train_version='1.0',
@@ -17,7 +18,7 @@ class TrainDescriptionTests(BaseTest):
                 2: token_by_name('BAR'),
                 3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
             },
-            formulas=[CNF(Clause(1))],
+            formulas=[ConjunctiveNormalForm(Clause(1))],
             model_summary='model summary',
             algorithm_requirement=FormulaAlgorithmRequirement(1))
 
@@ -29,7 +30,7 @@ class TrainDescriptionTests(BaseTest):
                 2: token_by_name('BAR'),
                 3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
             },
-            formulas=[CNF(Clause(1))],
+            formulas=[ConjunctiveNormalForm(Clause(1))],
             model_summary='model summary',
             algorithm_requirement=None)
 
@@ -42,13 +43,13 @@ class TrainDescriptionTests(BaseTest):
                 3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
             },
             formulas=[
-                CNF(
+                ConjunctiveNormalForm(
                     Clause(1), Clause(-2, 1, 3), Clause(3, 1, -2, -3)
                 ),
-                CNF(
+                ConjunctiveNormalForm(
                     Clause(3, 1), Clause(2, 1, 3, -3)
                 ),
-                CNF(
+                ConjunctiveNormalForm(
                     Clause(-1)
                 )
             ],
@@ -126,7 +127,7 @@ class TrainDescriptionTests(BaseTest):
                 3: enum_by_name('BAZ', choices=['VALUE1', 'VALUE2'])
             },
             formulas=[
-                CNF(
+                ConjunctiveNormalForm(
                     Clause(1, -3), Clause(4),
                 )
             ],
@@ -152,7 +153,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@type': ['UrlEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'UrlEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -169,7 +172,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@type': ['TokenEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'TokenEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -187,7 +192,9 @@ class TrainDescriptionTests(BaseTest):
                              'reason': "Environment variable 'BAZ' not set"
                          },
                          'choices': ['VALUE1', 'VALUE2'],
-                         '@type': 'EnumEnvironmentVariableProperty',
+                         '@type':  ['EnumEnvironmentVariableProperty',
+                                    'EnvironmentVariableProperty',
+                                    'Property'],
                          '@typeName': 'EnumEnvironmentVariableProperty',
                          '@typeSystem': {
                             'name': 'pythonclass',
@@ -201,7 +208,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -213,7 +220,7 @@ class TrainDescriptionTests(BaseTest):
                 'model':
                     {
                         'summary': {
-                            '@type': 'StringModelSummary',
+                            '@type': ['StringModelSummary', 'ModelSummary'],
                             '@typeName': 'StringModelSummary',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -226,7 +233,8 @@ class TrainDescriptionTests(BaseTest):
                     'requirement':
                         {
                             'formula_id': 1,
-                            '@type': 'FormulaAlgorithmRequirement',
+                            '@type': ['FormulaAlgorithmRequirement',
+                                      'AlgorithmRequirement'],
                             '@typeName': 'FormulaAlgorithmRequirement',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -234,7 +242,7 @@ class TrainDescriptionTests(BaseTest):
                             }
                         }
                 },
-                '@type': 'TrainDescription',
+                '@type': ['TrainDescription', 'TrainResponse'],
                 '@typeName': 'TrainDescription',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -258,7 +266,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@type': ['UrlEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'UrlEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -275,7 +285,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@type': ['TokenEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'TokenEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -293,7 +305,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@type':  ['EnumEnvironmentVariableProperty',
+                                       'EnvironmentVariableProperty',
+                                       'Property'],
                             '@typeName': 'EnumEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -306,7 +320,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -318,7 +332,7 @@ class TrainDescriptionTests(BaseTest):
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        '@type': 'StringModelSummary',
+                        '@type': ['StringModelSummary', 'ModelSummary'],
                         '@typeName': 'StringModelSummary',
                         '@typeSystem': {
                             'name': 'pythonclass',
@@ -328,7 +342,7 @@ class TrainDescriptionTests(BaseTest):
                 }, 'algorithm': {
                     'requirement': None
                 },
-                '@type': 'TrainDescription',
+                '@type': ['TrainDescription', 'TrainResponse'],
                 '@typeName': 'TrainDescription',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -353,7 +367,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@type': ['UrlEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'UrlEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -370,7 +386,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@type': ['TokenEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'TokenEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -388,7 +406,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@type':  ['EnumEnvironmentVariableProperty',
+                                       'EnvironmentVariableProperty',
+                                       'Property'],
                             '@typeName': 'EnumEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -402,7 +422,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type':  ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -414,7 +434,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 2,
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -426,7 +446,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 3,
                         'data': {
                             'value': [[-1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -438,7 +458,7 @@ class TrainDescriptionTests(BaseTest):
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        '@type': 'StringModelSummary',
+                        '@type': ['StringModelSummary', 'ModelSummary'],
                         '@typeName': 'StringModelSummary',
                         '@typeSystem': {
                             'name': 'pythonclass',
@@ -449,7 +469,8 @@ class TrainDescriptionTests(BaseTest):
                 'algorithm': {
                     'requirement': {
                         'formula_id': 3,
-                        '@type': 'FormulaAlgorithmRequirement',
+                        '@type': ['FormulaAlgorithmRequirement',
+                                  'AlgorithmRequirement'],
                         '@typeName': 'FormulaAlgorithmRequirement',
                         '@typeSystem': {
                             'name': 'pythonclass',
@@ -457,7 +478,7 @@ class TrainDescriptionTests(BaseTest):
                         }
                     }
                 },
-                '@type': 'TrainDescription',
+                '@type': ['TrainDescription', 'TrainResponse'],
                 '@typeName': 'TrainDescription',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -471,33 +492,33 @@ class TrainDescriptionTests(BaseTest):
     ################################################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='TrainDescription',
+            expect=['TrainDescription', 'TrainResponse'],
             actual=self.td1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='TrainDescription',
+            expect=['TrainDescription', 'TrainResponse'],
             actual=self.td2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='TrainDescription',
+            expect=['TrainDescription', 'TrainResponse'],
             actual=self.td3.type)
 
     ################################################################################
     # Display
     ################################################################################
-    def test_display_1(self):
+    def test_type_name_1(self):
         self.checkExpect(
             expect='TrainDescription',
             actual=self.td1.type_name)
 
-    def test_display_2(self):
+    def test_type_name_2(self):
         self.checkExpect(
             expect='TrainDescription',
             actual=self.td2.type_name)
 
-    def test_display_3(self):
+    def test_type_name_3(self):
         self.checkExpect(
             expect='TrainDescription',
             actual=self.td3.type_name)
@@ -521,7 +542,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@type': ['UrlEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'UrlEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -538,7 +561,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@type': ['TokenEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'TokenEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -557,7 +582,9 @@ class TrainDescriptionTests(BaseTest):
                                     'reason': "Environment variable 'BAZ' not set"
                                 },
                                 'choices': ['VALUE1', 'VALUE2'],
-                                '@type': 'EnumEnvironmentVariableProperty',
+                                '@type':  ['EnumEnvironmentVariableProperty',
+                                           'EnvironmentVariableProperty',
+                                           'Property'],
                                 '@typeName': 'EnumEnvironmentVariableProperty',
                                 '@typeSystem': {
                                     'name': 'pythonclass',
@@ -571,7 +598,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type':  ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -582,7 +609,7 @@ class TrainDescriptionTests(BaseTest):
                 ],
                 'model': {
                     'summary': {
-                        '@type': 'StringModelSummary',
+                        '@type': ['StringModelSummary', 'ModelSummary'],
                         '@typeName': 'StringModelSummary',
                         '@typeSystem': {
                                 'name': 'pythonclass',
@@ -594,7 +621,8 @@ class TrainDescriptionTests(BaseTest):
                 'algorithm': {
                     'requirement': {
                         'formula_id': 1,
-                        '@type': 'FormulaAlgorithmRequirement',
+                        '@type': ['FormulaAlgorithmRequirement',
+                                  'AlgorithmRequirement'],
                         '@typeName': 'FormulaAlgorithmRequirement',
                         '@typeSystem': {
                                 'name': 'pythonclass',
@@ -621,7 +649,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@type': ['UrlEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'UrlEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -638,7 +668,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@type': ['TokenEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'TokenEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -656,7 +688,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@type': ['EnumEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'EnumEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -670,7 +704,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -682,7 +716,7 @@ class TrainDescriptionTests(BaseTest):
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        '@type': 'StringModelSummary',
+                        '@type': ['StringModelSummary', 'ModelSummary'],
                         '@typeName': 'StringModelSummary',
                         '@typeSystem': {
                                 'name': 'pythonclass',
@@ -709,7 +743,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'FOO' not set"
                             },
-                            '@type': 'UrlEnvironmentVariableProperty',
+                            '@type': ['UrlEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'UrlEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -726,7 +762,9 @@ class TrainDescriptionTests(BaseTest):
                                 'isAvailable': False,
                                 'reason': "Environment variable 'BAR' not set"
                             },
-                            '@type': 'TokenEnvironmentVariableProperty',
+                            '@type': ['TokenEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'TokenEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -743,7 +781,9 @@ class TrainDescriptionTests(BaseTest):
                                 'reason': "Environment variable 'BAZ' not set"
                             },
                             'choices': ['VALUE1', 'VALUE2'],
-                            '@type': 'EnumEnvironmentVariableProperty',
+                            '@type': ['EnumEnvironmentVariableProperty',
+                                      'EnvironmentVariableProperty',
+                                      'Property'],
                             '@typeName': 'EnumEnvironmentVariableProperty',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -757,7 +797,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 1,
                         'data': {
                             'value': [[-3, -2, 1, 3], [-2, 1, 3], [1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -769,7 +809,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 2,
                         'data': {
                             'value': [[-3, 1, 2, 3], [1, 3]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -781,7 +821,7 @@ class TrainDescriptionTests(BaseTest):
                         'id': 3,
                         'data': {
                             'value': [[-1]],
-                            '@type': 'ConjunctiveNormalForm',
+                            '@type': ['ConjunctiveNormalForm', 'Formula'],
                             '@typeName': 'ConjunctiveNormalForm',
                             '@typeSystem': {
                                 'name': 'pythonclass',
@@ -793,7 +833,7 @@ class TrainDescriptionTests(BaseTest):
                 'model': {
                     'summary': {
                         'value': 'model summary',
-                        '@type': 'StringModelSummary',
+                        '@type': ['StringModelSummary', 'ModelSummary'],
                         '@typeName': 'StringModelSummary',
                         '@typeSystem': {
                             'name': 'pythonclass',
@@ -804,7 +844,7 @@ class TrainDescriptionTests(BaseTest):
                 'algorithm': {
                     'requirement': {
                         'formula_id': 3,
-                        '@type': 'FormulaAlgorithmRequirement',
+                        '@type': ['FormulaAlgorithmRequirement', 'AlgorithmRequirement'],
                         '@typeName': 'FormulaAlgorithmRequirement',
                         '@typeSystem': {
                             'name': 'pythonclass',

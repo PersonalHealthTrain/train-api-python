@@ -1,5 +1,6 @@
 from unittest.mock import patch
 from pht.internal.response.describe.property.environment_variable import token_by_name
+from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 from tests.base import BaseTest
 
 
@@ -89,16 +90,16 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     # Copy
     ###########################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.token1)
+        self.assertCopiesAreEqualOf(self.token1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.token2)
+        self.assertCopiesAreEqualOf(self.token2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.token3)
+        self.assertCopiesAreEqualOf(self.token3)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.token4)
+        self.assertCopiesAreEqualOf(self.token4)
 
     ###########################################################
     # dict
@@ -111,7 +112,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                '@type': 'TokenEnvironmentVariableProperty',
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
                 '@typeName': 'TokenEnvironmentVariableProperty',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -127,7 +130,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                '@type': 'TokenEnvironmentVariableProperty',
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
                 '@typeName': 'TokenEnvironmentVariableProperty',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -144,7 +149,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
-                '@type': 'TokenEnvironmentVariableProperty',
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
                 '@typeName': 'TokenEnvironmentVariableProperty',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -161,7 +168,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
-                '@type': 'TokenEnvironmentVariableProperty',
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
                 '@typeName': 'TokenEnvironmentVariableProperty',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -180,7 +189,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@type': ['TokenEnvironmentVariableProperty',
+                              'EnvironmentVariableProperty',
+                              'Property'],
                     '@typeName': 'TokenEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -199,7 +210,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@type': ['TokenEnvironmentVariableProperty',
+                              'EnvironmentVariableProperty',
+                              'Property'],
                     '@typeName': 'TokenEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -218,7 +231,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@type': ['TokenEnvironmentVariableProperty',
+                              'EnvironmentVariableProperty',
+                              'Property'],
                     '@typeName': 'TokenEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -237,7 +252,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'TokenEnvironmentVariableProperty',
+                    '@type': ['TokenEnvironmentVariableProperty',
+                              'EnvironmentVariableProperty',
+                              'Property'],
                     '@typeName': 'TokenEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -251,22 +268,22 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='TokenEnvironmentVariableProperty',
+            expect=['TokenEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.token1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='TokenEnvironmentVariableProperty',
+            expect=['TokenEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.token2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='TokenEnvironmentVariableProperty',
+            expect=['TokenEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.token3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='TokenEnvironmentVariableProperty',
+            expect=['TokenEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.token4.type)
 
     ###########################################################
@@ -482,3 +499,9 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             self.checkExpect(
                 expect='',
                 actual=self.token4.get_value())
+
+    ###########################################################
+    # Parent types
+    ###########################################################
+    def test_parent_types_1(self):
+        print(TypedAsPythonClass.parents_types(self.token1))

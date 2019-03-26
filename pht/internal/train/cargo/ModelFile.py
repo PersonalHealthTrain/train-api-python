@@ -28,14 +28,6 @@ class ModelFile(TrainFile):
     def absolute_path(self) -> str:
         return self._path
 
-    @property
-    def type(self) -> str:
-        return self.type_name
-
-    @property
-    def type_name(self) -> str:
-        return 'ModelFile'
-
     @staticmethod
     def base_dir():
         return os.path.join(TrainFile.base_dir(), 'model')

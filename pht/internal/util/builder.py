@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from pht.internal.response.describe.property.Property import Property
 from pht.internal.response.describe.formula.Clause import Clause
-from pht.internal.response.describe.formula.CNF import CNF
+from pht.internal.response.describe.formula.CNF import ConjunctiveNormalForm
 
 
 def copy_property_map(d: Dict[int, Property]):
@@ -67,7 +67,7 @@ class ConjunctionBuilder(_PropertyEnumerator):
         return ConjunctionComposite(self.clauses + other_clauses, new_properties)
 
     def cnf(self):
-        return CNF(*self.clauses)
+        return ConjunctiveNormalForm(*self.clauses)
 
 
 class ConjunctionComposite(ConjunctionBuilder):

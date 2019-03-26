@@ -1,7 +1,7 @@
 {
   "runResponseVersion": "1.0",
   "exit": {
-    "@type": "AlgorithmSuccessRunExit",
+    "@type": ["AlgorithmSuccessRunExit", "RunExit"],
     "@typeName": "AlgorithmSuccessRunExit",
     "@typeSystem": {
       "name": "pythonclass",
@@ -17,14 +17,14 @@
       "2.7.15-slim-jessie"
     ],
     "from": "personalhealthtrain/base:base",
-    "@type": "DockerRebaseStrategy",
+    "@type": ["DockerRebaseStrategy", "RebaseStrategy"],
     "@typeName": "DockerRebaseStrategy",
     "@typeSystem": {
       "name": "pythonclass",
       "version": "1.0"
       }
   },
-  "@type": "RunResponse",
+  "@type": ["RunResponse", "TrainResponse"],
   "@typeName": "RunResponse",
   "@typeSystem": {
     "name": "pythonclass",

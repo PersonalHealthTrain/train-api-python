@@ -1,7 +1,7 @@
 {
   "trainVersion": "1.0",
   "descriptionVersion": "1.0",
-  "@type": "TrainDescription",
+  "@type": ["TrainDescription", "TrainResponse"],
   "@typeName": "TrainDescription",
   "@typeSystem": {
     "name": "pythonclass",
@@ -22,7 +22,9 @@
           "VALUE1",
           "VALUE2"
         ],
-        "@type": "EnumEnvironmentVariableProperty",
+        "@type": ["EnumEnvironmentVariableProperty",
+                  "EnvironmentVariableProperty",
+                  "Property"],
         "@typeName": "EnumEnvironmentVariableProperty",
         "@typeSystem": {
           "name": "pythonclass",
@@ -40,7 +42,8 @@
             1
           ]
         ],
-        "@type": "ConjunctiveNormalForm",
+        "@type": ["ConjunctiveNormalForm",
+                  "Formula"],
         "@typeName": "ConjunctiveNormalForm",
         "@typeSystem": {
           "name": "pythonclass",
@@ -51,7 +54,7 @@
   ],
   "model": {
     "summary": {
-      "@type": "StringModelSummary",
+      "@type": ["StringModelSummary", "ModelSummary"],
       "@typeName": "StringModelSummary",
       "@typeSystem": {
         "name": "pythonclass",
@@ -63,7 +66,8 @@
   "algorithm": {
     "requirement": {
       "formula_id": 1,
-      "@type": "FormulaAlgorithmRequirement",
+      "@type": ["FormulaAlgorithmRequirement",
+                "AlgorithmRequirement"],
       "@typeName": "FormulaAlgorithmRequirement",
       "@typeSystem": {
         "name": "pythonclass",

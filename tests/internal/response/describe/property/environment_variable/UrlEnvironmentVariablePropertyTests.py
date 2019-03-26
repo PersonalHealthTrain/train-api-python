@@ -89,16 +89,16 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     # Copy
     ###########################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.url1)
+        self.assertCopiesAreEqualOf(self.url1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.url2)
+        self.assertCopiesAreEqualOf(self.url2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.url3)
+        self.assertCopiesAreEqualOf(self.url3)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.url4)
+        self.assertCopiesAreEqualOf(self.url4)
 
     ###########################################################
     # dict
@@ -111,7 +111,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'FOO\' not set'},
-                '@type': 'UrlEnvironmentVariableProperty',
+                '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                 '@typeName': 'UrlEnvironmentVariableProperty',
                 '@typeSystem': {
                         'name': 'pythonclass',
@@ -128,7 +128,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': 'Environment variable \'BAR\' not set'},
-                '@type': 'UrlEnvironmentVariableProperty',
+                '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                 '@typeName': 'UrlEnvironmentVariableProperty',
                 '@typeSystem': {
                         'name': 'pythonclass',
@@ -146,7 +146,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'isAvailable': False,
                     'reason': "Environment variable 'MY_VARIABLE' not set"
                 },
-                '@type': 'UrlEnvironmentVariableProperty',
+                '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                 '@typeName': 'UrlEnvironmentVariableProperty',
                 '@typeSystem': {
                         'name': 'pythonclass',
@@ -163,7 +163,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'state': {
                     'isAvailable': False,
                     'reason': "Environment variable 'SOME_OTHER_VARIABLE' not set"},
-                '@type': 'UrlEnvironmentVariableProperty',
+                '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                 '@typeName': 'UrlEnvironmentVariableProperty',
                 '@typeSystem': {
                         'name': 'pythonclass',
@@ -182,7 +182,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                     '@typeName': 'UrlEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -201,7 +201,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                     '@typeName': 'UrlEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -220,7 +220,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                     '@typeName': 'UrlEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -239,7 +239,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                         'isAvailable': True,
                         'reason': None
                     },
-                    '@type': 'UrlEnvironmentVariableProperty',
+                    '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                     '@typeName': 'UrlEnvironmentVariableProperty',
                     '@typeSystem': {
                         'name': 'pythonclass',
@@ -253,22 +253,22 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='UrlEnvironmentVariableProperty',
+            expect=['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.url1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='UrlEnvironmentVariableProperty',
+            expect=['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.url2.type)
 
     def test_type_3(self):
         self.checkExpect(
-            expect='UrlEnvironmentVariableProperty',
+            expect=['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.url3.type)
 
     def test_type_4(self):
         self.checkExpect(
-            expect='UrlEnvironmentVariableProperty',
+            expect=['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
             actual=self.url4.type)
 
     ###########################################################

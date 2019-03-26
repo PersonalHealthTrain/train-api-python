@@ -42,22 +42,22 @@ class RunExitTests(BaseTest):
     # Copy
     ################################################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.application)
+        self.assertCopiesAreEqualOf(self.application)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.failure)
+        self.assertCopiesAreEqualOf(self.failure)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.success)
+        self.assertCopiesAreEqualOf(self.success)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.application2)
+        self.assertCopiesAreEqualOf(self.application2)
 
     def test_copy_5(self):
-        self.assertCopiesAreEqual(self.failure2)
+        self.assertCopiesAreEqualOf(self.failure2)
 
     def test_copy_6(self):
-        self.assertCopiesAreEqual(self.success2)
+        self.assertCopiesAreEqualOf(self.success2)
 
     ################################################################################
     # as_dict
@@ -65,7 +65,7 @@ class RunExitTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
-                '@type': 'AlgorithmSuccessRunExit',
+                '@type': ['AlgorithmSuccessRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmSuccessRunExit',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -79,7 +79,7 @@ class RunExitTests(BaseTest):
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
-                '@type': 'AlgorithmFailureRunExit',
+                '@type': ['AlgorithmFailureRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmFailureRunExit',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -92,7 +92,7 @@ class RunExitTests(BaseTest):
     def test_as_dict_3(self):
         self.checkExpect(
             expect={
-                '@type': 'AlgorithmApplicationRunExit',
+                '@type': ['AlgorithmApplicationRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmApplicationRunExit',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -106,7 +106,7 @@ class RunExitTests(BaseTest):
     def test_as_dict_4(self):
         self.checkExpect(
             expect={
-                '@type': 'AlgorithmSuccessRunExit',
+                '@type': ['AlgorithmSuccessRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmSuccessRunExit',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -120,7 +120,7 @@ class RunExitTests(BaseTest):
     def test_as_dict_5(self):
         self.checkExpect(
             expect={
-                '@type': 'AlgorithmFailureRunExit',
+                '@type': ['AlgorithmFailureRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmFailureRunExit',
                 '@typeSystem': {
                     'name': 'pythonclass',
@@ -133,7 +133,7 @@ class RunExitTests(BaseTest):
     def test_as_dict_6(self):
         self.checkExpect(
             expect={
-                '@type': 'AlgorithmApplicationRunExit',
+                '@type': ['AlgorithmApplicationRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmApplicationRunExit',
                 '@typeSystem': {
                     'name': 'pythonclass',

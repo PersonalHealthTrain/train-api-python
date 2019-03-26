@@ -35,13 +35,13 @@ class StationRuntimeInfoTests(BaseTest):
     # copy
     #####################################################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.station1)
+        self.assertCopiesAreEqualOf(self.station1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.station2)
+        self.assertCopiesAreEqualOf(self.station2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.station3)
+        self.assertCopiesAreEqualOf(self.station3)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.station4)
+        self.assertCopiesAreEqualOf(self.station4)

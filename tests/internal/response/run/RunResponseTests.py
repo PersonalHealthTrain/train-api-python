@@ -9,6 +9,7 @@ from pht.internal.train.cargo.AlgorithmFile import AlgorithmFile
 class RunResponseTests(BaseTest):
 
     def setUp(self):
+        self.maxDiff = None
         self.response1 = RunResponse(
             run_exit=AlgorithmFailureRunExit('foo'),
             free_text_message='bar',
@@ -37,7 +38,7 @@ class RunResponseTests(BaseTest):
             expect={
                 'runResponseVersion': '1.0',
                 'exit': {
-                    "@type": "AlgorithmFailureRunExit",
+                    "@type": ['AlgorithmFailureRunExit', 'RunExit'],
                     "@typeName": "AlgorithmFailureRunExit",
                     "@typeSystem": {
                         "name": "pythonclass",
@@ -51,28 +52,28 @@ class RunResponseTests(BaseTest):
                     'exportFiles': [],
                     'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
-                    '@type': 'DockerRebaseStrategy',
+                    '@type': ['DockerRebaseStrategy', 'RebaseStrategy'],
                     '@typeName': 'DockerRebaseStrategy',
                     "@typeSystem": {
                         'name': 'pythonclass',
                         'version': '1.0'
                     },
                 },
-                '@type': 'RunResponse',
+                '@type': ['RunResponse', 'TrainResponse'],
                 '@typeName': 'RunResponse',
                 "@typeSystem": {
                     'name': 'pythonclass',
                     'version': '1.0'
                 },
             },
-            actual=self.response1._as_dict())
+            actual=self.response1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
                 'runResponseVersion': '1.0',
                 'exit': {
-                    "@type": "AlgorithmFailureRunExit",
+                    "@type": ["AlgorithmFailureRunExit", "RunExit"],
                     "@typeName": "AlgorithmFailureRunExit",
                     "@typeSystem": {
                         "name": "pythonclass",
@@ -86,7 +87,7 @@ class RunResponseTests(BaseTest):
                     'exportFiles': [
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
-                            '@type': 'AlgorithmFile',
+                            '@type': ['AlgorithmFile', 'TrainFile'],
                             '@typeName': 'AlgorithmFile',
                             "@typeSystem": {
                                 'name': 'pythonclass',
@@ -95,7 +96,7 @@ class RunResponseTests(BaseTest):
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
-                            '@type': 'ModelFile',
+                            '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
                                 'name': 'pythonclass',
@@ -104,7 +105,7 @@ class RunResponseTests(BaseTest):
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
-                            '@type': 'ModelFile',
+                            '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
                                 'name': 'pythonclass',
@@ -114,33 +115,33 @@ class RunResponseTests(BaseTest):
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
-                    '@type': 'DockerRebaseStrategy',
+                    '@type': ['DockerRebaseStrategy', 'RebaseStrategy'],
                     '@typeName': 'DockerRebaseStrategy',
                     "@typeSystem": {
                         'name': 'pythonclass',
                         'version': '1.0'
                     },
                 },
-                '@type': 'RunResponse',
+                '@type': ['RunResponse', 'TrainResponse'],
                 '@typeName': 'RunResponse',
                 "@typeSystem": {
                     'name': 'pythonclass',
                     'version': '1.0'
                 },
             },
-            actual=self.response2._as_dict())
+            actual=self.response2.as_simple_dict())
 
     ################################################################################
     # Type
     ################################################################################
     def test_type_1(self):
         self.checkExpect(
-            expect='RunResponse',
+            expect=["RunResponse", "TrainResponse"],
             actual=self.response1.type)
 
     def test_type_2(self):
         self.checkExpect(
-            expect='RunResponse',
+            expect=["RunResponse", "TrainResponse"],
             actual=self.response2.type)
 
     ################################################################################
@@ -164,7 +165,7 @@ class RunResponseTests(BaseTest):
             expect={
                 'runResponseVersion': '1.0',
                 'exit': {
-                    "@type": "AlgorithmFailureRunExit",
+                    "@type": ["AlgorithmFailureRunExit", "RunExit"],
                     "@typeName": "AlgorithmFailureRunExit",
                     "@typeSystem": {
                         "name": "pythonclass",
@@ -178,7 +179,7 @@ class RunResponseTests(BaseTest):
                     'exportFiles': [],
                     'nextTrainTags': ['tag1', 'tag2'],
                     'from': 'frm',
-                    '@type': 'DockerRebaseStrategy',
+                    '@type': ['DockerRebaseStrategy', 'RebaseStrategy'],
                     '@typeName': 'DockerRebaseStrategy',
                     "@typeSystem": {
                         'name': 'pythonclass',
@@ -193,8 +194,8 @@ class RunResponseTests(BaseTest):
             expect={
                 'runResponseVersion': '1.0',
                 'exit': {
-                    "@type": "AlgorithmFailureRunExit",
-                    "@typeName": "AlgorithmFailureRunExit",
+                    '@type': ['AlgorithmFailureRunExit', 'RunExit'],
+                    '@typeName': 'AlgorithmFailureRunExit',
                     "@typeSystem": {
                         "name": "pythonclass",
                         "version": "1.0"
@@ -207,7 +208,7 @@ class RunResponseTests(BaseTest):
                     'exportFiles': [
                         {
                             'absolutePath': '/opt/pht_train/algorithm/key3',
-                            '@type': 'AlgorithmFile',
+                            '@type': ['AlgorithmFile', 'TrainFile'],
                             '@typeName': 'AlgorithmFile',
                             "@typeSystem": {
                                 'name': 'pythonclass',
@@ -216,7 +217,7 @@ class RunResponseTests(BaseTest):
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key1',
-                            '@type': 'ModelFile',
+                            '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
                                 'name': 'pythonclass',
@@ -225,7 +226,7 @@ class RunResponseTests(BaseTest):
                         },
                         {
                             'absolutePath': '/opt/pht_train/model/key2',
-                            '@type': 'ModelFile',
+                            '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
                                 'name': 'pythonclass',
@@ -235,7 +236,7 @@ class RunResponseTests(BaseTest):
                     ],
                     'nextTrainTags': [],
                     'from': 'some remote Docker repository',
-                    '@type': 'DockerRebaseStrategy',
+                    '@type': ['DockerRebaseStrategy', 'RebaseStrategy'],
                     '@typeName': 'DockerRebaseStrategy',
                     "@typeSystem": {
                         'name': 'pythonclass',

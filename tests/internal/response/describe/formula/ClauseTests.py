@@ -79,22 +79,22 @@ class ClauseTests(BaseTest):
     # Copy
     ################################################################################
     def test_copy_1(self):
-        self.assertCopiesAreEqual(self.clause1)
+        self.assertCopiesAreEqualOf(self.clause1)
 
     def test_copy_2(self):
-        self.assertCopiesAreEqual(self.clause2)
+        self.assertCopiesAreEqualOf(self.clause2)
 
     def test_copy_3(self):
-        self.assertCopiesAreEqual(self.clause3)
+        self.assertCopiesAreEqualOf(self.clause3)
 
     def test_copy_4(self):
-        self.assertCopiesAreEqual(self.clause4)
+        self.assertCopiesAreEqualOf(self.clause4)
 
     def test_copy_5(self):
-        self.assertCopiesAreEqual(self.clause5)
+        self.assertCopiesAreEqualOf(self.clause5)
 
     def test_copy_6(self):
-        self.assertCopiesAreEqual(self.clause6)
+        self.assertCopiesAreEqualOf(self.clause6)
 
     ################################################################################
     # iter
