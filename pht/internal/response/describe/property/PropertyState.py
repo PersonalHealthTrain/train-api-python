@@ -3,10 +3,10 @@ PropertyState captures the State of the Property at runtime
 """
 from typing import Optional
 from pht.internal.protocol.DeepCopyable import DeepCopyable
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
 
 
-class PropertyState(SimpleDictRepresentable, DeepCopyable):
+class PropertyState(SimpleMappingRepresentable, DeepCopyable):
     def __init__(self, is_available: bool, reason: Optional[str]):
         self._is_available = is_available
         self._reason = reason

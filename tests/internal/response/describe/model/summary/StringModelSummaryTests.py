@@ -113,7 +113,7 @@ class StringModelSummaryTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.model1.as_simple_dict())
+            actual=self.model1.as_simple_mapping())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -126,4 +126,4 @@ class StringModelSummaryTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.model2.as_simple_dict())
+            actual=self.model2.as_simple_mapping())

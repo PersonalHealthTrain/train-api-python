@@ -82,7 +82,7 @@ class CnfTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.cnf1.as_simple_dict())
+            actual=self.cnf1.as_simple_mapping())
 
     def test_dict_2(self):
         self.checkExpect(
@@ -95,7 +95,7 @@ class CnfTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.cnf2.as_simple_dict())
+            actual=self.cnf2.as_simple_mapping())
 
     def test_dict_3(self):
         self.checkExpect(
@@ -108,7 +108,7 @@ class CnfTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.cnf3.as_simple_dict())
+            actual=self.cnf3.as_simple_mapping())
 
     def test_dict_4(self):
         self.checkExpect(
@@ -121,7 +121,7 @@ class CnfTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.cnf4.as_simple_dict())
+            actual=self.cnf4.as_simple_mapping())
 
     ################################################################################
     # type

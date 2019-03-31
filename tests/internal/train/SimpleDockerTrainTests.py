@@ -213,7 +213,7 @@ class SimpleTrainTests(BaseTest):
         self.maxDiff = None
         self.checkExpect(
             expect=_load_json(file),
-            actual=train_response.as_simple_dict())
+            actual=train_response.as_simple_mapping())
 
 
 class SimpleTrainDescribeTests(SimpleTrainTests):

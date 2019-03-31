@@ -1,6 +1,6 @@
 from tests.base import BaseTest
 from pht.internal.util.typetest import is_primitive, is_list
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
 
 
 class TypetestTests(BaseTest):
@@ -66,16 +66,16 @@ class TypetestTests(BaseTest):
         self.assertFalse(is_list(range(3)))
 
     def test_is_simple_dict_1(self):
-        self.assertTrue(SimpleDictRepresentable.is_simple_dict({}))
+        self.assertTrue(SimpleMappingRepresentable.is_simple_mapping({}))
 
     def test_is_simple_dict_2(self):
-        self.assertTrue(SimpleDictRepresentable.is_simple_dict({'foo': 'bar'}))
+        self.assertTrue(SimpleMappingRepresentable.is_simple_mapping({'foo': 'bar'}))
 
     def test_is_simple_dict_3(self):
-        self.assertTrue(SimpleDictRepresentable.is_simple_dict({'foo': {'bar': 1, 'baz': 2}}))
+        self.assertTrue(SimpleMappingRepresentable.is_simple_mapping({'foo': {'bar': 1, 'baz': 2}}))
 
     def test_is_simple_dict_4(self):
-        self.assertTrue(SimpleDictRepresentable.is_simple_dict({'foo': {'bar': 1, 'baz': [1, 2]}}))
+        self.assertTrue(SimpleMappingRepresentable.is_simple_mapping({'foo': {'bar': 1, 'baz': [1, 2]}}))
 
     def test_is_not_simple_dict_1(self):
-        self.assertFalse(SimpleDictRepresentable.is_simple_dict({'foo': range(1)}))
+        self.assertFalse(SimpleMappingRepresentable.is_simple_mapping({'foo': range(1)}))

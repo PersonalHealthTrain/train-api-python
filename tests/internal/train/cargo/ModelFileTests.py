@@ -82,7 +82,7 @@ class ModelFileTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.model_file1.as_simple_dict())
+            actual=self.model_file1.as_simple_mapping())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -95,7 +95,7 @@ class ModelFileTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.model_file2.as_simple_dict())
+            actual=self.model_file2.as_simple_mapping())
 
     ###########################################
     # absolute path

@@ -48,7 +48,7 @@ class DockerRebaseStrategyTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.rebase1.as_simple_dict())
+            actual=self.rebase1.as_simple_mapping())
 
     ################################################################################
     # Copy, deepcopy, hash

@@ -1,9 +1,9 @@
 from collections.abc import Hashable
 from pht.internal.protocol.DeepCopyable import DeepCopyable
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
 
 
-class TypeSystem(DeepCopyable, Hashable, SimpleDictRepresentable):
+class TypeSystem(DeepCopyable, Hashable, SimpleMappingRepresentable):
     def __init__(self, name: str, version: str):
         self.name = name
         self.version = version

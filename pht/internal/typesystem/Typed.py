@@ -2,12 +2,12 @@ from abc import abstractmethod
 from typing import List, Union
 from pht.internal.util import require
 from pht.internal.util.require import not_in
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
 from pht.internal.protocol.DeepCopyable import DeepCopyable
 from pht.internal.typesystem.TypeSystem import TypeSystem
 
 
-class Typed(DeepCopyable, SimpleDictRepresentable):
+class Typed(DeepCopyable, SimpleMappingRepresentable):
     @property
     @abstractmethod
     def type(self) -> Union[str, List[str]]:
@@ -41,5 +41,5 @@ class Typed(DeepCopyable, SimpleDictRepresentable):
             error_if_not='Key \'{}\' not allowed in data dictionary of class')
         data[_type] = self.type
         data[_typeName] = self.type_name
-        data[_typeSystem] = self.type_system.as_simple_dict()
+        data[_typeSystem] = self.type_system.as_simple_mapping()
         return data

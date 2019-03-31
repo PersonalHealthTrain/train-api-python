@@ -1,8 +1,9 @@
 """
 Contains helpers for type checking
 """
-from typing import Any
+from typing import Any, Mapping
 from collections.abc import Hashable
+
 
 def is_primitive(value: Any) -> bool:
     """
@@ -20,11 +21,8 @@ def is_list(value: Any) -> bool:
     return isinstance(value, list)
 
 
-def is_dict(value: Any) -> bool:
-    """
-    Checks whether the provided value is a dict
-    """
-    return isinstance(value, dict)
+def is_mapping(value: Any) -> bool:
+    return isinstance(value, Mapping)
 
 
 def is_str(value: Any) -> bool:

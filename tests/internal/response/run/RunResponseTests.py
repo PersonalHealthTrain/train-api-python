@@ -66,7 +66,7 @@ class RunResponseTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.response1.as_simple_dict())
+            actual=self.response1.as_simple_mapping())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -129,7 +129,7 @@ class RunResponseTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.response2.as_simple_dict())
+            actual=self.response2.as_simple_mapping())
 
     ################################################################################
     # Type

@@ -1,5 +1,5 @@
 from typing import Any, Iterable, Optional
-from pht.internal.protocol.SimpleDictRepresentable import SimpleDictRepresentable
+from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
 from pht.internal.protocol.DeepCopyable import DeepCopyable
 
 
@@ -18,8 +18,8 @@ def _do_or_none(x, f):
     return f(x) if x is not None else None
 
 
-def as_dict_or_none(item: Optional[SimpleDictRepresentable]):
-    return _do_or_none(item, lambda x: x.as_simple_dict())
+def as_dict_or_none(item: Optional[SimpleMappingRepresentable]):
+    return _do_or_none(item, lambda x: x.as_simple_mapping())
 
 
 def copy_or_none(item: Optional[DeepCopyable]):

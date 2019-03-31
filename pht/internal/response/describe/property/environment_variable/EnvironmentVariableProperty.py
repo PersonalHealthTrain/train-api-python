@@ -32,7 +32,7 @@ class EnvironmentVariableProperty(Property):
         return {
             'description': self.description,
             'environmentVariableName': self.name,
-            'state': self.state().as_simple_dict()
+            'state': self.state().as_simple_mapping()
         }
 
     def state(self) -> PropertyState:

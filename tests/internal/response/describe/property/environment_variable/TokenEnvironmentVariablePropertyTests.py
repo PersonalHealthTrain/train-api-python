@@ -120,7 +120,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
-            }, actual=self.token1.as_simple_dict())
+            }, actual=self.token1.as_simple_mapping())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
@@ -138,7 +138,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
-            }, actual=self.token2.as_simple_dict())
+            }, actual=self.token2.as_simple_mapping())
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
@@ -158,7 +158,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.token3.as_simple_dict())
+            actual=self.token3.as_simple_mapping())
 
     def test_as_simple_dict_4(self):
         self.checkExpect(
@@ -177,7 +177,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.token4.as_simple_dict())
+            actual=self.token4.as_simple_mapping())
 
     def test_as_simple_dict_5(self):
         with patch.dict('os.environ', {'FOO': 'value'}):
@@ -198,7 +198,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                     }
                 },
-                actual=self.token1.as_simple_dict())
+                actual=self.token1.as_simple_mapping())
 
     def test_as_simple_dict_6(self):
         with patch.dict('os.environ', {'BAR': 'value'}):
@@ -219,7 +219,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                     }
                 },
-                actual=self.token2.as_simple_dict())
+                actual=self.token2.as_simple_mapping())
 
     def test_as_simple_dict_7(self):
         with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
@@ -240,7 +240,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                     }
                 },
-                actual=self.token3.as_simple_dict())
+                actual=self.token3.as_simple_mapping())
 
     def test_as_simple_dict_8(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
@@ -261,7 +261,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                     }
                 },
-                actual=self.token4.as_simple_dict())
+                actual=self.token4.as_simple_mapping())
 
     ###########################################################
     # type

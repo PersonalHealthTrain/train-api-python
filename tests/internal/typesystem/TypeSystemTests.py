@@ -29,4 +29,4 @@ class TypeSystemTests(BaseTest):
                 'name': 'pythonclass',
                 'version': '1.0'
             },
-            actual=self.type_system.as_simple_dict())
+            actual=self.type_system.as_simple_mapping())

@@ -248,7 +248,7 @@ class TrainDescriptionTests(BaseTest):
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
-            }, actual=self.td1.as_simple_dict())
+            }, actual=self.td1.as_simple_mapping())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -349,7 +349,7 @@ class TrainDescriptionTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.td2.as_simple_dict())
+            actual=self.td2.as_simple_mapping())
 
     def test_as_dict_3(self):
         self.checkExpect(
@@ -485,7 +485,7 @@ class TrainDescriptionTests(BaseTest):
                     'version': '1.0'
                 }
             },
-            actual=self.td3.as_simple_dict())
+            actual=self.td3.as_simple_mapping())
 
     ################################################################################
     # Type

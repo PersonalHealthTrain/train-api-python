@@ -294,7 +294,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.enum1.as_simple_dict())
+            actual=self.enum1.as_simple_mapping())
 
     def test_simple_dict_2(self):
         self.checkExpect(
@@ -315,4 +315,4 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.enum2.as_simple_dict())
+            actual=self.enum2.as_simple_mapping())

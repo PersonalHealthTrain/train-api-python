@@ -75,19 +75,19 @@ class PropertyStateTests(BaseTest):
     def test_as_simple_dict_1(self):
         self.checkExpect(
             expect={'isAvailable': True, 'reason': None},
-            actual=self.avail1.as_simple_dict())
+            actual=self.avail1.as_simple_mapping())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
             expect={'isAvailable': True, 'reason': None},
-            actual=self.avail2.as_simple_dict())
+            actual=self.avail2.as_simple_mapping())
 
     def test_simple_dict_3(self):
         self.checkExpect(
             expect={'isAvailable': False, 'reason': 'foo'},
-            actual=self.unavail1.as_simple_dict())
+            actual=self.unavail1.as_simple_mapping())
 
     def test_simple_dict_4(self):
         self.checkExpect(
             expect={'isAvailable': False, 'reason': 'bar'},
-            actual=self.unavail2.as_simple_dict())
+            actual=self.unavail2.as_simple_mapping())

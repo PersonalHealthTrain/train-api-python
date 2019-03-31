@@ -122,7 +122,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount1.as_simple_dict())
+            actual=self.mount1.as_simple_mapping())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
@@ -142,7 +142,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount2.as_simple_dict())
+            actual=self.mount2.as_simple_mapping())
 
     def test_as_simple_dict_3(self):
         self.checkExpect(
@@ -163,7 +163,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount3.as_simple_dict())
+            actual=self.mount3.as_simple_mapping())
 
     def test_as_simple_dict_4(self):
         self.checkExpect(
@@ -183,7 +183,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount4.as_simple_dict())
+            actual=self.mount4.as_simple_mapping())
 
     def test_as_simple_dict_5(self):
         with patch.dict('os.environ', {'FOO': 'not a file'}):
@@ -205,7 +205,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                         'version': '1.0'
                     },
                 },
-                actual=self.mount1.as_simple_dict())
+                actual=self.mount1.as_simple_mapping())
 
     @patch.dict('os.environ', {'BAR': 'I am not a file'})
     def test_as_simple_dict_6(self):
@@ -227,7 +227,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount2.as_simple_dict())
+            actual=self.mount2.as_simple_mapping())
 
     @patch.dict('os.environ', {'FOO': 'I am not a directory'})
     def test_as_simple_dict_7(self):
@@ -249,7 +249,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
                 },
-            actual=self.mount3.as_simple_dict())
+            actual=self.mount3.as_simple_mapping())
 
     @patch.dict('os.environ', {'BAR': 'not a directory'})
     def test_as_simple_dict_8(self):
@@ -271,7 +271,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.mount4.as_simple_dict())
+            actual=self.mount4.as_simple_mapping())
 
     ###########################################################
     # type

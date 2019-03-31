@@ -102,7 +102,7 @@ class TrainFileTests(BaseTest):
                         'version': '1.0'
                 }
             },
-            actual=self.modelfile1.as_simple_dict())
+            actual=self.modelfile1.as_simple_mapping())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
@@ -115,4 +115,4 @@ class TrainFileTests(BaseTest):
                         'version': '1.0'
                 }
             },
-            actual=self.modelfile2.as_simple_dict())
+            actual=self.modelfile2.as_simple_mapping())

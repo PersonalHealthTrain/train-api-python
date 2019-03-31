@@ -73,7 +73,7 @@ class AlgorithmFileTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.algo_file1.as_simple_dict())
+            actual=self.algo_file1.as_simple_mapping())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -86,7 +86,7 @@ class AlgorithmFileTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.algo_file2.as_simple_dict())
+            actual=self.algo_file2.as_simple_mapping())
 
     ###########################################
     # absolute path
