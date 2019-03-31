@@ -248,7 +248,7 @@ class TrainDescriptionTests(BaseTest):
                     'name': 'pythonclass',
                     'version': '1.0'
                 }
-            }, actual=self.td1._as_dict())
+            }, actual=self.td1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(

@@ -82,7 +82,7 @@ class ModelFileTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.model_file1._as_dict())
+            actual=self.model_file1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -95,7 +95,7 @@ class ModelFileTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.model_file2._as_dict())  # TODO Check with tests that no protected members are called
+            actual=self.model_file2.as_simple_dict())
 
     ###########################################
     # absolute path

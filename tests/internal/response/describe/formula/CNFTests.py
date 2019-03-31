@@ -82,7 +82,7 @@ class CnfTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.cnf1._as_dict())   # Test with script
+            actual=self.cnf1.as_simple_dict())
 
     def test_dict_2(self):
         self.checkExpect(

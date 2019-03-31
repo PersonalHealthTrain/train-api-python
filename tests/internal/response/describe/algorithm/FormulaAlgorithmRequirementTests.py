@@ -91,7 +91,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.alg1._as_dict())
+            actual=self.alg1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -104,7 +104,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.alg2._as_dict())
+            actual=self.alg2.as_simple_dict())
 
     def test_as_dict_3(self):
         self.checkExpect(
@@ -117,7 +117,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.alg3._as_dict())
+            actual=self.alg3.as_simple_dict())
 
     def test_as_dict_4(self):
         self.checkExpect(
@@ -130,7 +130,7 @@ class FormulaAlgorithmRequirementTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.alg4._as_dict())
+            actual=self.alg4.as_simple_dict())
 
     ################################################################################
     # Type

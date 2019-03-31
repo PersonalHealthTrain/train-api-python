@@ -117,7 +117,7 @@ class JsonModelSummaryTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.model1._as_dict())  # TODO
+            actual=self.model1.as_simple_dict())
 
     def test_as_dict_2(self):
         self.checkExpect(
@@ -130,4 +130,4 @@ class JsonModelSummaryTests(BaseTest):
                     'version': '1.0'
                 },
             },
-            actual=self.model2._as_dict())  # TODO
+            actual=self.model2.as_simple_dict())

@@ -102,7 +102,7 @@ class TrainFileTests(BaseTest):
                         'version': '1.0'
                 }
             },
-            actual=self.modelfile1._as_dict())  # TODO Check that in assertion test
+            actual=self.modelfile1.as_simple_dict())
 
     def test_as_simple_dict_2(self):
         self.checkExpect(
