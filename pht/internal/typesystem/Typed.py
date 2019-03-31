@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import List, Union
 from pht.internal.util import require
-from pht.internal.util.require import not_in
+from pht.internal.util.predicate.maker import not_in
 from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
 from pht.internal.protocol.DeepCopyable import DeepCopyable
 from pht.internal.typesystem.TypeSystem import TypeSystem

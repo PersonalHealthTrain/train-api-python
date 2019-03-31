@@ -28,26 +28,6 @@ def for_value(val, that, error_if_not):
         raise ValueError(error_if_not)
 
 
-def is_not_none(val) -> bool:
-    return val is not None
-
-
-def is_positive(val: int) -> bool:
-    return val > 0
-
-
-def is_in_closed_range(start, end):
-    return lambda val: val in range(start, end + 1)
-
-
-def not_in(collection):
-    return lambda val: val not in collection
-
-
-def does_not_contain(value: Any):
-    return lambda collection: value not in collection
-
-
 def that(test: bool, error_if_not):
     if not test:
         raise ValueError(error_if_not)

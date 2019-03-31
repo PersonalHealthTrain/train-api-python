@@ -1,5 +1,6 @@
 from tests.base import BaseTest
-from pht.internal.util.require import type_is_int, type_is_str, is_not_none, is_positive
+from pht.internal.util.require import type_is_int, type_is_str
+from pht.internal.util.predicate import is_not_none, is_positive
 
 
 class RequireTests(BaseTest):

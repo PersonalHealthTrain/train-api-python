@@ -2,7 +2,7 @@ from collections.abc import Hashable
 from typing import Optional
 from pht.internal.protocol.DeepCopyable import DeepCopyable
 from pht.internal.util import require
-from pht.internal.util.require import is_not_none
+from pht.internal.util.predicate import is_not_none
 
 
 class StationRuntimeInfo(DeepCopyable, Hashable):

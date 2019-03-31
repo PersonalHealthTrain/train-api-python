@@ -10,7 +10,8 @@ from pht.internal.response.describe.model.JsonModelSummary import JsonModelSumma
 from pht.internal.util.misc import as_dict_or_none, copy_or_none
 from pht.internal.util import require
 from pht.internal.util.builder import copy_property_map
-from pht.internal.util.require import is_positive, is_in_closed_range
+from pht.internal.util.predicate.maker import is_in_closed_range
+from pht.internal.util.predicate import is_positive
 from pht.internal.response.describe.formula.CNF import ConjunctiveNormalForm
 
 
