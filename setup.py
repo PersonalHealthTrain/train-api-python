@@ -1,3 +1,6 @@
+"""
+Install Script for the PHT package. Use `python setup install` to install the 'pht' module
+"""
 from setuptools import setup, find_packages
 
 setup(

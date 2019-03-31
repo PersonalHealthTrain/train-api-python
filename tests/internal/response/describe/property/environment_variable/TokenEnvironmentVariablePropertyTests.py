@@ -499,9 +499,3 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             self.checkExpect(
                 expect='',
                 actual=self.token4.get_value())
-
-    ###########################################################
-    # Parent types
-    ###########################################################
-    def test_parent_types_1(self):
-        print(TypedAsPythonClass.parents_types(self.token1))

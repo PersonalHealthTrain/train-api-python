@@ -2,13 +2,16 @@ import unittest
 import os
 import re
 
-SPACES_FRONT = re.compile(r'^[ ]*')
+SPACES_FRONT = re.compile(r'^([ ])*.*$')
 TEST_METHOD = re.compile(r'^\s*def\s+test_')
 METHODS = re.compile(r'\.([^\s().]+)\(')
 
 
 def indent_of(line: str):
-    return len(SPACES_FRONT.match(line.replace('\t', ' ' * 4))[0])
+    line = line.replace('\t', ' ' * 4)
+    whitespace = SPACES_FRONT.match(line).group(1)
+    return len(whitespace) if whitespace is not None else 0
+
 
 
 def is_test_method(method_line):
@@ -92,5 +95,7 @@ if __name__ == '__main__':
     # Some static code analyses
     assert_that_test_methods_have_only_one_line(skip_files=['builder.py'])
     assert_method_not_called(disallowed=['_as_dict'])
+    # TODO Assert that no subtype of SimpleMappingRepresentable implements __eq__
+
     # Unit Tests
     unittest.main('tests')

@@ -1,10 +1,14 @@
 import unittest
 import copy
+from typing import Mapping
 from itertools import combinations
 from pht.internal.util.typetest import is_hashable
 
 
 class BaseTest(unittest.TestCase):
+
+    def checkMapping(self, expect: Mapping, actual: Mapping):
+        self.assertDictEqual(dict(expect), dict(actual))
 
     def checkExpect(self, expect, actual):
         self.assertEqual(expect, actual)

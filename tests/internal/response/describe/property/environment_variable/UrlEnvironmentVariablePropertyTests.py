@@ -298,7 +298,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     # data
     ###########################################################
     def test_data_1(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'FOO',
@@ -310,7 +310,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
             actual=self.url1.data)
 
     def test_data_2(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'BAR',
@@ -322,7 +322,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
             actual=self.url2.data)
 
     def test_data_3(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'MY_VARIABLE',
@@ -343,57 +343,57 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'SOME_OTHER_VARIABLE\' not set'}},
             actual=self.url4.data)
 
+    @patch.dict('os.environ', {'FOO': 'VALUE'})
     def test_data_5(self):
-        with patch.dict('os.environ', {'FOO': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'FOO',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    }
-                },
-                actual=self.url1.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'FOO',
+                'state': {
+                    'isAvailable': True,
+                    'reason': None
+                }
+            },
+            actual=self.url1.data)
 
+    @patch.dict('os.environ', {'BAR': 'VALUE'})
     def test_data_6(self):
-        with patch.dict('os.environ', {'BAR': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'BAR',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    }
-                },
-                actual=self.url2.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'BAR',
+                'state': {
+                    'isAvailable': True,
+                    'reason': None
+                }
+            },
+            actual=self.url2.data)
 
+    @patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'})
     def test_data_7(self):
-        with patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'MY_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    }
-                },
-                actual=self.url3.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': None
+                }
+            },
+            actual=self.url3.data)
 
+    @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'})
     def test_data_8(self):
-        with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    }
-                },
-                actual=self.url4.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': None
+                }
+            },
+            actual=self.url4.data)
 
     ###########################################################
     # is available
