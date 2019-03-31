@@ -1,3 +1,6 @@
+"""
+Upon invocation, performs static code analysis of the pht module and runs unit tests
+"""
 import unittest
 import os
 import re
@@ -8,10 +11,12 @@ METHODS = re.compile(r'\.([^\s().]+)\(')
 
 
 def indent_of(line: str):
+    """
+    Returns the indent of the provided line
+    """
     line = line.replace('\t', ' ' * 4)
     whitespace = SPACES_FRONT.match(line).group(1)
     return len(whitespace) if whitespace is not None else 0
-
 
 
 def is_test_method(method_line):

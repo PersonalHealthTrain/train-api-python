@@ -29,16 +29,16 @@ def cli_for_train(train: TrainCommandInterface):
     args = parser.parse_args()
     info = StationRuntimeInfo(station_id=args.station_id, track_info=args.track_info, user_data=args.user_data)
 
-    def _flush_print(msg: str):
-        print(msg, flush=True)
-
     def _exit_unsupported_command():
         sys.exit(1)
 
+    def _print_json_string_after(func):
+        print(func(train).as_json_string(), flush=True)
+
     command = args.COMMAND
     if command == _run:
-        _flush_print(train.run(info).as_json_string())
+        _print_json_string_after(lambda x: x.run(info))
     elif command == _describe:
-        _flush_print(train.describe(info).as_json_string())
+        _print_json_string_after(lambda x: x.describe(info))
     else:
         _exit_unsupported_command()

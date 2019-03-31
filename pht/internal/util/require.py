@@ -1,4 +1,8 @@
+"""
+Functions that raise ValueError or TypeError on test failure
+"""
 from typing import Any, Iterable
+from pht.internal.util.typetest import is_str
 
 
 def _type_error_if(test: bool, msg: str):
@@ -7,14 +11,20 @@ def _type_error_if(test: bool, msg: str):
 
 
 def type_is_int(obj: Any):
+    """
+    Checks whether object is int, and not bool
+    """
     _type_error_if(
         not isinstance(obj, int) or isinstance(obj, bool),
         "Object '{}' is required to be of type 'int' (and also not of type bool)".format(str(obj)))
 
 
 def type_is_str(obj: Any):
+    """
+    Checks whether obj is str
+    """
     _type_error_if(
-        not isinstance(obj, str),
+        not is_str(obj),
         'Object \'{}\' is required to be of type \'str\''.format(str(obj)))
 
 

@@ -1,15 +1,14 @@
 """
-Contains helpers for type checking
+Contains helpers for type checking.
+
+These helpers are generally specializations of isinstance
 """
-from typing import Any, Mapping
-from collections.abc import Hashable
+from typing import Any, Hashable, Mapping
 
 
 def is_primitive(value: Any) -> bool:
     """
     Checks whether x is str, bool, int, float or None
-    :param value: value to be tested
-    :return: Whether value is primitive
     """
     return value is None or isinstance(value, (str, bool, int, float))
 
@@ -22,6 +21,9 @@ def is_list(value: Any) -> bool:
 
 
 def is_mapping(value: Any) -> bool:
+    """
+    Checks whether provided value is Mapping
+    """
     return isinstance(value, Mapping)
 
 
@@ -33,4 +35,7 @@ def is_str(value: Any) -> bool:
 
 
 def is_hashable(value: Any) -> bool:
+    """
+    Checks whether provided value is Hashable
+    """
     return isinstance(value, Hashable)

@@ -7,7 +7,7 @@ from pht.internal.response.describe.algorithm.FormulaAlgorithmRequirement import
 from pht.internal.response.describe.model.ModelSummary import ModelSummary
 from pht.internal.response.describe.model.StringModelSummary import StringModelSummary
 from pht.internal.response.describe.model.JsonModelSummary import JsonModelSummary
-from pht.internal.util.misc import as_dict_or_none, copy_or_none
+from pht.internal.util.misc import as_simple_mapping_or_none, deepcopy_or_none
 from pht.internal.util import require
 from pht.internal.util.builder import copy_property_map
 from pht.internal.util.predicate.maker import is_in_closed_range
@@ -35,7 +35,7 @@ class TrainDescription(TrainResponse):
         self._validate_property_map()
 
         self._formulas = [formula.deepcopy() for formula in formulas]
-        self._algorithm_requirement = copy_or_none(algorithm_requirement)
+        self._algorithm_requirement = deepcopy_or_none(algorithm_requirement)
         self._validate_formula_algorithm_requirement()
 
         self._model_summary = TrainDescription._create_model_summary(model_summary)
@@ -69,10 +69,10 @@ class TrainDescription(TrainResponse):
             'properties': properties,
             'formula': formula,
             'model': {
-                'summary': as_dict_or_none(self._model_summary)
+                'summary': as_simple_mapping_or_none(self._model_summary)
             },
             'algorithm': {
-                'requirement': as_dict_or_none(self._algorithm_requirement)
+                'requirement': as_simple_mapping_or_none(self._algorithm_requirement)
             }
         }
 
