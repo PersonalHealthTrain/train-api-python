@@ -89,6 +89,8 @@ def assert_method_not_called(disallowed):
 
 
 if __name__ == '__main__':
+    # Some static code analyses
     assert_that_test_methods_have_only_one_line(skip_files=['builder.py'])
     assert_method_not_called(disallowed=['_as_dict'])
+    # Unit Tests
     unittest.main('tests')

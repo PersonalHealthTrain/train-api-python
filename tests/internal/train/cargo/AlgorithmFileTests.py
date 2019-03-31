@@ -64,7 +64,7 @@ class AlgorithmFileTests(BaseTest):
     ###########################################
     def test_as_dict_1(self):
         self.checkExpect(
-            expect={\
+            expect={
                 'absolutePath': '/opt/pht_train/algorithm/foo',
                 '@type': ['AlgorithmFile', 'TrainFile'],
                 '@typeName': 'AlgorithmFile',
@@ -115,3 +115,14 @@ class AlgorithmFileTests(BaseTest):
 
     def test_ordering_4(self):
         self.assertGreaterEqual(self.algo_file1, self.algo_file2)
+
+    ###########################################
+    # as_simple_mapping cannot be altered
+    ###########################################
+    def test_simple_mapping_not_mutable_1(self):
+        with self.assertRaises(TypeError):
+            self.algo_file1.as_simple_mapping()['foo'] = 'bar'
+
+    def test_simple_mapping_not_mutable_2(self):
+        with self.assertRaises(TypeError):
+            self.algo_file2.as_simple_mapping()['foo'] = 'bar'

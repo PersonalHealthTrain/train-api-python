@@ -44,20 +44,19 @@ class SimpleMappingRepresentable(ABC):
         :param value: The value to be tested
         :return: True if value is a simple dict
         """
-        def is_simple_list(item):
+        def is_simple_list(item: Any):
             return is_list(item) and \
-                   all((is_primitive(x) or
-                        SimpleMappingRepresentable.is_simple_mapping(x) or
-                        is_simple_list(x) for x in item))
+                   all(is_primitive(x) or
+                       SimpleMappingRepresentable.is_simple_mapping(x) or
+                       is_simple_list(x) for x in item)
 
-        if not is_mapping(value):
-            return False
-        for (key, val) in value.items():
-            # Wrong type for key
-            if not is_str(key):
+        def inner(value: Any):
+            if not is_mapping(value):
                 return False
-            # Wrong type for value
-            if not is_primitive(val) and not is_simple_list(val) and not SimpleMappingRepresentable.is_simple_mapping(val):
-                return False
-        # All dictionary items have correct type
-        return True
+            for (key, val) in value.items():
+                # Wrong type for key or value
+                if not (is_str(key) and (is_primitive(val) or is_simple_list(val) or inner(val))):
+                    return False
+            # All dictionary items have correct type
+            return True
+        return inner(value)
