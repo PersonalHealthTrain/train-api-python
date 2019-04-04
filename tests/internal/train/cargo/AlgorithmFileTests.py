@@ -51,12 +51,12 @@ class AlgorithmFileTests(BaseTest):
     ###########################################
     def test_data_1(self):
         self.checkExpect(
-            expect={'absolutePath': '/opt/pht_train/algorithm/foo'},
+            expect={'absolutePhysicalPath': '/opt/pht_train/algorithm/foo'},
             actual=self.algo_file1.data)
 
     def test_data_2(self):
         self.checkExpect(
-            expect={'absolutePath': '/opt/pht_train/algorithm/bar'},
+            expect={'absolutePhysicalPath': '/opt/pht_train/algorithm/bar'},
             actual=self.algo_file2.data)
 
     ###########################################
@@ -65,7 +65,7 @@ class AlgorithmFileTests(BaseTest):
     def test_as_dict_1(self):
         self.checkExpect(
             expect={
-                'absolutePath': '/opt/pht_train/algorithm/foo',
+                'absolutePhysicalPath': '/opt/pht_train/algorithm/foo',
                 '@type': ['AlgorithmFile', 'TrainFile'],
                 '@typeName': 'AlgorithmFile',
                 "@typeSystem": {
@@ -78,7 +78,7 @@ class AlgorithmFileTests(BaseTest):
     def test_as_dict_2(self):
         self.checkExpect(
             expect={
-                'absolutePath': '/opt/pht_train/algorithm/bar',
+                'absolutePhysicalPath': '/opt/pht_train/algorithm/bar',
                 '@type': ['AlgorithmFile', 'TrainFile'],
                 '@typeName': 'AlgorithmFile',
                 "@typeSystem": {
@@ -94,12 +94,12 @@ class AlgorithmFileTests(BaseTest):
     def test_absolute_path_1(self):
         self.checkExpect(
             expect='/opt/pht_train/algorithm/foo',
-            actual=self.algo_file1.absolute_path)
+            actual=self.algo_file1.absolute_physical_path)
 
     def test_absolute_path_2(self):
         self.checkExpect(
             expect='/opt/pht_train/algorithm/bar',
-            actual=self.algo_file2.absolute_path)
+            actual=self.algo_file2.absolute_physical_path)
 
     ###########################################
     # total ordering

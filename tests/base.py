@@ -7,6 +7,9 @@ from pht.internal.util.typetest import is_hashable
 
 class BaseTest(unittest.TestCase):
 
+    def assertNotRaises(self, f):
+        f()
+
     def checkMapping(self, expect: Mapping, actual: Mapping):
         self.assertDictEqual(dict(expect), dict(actual))
 

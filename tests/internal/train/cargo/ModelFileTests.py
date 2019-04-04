@@ -60,21 +60,21 @@ class ModelFileTests(BaseTest):
     ###########################################
     def test_data_1(self):
         self.checkExpect(
-            expect={'absolutePath': '/opt/pht_train/model/foo'},
+            expect={'absolutePhysicalPath': '/opt/pht_train/model/foo'},
             actual=self.model_file1.data)
 
     def test_data_2(self):
         self.checkExpect(
-            expect={'absolutePath': '/opt/pht_train/model/bar'},
+            expect={'absolutePhysicalPath': '/opt/pht_train/model/bar'},
             actual=self.model_file2.data)
 
     ###########################################
     # as dict
     ###########################################
     def test_as_dict_1(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
-                'absolutePath': '/opt/pht_train/model/foo',
+                'absolutePhysicalPath': '/opt/pht_train/model/foo',
                 '@type': ['ModelFile', 'TrainFile'],
                 '@typeName': 'ModelFile',
                 "@typeSystem": {
@@ -85,9 +85,9 @@ class ModelFileTests(BaseTest):
             actual=self.model_file1.as_simple_mapping())
 
     def test_as_dict_2(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
-                'absolutePath': '/opt/pht_train/model/bar',
+                'absolutePhysicalPath': '/opt/pht_train/model/bar',
                 '@type': ['ModelFile', 'TrainFile'],
                 '@typeName': 'ModelFile',
                 "@typeSystem": {
@@ -103,12 +103,12 @@ class ModelFileTests(BaseTest):
     def test_absolute_path_1(self):
         self.checkExpect(
             expect='/opt/pht_train/model/foo',
-            actual=self.model_file1.absolute_path)
+            actual=self.model_file1.absolute_physical_path)
 
     def test_absolute_path_2(self):
         self.checkExpect(
             expect='/opt/pht_train/model/bar',
-            actual=self.model_file2.absolute_path)
+            actual=self.model_file2.absolute_physical_path)
 
     ###########################################
     # total ordering

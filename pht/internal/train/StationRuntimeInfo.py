@@ -1,8 +1,10 @@
+"""
+Contains the StationRuntimeInfo class
+"""
 from collections.abc import Hashable
 from typing import Optional
 from pht.internal.protocol.DeepCopyable import DeepCopyable
 from pht.internal.util import require
-from pht.internal.util.predicate import is_not_none
 
 
 class StationRuntimeInfo(DeepCopyable, Hashable):
@@ -10,18 +12,30 @@ class StationRuntimeInfo(DeepCopyable, Hashable):
     Represents information on the station that will be passed on runtime.
     """
     def __init__(self, station_id: int, track_info: Optional[str] = None, user_data: Optional[str] = None):
+        self._station_id = station_id
+        require.type_is_int(self._station_id)
+        require.value_is_positive(self._station_id)
 
-        # Numeric Id of the station that executed the train (required)
-        self.station_id = station_id
-        require.for_value(self.station_id,
-                          that=is_not_none,
-                          error_if_not='Station ID was encountered to be None. This is not allowed.')
+        self._track_info = track_info
+        require.type_is_str_or_none(self._track_info)
 
-        # Optional Info about the track that the train is currently running on
-        self.track_info = track_info
+        self._user_data = user_data
+        require.type_is_str_or_none(self._user_data)
 
-        # Custom User Data that
-        self.user_data = user_data
+    @property
+    def station_id(self) -> int:
+        """The numerical i"""
+        return self._station_id
+
+    @property
+    def track_info(self) -> Optional[str]:
+        """The optional track info on which this train is executed"""
+        return self._track_info
+
+    @property
+    def user_data(self):
+        """The Optional User Data provided for the train"""
+        return self._user_data
 
     def __eq__(self, other):
         return other is self or \
@@ -32,4 +46,5 @@ class StationRuntimeInfo(DeepCopyable, Hashable):
         return hash((self.station_id, self.track_info, self.user_data))
 
     def deepcopy(self):
+        """Returns deep copy for this StationRuntimeInfo"""
         return StationRuntimeInfo(self.station_id, self.track_info, self.user_data)

@@ -86,7 +86,7 @@ class RunResponseTests(BaseTest):
                 'rebase': {
                     'exportFiles': [
                         {
-                            'absolutePath': '/opt/pht_train/algorithm/key3',
+                            'absolutePhysicalPath': '/opt/pht_train/algorithm/key3',
                             '@type': ['AlgorithmFile', 'TrainFile'],
                             '@typeName': 'AlgorithmFile',
                             "@typeSystem": {
@@ -95,7 +95,7 @@ class RunResponseTests(BaseTest):
                             },
                         },
                         {
-                            'absolutePath': '/opt/pht_train/model/key1',
+                            'absolutePhysicalPath': '/opt/pht_train/model/key1',
                             '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
@@ -104,7 +104,7 @@ class RunResponseTests(BaseTest):
                             },
                         },
                         {
-                            'absolutePath': '/opt/pht_train/model/key2',
+                            'absolutePhysicalPath': '/opt/pht_train/model/key2',
                             '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
@@ -207,7 +207,7 @@ class RunResponseTests(BaseTest):
                 'rebase': {
                     'exportFiles': [
                         {
-                            'absolutePath': '/opt/pht_train/algorithm/key3',
+                            'absolutePhysicalPath': '/opt/pht_train/algorithm/key3',
                             '@type': ['AlgorithmFile', 'TrainFile'],
                             '@typeName': 'AlgorithmFile',
                             "@typeSystem": {
@@ -216,7 +216,7 @@ class RunResponseTests(BaseTest):
                             },
                         },
                         {
-                            'absolutePath': '/opt/pht_train/model/key1',
+                            'absolutePhysicalPath': '/opt/pht_train/model/key1',
                             '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {
@@ -225,7 +225,7 @@ class RunResponseTests(BaseTest):
                             },
                         },
                         {
-                            'absolutePath': '/opt/pht_train/model/key2',
+                            'absolutePhysicalPath': '/opt/pht_train/model/key2',
                             '@type': ['ModelFile', 'TrainFile'],
                             '@typeName': 'ModelFile',
                             "@typeSystem": {

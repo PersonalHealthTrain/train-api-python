@@ -1,3 +1,6 @@
+"""
+The TypeSystem that uses the Python class Name
+"""
 import abc
 from typing import List
 from pht.internal.typesystem.Typed import Typed
@@ -12,18 +15,22 @@ class TypedAsPythonClass(Typed, abc.ABC):
 
     @property
     def type(self) -> List[str]:
+        """The Type"""
         return TypedAsPythonClass.parents_types(self)
 
     @property
     def type_name(self) -> str:
+        """The Name of the Type"""
         return self.__class__.__name__
 
     @property
     def type_system(self) -> TypeSystem:
+        """The Type System"""
         return TypeSystem('pythonclass', '1.0')
 
     @staticmethod
     def parents_types(obj):
+        """Determines all Patent types of the provided object"""
         result = []
 
         def search(clz):

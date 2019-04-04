@@ -84,7 +84,7 @@ def assert_that_test_methods_have_only_one_line(skip_files=None):
                     row[1], row[0], nlines, total_violations))
 
 
-def assert_method_not_called(disallowed):
+def assert_method_not_called_in_tests(disallowed):
     rows = list_rows_of_test_functions('tests')
     for row in rows:
         for content in row[3]:
@@ -99,7 +99,7 @@ def assert_method_not_called(disallowed):
 if __name__ == '__main__':
     # Some static code analyses
     assert_that_test_methods_have_only_one_line(skip_files=['builder.py'])
-    assert_method_not_called(disallowed=['_as_dict'])
+    assert_method_not_called_in_tests(disallowed=['_as_dict'])
     # TODO Assert that no subtype of SimpleMappingRepresentable implements __eq__
 
     # Unit Tests

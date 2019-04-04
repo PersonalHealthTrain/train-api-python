@@ -14,7 +14,7 @@
   "rebase": {
     "exportFiles": [
       {
-        "absolutePath": "/opt/pht_train/model/key",
+        "absolutePhysicalPath": "/opt/pht_train/model/key",
         "@type": ["ModelFile", "TrainFile"],
         "@typeName": "ModelFile",
         "@typeSystem": {

@@ -18,6 +18,63 @@ class RunExitTests(BaseTest):
         self.failure2 = AlgorithmFailureRunExit(None)
 
     ################################################################################
+    # State
+    ################################################################################
+    def test_state_1(self):
+        self.checkExpect(
+            expect=self.application.state,
+            actual='application')
+
+    def test_state_unassignable_1(self):
+        with self.assertRaises(AttributeError):
+            self.application.state = 'foo'
+
+    def test_state_2(self):
+        self.checkExpect(
+            expect=self.success.state,
+            actual='success')
+
+    def test_state_unassignable_2(self):
+        with self.assertRaises(AttributeError):
+            self.success.state = 'foo'
+
+    def test_state_3(self):
+        self.checkExpect(
+            expect=self.failure.state,
+            actual='failure')
+
+    def test_state_unsassignable_3(self):
+        with self.assertRaises(AttributeError):
+            self.failure.state = 'foo'
+
+    def test_state_4(self):
+        self.checkExpect(
+            expect=self.application2.state,
+            actual='application')
+
+    def test_state_unassignable_4(self):
+        with self.assertRaises(AttributeError):
+            self.application2.state = 'foo'
+
+    def test_state_5(self):
+        self.checkExpect(
+            expect=self.success2.state,
+            actual='success')
+
+    def test_state_unassignable_5(self):
+        with self.assertRaises(AttributeError):
+            self.success2.state = 'foo'
+
+    def test_state_6(self):
+        self.checkExpect(
+            expect=self.failure2.state,
+            actual='failure')
+
+    def test_state_unsassignable_6(self):
+        with self.assertRaises(AttributeError):
+            self.failure2.state = 'foo'
+
+    ################################################################################
     # eq and hash
     ################################################################################
     def test_eq_1(self):
@@ -63,7 +120,7 @@ class RunExitTests(BaseTest):
     # as_dict
     ################################################################################
     def test_as_dict_1(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 '@type': ['AlgorithmSuccessRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmSuccessRunExit',
@@ -77,7 +134,7 @@ class RunExitTests(BaseTest):
             actual=self.success.as_simple_mapping())
 
     def test_as_dict_2(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 '@type': ['AlgorithmFailureRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmFailureRunExit',
@@ -90,7 +147,7 @@ class RunExitTests(BaseTest):
             actual=self.failure.as_simple_mapping())
 
     def test_as_dict_3(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 '@type': ['AlgorithmApplicationRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmApplicationRunExit',
@@ -104,7 +161,7 @@ class RunExitTests(BaseTest):
             actual=self.application.as_simple_mapping())
 
     def test_as_dict_4(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 '@type': ['AlgorithmSuccessRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmSuccessRunExit',
@@ -118,7 +175,7 @@ class RunExitTests(BaseTest):
             actual=self.success2.as_simple_mapping())
 
     def test_as_dict_5(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 '@type': ['AlgorithmFailureRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmFailureRunExit',
@@ -131,7 +188,7 @@ class RunExitTests(BaseTest):
             actual=self.failure2.as_simple_mapping())
 
     def test_as_dict_6(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 '@type': ['AlgorithmApplicationRunExit', 'RunExit'],
                 '@typeName': 'AlgorithmApplicationRunExit',

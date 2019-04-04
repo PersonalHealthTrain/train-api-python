@@ -24,7 +24,7 @@ class TypeSystemTests(BaseTest):
         self.assertIsEqual(self.type_system, TypeSystem("pythonclass", "1.0"))
 
     def test_as_simple_dict(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'name': 'pythonclass',
                 'version': '1.0'

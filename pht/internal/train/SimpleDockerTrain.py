@@ -1,4 +1,7 @@
-import abc
+"""
+Base Class for Trains that are based on Docker Images
+"""
+from abc import abstractmethod
 from typing import List, Union, Optional
 from pht.internal.train.AbstractTrain import AbstractTrain
 from pht.internal.train.StationRuntimeInfo import StationRuntimeInfo
@@ -12,6 +15,9 @@ from pht.internal.response.run.exit.RunExit import AlgorithmSuccessRunExit, RunE
 
 
 class Log:
+    """
+    Log file that the train can write to while running the algorithm to determine the Train Responses
+    """
     def __init__(self):
         self.exit_state = AlgorithmSuccessRunExit('')
         self.free_text_message = ''
@@ -47,7 +53,7 @@ class SimpleDockerTrain(AbstractTrain):
         self.default_rebase_from = default_rebase_from
         self.default_next_train_tags = default_next_train_tags.copy()
 
-    @abc.abstractmethod
+    @abstractmethod
     def requirements(self) -> Optional[ConjunctionBuilder]:
         """
         The Conjunction expression to define the algorithm requirements of the train, or None if no such requirements
@@ -55,11 +61,11 @@ class SimpleDockerTrain(AbstractTrain):
         """
         pass
 
-    @abc.abstractmethod
+    @abstractmethod
     def model_summary(self) -> Union[str, dict, list]:
         pass
 
-    @abc.abstractmethod
+    @abstractmethod
     def run_algorithm(self, info: StationRuntimeInfo, log):
         pass
 

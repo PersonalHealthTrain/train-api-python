@@ -1,3 +1,6 @@
+"""
+Contains the base class: AbstractTrain.
+"""
 import abc
 import os
 from typing import List
@@ -13,12 +16,15 @@ class AbstractTrain(TrainCommandInterface, abc.ABC):
     """
     def __init__(self):
         self._model_files = {}
-
         # Directories for the train cargo are created upon Train instantiation
         os.makedirs(AlgorithmFile.base_dir(), exist_ok=True)
         os.makedirs(ModelFile.base_dir(), exist_ok=True)
 
     def model_file(self, key: str) -> ModelFile:
+        """
+        Provides access to a ModelFile, which can be used to store models that should be transferred between
+        different stations
+        """
         if key not in self._model_files.keys():
             self._model_files[key] = ModelFile(key)
         return self._model_files[key]

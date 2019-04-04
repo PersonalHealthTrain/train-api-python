@@ -1,3 +1,7 @@
+"""
+Contains Conjunction and disjunction builder classes
+"""
+
 import abc
 from typing import Dict, List
 from copy import deepcopy

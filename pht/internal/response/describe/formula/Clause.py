@@ -2,6 +2,7 @@ from collections.abc import Hashable, Sized
 from pht.internal.util import require
 from pht.internal.util import frozen_set_of
 from pht.internal.protocol.DeepCopyable import DeepCopyable
+from pht.internal.util.predicate.maker import does_not_contain
 
 
 class Clause(DeepCopyable, Hashable, Sized):
@@ -13,7 +14,7 @@ class Clause(DeepCopyable, Hashable, Sized):
         for literal in self._literals:
             require.type_is_int(literal)
         require.for_value(self._literals,
-                          that=lambda x: 0 not in x,
+                          that=does_not_contain(0),
                           error_if_not="0 is not allowed as a literal for a clause")
 
     def __iter__(self):
@@ -39,4 +40,5 @@ class Clause(DeepCopyable, Hashable, Sized):
         return hash(self._literals)
 
     def deepcopy(self):
+        """Returns a Deep Copy of this Clause"""
         return Clause(*self._literals)

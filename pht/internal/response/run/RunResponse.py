@@ -4,6 +4,7 @@ Contains the RunResponse class
 from pht.internal.response.run.rebase.RebaseStrategy import RebaseStrategy
 from pht.internal.response.run.exit.RunExit import RunExit
 from pht.internal.response.TrainResponse import TrainResponse
+from pht.internal.util import require
 
 
 class RunResponse(TrainResponse):
@@ -15,6 +16,10 @@ class RunResponse(TrainResponse):
                  free_text_message: str,
                  rebase: RebaseStrategy):
 
+        require.type_is_not_none(run_exit)
+        require.type_is_not_none(free_text_message)
+        require.type_is_not_none(rebase)
+
         # Final Execution State of the algorithm
         self.run_exit = run_exit.deepcopy()
 
@@ -25,6 +30,7 @@ class RunResponse(TrainResponse):
         self.rebase = rebase.deepcopy()
 
     def deepcopy(self):
+        """Returns a Deep Copy of this RunResponse"""
         return RunResponse(self.run_exit, self.message, self.rebase)
 
     def __hash__(self) -> int:
@@ -32,6 +38,7 @@ class RunResponse(TrainResponse):
 
     @property
     def data(self) -> dict:
+        """Returns the data of the RunResponse"""
         return {
             'runResponseVersion': '1.0',
             'exit': self.run_exit.as_simple_mapping(),

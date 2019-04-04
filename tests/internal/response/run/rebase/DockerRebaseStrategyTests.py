@@ -1,6 +1,5 @@
 from pht.internal.response.run.rebase import DockerRebaseStrategy
 from tests.base import BaseTest
-from copy import copy, deepcopy
 
 
 class DockerRebaseStrategyTests(BaseTest):
@@ -36,7 +35,7 @@ class DockerRebaseStrategyTests(BaseTest):
     # Dict
     ################################################################################
     def test_simple_dict_1(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'exportFiles': [],
                 'nextTrainTags': ['station.2'],

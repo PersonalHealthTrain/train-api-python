@@ -8,19 +8,18 @@ from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
 from pht.internal.train.cargo.TrainFile import TrainFile
 
 
-_TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
-
-
 class IllegalResponseException(Exception):
     def __init__(self, msg):
         super().__init__(msg)
 
 
 def _train_tag_is_valid(value: str):
+    _TRAIN_TAG_REGEX = re.compile(r'^[-.a-z0-9]+$')
     return _TRAIN_TAG_REGEX.fullmatch(value) is not None
 
 
 class RebaseStrategy(TypedAsPythonClass, abc.ABC):
+    """The Rebase Strategy to be used for creating consecutive train images"""
     def __init__(self,
                  next_train_tags: List[str],
                  export_files: List[TrainFile]):
@@ -31,6 +30,7 @@ class RebaseStrategy(TypedAsPythonClass, abc.ABC):
 
     @property
     def data(self) -> dict:
+        """The data of the Rebase Strategy"""
         return {
             'exportFiles': [x.as_simple_mapping() for x in sorted(list(self.export_files))],
             'nextTrainTags': sorted(list(self.next_train_tags))
@@ -50,6 +50,7 @@ class RebaseStrategy(TypedAsPythonClass, abc.ABC):
 
 
 class DockerRebaseStrategy(RebaseStrategy):
+    """Rebase Strategy that uses a Docker repository for rebasing"""
 
     def __init__(self,
                  frm: str,
@@ -60,6 +61,7 @@ class DockerRebaseStrategy(RebaseStrategy):
 
     @property
     def data(self) -> dict:
+        """The data of the Docker Rebase Strategy"""
         result = super().data
         result['from'] = self.frm
         return result
@@ -68,4 +70,5 @@ class DockerRebaseStrategy(RebaseStrategy):
         return hash((self.frm, self.next_train_tags, self.export_files))
 
     def deepcopy(self):
+        """Returns a Deep Copy of this DockerRebaseStratrgy"""
         return DockerRebaseStrategy(self.frm, list(self.next_train_tags), list(self.export_files))

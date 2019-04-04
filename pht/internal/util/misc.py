@@ -4,6 +4,9 @@ from pht.internal.protocol.DeepCopyable import DeepCopyable
 
 
 def frozen_set_of(typ, item, more_items: Iterable[Any]):
+    """
+    Returns a frozen set of a particular type with at least one item
+    """
     if not isinstance(item, typ):
         raise TypeError('Item \'{}\' is not of type: \'{}\''.format(str(item), str(typ)))
     tmp = set(more_items)

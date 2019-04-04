@@ -1,3 +1,6 @@
+"""
+Contains the protocol class: DeepCopyable
+"""
 from abc import ABC, abstractmethod
 
 
