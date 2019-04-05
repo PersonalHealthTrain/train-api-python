@@ -1,9 +1,13 @@
+"""
+Contains the class: EnumEnvironmentVariableProperty
+"""
 from typing import Optional, List
 from .EnvironmentVariableProperty import EnvironmentVariableProperty
 from ..PropertyState import PropertyState
 
 
 class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
+    """An environment variable where the values must come from a fixed value set"""
     def __init__(self, name: str, description: Optional[str], choices: List[str]):
         super().__init__(name, description)
         self._validate_choices(choices)
@@ -11,6 +15,7 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     @property
     def data(self) -> dict:
+        """The data of the EnumEnvironmentVariableProperty"""
         _data = super().data
         _choices = 'choices'
         if _choices in _data.keys():
@@ -19,6 +24,7 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
         return _data
 
     def deepcopy(self):
+        """Returns a Deep Copy of this Enum Environment Variable"""
         return EnumEnvironmentVariableProperty(self.name, self.description, [choice for choice in self._choices])
 
     def __repr__(self):
@@ -28,6 +34,7 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
         return hash((self.name, self._choices))
 
     def state(self) -> PropertyState:
+        """An EnumEnvironmentVariable is satisfied if the value in the environment comes from a fixed value set"""
         _state = super().state()
         if not _state.is_satisfied:
             return _state

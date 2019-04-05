@@ -28,6 +28,7 @@ class EnvironmentVariableProperty(Property):
 
     @property
     def data(self) -> dict:
+        """The data of the EnvironmentVariableProperty"""
         return {
             'description': self.description,
             'environmentVariableName': self.name,
