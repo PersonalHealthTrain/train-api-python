@@ -416,51 +416,50 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
                 },
                 actual=self.mount3.data)
 
+    @patch.dict('os.environ', {'BAR': 'not a directory'})
     def test_data_8(self):
-        with patch.dict('os.environ', {'BAR': 'not a directory'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'mountType': 'directory',
-                    'environmentVariableName': 'BAR',
-                    'state': {
-                        'isAvailable': False,
-                        'reason': 'The value \'not a directory\' is not an existing path in the file system'
-                    }
-                },
-                actual=self.mount4.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'mountType': 'directory',
+                'environmentVariableName': 'BAR',
+                'state': {
+                    'isAvailable': False,
+                    'reason': 'The value \'not a directory\' is not an existing path in the file system'
+                }
+            },
+            actual=self.mount4.data)
 
     ###########################################################
     # is available
     ###########################################################
     @patch.dict('os.environ', {'FOO': 'value'})
     def test_is_available_11(self):
-        self.assertFalse(self.mount1.is_available())
+        self.assertFalse(self.mount1.state().is_satisfied)
 
     def test_is_available_12(self):
-        self.assertFalse(self.mount1.is_available())
+        self.assertFalse(self.mount1.state().is_satisfied)
 
     @patch.dict('os.environ', {'BAR': 'value'})
     def test_is_available_21(self):
-        self.assertFalse(self.mount2.is_available())
+        self.assertFalse(self.mount2.state().is_satisfied)
 
     def test_is_available_22(self):
-        self.assertFalse(self.mount2.is_available())
+        self.assertFalse(self.mount2.state().is_satisfied)
 
     @patch.dict('os.environ', {'FOO': 'value'})
     def test_is_available_31(self):
-        self.assertFalse(self.mount3.is_available())
+        self.assertFalse(self.mount3.state().is_satisfied)
 
     def test_is_available_32(self):
-        self.assertFalse(self.mount3.is_available())
+        self.assertFalse(self.mount3.state().is_satisfied)
 
     @patch.dict('os.environ', {'BAR': 'value'})
     def test_is_available_41(self):
-        self.assertFalse(self.mount4.is_available())
+        self.assertFalse(self.mount4.state().is_satisfied)
 
     def test_is_available_42(self):
-        self.assertFalse(self.mount4.is_available())
-
+        self.assertThatNot(self.mount4.state().is_satisfied)
 
     ###########################################################
     # __str__

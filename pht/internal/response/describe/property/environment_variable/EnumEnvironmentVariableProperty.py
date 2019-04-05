@@ -1,6 +1,6 @@
 from typing import Optional, List
 from .EnvironmentVariableProperty import EnvironmentVariableProperty
-from ..PropertyState import PropertyState, PropertyUnavailable, PROPERTY_AVAILABLE
+from ..PropertyState import PropertyState
 
 
 class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
@@ -29,12 +29,14 @@ class EnumEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def state(self) -> PropertyState:
         _state = super().state()
-        if isinstance(super().state(), PropertyUnavailable):
+        if not _state.is_satisfied:
             return _state
         value = self.get_value()
         if value not in self._choices:
-            return PropertyUnavailable('The value {} is not one of the allowed choices!'.format(value))
-        return PROPERTY_AVAILABLE
+            return PropertyState(
+                is_satisfied=False,
+                reason='The value {} is not one of the allowed choices!'.format(value))
+        return PropertyState(is_satisfied=True)
 
     def _validate_choices(self, choices: List[str]):
         if choices is None:

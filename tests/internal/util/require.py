@@ -1,5 +1,5 @@
 from tests.base import BaseTest
-from pht.internal.util.require import type_is_int, type_is_str, type_is_str_or_none, type_is_not_none
+from pht.internal.util.require import type_is_int, type_is_str, type_is_str_or_none, type_is_not_none, type_is_bool
 from pht.internal.util.predicate import is_not_none, is_positive
 
 
@@ -109,6 +109,24 @@ class RequireTests(BaseTest):
 
     def test_is_negative_5(self):
         self.assertFalse(is_positive(-42))
+
+    ######################################################
+    # type_is_bool
+    ######################################################
+    def test_type_is_bool_1(self):
+        self.assertTypeError(lambda: type_is_bool('foo'))
+
+    def test_type_is_bool_2(self):
+        self.assertTypeError(lambda: type_is_bool(1))
+
+    def test_type_is_bool_3(self):
+        self.assertTypeError(lambda: type_is_bool(None))
+
+    def test_type_is_bool_4(self):
+        self.assertNotRaises(lambda: type_is_bool(True))
+
+    def test_type_is_bool_5(self):
+        self.assertNotRaises(lambda: type_is_bool(False))
 
     ######################################################
     # type_is_not_none

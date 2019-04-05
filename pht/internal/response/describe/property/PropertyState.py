@@ -1,42 +1,40 @@
 """
 PropertyState captures the State of the Property at runtime
 """
-from typing import Optional
 from pht.internal.protocol.DeepCopyable import DeepCopyable
 from pht.internal.protocol.SimpleMappingRepresentable import SimpleMappingRepresentable
+from pht.internal.util import require
 
 
 class PropertyState(SimpleMappingRepresentable, DeepCopyable):
-    def __init__(self, is_available: bool, reason: Optional[str]):
-        self._is_available = is_available
+    """Represents the state of a property at runtime"""
+    def __init__(self, *, is_satisfied: bool, reason: str = ''):
+        self._is_satisfied = is_satisfied
         self._reason = reason
+        require.type_is_bool(is_satisfied)
+        require.type_is_str(reason)
 
-        if not isinstance(self._is_available, bool):
-            raise TypeError('is_available must be a Boolean value')
+    @property
+    def is_satisfied(self) -> bool:
+        """Whether the property is satisfied"""
+        return self._is_satisfied
 
-        if not isinstance(self._reason, str) and self._reason is not None:
-            raise TypeError('reason must be a str value or None')
+    @property
+    def reason(self) -> str:
+        """The reason for the property being satisfied or not"""
+        return self._reason
 
     def _as_dict(self):
         return {
-            'isAvailable': self._is_available,
+            'isAvailable': self._is_satisfied,
             'reason': self._reason
         }
 
     def deepcopy(self):
-        return PropertyState(self._is_available, self._reason)
+        """Returns Deep Copy of this Property State"""
+        return PropertyState(
+            is_satisfied=self._is_satisfied,
+            reason=self._reason)
 
     def __hash__(self):
-        return hash((self._is_available, self._reason))
-
-
-PROPERTY_AVAILABLE = PropertyState(
-    is_available=True,
-    reason=None)
-
-
-class PropertyUnavailable(PropertyState):
-    def __init__(self, reason: str):
-        if not isinstance(reason, str):
-            raise TypeError("'reason' of PropertyUnavailable must be a string.")
-        super().__init__(is_available=False, reason=reason)
+        return hash((self._is_satisfied, self._reason))

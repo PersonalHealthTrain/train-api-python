@@ -1,3 +1,6 @@
+"""
+Contains the class: Clause
+"""
 from collections.abc import Hashable, Sized
 from pht.internal.util import require
 from pht.internal.util import frozen_set_of

@@ -3,7 +3,7 @@ LABEL maintainer="luk.zim91@gmail.com"
 
 COPY . /tmp/pht
 RUN cd /tmp/pht && \
-    python ./run_tests.py && \
+    python ./tests.py && \
     python setup.py install && \
     cd /home/notebooks && \
     pip install --no-cache-dir requests && \

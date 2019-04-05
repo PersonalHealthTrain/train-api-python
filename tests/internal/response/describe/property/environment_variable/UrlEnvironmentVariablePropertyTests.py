@@ -180,7 +180,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                     'environmentVariableName': 'FOO',
                     'state': {
                         'isAvailable': True,
-                        'reason': None
+                        'reason': ''
                     },
                     '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                     '@typeName': 'UrlEnvironmentVariableProperty',
@@ -191,53 +191,53 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 },
                 actual=self.url1.as_simple_mapping())
 
+    @patch.dict('os.environ', {'BAR': 'value'})
     def test_as_simple_dict_6(self):
-        with patch.dict('os.environ', {'BAR': 'value'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'BAR',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    },
-                    '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
-                    '@typeName': 'UrlEnvironmentVariableProperty',
-                    '@typeSystem': {
-                        'name': 'pythonclass',
-                        'version': '1.0'
-                    }
+        self.checkExpect(
+            expect={
+                'description': '',
+                'environmentVariableName': 'BAR',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
                 },
-                actual=self.url2.as_simple_mapping())
+                '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
+                '@typeName': 'UrlEnvironmentVariableProperty',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
+            },
+            actual=self.url2.as_simple_mapping())
 
+    @patch.dict('os.environ', {'MY_VARIABLE': 'value'})
     def test_as_simple_dict_7(self):
-        with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'MY_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    },
-                    '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
-                    '@typeName': 'UrlEnvironmentVariableProperty',
-                    '@typeSystem': {
-                        'name': 'pythonclass',
-                        'version': '1.0'
-                    }
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
                 },
-                actual=self.url3.as_simple_mapping())
+                '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
+                '@typeName': 'UrlEnvironmentVariableProperty',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                 }
+            },
+            actual=self.url3.as_simple_mapping())
 
     def test_as_simple_dict_8(self):
         with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
-            self.checkExpect(
+            self.checkMapping(
                 expect={
                     'description': '',
                     'environmentVariableName': 'SOME_OTHER_VARIABLE',
                     'state': {
                         'isAvailable': True,
-                        'reason': None
+                        'reason': ''
                     },
                     '@type': ['UrlEnvironmentVariableProperty', 'EnvironmentVariableProperty', 'Property'],
                     '@typeName': 'UrlEnvironmentVariableProperty',
@@ -351,7 +351,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'environmentVariableName': 'FOO',
                 'state': {
                     'isAvailable': True,
-                    'reason': None
+                    'reason': ''
                 }
             },
             actual=self.url1.data)
@@ -364,7 +364,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'environmentVariableName': 'BAR',
                 'state': {
                     'isAvailable': True,
-                    'reason': None
+                    'reason': ''
                 }
             },
             actual=self.url2.data)
@@ -377,7 +377,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'environmentVariableName': 'MY_VARIABLE',
                 'state': {
                     'isAvailable': True,
-                    'reason': None
+                    'reason': ''
                 }
             },
             actual=self.url3.data)
@@ -390,7 +390,7 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
                 'environmentVariableName': 'SOME_OTHER_VARIABLE',
                 'state': {
                     'isAvailable': True,
-                    'reason': None
+                    'reason': ''
                 }
             },
             actual=self.url4.data)
@@ -400,31 +400,32 @@ class UrlEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     @patch.dict('os.environ', {'FOO': 'value'})
     def test_is_available_1_1(self):
-        self.assertThat(self.url1.is_available())
+        self.assertThat(self.url1.state().is_satisfied)
 
+    @patch.dict('os.environ', {'FOO': ''})
     def test_is_available_1_2(self):
-        self.assertThatNot(self.url1.is_available())
+        self.assertThatNot(self.url1.state().is_satisfied)
 
     @patch.dict('os.environ', {'BAR': 'value'})
     def test_is_available_2_1(self):
-        self.assertThat(self.url2.is_available())
+        self.assertThat(self.url2.state().is_satisfied)
 
     def test_is_available_2_2(self):
-        self.assertThatNot(self.url2.is_available())
+        self.assertThatNot(self.url2.state().is_satisfied)
 
     @patch.dict('os.environ', {'MY_VARIABLE': 'value'})
     def test_is_available_3_1(self):
-        self.assertThat(self.url3.is_available())
+        self.assertThat(self.url3.state().is_satisfied)
 
     def test_is_available_3_2(self):
-        self.assertThatNot(self.url3.is_available())
+        self.assertThatNot(self.url3.state().is_satisfied)
 
     @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'})
     def test_is_available_4_1(self):
-        self.assertThat(self.url4.is_available())
+        self.assertThat(self.url4.state().is_satisfied)
 
     def test_is_available_4_2(self):
-        self.assertThatNot(self.url4.is_available())
+        self.assertThatNot(self.url4.state().is_satisfied)
 
     ###########################################################
     # __str__

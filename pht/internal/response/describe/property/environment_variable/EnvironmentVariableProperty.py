@@ -1,9 +1,9 @@
-import abc
+from abc import abstractmethod
 import os
 import re
 from typing import Optional
 from ..Property import Property
-from ..PropertyState import PropertyState, PropertyUnavailable, PROPERTY_AVAILABLE
+from ..PropertyState import PropertyState
 
 
 _REGEX_ENVIRONMENT_VARIABLE = re.compile(r'^[A-Z]+(_[A-Z]+)*$')
@@ -14,6 +14,7 @@ def _is_valid_environment_variable(name: str) -> bool:
 
 
 class EnvironmentVariableProperty(Property):
+    """A Property Representing an environment variable"""
     def __init__(self, name: str, description: Optional[str] = None):
         self.name = name
         self.description = '' if description is None else description
@@ -36,16 +37,23 @@ class EnvironmentVariableProperty(Property):
         }
 
     def state(self) -> PropertyState:
-        if self.name in os.environ.keys():
-            return PROPERTY_AVAILABLE
-        return PropertyUnavailable('Environment variable \'{}\' not set'.format(self.name))
+        """An EnvironmentVariable is satisfied if the name exists in the environment and the value does not only consist
+        of whitespace"""
+        def _is_only_whitespace(text: str):
+            return len(text.strip()) < 1
+        if self.name in os.environ.keys() and not _is_only_whitespace(os.environ[self.name]):
+            return PropertyState(is_satisfied=True)
+        return PropertyState(
+            is_satisfied=False,
+            reason='Environment variable \'{}\' not set'.format(self.name))
 
     def get_value(self) -> str:
+        """Returns the value of the environment variable or key error if its not present"""
         return os.environ[self.name]
 
     def __str__(self):
         return self.__repr__()
 
-    @abc.abstractmethod
+    @abstractmethod
     def __repr__(self):
         pass

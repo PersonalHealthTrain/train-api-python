@@ -16,7 +16,7 @@
         "environmentVariableName": "FOO",
         "state": {
           "isAvailable": true,
-          "reason": null
+          "reason": ""
         },
         "choices": [
           "VALUE1",

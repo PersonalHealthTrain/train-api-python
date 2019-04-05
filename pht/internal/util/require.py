@@ -27,6 +27,15 @@ def type_is_int(obj: Any):
         message="Object '{}' is required to be of type 'int' (and also not of type bool)".format(str(obj)))
 
 
+def type_is_bool(obj: Any):
+    """
+    Requires that the provided object is bool
+    """
+    _type_error(
+        when=not isinstance(obj, bool),
+        message="Object \'{}\' is required to be of type 'bool'".format(str(obj)))
+
+
 def type_is_not_none(obj: Any):
     """Requires that obj is not null"""
     _type_error(

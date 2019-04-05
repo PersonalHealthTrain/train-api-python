@@ -1,24 +1,14 @@
 """
 Contains the abstract base class for a Property that a container can have.
-
-@author Lukas Zimmermann
 """
-import abc
+from abc import abstractmethod
 from pht.internal.typesystem.TypedAsPythonClass import TypedAsPythonClass
-from pht.internal.response.describe.property.PropertyState import PROPERTY_AVAILABLE, PropertyState
+from pht.internal.response.describe.property.PropertyState import PropertyState
 
 
 class Property(TypedAsPythonClass):
-    """
-    Abstract base class for a property that can be formulated by a train.
-    """
-    @abc.abstractmethod
+    """Abstract base class for a property that can be formulated by a train."""
+    @abstractmethod
     def state(self) -> PropertyState:
-        """
-        Checks whether the Property denotes by this object is met in the environment
-        :return: Whether this Property is met in the environment
-        """
+        """Returns the State of the Property"""
         pass
-
-    def is_available(self) -> bool:
-        return self.state() == PROPERTY_AVAILABLE

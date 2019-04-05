@@ -2,10 +2,11 @@ import enum
 import os
 from typing import Optional
 from .EnvironmentVariableProperty import EnvironmentVariableProperty
-from ..PropertyState import PropertyState, PropertyUnavailable, PROPERTY_AVAILABLE
+from ..PropertyState import PropertyState
 
 
 class MountType(enum.Enum):
+    """The type of the mounted object"""
     FILE = 'file'
     DIRECTORY = 'directory'
 
@@ -36,13 +37,19 @@ class BindMountEnvironmentVariableProperty(EnvironmentVariableProperty):
 
     def state(self) -> PropertyState:
         _state = super().state()
-        if isinstance(_state, PropertyUnavailable):
+        if not _state.is_satisfied:
             return _state
         value = self.get_value()
         if not os.path.exists(value):
-            return PropertyUnavailable('The value \'{}\' is not an existing path in the file system'.format(value))
+            return PropertyState(
+                is_satisfied=False,
+                reason='The value \'{}\' is not an existing path in the file system'.format(value))
         if not os.path.isfile(value) and self.mount_type == MountType.FILE:
-            return PropertyUnavailable('The value \'{}\' is not a file, but it should be'.format(value))
+            return PropertyState(
+                is_satisfied=False,
+                reason='The value \'{}\' is not a file, but it should be'.format(value))
         if not os.path.isdir(value) and self.mount_type == MountType.DIRECTORY:
-            return PropertyUnavailable('The value \'{}\' is not a directory, but it should be'.format(value))
-        return PROPERTY_AVAILABLE
+            return PropertyState(
+                is_satisfied=False,
+                reason='The value \'{}\' is not a directory, but it should be'.format(value))
+        return PropertyState(is_satisfied=True)

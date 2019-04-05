@@ -10,7 +10,7 @@ RUN cd /tmp/pht && \
        gcc \
        g++ \
        musl-dev && \
-    python ./run_tests.py && \
+    python ./tests.py && \
     python setup.py install && \
     pip install --no-cache-dir numpy && \
     pip install --no-cache-dir pandas requests && \

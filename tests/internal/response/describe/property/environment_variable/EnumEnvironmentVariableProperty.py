@@ -166,21 +166,21 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
     ###########################################################
     # Check
     ###########################################################
+    @patch.dict('os.environ', {'FOO_BAR': 'value'})
     def test_check_true_1(self):
-        with patch.dict('os.environ', {'FOO_BAR': 'value'}):
-            self.assertTrue(enum_by_name('FOO_BAR', ['value']).is_available())
+        self.assertThat(enum_by_name('FOO_BAR', ['value']).state().is_satisfied)
 
+    @patch.dict('os.environ', {'FOO_BAR': 'value1'})
     def test_check_true_2(self):
-        with patch.dict('os.environ', {'FOO_BAR': 'value1'}):
-            self.assertTrue(enum_by_name('FOO_BAR', ['value1', 'value2']).is_available())
+        self.assertThat(enum_by_name('FOO_BAR', ['value1', 'value2']).state().is_satisfied)
 
+    @patch.dict('os.environ', {})
     def test_check_false_when_env_var_is_missing(self):
-        with patch.dict('os.environ', {}):
-            self.assertFalse(enum_by_name('FOO_BAR', ['value']).is_available())
+        self.assertThatNot(enum_by_name('FOO_BAR', ['value']).state().is_satisfied)
 
+    @patch.dict('os.environ', {'FOO_BAR': 'value1'})
     def test_check_false_when_value_is_not_allowed(self):
-        with patch.dict('os.environ', {'FOO_BAR': 'value1'}):
-            self.assertFalse(enum_by_name('FOO_BAR', ['value2']).is_available())
+        self.assertThatNot(enum_by_name('FOO_BAR', ['value2']).state().is_satisfied)
 
     ###########################################################
     # __str__ and __repr__

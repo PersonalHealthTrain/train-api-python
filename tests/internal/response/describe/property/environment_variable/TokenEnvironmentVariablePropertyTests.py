@@ -141,7 +141,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             }, actual=self.token2.as_simple_mapping())
 
     def test_as_simple_dict_3(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'MY_VARIABLE',
@@ -161,7 +161,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             actual=self.token3.as_simple_mapping())
 
     def test_as_simple_dict_4(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'SOME_OTHER_VARIABLE',
@@ -179,89 +179,89 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             },
             actual=self.token4.as_simple_mapping())
 
+    @patch.dict('os.environ', {'FOO': 'value'})
     def test_as_simple_dict_5(self):
-        with patch.dict('os.environ', {'FOO': 'value'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'FOO',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    },
-                    '@type': ['TokenEnvironmentVariableProperty',
-                              'EnvironmentVariableProperty',
-                              'Property'],
-                    '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': {
-                        'name': 'pythonclass',
-                        'version': '1.0'
-                    }
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'FOO',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
                 },
-                actual=self.token1.as_simple_mapping())
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
+            },
+            actual=self.token1.as_simple_mapping())
 
+    @patch.dict('os.environ', {'BAR': 'value'})
     def test_as_simple_dict_6(self):
-        with patch.dict('os.environ', {'BAR': 'value'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'BAR',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    },
-                    '@type': ['TokenEnvironmentVariableProperty',
-                              'EnvironmentVariableProperty',
-                              'Property'],
-                    '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': {
-                        'name': 'pythonclass',
-                        'version': '1.0'
-                    }
+        self.checkExpect(
+            expect={
+                'description': '',
+                'environmentVariableName': 'BAR',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
                 },
-                actual=self.token2.as_simple_mapping())
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
+            },
+            actual=self.token2.as_simple_mapping())
 
+    @patch.dict('os.environ', {'MY_VARIABLE': 'value'})
     def test_as_simple_dict_7(self):
-        with patch.dict('os.environ', {'MY_VARIABLE': 'value'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'MY_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    },
-                    '@type': ['TokenEnvironmentVariableProperty',
-                              'EnvironmentVariableProperty',
-                              'Property'],
-                    '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': {
-                        'name': 'pythonclass',
-                        'version': '1.0'
-                    }
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
                 },
-                actual=self.token3.as_simple_mapping())
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
+            },
+            actual=self.token3.as_simple_mapping())
 
+    @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'})
     def test_as_simple_dict_8(self):
-        with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None
-                    },
-                    '@type': ['TokenEnvironmentVariableProperty',
-                              'EnvironmentVariableProperty',
-                              'Property'],
-                    '@typeName': 'TokenEnvironmentVariableProperty',
-                    '@typeSystem': {
-                        'name': 'pythonclass',
-                        'version': '1.0'
-                    }
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
                 },
-                actual=self.token4.as_simple_mapping())
+                '@type': ['TokenEnvironmentVariableProperty',
+                          'EnvironmentVariableProperty',
+                          'Property'],
+                '@typeName': 'TokenEnvironmentVariableProperty',
+                '@typeSystem': {
+                    'name': 'pythonclass',
+                    'version': '1.0'
+                }
+            },
+            actual=self.token4.as_simple_mapping())
 
     ###########################################################
     # type
@@ -313,7 +313,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
     # data
     ###########################################################
     def test_data_1(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'FOO',
@@ -323,7 +323,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             actual=self.token1.data)
 
     def test_data_2(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'BAR',
@@ -333,7 +333,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             actual=self.token2.data)
 
     def test_data_3(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'MY_VARIABLE',
@@ -343,7 +343,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
             actual=self.token3.data)
 
     def test_data_4(self):
-        self.checkExpect(
+        self.checkMapping(
             expect={
                 'description': '',
                 'environmentVariableName': 'SOME_OTHER_VARIABLE',
@@ -352,80 +352,88 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
                     'reason': 'Environment variable \'SOME_OTHER_VARIABLE\' not set'}},
             actual=self.token4.data)
 
+    @patch.dict('os.environ', {'FOO': 'VALUE'})
     def test_data_5(self):
-        with patch.dict('os.environ', {'FOO': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'FOO',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None}},
-                actual=self.token1.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'FOO',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
+                }
+            },
+            actual=self.token1.data)
 
+    @patch.dict('os.environ', {'BAR': 'VALUE'})
     def test_data_6(self):
-        with patch.dict('os.environ', {'BAR': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'BAR',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None}},
-                actual=self.token2.data)
+        self.checkExpect(
+            expect={
+                'description': '',
+                'environmentVariableName': 'BAR',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
+                }
+            },
+            actual=self.token2.data)
 
+    @patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'})
     def test_data_7(self):
-        with patch.dict('os.environ', {'MY_VARIABLE': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'MY_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None}},
-                actual=self.token3.data)
+        self.checkMapping(
+            expect={
+                'description': '',
+                'environmentVariableName': 'MY_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
+                }
+            },
+            actual=self.token3.data)
 
+    @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'})
     def test_data_8(self):
-        with patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'VALUE'}):
-            self.checkExpect(
-                expect={
-                    'description': '',
-                    'environmentVariableName': 'SOME_OTHER_VARIABLE',
-                    'state': {
-                        'isAvailable': True,
-                        'reason': None}},
-                actual=self.token4.data)
+        self.checkExpect(
+            expect={
+                'description': '',
+                'environmentVariableName': 'SOME_OTHER_VARIABLE',
+                'state': {
+                    'isAvailable': True,
+                    'reason': ''
+                }
+            },
+            actual=self.token4.data)
 
     ###########################################################
     # is available
     ###########################################################
     @patch.dict('os.environ', {'FOO': 'value'})
     def test_is_available_1_1(self):
-        self.assertThat(self.token1.is_available())
+        self.assertThat(self.token1.state().is_satisfied)
 
     def test_is_available_1_2(self):
-        self.assertThatNot(self.token1.is_available())
+        self.assertThatNot(self.token1.state().is_satisfied)
 
     @patch.dict('os.environ', {'BAR': 'value'})
     def test_is_available_2_1(self):
-        self.assertThat(self.token2.is_available())
+        self.assertThat(self.token2.state().is_satisfied)
 
     def test_is_available_2_2(self):
-        self.assertThatNot(self.token2.is_available())
+        self.assertThatNot(self.token2.state().is_satisfied)
 
     @patch.dict('os.environ', {'MY_VARIABLE': 'value'})
     def test_is_available_3_1(self):
-        self.assertThat(self.token3.is_available())
+        self.assertThat(self.token3.state().is_satisfied)
 
     def test_is_available_3_2(self):
-        self.assertThatNot(self.token3.is_available())
+        self.assertThatNot(self.token3.state().is_satisfied)
 
     @patch.dict('os.environ', {'SOME_OTHER_VARIABLE': 'value'})
     def test_is_available_4_1(self):
-        self.assertThat(self.token4.is_available())
+        self.assertThat(self.token4.state().is_satisfied)
 
     def test_is_available_4_2(self):
-        self.assertThatNot(self.token4.is_available())
+        self.assertThatNot(self.token4.state().is_satisfied)
 
     ###########################################################
     # __str__
