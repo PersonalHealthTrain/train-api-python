@@ -10,6 +10,6 @@ setup(
     description='PHT Train API for Python',
     keywords='PHT train',
     url='https://github.com/PersonalHealthTrain/train-api-python',
-    version='1.0rc10',
+    version='1.0rc11',
     packages=find_packages()
 )
