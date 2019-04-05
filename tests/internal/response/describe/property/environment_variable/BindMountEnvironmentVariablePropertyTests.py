@@ -41,7 +41,7 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
         self.assertValueError(lambda: bind_mount_by_name('adaf', MountType.FILE))
 
     def test_valid_error_2(self):
-        self.assertValueError(lambda: bind_mount_by_name(None, MountType.DIRECTORY))
+        self.assertTypeError(lambda: bind_mount_by_name(None, MountType.DIRECTORY))
 
     def test_invalid_environment_variables_1(self):
         self.assert_invalid_env_name("")
@@ -63,9 +63,6 @@ class BindMountEnvironmentVariablePropertyTests(BaseTest):
 
     def test_invalid_environment_variables_7(self):
         self.assert_invalid_env_name("HSG__JD")
-
-    def test_invalid_environment_variables_8(self):
-        self.assert_invalid_env_name(None)
 
     ###########################################################
     # Equals and not equals

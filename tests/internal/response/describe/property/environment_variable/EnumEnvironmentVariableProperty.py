@@ -31,7 +31,7 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
             enum_by_name('akfgus', ['SINGLETON'])
 
     def test_invalid_enum_5(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             enum_by_name(None, ['SINGLETON'])
 
     # Invalid List of choices
@@ -98,9 +98,6 @@ class EnumEnvironmentVariablePropertyTests(BaseTest):
 
     def test_invalid_environment_variables_7(self):
         self.assert_invalid_env_name("HSG__JD")
-
-    def test_invalid_environment_variables_8(self):
-        self.assert_invalid_env_name(None)
 
     ###########################################################
     # Equals and not equals

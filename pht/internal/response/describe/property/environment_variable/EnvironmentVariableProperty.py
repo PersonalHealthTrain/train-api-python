@@ -4,7 +4,7 @@ import re
 from typing import Optional
 from ..Property import Property
 from ..PropertyState import PropertyState
-
+from pht.internal.util import require
 
 _REGEX_ENVIRONMENT_VARIABLE = re.compile(r'^[A-Z]+(_[A-Z]+)*$')
 
@@ -18,9 +18,7 @@ class EnvironmentVariableProperty(Property):
     def __init__(self, name: str, description: Optional[str] = None):
         self.name = name
         self.description = '' if description is None else description
-
-        if self.name is None:
-            raise ValueError('\'None\' is not allowed for the name of an Environment Variable')
+        require.type_is_str(self.name)
 
         if not _is_valid_environment_variable(self.name):
             raise ValueError('Not a valid Environment variable: {}'.format(self.name))

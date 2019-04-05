@@ -41,7 +41,7 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
         self.assertValueError(lambda: token_by_name('adaf'))
 
     def test_valid_error_2(self):
-        self.assertValueError(lambda: token_by_name(None))
+        self.assertTypeError(lambda: token_by_name(None))
 
     def test_invalid_environment_variables_1(self):
         self.assert_invalid_env_name("")
@@ -63,9 +63,6 @@ class TokenEnvironmentVariablePropertyTests(BaseTest):
 
     def test_invalid_environment_variables_7(self):
         self.assert_invalid_env_name("HSG__JD")
-
-    def test_invalid_environment_variables_8(self):
-        self.assert_invalid_env_name(None)
 
     ###########################################################
     # Equals and not equals
